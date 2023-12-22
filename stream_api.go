@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,15 +33,19 @@ var (
 
 type StreamApiService service
 
-/* StreamApiService Opens a channel that will send messages about any value changes for the specified stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+/*
+	StreamApiService Opens a channel that will send messages about any value changes for the specified stream.
+
 @param webId The ID of the stream.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "heartbeatRate" (int32) HeartbeatRate is an integer multiple of the Polling Interval. It specifies the rate at which a client will receive an empty message if there are no data updates. It can be used to check that the connection is still alive. Zero/negative values correspond to no heartbeat. By default, no empty messages will be sent to the user.
-    @param "includeInitialValues" (bool) Specified if the channel should send a message with the current value of the stream after the connection is opened. The default is &#39;false&#39;.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
-func (a *StreamApiService) StreamGetChannel(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+
+	@param "heartbeatRate" (int32) HeartbeatRate is an integer multiple of the Polling Interval. It specifies the rate at which a client will receive an empty message if there are no data updates. It can be used to check that the connection is still alive. Zero/negative values correspond to no heartbeat. By default, no empty messages will be sent to the user.
+	@param "includeInitialValues" (bool) Specified if the channel should send a message with the current value of the stream after the connection is opened. The default is &#39;false&#39;.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
+func (a *StreamApiService) StreamGetChannel(webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -98,7 +102,7 @@ func (a *StreamApiService) StreamGetChannel(ctx context.Context, webId string, l
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -109,21 +113,25 @@ func (a *StreamApiService) StreamGetChannel(ctx context.Context, webId string, l
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* StreamApiService Returns the end-of-stream value of the stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+/*
+	StreamApiService Returns the end-of-stream value of the stream.
+
 @param webId The ID of the stream.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-@return TimedValue*/
-func (a *StreamApiService) StreamGetEnd(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (TimedValue, *http.Response, error) {
+
+	@param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+
+@return TimedValue
+*/
+func (a *StreamApiService) StreamGetEnd(webId string, localVarOptionals map[string]interface{}) (TimedValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -175,7 +183,7 @@ func (a *StreamApiService) StreamGetEnd(ctx context.Context, webId string, local
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -186,7 +194,7 @@ func (a *StreamApiService) StreamGetEnd(ctx context.Context, webId string, local
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -197,23 +205,28 @@ func (a *StreamApiService) StreamGetEnd(ctx context.Context, webId string, local
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamApiService Retrieves interpolated values over the specified time range at the specified sampling interval.
+/*
+	StreamApiService Retrieves interpolated values over the specified time range at the specified sampling interval.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the stream.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
-    @param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
-    @param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. If the attribute does not support filtering, the filter will be ignored. The default is no filtering.
-    @param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
-    @param "interval" (string) The sampling interval, in AFTimeSpan format.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
-    @param "syncTime" (string) An optional start time anchor, in AFTime format. When specified, interpolated data retrieval will use the sync time as the origin for calculating the interval times.
-    @param "syncTimeBoundaryType" (string) An optional string specifying the boundary type to use when applying a syncTime. The allowed values are &#39;Inside&#39; and &#39;Outside&#39;. The default is &#39;Inside&#39;.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-@return TimedValues*/
-func (a *StreamApiService) StreamGetInterpolated(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (TimedValues, *http.Response, error) {
+
+	@param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
+	@param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
+	@param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. If the attribute does not support filtering, the filter will be ignored. The default is no filtering.
+	@param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
+	@param "interval" (string) The sampling interval, in AFTimeSpan format.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
+	@param "syncTime" (string) An optional start time anchor, in AFTime format. When specified, interpolated data retrieval will use the sync time as the origin for calculating the interval times.
+	@param "syncTimeBoundaryType" (string) An optional string specifying the boundary type to use when applying a syncTime. The allowed values are &#39;Inside&#39; and &#39;Outside&#39;. The default is &#39;Inside&#39;.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+
+@return TimedValues
+*/
+func (a *StreamApiService) StreamGetInterpolated(webId string, localVarOptionals map[string]interface{}) (TimedValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -313,7 +326,7 @@ func (a *StreamApiService) StreamGetInterpolated(ctx context.Context, webId stri
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -324,7 +337,7 @@ func (a *StreamApiService) StreamGetInterpolated(ctx context.Context, webId stri
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -335,20 +348,25 @@ func (a *StreamApiService) StreamGetInterpolated(ctx context.Context, webId stri
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamApiService Retrieves interpolated values over the specified time range at the specified sampling interval.
+/*
+	StreamApiService Retrieves interpolated values over the specified time range at the specified sampling interval.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the stream.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
-    @param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. If the attribute does not support filtering, the filter will be ignored. The default is no filtering.
-    @param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
-    @param "time" ([]string) The timestamp at which to retrieve an interpolated value. Multiple timestamps may be specified with multiple instances of the parameter.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-@return TimedValues*/
-func (a *StreamApiService) StreamGetInterpolatedAtTimes(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (TimedValues, *http.Response, error) {
+
+	@param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
+	@param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. If the attribute does not support filtering, the filter will be ignored. The default is no filtering.
+	@param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "time" ([]string) The timestamp at which to retrieve an interpolated value. Multiple timestamps may be specified with multiple instances of the parameter.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+
+@return TimedValues
+*/
+func (a *StreamApiService) StreamGetInterpolatedAtTimes(webId string, localVarOptionals map[string]interface{}) (TimedValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -427,7 +445,7 @@ func (a *StreamApiService) StreamGetInterpolatedAtTimes(ctx context.Context, web
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -438,7 +456,7 @@ func (a *StreamApiService) StreamGetInterpolatedAtTimes(ctx context.Context, web
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -449,19 +467,24 @@ func (a *StreamApiService) StreamGetInterpolatedAtTimes(ctx context.Context, web
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamApiService Retrieves values over the specified time range suitable for plotting over the number of intervals (typically represents pixels).
+/*
+	StreamApiService Retrieves values over the specified time range suitable for plotting over the number of intervals (typically represents pixels).
+
 For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state). Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the stream.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
-    @param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
-    @param "intervals" (int32) The number of intervals to plot over. Typically, this would be the number of horizontal pixels in the trend. The default is &#39;24&#39;. For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state).
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-@return TimedValues*/
-func (a *StreamApiService) StreamGetPlot(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (TimedValues, *http.Response, error) {
+
+	@param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
+	@param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
+	@param "intervals" (int32) The number of intervals to plot over. Typically, this would be the number of horizontal pixels in the trend. The default is &#39;24&#39;. For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state).
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+
+@return TimedValues
+*/
+func (a *StreamApiService) StreamGetPlot(webId string, localVarOptionals map[string]interface{}) (TimedValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -537,7 +560,7 @@ func (a *StreamApiService) StreamGetPlot(ctx context.Context, webId string, loca
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -548,7 +571,7 @@ func (a *StreamApiService) StreamGetPlot(ctx context.Context, webId string, loca
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -559,23 +582,28 @@ func (a *StreamApiService) StreamGetPlot(ctx context.Context, webId string, loca
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamApiService Returns a list of compressed values for the requested time range from the source provider.
+/*
+	StreamApiService Returns a list of compressed values for the requested time range from the source provider.
+
 Returned times are affected by the specified boundary type. If no values are found for the time range and conditions specified then the HTTP response will be success, with a body containing an empty array of Items. When specifying true for the includeFilteredValues parameter, consecutive filtered events are not returned. The first value that would be filtered out is returned with its time and the enumeration value \&quot;Filtered\&quot;. The next value in the collection will be the next compressed value in the specified direction that passes the filter criteria - if any. When both boundaryType and a filterExpression are specified, the events returned for the boundary condition specified are passed through the filter. If the includeFilteredValues parameter is true, the boundary values will be reported at the proper timestamps with the enumeration value \&quot;Filtered\&quot; when the filter conditions are not met at the boundary time. If the includeFilteredValues parameter is false for this case, no event is returned for the boundary time. Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.   If only recorded values with annotations are desired, the filterExpression parameter should include the filter IsSet(&#39;.&#39;, \&quot;a\&quot;).
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the stream.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "associations" (string) Associated values to return in the response, separated by semicolons (;). This call supports Annotations to return events with annotation values. If this parameter is not specified, annotation values are not returned.
-    @param "boundaryType" (string) An optional value that determines how the times and values of the returned end points are determined. The default is &#39;Inside&#39;.
-    @param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
-    @param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
-    @param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. The default is no filtering.
-    @param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
-    @param "maxCount" (int32) The maximum number of values to be returned. The default is 1000.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-@return ExtendedTimedValues*/
-func (a *StreamApiService) StreamGetRecorded(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ExtendedTimedValues, *http.Response, error) {
+
+	@param "associations" (string) Associated values to return in the response, separated by semicolons (;). This call supports Annotations to return events with annotation values. If this parameter is not specified, annotation values are not returned.
+	@param "boundaryType" (string) An optional value that determines how the times and values of the returned end points are determined. The default is &#39;Inside&#39;.
+	@param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
+	@param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
+	@param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. The default is no filtering.
+	@param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
+	@param "maxCount" (int32) The maximum number of values to be returned. The default is 1000.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+
+@return ExtendedTimedValues
+*/
+func (a *StreamApiService) StreamGetRecorded(webId string, localVarOptionals map[string]interface{}) (ExtendedTimedValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -675,7 +703,7 @@ func (a *StreamApiService) StreamGetRecorded(ctx context.Context, webId string, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -686,7 +714,7 @@ func (a *StreamApiService) StreamGetRecorded(ctx context.Context, webId string, 
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -697,19 +725,24 @@ func (a *StreamApiService) StreamGetRecorded(ctx context.Context, webId string, 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamApiService Returns a single recorded value based on the passed time and retrieval mode from the stream.
+/*
+	StreamApiService Returns a single recorded value based on the passed time and retrieval mode from the stream.
+
 If only recorded values with annotations are desired, the filterExpression parameter should include the filter IsSet(&#39;.&#39;, \&quot;a\&quot;).
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the stream.
 @param time The timestamp at which the value is desired.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "associations" (string) Associated values to return in the response, separated by semicolons (;). This call supports Annotations to return events with annotation values. If this parameter is not specified, annotation values are not returned.
-    @param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
-    @param "retrievalMode" (string) An optional value that determines the value to return when a value doesn&#39;t exist at the exact time specified. The default is &#39;Auto&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-@return ExtendedTimedValue*/
-func (a *StreamApiService) StreamGetRecordedAtTime(ctx context.Context, webId string, time string, localVarOptionals map[string]interface{}) (ExtendedTimedValue, *http.Response, error) {
+
+	@param "associations" (string) Associated values to return in the response, separated by semicolons (;). This call supports Annotations to return events with annotation values. If this parameter is not specified, annotation values are not returned.
+	@param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
+	@param "retrievalMode" (string) An optional value that determines the value to return when a value doesn&#39;t exist at the exact time specified. The default is &#39;Auto&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+
+@return ExtendedTimedValue
+*/
+func (a *StreamApiService) StreamGetRecordedAtTime(webId string, time string, localVarOptionals map[string]interface{}) (ExtendedTimedValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -780,7 +813,7 @@ func (a *StreamApiService) StreamGetRecordedAtTime(ctx context.Context, webId st
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -791,7 +824,7 @@ func (a *StreamApiService) StreamGetRecordedAtTime(ctx context.Context, webId st
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -802,20 +835,25 @@ func (a *StreamApiService) StreamGetRecordedAtTime(ctx context.Context, webId st
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamApiService Retrieves recorded values at the specified times.
+/*
+	StreamApiService Retrieves recorded values at the specified times.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.   If only recorded values with annotations are desired, the filterExpression parameter should include the filter IsSet(&#39;.&#39;, \&quot;a\&quot;).
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the stream.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "associations" (string) Associated values to return in the response, separated by semicolons (;). This call supports Annotations to return events with annotation values. If this parameter is not specified, annotation values are not returned.
-    @param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
-    @param "retrievalMode" (string) An optional value that determines the value to return when a value doesn&#39;t exist at the exact time specified. The default is &#39;Auto&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
-    @param "time" ([]string) The timestamp at which to retrieve a recorded value. Multiple timestamps may be specified with multiple instances of the parameter.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-@return ExtendedTimedValues*/
-func (a *StreamApiService) StreamGetRecordedAtTimes(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ExtendedTimedValues, *http.Response, error) {
+
+	@param "associations" (string) Associated values to return in the response, separated by semicolons (;). This call supports Annotations to return events with annotation values. If this parameter is not specified, annotation values are not returned.
+	@param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
+	@param "retrievalMode" (string) An optional value that determines the value to return when a value doesn&#39;t exist at the exact time specified. The default is &#39;Auto&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "time" ([]string) The timestamp at which to retrieve a recorded value. Multiple timestamps may be specified with multiple instances of the parameter.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+
+@return ExtendedTimedValues
+*/
+func (a *StreamApiService) StreamGetRecordedAtTimes(webId string, localVarOptionals map[string]interface{}) (ExtendedTimedValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -894,7 +932,7 @@ func (a *StreamApiService) StreamGetRecordedAtTimes(ctx context.Context, webId s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -905,7 +943,7 @@ func (a *StreamApiService) StreamGetRecordedAtTimes(ctx context.Context, webId s
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -916,24 +954,29 @@ func (a *StreamApiService) StreamGetRecordedAtTimes(ctx context.Context, webId s
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamApiService Returns a summary over the specified time range for the stream.
+/*
+	StreamApiService Returns a summary over the specified time range for the stream.
+
 Count is the only summary type supported on non-numeric streams. Requesting a summary for any other type will generate an error. Time-weighted totals are computed by integrating the rate tag values over the requested time range. If some of the data are bad in the time range, the calculated total is divided by the fraction of the time period for which there are good values. This approach is equivalent to assuming that during the period of bad data, the tag takes on the average values for the entire calculation time range. The PercentGood summary may be used to determine if the calculation results are suitable for the application&#39;s purposes. For time-weighted totals, if the time unit rate of the stream cannot be determined, then the value will be totaled assuming a unit of \&quot;per day\&quot; and no unit of measure will be assigned to the value. If the measured time component of the tag is not based on a day, the user of the data must convert the totalized value to the correct units.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the stream.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "calculationBasis" (string) Specifies the method of evaluating the data over the time range. The default is &#39;TimeWeighted&#39;.
-    @param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
-    @param "filterExpression" (string) A string containing a filter expression. Expression variables are relative to the attribute. Use &#39;.&#39; to reference the containing attribute.
-    @param "sampleInterval" (string) When the sampleType is Interval, sampleInterval specifies how often the filter expression is evaluated when computing the summary for an interval.
-    @param "sampleType" (string) Defines the evaluation of an expression over a time range. The default is &#39;ExpressionRecordedValues&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
-    @param "summaryDuration" (string) The duration of each summary interval. If specified in hours, minutes, seconds, or milliseconds, the summary durations will be evenly spaced UTC time intervals. Longer interval types are interpreted using wall clock rules and are time zone dependent.
-    @param "summaryType" ([]string) Specifies the kinds of summaries to produce over the range. The default is &#39;Total&#39;. Multiple summary types may be specified by using multiple instances of summaryType.
-    @param "timeType" (string) Specifies how to calculate the timestamp for each interval. The default is &#39;Auto&#39;.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-@return ItemsSummaryValue*/
-func (a *StreamApiService) StreamGetSummary(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSummaryValue, *http.Response, error) {
+
+	@param "calculationBasis" (string) Specifies the method of evaluating the data over the time range. The default is &#39;TimeWeighted&#39;.
+	@param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
+	@param "filterExpression" (string) A string containing a filter expression. Expression variables are relative to the attribute. Use &#39;.&#39; to reference the containing attribute.
+	@param "sampleInterval" (string) When the sampleType is Interval, sampleInterval specifies how often the filter expression is evaluated when computing the summary for an interval.
+	@param "sampleType" (string) Defines the evaluation of an expression over a time range. The default is &#39;ExpressionRecordedValues&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
+	@param "summaryDuration" (string) The duration of each summary interval. If specified in hours, minutes, seconds, or milliseconds, the summary durations will be evenly spaced UTC time intervals. Longer interval types are interpreted using wall clock rules and are time zone dependent.
+	@param "summaryType" ([]string) Specifies the kinds of summaries to produce over the range. The default is &#39;Total&#39;. Multiple summary types may be specified by using multiple instances of summaryType.
+	@param "timeType" (string) Specifies how to calculate the timestamp for each interval. The default is &#39;Auto&#39;.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+
+@return ItemsSummaryValue
+*/
+func (a *StreamApiService) StreamGetSummary(webId string, localVarOptionals map[string]interface{}) (ItemsSummaryValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1036,7 +1079,7 @@ func (a *StreamApiService) StreamGetSummary(ctx context.Context, webId string, l
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1047,7 +1090,7 @@ func (a *StreamApiService) StreamGetSummary(ctx context.Context, webId string, l
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1058,16 +1101,20 @@ func (a *StreamApiService) StreamGetSummary(ctx context.Context, webId string, l
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamApiService Returns the value of the stream at the specified time. By default, this is usually the current value.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+/*
+	StreamApiService Returns the value of the stream at the specified time. By default, this is usually the current value.
+
 @param webId The ID of the stream.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "time" (string) An optional time. The default time context is determined from the owning object - for example, the time range of the event frame or transfer which holds this attribute. Otherwise, the implementation of the Data Reference determines the meaning of no context. For Points or simply configured PI Point Data References, this means the snapshot value of the PI Point on the Data Server.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-@return TimedValue*/
-func (a *StreamApiService) StreamGetValue(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (TimedValue, *http.Response, error) {
+
+	@param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "time" (string) An optional time. The default time context is determined from the owning object - for example, the time range of the event frame or transfer which holds this attribute. Otherwise, the implementation of the Data Reference determines the meaning of no context. For Points or simply configured PI Point Data References, this means the snapshot value of the PI Point on the Data Server.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+
+@return TimedValue
+*/
+func (a *StreamApiService) StreamGetValue(webId string, localVarOptionals map[string]interface{}) (TimedValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1131,7 +1178,7 @@ func (a *StreamApiService) StreamGetValue(ctx context.Context, webId string, loc
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1142,7 +1189,7 @@ func (a *StreamApiService) StreamGetValue(ctx context.Context, webId string, loc
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1153,16 +1200,20 @@ func (a *StreamApiService) StreamGetValue(ctx context.Context, webId string, loc
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamApiService Updates a value for the specified stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+/*
+	StreamApiService Updates a value for the specified stream.
+
 @param webId The ID of the stream.
 @param value The value to add or update.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "bufferOption" (string) The desired AFBufferOption. The default is &#39;BufferIfPossible&#39;.
-    @param "updateOption" (string) The desired AFUpdateOption. The default is &#39;Replace&#39;. This parameter is ignored if the attribute is a configuration item.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
-func (a *StreamApiService) StreamUpdateValue(ctx context.Context, webId string, value TimedValue, localVarOptionals map[string]interface{}) (*http.Response, error) {
+
+	@param "bufferOption" (string) The desired AFBufferOption. The default is &#39;BufferIfPossible&#39;.
+	@param "updateOption" (string) The desired AFUpdateOption. The default is &#39;Replace&#39;. This parameter is ignored if the attribute is a configuration item.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
+func (a *StreamApiService) StreamUpdateValue(webId string, value TimedValue, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -1221,7 +1272,7 @@ func (a *StreamApiService) StreamUpdateValue(ctx context.Context, webId string, 
 	}
 	// body params
 	localVarPostBody = &value
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -1232,22 +1283,26 @@ func (a *StreamApiService) StreamUpdateValue(ctx context.Context, webId string, 
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* StreamApiService Updates multiple values for the specified stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+/*
+	StreamApiService Updates multiple values for the specified stream.
+
 @param webId The ID of the stream.
 @param values The values to add or update.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "bufferOption" (string) The desired AFBufferOption. The default is &#39;BufferIfPossible&#39;.
-    @param "updateOption" (string) The desired AFUpdateOption. The default is &#39;Replace&#39;.
-@return ItemsSubstatus*/
-func (a *StreamApiService) StreamUpdateValues(ctx context.Context, webId string, values []TimedValue, localVarOptionals map[string]interface{}) (ItemsSubstatus, *http.Response, error) {
+
+	@param "bufferOption" (string) The desired AFBufferOption. The default is &#39;BufferIfPossible&#39;.
+	@param "updateOption" (string) The desired AFUpdateOption. The default is &#39;Replace&#39;.
+
+@return ItemsSubstatus
+*/
+func (a *StreamApiService) StreamUpdateValues(webId string, values []TimedValue, localVarOptionals map[string]interface{}) (ItemsSubstatus, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -1301,7 +1356,7 @@ func (a *StreamApiService) StreamUpdateValues(ctx context.Context, webId string,
 	}
 	// body params
 	localVarPostBody = &values
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1312,7 +1367,7 @@ func (a *StreamApiService) StreamUpdateValues(ctx context.Context, webId string,
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

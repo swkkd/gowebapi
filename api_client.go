@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -43,10 +43,18 @@ var (
 	xmlCheck  = regexp.MustCompile("(?i:[application|text]/xml)")
 )
 
+type AuthContextKey struct{}
+
+type AuthCredentials struct {
+	Username string
+	Password string
+}
+
 // APIClient manages communication with the PI Web API 2018 Swagger Spec API v1.11.0.640
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
+	ctx    context.Context
 	common service // Reuse a single struct instead of allocating one for each service on the heap.
 
 	// API Services
@@ -97,7 +105,7 @@ type service struct {
 
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
-func NewAPIClient(cfg *Configuration) *APIClient {
+func NewAPIClient(cfg *Configuration, ctx context.Context) *APIClient {
 	if cfg.HTTPClient == nil {
 		cfg.HTTPClient = http.DefaultClient
 	}
@@ -105,6 +113,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c := &APIClient{}
 	c.cfg = cfg
 	c.common.client = c
+
+	c.ctx = ctx
 
 	// API Services
 	c.AnalysisApi = (*AnalysisApiService)(&c.common)
@@ -226,6 +236,9 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 
 // callAPI do the request.
 func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
+	if auth, ok := c.ctx.Value(AuthContextKey{}).(AuthCredentials); ok {
+		request.SetBasicAuth(auth.Username, auth.Password)
+	}
 	return c.cfg.HTTPClient.Do(request)
 }
 

@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,13 +33,18 @@ var (
 
 type NotificationRuleApiService service
 
-/* NotificationRuleApiService Retrieve notification rule subscribers.
+/*
+	NotificationRuleApiService Retrieve notification rule subscribers.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the resource to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsNotificationRuleSubscriber*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsNotificationRuleSubscriber
+*/
 func (a *NotificationRuleApiService) NotificationRuleGetNotificationRuleSubscribers(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsNotificationRuleSubscriber, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -103,7 +108,7 @@ func (a *NotificationRuleApiService) NotificationRuleGetNotificationRuleSubscrib
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -114,13 +119,18 @@ func (a *NotificationRuleApiService) NotificationRuleGetNotificationRuleSubscrib
 	return successPayload, localVarHttpResponse, err
 }
 
-/* NotificationRuleApiService Retrieve a notification rule.
+/*
+	NotificationRuleApiService Retrieve a notification rule.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the resource to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return NotificationRule*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return NotificationRule
+*/
 func (a *NotificationRuleApiService) NotificationRuleGetNotificationRules(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (NotificationRule, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -184,7 +194,7 @@ func (a *NotificationRuleApiService) NotificationRuleGetNotificationRules(ctx co
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -195,16 +205,21 @@ func (a *NotificationRuleApiService) NotificationRuleGetNotificationRules(ctx co
 	return successPayload, localVarHttpResponse, err
 }
 
-/* NotificationRuleApiService Retrieve notification rules based on the specified conditions. Returns notification rules using the specified search query string.
+/*
+	NotificationRuleApiService Retrieve notification rules based on the specified conditions. Returns notification rules using the specified search query string.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "databaseWebId" (string) The ID of the asset database to use as the root of the query.
-    @param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
-    @param "query" (string) The query string is a list of filters used to perform an AFSearch for the Notification rules in the asset database. An example would be: \&quot;query&#x3D;Name:&#x3D;MyNotificationRule* Template:&#x3D;NoteRuleTemplate*\&quot;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsNotificationRule*/
+
+	@param "databaseWebId" (string) The ID of the asset database to use as the root of the query.
+	@param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
+	@param "query" (string) The query string is a list of filters used to perform an AFSearch for the Notification rules in the asset database. An example would be: \&quot;query&#x3D;Name:&#x3D;MyNotificationRule* Template:&#x3D;NoteRuleTemplate*\&quot;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsNotificationRule
+*/
 func (a *NotificationRuleApiService) NotificationRuleGetNotificationRulesQuery(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsNotificationRule, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -291,7 +306,7 @@ func (a *NotificationRuleApiService) NotificationRuleGetNotificationRulesQuery(c
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,13 +33,18 @@ var (
 
 type AttributeApiService service
 
-/* AttributeApiService Create a new attribute as a child of the specified attribute.
+/*
+	AttributeApiService Create a new attribute as a child of the specified attribute.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent attribute on which to create the attribute.
 @param attribute The definition of the new attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *AttributeApiService) AttributeCreateAttribute(ctx context.Context, webId string, attribute Attribute, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -98,19 +103,24 @@ func (a *AttributeApiService) AttributeCreateAttribute(ctx context.Context, webI
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AttributeApiService Create or update an attribute&#39;s DataReference configuration (Create/Update PI point for PI Point DataReference).
+/*
+	AttributeApiService Create or update an attribute&#39;s DataReference configuration (Create/Update PI point for PI Point DataReference).
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *AttributeApiService) AttributeCreateConfig(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -167,17 +177,20 @@ func (a *AttributeApiService) AttributeCreateConfig(ctx context.Context, webId s
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AttributeApiService Delete an attribute.
+/*
+	AttributeApiService Delete an attribute.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute.
-@return */
+@return
+*/
 func (a *AttributeApiService) AttributeDelete(ctx context.Context, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -227,20 +240,25 @@ func (a *AttributeApiService) AttributeDelete(ctx context.Context, webId string)
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AttributeApiService Retrieve an attribute.
+/*
+	AttributeApiService Retrieve an attribute.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return Attribute*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return Attribute
+*/
 func (a *AttributeApiService) AttributeGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (Attribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -304,7 +322,7 @@ func (a *AttributeApiService) AttributeGet(ctx context.Context, webId string, lo
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -315,26 +333,31 @@ func (a *AttributeApiService) AttributeGet(ctx context.Context, webId string, lo
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AttributeApiService Get the child attributes of the specified attribute.
+/*
+	AttributeApiService Get the child attributes of the specified attribute.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "categoryName" (string) Specify that returned attributes must have this category. The default is no category filter.
-    @param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
-    @param "nameFilter" (string) The name query string used for finding attributes. The default is no filter.
-    @param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
-    @param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. The default is &#39;Name&#39;.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
-    @param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
-    @param "templateName" (string) Specify that returned attributes must be members of this template. The default is no template filter.
-    @param "trait" ([]string) The name of the attribute trait. Multiple traits may be specified with multiple instances of the parameter.
-    @param "traitCategory" ([]string) The category of the attribute traits. Multiple categories may be specified with multiple instances of the parameter. If the parameter is not specified, or if its value is \&quot;all\&quot;, then all attribute traits of all categories will be returned.
-    @param "valueType" (string) Specify that returned attributes&#39; value type must be the given value type. The default is no value type filter.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsAttribute*/
+
+	@param "categoryName" (string) Specify that returned attributes must have this category. The default is no category filter.
+	@param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
+	@param "nameFilter" (string) The name query string used for finding attributes. The default is no filter.
+	@param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
+	@param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. The default is &#39;Name&#39;.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
+	@param "templateName" (string) Specify that returned attributes must be members of this template. The default is no template filter.
+	@param "trait" ([]string) The name of the attribute trait. Multiple traits may be specified with multiple instances of the parameter.
+	@param "traitCategory" ([]string) The category of the attribute traits. Multiple categories may be specified with multiple instances of the parameter. If the parameter is not specified, or if its value is \&quot;all\&quot;, then all attribute traits of all categories will be returned.
+	@param "valueType" (string) Specify that returned attributes&#39; value type must be the given value type. The default is no value type filter.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsAttribute
+*/
 func (a *AttributeApiService) AttributeGetAttributes(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -470,7 +493,7 @@ func (a *AttributeApiService) AttributeGetAttributes(ctx context.Context, webId 
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -481,16 +504,21 @@ func (a *AttributeApiService) AttributeGetAttributes(ctx context.Context, webId 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AttributeApiService Retrieve attributes based on the specified conditions. Returns attributes using the specified search query string.
+/*
+	AttributeApiService Retrieve attributes based on the specified conditions. Returns attributes using the specified search query string.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "databaseWebId" (string) The ID of the asset database to use as the root of the query.
-    @param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
-    @param "query" (string) The query string is a list of filters used to perform an AFSearch for the attributes in the asset database. An example would be: \&quot;query&#x3D;Element:{ Name:&#x3D;&#39;MyElement&#39; } Type:&#x3D;Int32\&quot;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsAttribute*/
+
+	@param "databaseWebId" (string) The ID of the asset database to use as the root of the query.
+	@param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
+	@param "query" (string) The query string is a list of filters used to perform an AFSearch for the attributes in the asset database. An example would be: \&quot;query&#x3D;Element:{ Name:&#x3D;&#39;MyElement&#39; } Type:&#x3D;Int32\&quot;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsAttribute
+*/
 func (a *AttributeApiService) AttributeGetAttributesQuery(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -577,7 +605,7 @@ func (a *AttributeApiService) AttributeGetAttributesQuery(ctx context.Context, l
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -588,14 +616,19 @@ func (a *AttributeApiService) AttributeGetAttributesQuery(ctx context.Context, l
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AttributeApiService Retrieve an attribute by path.
+/*
+	AttributeApiService Retrieve an attribute by path.
+
 This method returns an attribute based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param path The path to the attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return Attribute*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return Attribute
+*/
 func (a *AttributeApiService) AttributeGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (Attribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -659,7 +692,7 @@ func (a *AttributeApiService) AttributeGetByPath(ctx context.Context, path strin
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -670,13 +703,18 @@ func (a *AttributeApiService) AttributeGetByPath(ctx context.Context, path strin
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AttributeApiService Get an attribute&#39;s categories.
+/*
+	AttributeApiService Get an attribute&#39;s categories.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsAttributeCategory*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsAttributeCategory
+*/
 func (a *AttributeApiService) AttributeGetCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttributeCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -740,7 +778,7 @@ func (a *AttributeApiService) AttributeGetCategories(ctx context.Context, webId 
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -751,16 +789,21 @@ func (a *AttributeApiService) AttributeGetCategories(ctx context.Context, webId 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AttributeApiService Retrieve multiple attributes by web id or path.
+/*
+	AttributeApiService Retrieve multiple attributes by web id or path.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "asParallel" (bool) Specifies if the retrieval processes should be run in parallel on the server. This may improve the response time for large amounts of requested attributes. The default is &#39;false&#39;.
-    @param "includeMode" (string) The include mode for the return list. The default is &#39;All&#39;.
-    @param "path" ([]string) The path of an attribute. Multiple attributes may be specified with multiple instances of the parameter.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webId" ([]string) The ID of an attribute. Multiple attributes may be specified with multiple instances of the parameter.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsItemAttribute*/
+
+	@param "asParallel" (bool) Specifies if the retrieval processes should be run in parallel on the server. This may improve the response time for large amounts of requested attributes. The default is &#39;false&#39;.
+	@param "includeMode" (string) The include mode for the return list. The default is &#39;All&#39;.
+	@param "path" ([]string) The path of an attribute. Multiple attributes may be specified with multiple instances of the parameter.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webId" ([]string) The ID of an attribute. Multiple attributes may be specified with multiple instances of the parameter.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsItemAttribute
+*/
 func (a *AttributeApiService) AttributeGetMultiple(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsItemAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -841,7 +884,7 @@ func (a *AttributeApiService) AttributeGetMultiple(ctx context.Context, localVar
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -852,12 +895,17 @@ func (a *AttributeApiService) AttributeGetMultiple(ctx context.Context, localVar
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AttributeApiService Get the attribute&#39;s value. This call is intended for use with attributes that have no data reference only. For attributes with a data reference, consult the documentation for Streams.
+/*
+	AttributeApiService Get the attribute&#39;s value. This call is intended for use with attributes that have no data reference only. For attributes with a data reference, consult the documentation for Streams.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-@return TimedValue*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+
+@return TimedValue
+*/
 func (a *AttributeApiService) AttributeGetValue(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (TimedValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -915,7 +963,7 @@ func (a *AttributeApiService) AttributeGetValue(ctx context.Context, webId strin
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -926,12 +974,15 @@ func (a *AttributeApiService) AttributeGetValue(ctx context.Context, webId strin
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AttributeApiService Set the value of a configuration item attribute. For attributes with a data reference or non-configuration item attributes, consult the documentation for streams.
+/*
+	AttributeApiService Set the value of a configuration item attribute. For attributes with a data reference or non-configuration item attributes, consult the documentation for streams.
+
 Users must be aware of the value type that the attribute takes before changing the value. If a value entered by the user does not match the value type expressed in the attribute, it will not work or it will return an error. Users should also be careful of what the value type means, for instance, if a value type accepts strings and the user enters a number, the attribute will interpret it as a string of characters and not as the integer value that the user may have wanted.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute.
 @param value The value to write.
-@return */
+@return
+*/
 func (a *AttributeApiService) AttributeSetValue(ctx context.Context, webId string, value TimedValue) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
@@ -983,19 +1034,22 @@ func (a *AttributeApiService) AttributeSetValue(ctx context.Context, webId strin
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AttributeApiService Update an attribute by replacing items in its definition.
+/*
+	AttributeApiService Update an attribute by replacing items in its definition.
+
 If an attribute is based on a template, the user must make sure to update the attribute appropriately so that it does not conflict with the template&#39;s design. Once a template is applied to an attribute, it can not be changed.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute.
 @param attribute A partial attribute containing the desired changes.
-@return */
+@return
+*/
 func (a *AttributeApiService) AttributeUpdate(ctx context.Context, webId string, attribute Attribute) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
@@ -1047,7 +1101,7 @@ func (a *AttributeApiService) AttributeUpdate(ctx context.Context, webId string,
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

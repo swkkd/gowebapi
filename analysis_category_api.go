@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,14 +33,19 @@ var (
 
 type AnalysisCategoryApiService service
 
-/* AnalysisCategoryApiService Create a security entry owned by the analysis category.
+/*
+	AnalysisCategoryApiService Create a security entry owned by the analysis category.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis category, where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *AnalysisCategoryApiService) AnalysisCategoryCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -105,17 +110,20 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryCreateSecurityEntry(ctx con
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AnalysisCategoryApiService Delete an analysis category.
+/*
+	AnalysisCategoryApiService Delete an analysis category.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis category to delete.
-@return */
+@return
+*/
 func (a *AnalysisCategoryApiService) AnalysisCategoryDelete(ctx context.Context, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -165,20 +173,25 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryDelete(ctx context.Context,
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AnalysisCategoryApiService Delete a security entry owned by the analysis category.
+/*
+	AnalysisCategoryApiService Delete a security entry owned by the analysis category.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the analysis category, where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
-@return */
+
+	@param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
+
+@return
+*/
 func (a *AnalysisCategoryApiService) AnalysisCategoryDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -236,20 +249,25 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryDeleteSecurityEntry(ctx con
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AnalysisCategoryApiService Retrieve an analysis category.
+/*
+	AnalysisCategoryApiService Retrieve an analysis category.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis category.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return AnalysisCategory*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return AnalysisCategory
+*/
 func (a *AnalysisCategoryApiService) AnalysisCategoryGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (AnalysisCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -313,7 +331,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGet(ctx context.Context, we
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -324,13 +342,18 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGet(ctx context.Context, we
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AnalysisCategoryApiService Retrieve an analysis category by path.
+/*
+	AnalysisCategoryApiService Retrieve an analysis category by path.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param path The path to the target analysis category.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return AnalysisCategory*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return AnalysisCategory
+*/
 func (a *AnalysisCategoryApiService) AnalysisCategoryGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (AnalysisCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -394,7 +417,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetByPath(ctx context.Conte
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -405,15 +428,20 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetByPath(ctx context.Conte
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AnalysisCategoryApiService Get the security information of the specified security item associated with the analysis category for a specified user.
+/*
+	AnalysisCategoryApiService Get the security information of the specified security item associated with the analysis category for a specified user.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis category for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "forceRefresh" (bool) Indicates if the security cache should be refreshed before getting security information. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsSecurityRights*/
+
+	@param "forceRefresh" (bool) Indicates if the security cache should be refreshed before getting security information. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsSecurityRights
+*/
 func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -484,7 +512,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurity(ctx context.Con
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -495,14 +523,19 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurity(ctx context.Con
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AnalysisCategoryApiService Retrieve the security entries associated with the analysis category based on the specified criteria. By default, all security entries for this analysis category are returned.
+/*
+	AnalysisCategoryApiService Retrieve the security entries associated with the analysis category based on the specified criteria. By default, all security entries for this analysis category are returned.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis category.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "nameFilter" (string) The name query string used for filtering security entries. The default is no filter.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsSecurityEntry*/
+
+	@param "nameFilter" (string) The name query string used for filtering security entries. The default is no filter.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsSecurityEntry
+*/
 func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -572,7 +605,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntries(ctx cont
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -583,14 +616,19 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntries(ctx cont
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AnalysisCategoryApiService Retrieve the security entry associated with the analysis category with the specified name.
+/*
+	AnalysisCategoryApiService Retrieve the security entry associated with the analysis category with the specified name.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the analysis category.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return SecurityEntry*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return SecurityEntry
+*/
 func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -655,7 +693,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntryByName(ctx 
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -666,11 +704,14 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntryByName(ctx 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AnalysisCategoryApiService Update an analysis category by replacing items in its definition.
+/*
+	AnalysisCategoryApiService Update an analysis category by replacing items in its definition.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis category to update.
 @param category A partial analysis category containing the desired changes.
-@return */
+@return
+*/
 func (a *AnalysisCategoryApiService) AnalysisCategoryUpdate(ctx context.Context, webId string, category AnalysisCategory) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
@@ -722,21 +763,26 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryUpdate(ctx context.Context,
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AnalysisCategoryApiService Update a security entry owned by the analysis category.
+/*
+	AnalysisCategoryApiService Update a security entry owned by the analysis category.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the analysis category, where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
-@return */
+
+	@param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
+
+@return
+*/
 func (a *AnalysisCategoryApiService) AnalysisCategoryUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
@@ -796,7 +842,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryUpdateSecurityEntry(ctx con
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

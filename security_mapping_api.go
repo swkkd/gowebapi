@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,10 +33,13 @@ var (
 
 type SecurityMappingApiService service
 
-/* SecurityMappingApiService Delete a security mapping.
+/*
+	SecurityMappingApiService Delete a security mapping.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security mapping.
-@return */
+@return
+*/
 func (a *SecurityMappingApiService) SecurityMappingDelete(ctx context.Context, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -86,20 +89,25 @@ func (a *SecurityMappingApiService) SecurityMappingDelete(ctx context.Context, w
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* SecurityMappingApiService Retrieve a security mapping.
+/*
+	SecurityMappingApiService Retrieve a security mapping.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security mapping.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return SecurityMapping*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return SecurityMapping
+*/
 func (a *SecurityMappingApiService) SecurityMappingGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (SecurityMapping, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -163,7 +171,7 @@ func (a *SecurityMappingApiService) SecurityMappingGet(ctx context.Context, webI
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -174,14 +182,19 @@ func (a *SecurityMappingApiService) SecurityMappingGet(ctx context.Context, webI
 	return successPayload, localVarHttpResponse, err
 }
 
-/* SecurityMappingApiService Retrieve a security mapping by path.
+/*
+	SecurityMappingApiService Retrieve a security mapping by path.
+
 This method returns a security mapping based on the path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param path The path to the security mapping.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return SecurityMapping*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return SecurityMapping
+*/
 func (a *SecurityMappingApiService) SecurityMappingGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (SecurityMapping, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -245,7 +258,7 @@ func (a *SecurityMappingApiService) SecurityMappingGetByPath(ctx context.Context
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -256,15 +269,20 @@ func (a *SecurityMappingApiService) SecurityMappingGetByPath(ctx context.Context
 	return successPayload, localVarHttpResponse, err
 }
 
-/* SecurityMappingApiService Get the security information of the specified security item associated with the security mapping for a specified user.
+/*
+	SecurityMappingApiService Get the security information of the specified security item associated with the security mapping for a specified user.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security mapping for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "forceRefresh" (bool) Indicates if the security cache should be refreshed before getting security information. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsSecurityRights*/
+
+	@param "forceRefresh" (bool) Indicates if the security cache should be refreshed before getting security information. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsSecurityRights
+*/
 func (a *SecurityMappingApiService) SecurityMappingGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -335,7 +353,7 @@ func (a *SecurityMappingApiService) SecurityMappingGetSecurity(ctx context.Conte
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -346,14 +364,19 @@ func (a *SecurityMappingApiService) SecurityMappingGetSecurity(ctx context.Conte
 	return successPayload, localVarHttpResponse, err
 }
 
-/* SecurityMappingApiService Retrieve the security entries associated with the security mapping based on the specified criteria. By default, all security entries for this security mapping are returned.
+/*
+	SecurityMappingApiService Retrieve the security entries associated with the security mapping based on the specified criteria. By default, all security entries for this security mapping are returned.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security mapping.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "nameFilter" (string) The name query string used for filtering security entries. The default is no filter.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsSecurityEntry*/
+
+	@param "nameFilter" (string) The name query string used for filtering security entries. The default is no filter.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsSecurityEntry
+*/
 func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -423,7 +446,7 @@ func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntries(ctx contex
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -434,14 +457,19 @@ func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntries(ctx contex
 	return successPayload, localVarHttpResponse, err
 }
 
-/* SecurityMappingApiService Retrieve the security entry associated with the security mapping with the specified name.
+/*
+	SecurityMappingApiService Retrieve the security entry associated with the security mapping with the specified name.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the security mapping.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return SecurityEntry*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return SecurityEntry
+*/
 func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -506,7 +534,7 @@ func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntryByName(ctx co
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -517,11 +545,14 @@ func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntryByName(ctx co
 	return successPayload, localVarHttpResponse, err
 }
 
-/* SecurityMappingApiService Update a security mapping by replacing items in its definition.
+/*
+	SecurityMappingApiService Update a security mapping by replacing items in its definition.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security mapping.
 @param securityMapping A partial security mapping containing the desired changes.
-@return */
+@return
+*/
 func (a *SecurityMappingApiService) SecurityMappingUpdate(ctx context.Context, webId string, securityMapping SecurityMapping) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
@@ -573,7 +604,7 @@ func (a *SecurityMappingApiService) SecurityMappingUpdate(ctx context.Context, w
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

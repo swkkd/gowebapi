@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,10 +33,13 @@ var (
 
 type TimeRuleApiService service
 
-/* TimeRuleApiService Delete a Time Rule.
+/*
+	TimeRuleApiService Delete a Time Rule.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the Time Rule.
-@return */
+@return
+*/
 func (a *TimeRuleApiService) TimeRuleDelete(ctx context.Context, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -86,20 +89,25 @@ func (a *TimeRuleApiService) TimeRuleDelete(ctx context.Context, webId string) (
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* TimeRuleApiService Retrieve a Time Rule.
+/*
+	TimeRuleApiService Retrieve a Time Rule.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the Time Rule.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return TimeRule*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return TimeRule
+*/
 func (a *TimeRuleApiService) TimeRuleGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (TimeRule, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -163,7 +171,7 @@ func (a *TimeRuleApiService) TimeRuleGet(ctx context.Context, webId string, loca
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -174,14 +182,19 @@ func (a *TimeRuleApiService) TimeRuleGet(ctx context.Context, webId string, loca
 	return successPayload, localVarHttpResponse, err
 }
 
-/* TimeRuleApiService Retrieve a Time Rule by path.
+/*
+	TimeRuleApiService Retrieve a Time Rule by path.
+
 This method returns a Time Rule based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param path The path to the Time Rule.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return TimeRule*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return TimeRule
+*/
 func (a *TimeRuleApiService) TimeRuleGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (TimeRule, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -245,7 +258,7 @@ func (a *TimeRuleApiService) TimeRuleGetByPath(ctx context.Context, path string,
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -256,11 +269,14 @@ func (a *TimeRuleApiService) TimeRuleGetByPath(ctx context.Context, path string,
 	return successPayload, localVarHttpResponse, err
 }
 
-/* TimeRuleApiService Update a Time Rule by replacing items in its definition.
+/*
+	TimeRuleApiService Update a Time Rule by replacing items in its definition.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the Time Rule.
 @param timeRule A partial Time Rule containing the desired changes.
-@return */
+@return
+*/
 func (a *TimeRuleApiService) TimeRuleUpdate(ctx context.Context, webId string, timeRule TimeRule) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
@@ -312,7 +328,7 @@ func (a *TimeRuleApiService) TimeRuleUpdate(ctx context.Context, webId string, t
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

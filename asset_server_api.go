@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,13 +33,18 @@ var (
 
 type AssetServerApiService service
 
-/* AssetServerApiService Create an asset database.
+/*
+	AssetServerApiService Create an asset database.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server on which to create the database.
 @param database The new database definition.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *AssetServerApiService) AssetServerCreateAssetDatabase(ctx context.Context, webId string, database AssetDatabase, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -98,22 +103,27 @@ func (a *AssetServerApiService) AssetServerCreateAssetDatabase(ctx context.Conte
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AssetServerApiService Create a security entry owned by the asset server.
+/*
+	AssetServerApiService Create a security entry owned by the asset server.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
-    @param "securityItem" (string) The security item of the desired security entries to be created. If the parameter is not specified, security entries of the &#39;Default&#39; security item will be created.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
+	@param "securityItem" (string) The security item of the desired security entries to be created. If the parameter is not specified, security entries of the &#39;Default&#39; security item will be created.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *AssetServerApiService) AssetServerCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -184,20 +194,25 @@ func (a *AssetServerApiService) AssetServerCreateSecurityEntry(ctx context.Conte
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AssetServerApiService Create a security identity.
+/*
+	AssetServerApiService Create a security identity.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server on which to create the security identity.
 @param securityIdentity The new security identity definition.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *AssetServerApiService) AssetServerCreateSecurityIdentity(ctx context.Context, webId string, securityIdentity SecurityIdentity, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -256,20 +271,25 @@ func (a *AssetServerApiService) AssetServerCreateSecurityIdentity(ctx context.Co
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AssetServerApiService Create a security mapping.
+/*
+	AssetServerApiService Create a security mapping.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server on which to create the security mapping.
 @param securityMapping The new security mapping definition.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *AssetServerApiService) AssetServerCreateSecurityMapping(ctx context.Context, webId string, securityMapping SecurityMapping, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -328,20 +348,25 @@ func (a *AssetServerApiService) AssetServerCreateSecurityMapping(ctx context.Con
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AssetServerApiService Create a unit class in the specified Asset Server.
+/*
+	AssetServerApiService Create a unit class in the specified Asset Server.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param unitClass The new unit class definition.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *AssetServerApiService) AssetServerCreateUnitClass(ctx context.Context, webId string, unitClass UnitClass, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -400,21 +425,26 @@ func (a *AssetServerApiService) AssetServerCreateUnitClass(ctx context.Context, 
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AssetServerApiService Delete a security entry owned by the asset server.
+/*
+	AssetServerApiService Delete a security entry owned by the asset server.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the asset server where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
-    @param "securityItem" (string) The security item of the desired security entries to be deleted. If the parameter is not specified, security entries of the &#39;Default&#39; security item will be deleted.
-@return */
+
+	@param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
+	@param "securityItem" (string) The security item of the desired security entries to be deleted. If the parameter is not specified, security entries of the &#39;Default&#39; security item will be deleted.
+
+@return
+*/
 func (a *AssetServerApiService) AssetServerDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -478,20 +508,25 @@ func (a *AssetServerApiService) AssetServerDeleteSecurityEntry(ctx context.Conte
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AssetServerApiService Retrieve an Asset Server.
+/*
+	AssetServerApiService Retrieve an Asset Server.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return AssetServer*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return AssetServer
+*/
 func (a *AssetServerApiService) AssetServerGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (AssetServer, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -555,7 +590,7 @@ func (a *AssetServerApiService) AssetServerGet(ctx context.Context, webId string
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -566,13 +601,18 @@ func (a *AssetServerApiService) AssetServerGet(ctx context.Context, webId string
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Retrieve a list of all Analysis Rule Plug-in&#39;s.
+/*
+	AssetServerApiService Retrieve a list of all Analysis Rule Plug-in&#39;s.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server, where the Analysis Rule Plug-in&#39;s are installed.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsAnalysisRulePlugIn*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsAnalysisRulePlugIn
+*/
 func (a *AssetServerApiService) AssetServerGetAnalysisRulePlugIns(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAnalysisRulePlugIn, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -636,7 +676,7 @@ func (a *AssetServerApiService) AssetServerGetAnalysisRulePlugIns(ctx context.Co
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -647,14 +687,19 @@ func (a *AssetServerApiService) AssetServerGetAnalysisRulePlugIns(ctx context.Co
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Retrieve an Asset Server by name.
+/*
+	AssetServerApiService Retrieve an Asset Server by name.
+
 This method returns an asset server based on the name associated with it. Users should primarily search with the WebID when available.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return AssetServer*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return AssetServer
+*/
 func (a *AssetServerApiService) AssetServerGetByName(ctx context.Context, name string, localVarOptionals map[string]interface{}) (AssetServer, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -718,7 +763,7 @@ func (a *AssetServerApiService) AssetServerGetByName(ctx context.Context, name s
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -729,14 +774,19 @@ func (a *AssetServerApiService) AssetServerGetByName(ctx context.Context, name s
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Retrieve an Asset Server by path.
+/*
+	AssetServerApiService Retrieve an Asset Server by path.
+
 This method returns an asset server based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param path The path to the server.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return AssetServer*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return AssetServer
+*/
 func (a *AssetServerApiService) AssetServerGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (AssetServer, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -800,7 +850,7 @@ func (a *AssetServerApiService) AssetServerGetByPath(ctx context.Context, path s
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -811,13 +861,18 @@ func (a *AssetServerApiService) AssetServerGetByPath(ctx context.Context, path s
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Retrieve a list of all Asset Databases on the specified Asset Server.
+/*
+	AssetServerApiService Retrieve a list of all Asset Databases on the specified Asset Server.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsAssetDatabase*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsAssetDatabase
+*/
 func (a *AssetServerApiService) AssetServerGetDatabases(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAssetDatabase, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -881,7 +936,7 @@ func (a *AssetServerApiService) AssetServerGetDatabases(ctx context.Context, web
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -892,13 +947,18 @@ func (a *AssetServerApiService) AssetServerGetDatabases(ctx context.Context, web
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Retrieve a list of all notification contact templates on the specified Asset Server.
+/*
+	AssetServerApiService Retrieve a list of all notification contact templates on the specified Asset Server.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsNotificationContactTemplate*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsNotificationContactTemplate
+*/
 func (a *AssetServerApiService) AssetServerGetNotificationContactTemplates(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsNotificationContactTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -962,7 +1022,7 @@ func (a *AssetServerApiService) AssetServerGetNotificationContactTemplates(ctx c
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -973,16 +1033,21 @@ func (a *AssetServerApiService) AssetServerGetNotificationContactTemplates(ctx c
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Get the security information of the specified security item associated with the asset server for a specified user.
+/*
+	AssetServerApiService Get the security information of the specified security item associated with the asset server for a specified user.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server for the security to be checked.
 @param securityItem The security item of the desired security information to be returned. Multiple security items may be specified with multiple instances of the parameter. If the parameter is not specified, only &#39;Default&#39; security item of the security information will be returned.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "forceRefresh" (bool) Indicates if the security cache should be refreshed before getting security information. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsSecurityRights*/
+
+	@param "forceRefresh" (bool) Indicates if the security cache should be refreshed before getting security information. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsSecurityRights
+*/
 func (a *AssetServerApiService) AssetServerGetSecurity(ctx context.Context, webId string, securityItem []string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1054,7 +1119,7 @@ func (a *AssetServerApiService) AssetServerGetSecurity(ctx context.Context, webI
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1065,15 +1130,20 @@ func (a *AssetServerApiService) AssetServerGetSecurity(ctx context.Context, webI
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Retrieve the security entries of the specified security item associated with the asset server based on the specified criteria. By default, all security entries for this asset server are returned.
+/*
+	AssetServerApiService Retrieve the security entries of the specified security item associated with the asset server based on the specified criteria. By default, all security entries for this asset server are returned.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "nameFilter" (string) The name query string used for filtering security entries. The default is no filter.
-    @param "securityItem" (string) The security item of the desired security entries information to be returned. If the parameter is not specified, security entries of the &#39;Default&#39; security item will be returned.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsSecurityEntry*/
+
+	@param "nameFilter" (string) The name query string used for filtering security entries. The default is no filter.
+	@param "securityItem" (string) The security item of the desired security entries information to be returned. If the parameter is not specified, security entries of the &#39;Default&#39; security item will be returned.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsSecurityEntry
+*/
 func (a *AssetServerApiService) AssetServerGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1149,7 +1219,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityEntries(ctx context.Contex
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1160,15 +1230,20 @@ func (a *AssetServerApiService) AssetServerGetSecurityEntries(ctx context.Contex
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Retrieve the security entry of the specified security item associated with the asset server with the specified name.
+/*
+	AssetServerApiService Retrieve the security entry of the specified security item associated with the asset server with the specified name.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the asset server.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "securityItem" (string) The security item of the desired security entries information to be returned. If the parameter is not specified, security entries of the &#39;Default&#39; security item will be returned.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return SecurityEntry*/
+
+	@param "securityItem" (string) The security item of the desired security entries information to be returned. If the parameter is not specified, security entries of the &#39;Default&#39; security item will be returned.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return SecurityEntry
+*/
 func (a *AssetServerApiService) AssetServerGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1239,7 +1314,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityEntryByName(ctx context.Co
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1250,18 +1325,23 @@ func (a *AssetServerApiService) AssetServerGetSecurityEntryByName(ctx context.Co
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Retrieve security identities based on the specified criteria. By default, all security identities in the specified Asset Server are returned.
+/*
+	AssetServerApiService Retrieve security identities based on the specified criteria. By default, all security identities in the specified Asset Server are returned.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server to search.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "field" (string) Specifies which of the object&#39;s properties are searched. The default is &#39;Name&#39;.
-    @param "maxCount" (int32) The maximum number of objects to be returned. The default is 1000.
-    @param "query" (string) The query string used for finding objects. The default is no query string.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. The default is &#39;Name&#39;.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsSecurityIdentity*/
+
+	@param "field" (string) Specifies which of the object&#39;s properties are searched. The default is &#39;Name&#39;.
+	@param "maxCount" (int32) The maximum number of objects to be returned. The default is 1000.
+	@param "query" (string) The query string used for finding objects. The default is no query string.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. The default is &#39;Name&#39;.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsSecurityIdentity
+*/
 func (a *AssetServerApiService) AssetServerGetSecurityIdentities(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityIdentity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1355,7 +1435,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityIdentities(ctx context.Con
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1366,14 +1446,19 @@ func (a *AssetServerApiService) AssetServerGetSecurityIdentities(ctx context.Con
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Retrieve security identities for a specific user.
+/*
+	AssetServerApiService Retrieve security identities for a specific user.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param userIdentity The user identity to search for.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsSecurityIdentity*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsSecurityIdentity
+*/
 func (a *AssetServerApiService) AssetServerGetSecurityIdentitiesForUser(ctx context.Context, webId string, userIdentity string, localVarOptionals map[string]interface{}) (ItemsSecurityIdentity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1438,7 +1523,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityIdentitiesForUser(ctx cont
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1449,18 +1534,23 @@ func (a *AssetServerApiService) AssetServerGetSecurityIdentitiesForUser(ctx cont
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Retrieve security mappings based on the specified criteria. By default, all security mappings in the specified Asset Server are returned.
+/*
+	AssetServerApiService Retrieve security mappings based on the specified criteria. By default, all security mappings in the specified Asset Server are returned.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server to search.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "field" (string) Specifies which of the object&#39;s properties are searched. The default is &#39;Name&#39;.
-    @param "maxCount" (int32) The maximum number of objects to be returned. The default is 1000.
-    @param "query" (string) The query string used for finding objects. The default is no query string.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. The default is &#39;Name&#39;.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsSecurityMapping*/
+
+	@param "field" (string) Specifies which of the object&#39;s properties are searched. The default is &#39;Name&#39;.
+	@param "maxCount" (int32) The maximum number of objects to be returned. The default is 1000.
+	@param "query" (string) The query string used for finding objects. The default is no query string.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. The default is &#39;Name&#39;.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsSecurityMapping
+*/
 func (a *AssetServerApiService) AssetServerGetSecurityMappings(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityMapping, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1554,7 +1644,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityMappings(ctx context.Conte
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1565,13 +1655,18 @@ func (a *AssetServerApiService) AssetServerGetSecurityMappings(ctx context.Conte
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Retrieve a list of all Time Rule Plug-in&#39;s.
+/*
+	AssetServerApiService Retrieve a list of all Time Rule Plug-in&#39;s.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server, where the Time Rule Plug-in&#39;s are installed.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsTimeRulePlugIn*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsTimeRulePlugIn
+*/
 func (a *AssetServerApiService) AssetServerGetTimeRulePlugIns(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsTimeRulePlugIn, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1635,7 +1730,7 @@ func (a *AssetServerApiService) AssetServerGetTimeRulePlugIns(ctx context.Contex
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1646,13 +1741,18 @@ func (a *AssetServerApiService) AssetServerGetTimeRulePlugIns(ctx context.Contex
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Retrieve a list of all unit classes on the specified Asset Server.
+/*
+	AssetServerApiService Retrieve a list of all unit classes on the specified Asset Server.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsUnitClass*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsUnitClass
+*/
 func (a *AssetServerApiService) AssetServerGetUnitClasses(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsUnitClass, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1716,7 +1816,7 @@ func (a *AssetServerApiService) AssetServerGetUnitClasses(ctx context.Context, w
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1727,12 +1827,17 @@ func (a *AssetServerApiService) AssetServerGetUnitClasses(ctx context.Context, w
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Retrieve a list of all Asset Servers known to this service.
+/*
+	AssetServerApiService Retrieve a list of all Asset Servers known to this service.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsAssetServer*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsAssetServer
+*/
 func (a *AssetServerApiService) AssetServerList(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsAssetServer, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1795,7 +1900,7 @@ func (a *AssetServerApiService) AssetServerList(ctx context.Context, localVarOpt
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1806,15 +1911,20 @@ func (a *AssetServerApiService) AssetServerList(ctx context.Context, localVarOpt
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AssetServerApiService Update a security entry owned by the asset server.
+/*
+	AssetServerApiService Update a security entry owned by the asset server.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the asset server where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
-    @param "securityItem" (string) The security item of the desired security entries to be updated. If the parameter is not specified, security entries of the &#39;Default&#39; security item will be updated.
-@return */
+
+	@param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
+	@param "securityItem" (string) The security item of the desired security entries to be updated. If the parameter is not specified, security entries of the &#39;Default&#39; security item will be updated.
+
+@return
+*/
 func (a *AssetServerApiService) AssetServerUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
@@ -1880,7 +1990,7 @@ func (a *AssetServerApiService) AssetServerUpdateSecurityEntry(ctx context.Conte
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

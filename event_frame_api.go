@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,10 +33,13 @@ var (
 
 type EventFrameApiService service
 
-/* EventFrameApiService Calls the EventFrame&#39;s Acknowledge method.
+/*
+	EventFrameApiService Calls the EventFrame&#39;s Acknowledge method.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame.
-@return */
+@return
+*/
 func (a *EventFrameApiService) EventFrameAcknowledge(ctx context.Context, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
@@ -86,17 +89,20 @@ func (a *EventFrameApiService) EventFrameAcknowledge(ctx context.Context, webId 
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* EventFrameApiService Calls the EventFrame&#39;s CaptureValues method.
+/*
+	EventFrameApiService Calls the EventFrame&#39;s CaptureValues method.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame.
-@return */
+@return
+*/
 func (a *EventFrameApiService) EventFrameCaptureValues(ctx context.Context, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -146,20 +152,25 @@ func (a *EventFrameApiService) EventFrameCaptureValues(ctx context.Context, webI
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* EventFrameApiService Create an annotation on an event frame.
+/*
+	EventFrameApiService Create an annotation on an event frame.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the owner event frame on which to create the annotation.
 @param annotation The new annotation definition.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *EventFrameApiService) EventFrameCreateAnnotation(ctx context.Context, webId string, annotation Annotation, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -218,20 +229,25 @@ func (a *EventFrameApiService) EventFrameCreateAnnotation(ctx context.Context, w
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* EventFrameApiService Create a new attribute of the specified event frame.
+/*
+	EventFrameApiService Create a new attribute of the specified event frame.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame on which to create the attribute.
 @param attribute The definition of the new attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *EventFrameApiService) EventFrameCreateAttribute(ctx context.Context, webId string, attribute Attribute, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -290,19 +306,24 @@ func (a *EventFrameApiService) EventFrameCreateAttribute(ctx context.Context, we
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* EventFrameApiService Executes the create configuration function of the data references found within the attributes of the event frame, and optionally, its children.
+/*
+	EventFrameApiService Executes the create configuration function of the data references found within the attributes of the event frame, and optionally, its children.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "includeChildElements" (bool) If true, includes the child event frames of the specified event frame.
-@return */
+
+	@param "includeChildElements" (bool) If true, includes the child event frames of the specified event frame.
+
+@return
+*/
 func (a *EventFrameApiService) EventFrameCreateConfig(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -359,20 +380,25 @@ func (a *EventFrameApiService) EventFrameCreateConfig(ctx context.Context, webId
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* EventFrameApiService Create an event frame as a child of the specified event frame.
+/*
+	EventFrameApiService Create an event frame as a child of the specified event frame.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent event frame on which to create the event frame.
 @param eventFrame The new event frame definition.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *EventFrameApiService) EventFrameCreateEventFrame(ctx context.Context, webId string, eventFrame EventFrame, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -431,21 +457,26 @@ func (a *EventFrameApiService) EventFrameCreateEventFrame(ctx context.Context, w
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* EventFrameApiService Create a link for a \&quot;Search EventFrames By Attribute Value\&quot; operation, whose queries are specified in the request content. The SearchRoot is specified by the Web Id of the root EventFrame. If the SearchRoot is not specified, then the search starts at the Asset Database. ElementTemplate must be provided as the Web ID of the ElementTemplate, which are used to create the EventFrames. All the attributes in the queries must be defined as AttributeTemplates on the ElementTemplate. An array of attribute value queries are ANDed together to find the desired Element objects. At least one value query must be specified. There are limitations on SearchOperators.
+/*
+	EventFrameApiService Create a link for a \&quot;Search EventFrames By Attribute Value\&quot; operation, whose queries are specified in the request content. The SearchRoot is specified by the Web Id of the root EventFrame. If the SearchRoot is not specified, then the search starts at the Asset Database. ElementTemplate must be provided as the Web ID of the ElementTemplate, which are used to create the EventFrames. All the attributes in the queries must be defined as AttributeTemplates on the ElementTemplate. An array of attribute value queries are ANDed together to find the desired Element objects. At least one value query must be specified. There are limitations on SearchOperators.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param query The query of search by attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "noResults" (bool) If false, the response content will contain the first page of the search results. If true, the response content will be empty. The default is false.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsEventFrame*/
+
+	@param "noResults" (bool) If false, the response content will contain the first page of the search results. If true, the response content will be empty. The default is false.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsEventFrame
+*/
 func (a *EventFrameApiService) EventFrameCreateSearchByAttribute(ctx context.Context, query SearchByAttribute, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -516,7 +547,7 @@ func (a *EventFrameApiService) EventFrameCreateSearchByAttribute(ctx context.Con
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -527,14 +558,19 @@ func (a *EventFrameApiService) EventFrameCreateSearchByAttribute(ctx context.Con
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Create a security entry owned by the event frame.
+/*
+	EventFrameApiService Create a security entry owned by the event frame.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *EventFrameApiService) EventFrameCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -599,17 +635,20 @@ func (a *EventFrameApiService) EventFrameCreateSecurityEntry(ctx context.Context
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* EventFrameApiService Delete an event frame.
+/*
+	EventFrameApiService Delete an event frame.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame to delete.
-@return */
+@return
+*/
 func (a *EventFrameApiService) EventFrameDelete(ctx context.Context, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -659,18 +698,21 @@ func (a *EventFrameApiService) EventFrameDelete(ctx context.Context, webId strin
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* EventFrameApiService Delete an annotation on an event frame. If the annotation has attached media, the attached media will also be deleted.
+/*
+	EventFrameApiService Delete an annotation on an event frame. If the annotation has attached media, the attached media will also be deleted.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param id The Annotation identifier of the annotation to be deleted.
 @param webId The ID of the owner event frame of the annotation to delete.
-@return */
+@return
+*/
 func (a *EventFrameApiService) EventFrameDeleteAnnotation(ctx context.Context, id string, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -721,18 +763,21 @@ func (a *EventFrameApiService) EventFrameDeleteAnnotation(ctx context.Context, i
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* EventFrameApiService Delete attached media from an annotation on an event frame.
+/*
+	EventFrameApiService Delete attached media from an annotation on an event frame.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param id The Annotation identifier of the annotation to delete the attached media of.
 @param webId The ID of the owner event frame of the annotation to delete the attached media of.
-@return */
+@return
+*/
 func (a *EventFrameApiService) EventFrameDeleteAnnotationAttachmentMediaById(ctx context.Context, id string, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -783,20 +828,25 @@ func (a *EventFrameApiService) EventFrameDeleteAnnotationAttachmentMediaById(ctx
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* EventFrameApiService Delete a security entry owned by the event frame.
+/*
+	EventFrameApiService Delete a security entry owned by the event frame.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the event frame where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
-@return */
+
+	@param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
+
+@return
+*/
 func (a *EventFrameApiService) EventFrameDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -854,33 +904,38 @@ func (a *EventFrameApiService) EventFrameDeleteSecurityEntry(ctx context.Context
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* EventFrameApiService Execute a \&quot;Search EventFrames By Attribute Value\&quot; operation.
+/*
+	EventFrameApiService Execute a \&quot;Search EventFrames By Attribute Value\&quot; operation.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param searchId The encoded search Id of the \&quot;Search EventFrames By Attribute Value\&quot; operation.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "canBeAcknowledged" (bool) Specify the returned event frames&#39; canBeAcknowledged property. The default is no canBeAcknowledged filter.
-    @param "endTime" (string) The ending time for the search. endTime must be greater than or equal to the startTime. The searchMode parameter will control whether the comparison will be performed against the event frame&#39;s startTime or endTime. The default is &#39;*&#39;.
-    @param "isAcknowledged" (bool) Specify the returned event frames&#39; isAcknowledged property. The default no isAcknowledged filter.
-    @param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
-    @param "nameFilter" (string) The name query string used for finding event frames. The default is no filter.
-    @param "referencedElementNameFilter" (string) The name query string which must match the name of a referenced element. The default is no filter.
-    @param "searchFullHierarchy" (bool) Specifies whether the search should include objects nested further than the immediate children of the search root. The default is &#39;false&#39;.
-    @param "searchMode" (string) Determines how the startTime and endTime parameters are treated when searching for event frame objects to be included in the returned collection. The default is &#39;Overlapped&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "severity" ([]string) Specify that returned event frames must have this severity. Multiple severity values may be specified with multiple instances of the parameter. The default is no severity filter.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. The default is &#39;Name&#39;.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
-    @param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
-    @param "startTime" (string) The starting time for the search. startTime must be less than or equal to the endTime. The searchMode parameter will control whether the comparison will be performed against the event frame&#39;s startTime or endTime. The default is &#39;*-8h&#39;.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsEventFrame*/
+
+	@param "canBeAcknowledged" (bool) Specify the returned event frames&#39; canBeAcknowledged property. The default is no canBeAcknowledged filter.
+	@param "endTime" (string) The ending time for the search. endTime must be greater than or equal to the startTime. The searchMode parameter will control whether the comparison will be performed against the event frame&#39;s startTime or endTime. The default is &#39;*&#39;.
+	@param "isAcknowledged" (bool) Specify the returned event frames&#39; isAcknowledged property. The default no isAcknowledged filter.
+	@param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
+	@param "nameFilter" (string) The name query string used for finding event frames. The default is no filter.
+	@param "referencedElementNameFilter" (string) The name query string which must match the name of a referenced element. The default is no filter.
+	@param "searchFullHierarchy" (bool) Specifies whether the search should include objects nested further than the immediate children of the search root. The default is &#39;false&#39;.
+	@param "searchMode" (string) Determines how the startTime and endTime parameters are treated when searching for event frame objects to be included in the returned collection. The default is &#39;Overlapped&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "severity" ([]string) Specify that returned event frames must have this severity. Multiple severity values may be specified with multiple instances of the parameter. The default is no severity filter.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. The default is &#39;Name&#39;.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
+	@param "startTime" (string) The starting time for the search. startTime must be less than or equal to the endTime. The searchMode parameter will control whether the comparison will be performed against the event frame&#39;s startTime or endTime. The default is &#39;*-8h&#39;.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsEventFrame
+*/
 func (a *EventFrameApiService) EventFrameExecuteSearchByAttribute(ctx context.Context, searchId string, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1019,7 +1074,7 @@ func (a *EventFrameApiService) EventFrameExecuteSearchByAttribute(ctx context.Co
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1030,30 +1085,35 @@ func (a *EventFrameApiService) EventFrameExecuteSearchByAttribute(ctx context.Co
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Retrieves a list of event frame attributes matching the specified filters from the specified event frame.
+/*
+	EventFrameApiService Retrieves a list of event frame attributes matching the specified filters from the specified event frame.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "attributeCategory" (string) Specify that returned attributes must have this category. The default is no filter.
-    @param "attributeDescriptionFilter" (string) The attribute description filter string used for finding objects. Only the first 440 characters of the description will be searched. For Asset Servers older than 2.7, a 400 status code (Bad Request) will be returned if this parameter is specified. The default is no filter.
-    @param "attributeNameFilter" (string) The attribute name filter string used for finding objects. The default is no filter.
-    @param "attributeType" (string) Specify that returned attributes&#39; value type must be this value type. The default is no filter.
-    @param "endTime" (string) A string representing the latest ending time for the event frames to be matched. The endTime must be greater than or equal to the startTime. The default is &#39;*&#39;.
-    @param "eventFrameCategory" (string) Specify that the owner of the returned attributes must have this category. The default is no filter.
-    @param "eventFrameDescriptionFilter" (string) The event frame description filter string used for finding objects. Only the first 440 characters of the description will be searched. For Asset Servers older than 2.7, a 400 status code (Bad Request) will be returned if this parameter is specified. The default is no filter.
-    @param "eventFrameNameFilter" (string) The event frame name filter string used for finding objects. The default is no filter.
-    @param "eventFrameTemplate" (string) Specify that the owner of the returned attributes must have this template or a template derived from this template. The default is no filter.
-    @param "maxCount" (int32) The maximum number of objects to be returned (the page size). The default is 1000.
-    @param "referencedElementNameFilter" (string) The name query string which must match the name of a referenced element. The default is no filter.
-    @param "searchFullHierarchy" (bool) Specifies if the search should include objects nested further than immediate children of the given resource. The default is &#39;false&#39;.
-    @param "searchMode" (string) Determines how the startTime and endTime parameters are treated when searching for event frames. The default is &#39;Overlapped&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. The default is &#39;Name&#39;.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
-    @param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
-    @param "startTime" (string) A string representing the earliest starting time for the event frames to be matched. startTime must be less than or equal to the endTime. The default is &#39;*-8h&#39;.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsAttribute*/
+
+	@param "attributeCategory" (string) Specify that returned attributes must have this category. The default is no filter.
+	@param "attributeDescriptionFilter" (string) The attribute description filter string used for finding objects. Only the first 440 characters of the description will be searched. For Asset Servers older than 2.7, a 400 status code (Bad Request) will be returned if this parameter is specified. The default is no filter.
+	@param "attributeNameFilter" (string) The attribute name filter string used for finding objects. The default is no filter.
+	@param "attributeType" (string) Specify that returned attributes&#39; value type must be this value type. The default is no filter.
+	@param "endTime" (string) A string representing the latest ending time for the event frames to be matched. The endTime must be greater than or equal to the startTime. The default is &#39;*&#39;.
+	@param "eventFrameCategory" (string) Specify that the owner of the returned attributes must have this category. The default is no filter.
+	@param "eventFrameDescriptionFilter" (string) The event frame description filter string used for finding objects. Only the first 440 characters of the description will be searched. For Asset Servers older than 2.7, a 400 status code (Bad Request) will be returned if this parameter is specified. The default is no filter.
+	@param "eventFrameNameFilter" (string) The event frame name filter string used for finding objects. The default is no filter.
+	@param "eventFrameTemplate" (string) Specify that the owner of the returned attributes must have this template or a template derived from this template. The default is no filter.
+	@param "maxCount" (int32) The maximum number of objects to be returned (the page size). The default is 1000.
+	@param "referencedElementNameFilter" (string) The name query string which must match the name of a referenced element. The default is no filter.
+	@param "searchFullHierarchy" (bool) Specifies if the search should include objects nested further than immediate children of the given resource. The default is &#39;false&#39;.
+	@param "searchMode" (string) Determines how the startTime and endTime parameters are treated when searching for event frames. The default is &#39;Overlapped&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. The default is &#39;Name&#39;.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
+	@param "startTime" (string) A string representing the earliest starting time for the event frames to be matched. startTime must be less than or equal to the endTime. The default is &#39;*-8h&#39;.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsAttribute
+*/
 func (a *EventFrameApiService) EventFrameFindEventFrameAttributes(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1219,7 +1279,7 @@ func (a *EventFrameApiService) EventFrameFindEventFrameAttributes(ctx context.Co
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1230,13 +1290,18 @@ func (a *EventFrameApiService) EventFrameFindEventFrameAttributes(ctx context.Co
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Retrieve an event frame.
+/*
+	EventFrameApiService Retrieve an event frame.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return EventFrame*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return EventFrame
+*/
 func (a *EventFrameApiService) EventFrameGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (EventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1300,7 +1365,7 @@ func (a *EventFrameApiService) EventFrameGet(ctx context.Context, webId string, 
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1311,14 +1376,19 @@ func (a *EventFrameApiService) EventFrameGet(ctx context.Context, webId string, 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Gets the metadata of the media attached to the specified annotation.
+/*
+	EventFrameApiService Gets the metadata of the media attached to the specified annotation.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param id The Annotation identifier of the specific annotation.
 @param webId The ID of the owner event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return MediaMetadata*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return MediaMetadata
+*/
 func (a *EventFrameApiService) EventFrameGetAnnotationAttachmentMediaMetadataById(ctx context.Context, id string, webId string, localVarOptionals map[string]interface{}) (MediaMetadata, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1383,7 +1453,7 @@ func (a *EventFrameApiService) EventFrameGetAnnotationAttachmentMediaMetadataByI
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1394,14 +1464,19 @@ func (a *EventFrameApiService) EventFrameGetAnnotationAttachmentMediaMetadataByI
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Get a specific annotation on an event frame.
+/*
+	EventFrameApiService Get a specific annotation on an event frame.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param id The Annotation identifier of the specific annotation.
 @param webId The ID of the owner event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return Annotation*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return Annotation
+*/
 func (a *EventFrameApiService) EventFrameGetAnnotationById(ctx context.Context, id string, webId string, localVarOptionals map[string]interface{}) (Annotation, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1466,7 +1541,7 @@ func (a *EventFrameApiService) EventFrameGetAnnotationById(ctx context.Context, 
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1477,13 +1552,18 @@ func (a *EventFrameApiService) EventFrameGetAnnotationById(ctx context.Context, 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Get an event frame&#39;s annotations.
+/*
+	EventFrameApiService Get an event frame&#39;s annotations.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the owner event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsAnnotation*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsAnnotation
+*/
 func (a *EventFrameApiService) EventFrameGetAnnotations(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAnnotation, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1547,7 +1627,7 @@ func (a *EventFrameApiService) EventFrameGetAnnotations(ctx context.Context, web
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1558,26 +1638,31 @@ func (a *EventFrameApiService) EventFrameGetAnnotations(ctx context.Context, web
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Get the attributes of the specified event frame.
+/*
+	EventFrameApiService Get the attributes of the specified event frame.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "categoryName" (string) Specify that returned attributes must have this category. The default is no category filter.
-    @param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
-    @param "nameFilter" (string) The name query string used for finding attributes. The default is no filter.
-    @param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
-    @param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. The default is &#39;Name&#39;.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
-    @param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
-    @param "templateName" (string) Specify that returned attributes must be members of this template. The default is no template filter.
-    @param "trait" ([]string) The name of the attribute trait. Multiple traits may be specified with multiple instances of the parameter.
-    @param "traitCategory" ([]string) The category of the attribute traits. Multiple categories may be specified with multiple instances of the parameter. If the parameter is not specified, or if its value is \&quot;all\&quot;, then all attribute traits of all categories will be returned.
-    @param "valueType" (string) Specify that returned attributes&#39; value type must be the given value type. The default is no value type filter.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsAttribute*/
+
+	@param "categoryName" (string) Specify that returned attributes must have this category. The default is no category filter.
+	@param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
+	@param "nameFilter" (string) The name query string used for finding attributes. The default is no filter.
+	@param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
+	@param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. The default is &#39;Name&#39;.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
+	@param "templateName" (string) Specify that returned attributes must be members of this template. The default is no template filter.
+	@param "trait" ([]string) The name of the attribute trait. Multiple traits may be specified with multiple instances of the parameter.
+	@param "traitCategory" ([]string) The category of the attribute traits. Multiple categories may be specified with multiple instances of the parameter. If the parameter is not specified, or if its value is \&quot;all\&quot;, then all attribute traits of all categories will be returned.
+	@param "valueType" (string) Specify that returned attributes&#39; value type must be the given value type. The default is no value type filter.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsAttribute
+*/
 func (a *EventFrameApiService) EventFrameGetAttributes(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1713,7 +1798,7 @@ func (a *EventFrameApiService) EventFrameGetAttributes(ctx context.Context, webI
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1724,14 +1809,19 @@ func (a *EventFrameApiService) EventFrameGetAttributes(ctx context.Context, webI
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Retrieve an event frame by path.
+/*
+	EventFrameApiService Retrieve an event frame by path.
+
 This method returns an event frame based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param path The path to the event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return EventFrame*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return EventFrame
+*/
 func (a *EventFrameApiService) EventFrameGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (EventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1795,7 +1885,7 @@ func (a *EventFrameApiService) EventFrameGetByPath(ctx context.Context, path str
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1806,13 +1896,18 @@ func (a *EventFrameApiService) EventFrameGetByPath(ctx context.Context, path str
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Get an event frame&#39;s categories.
+/*
+	EventFrameApiService Get an event frame&#39;s categories.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsElementCategory*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsElementCategory
+*/
 func (a *EventFrameApiService) EventFrameGetCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsElementCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1876,7 +1971,7 @@ func (a *EventFrameApiService) EventFrameGetCategories(ctx context.Context, webI
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1887,29 +1982,34 @@ func (a *EventFrameApiService) EventFrameGetCategories(ctx context.Context, webI
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Retrieve event frames based on the specified conditions. By default, returns all children of the specified root event frame that have been active in the past 8 hours.
+/*
+	EventFrameApiService Retrieve event frames based on the specified conditions. By default, returns all children of the specified root event frame that have been active in the past 8 hours.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "canBeAcknowledged" (bool) Specify the returned event frames&#39; canBeAcknowledged property. The default is no canBeAcknowledged filter.
-    @param "categoryName" (string) Specify that returned event frames must have this category. The default is no category filter.
-    @param "endTime" (string) The ending time for the search. The endTime must be greater than or equal to the startTime. The searchMode parameter will control whether the comparison will be performed against the event frame&#39;s startTime or endTime. The default is &#39;*&#39; if searchMode is not one of the &#39;Backward*&#39; or &#39;Forward*&#39; values.
-    @param "isAcknowledged" (bool) Specify the returned event frames&#39; isAcknowledged property. The default no isAcknowledged filter.
-    @param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
-    @param "nameFilter" (string) The name query string used for finding event frames. The default is no filter.
-    @param "referencedElementNameFilter" (string) The name query string which must match the name of a referenced element. The default is no filter.
-    @param "referencedElementTemplateName" (string) Specify that returned event frames must have an element in the event frame&#39;s referenced elements collection that derives from the template. Specify this parameter by name.
-    @param "searchFullHierarchy" (bool) Specifies whether the search should include objects nested further than the immediate children of the search root. The default is &#39;false&#39;.
-    @param "searchMode" (string) Determines how the startTime and endTime parameters are treated when searching for event frame objects to be included in the returned collection. If this parameter is one of the &#39;Backward*&#39; or &#39;Forward*&#39; values, none of endTime, sortField, or sortOrder may be specified. The default is &#39;Overlapped&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "severity" ([]string) Specify that returned event frames must have this severity. Multiple severity values may be specified with multiple instances of the parameter. The default is no severity filter.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. The default is &#39;Name&#39; if searchMode is not one of the &#39;Backward*&#39; or &#39;Forward*&#39; values.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39; if searchMode is not one of the &#39;Backward*&#39; or &#39;Forward*&#39; values.
-    @param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
-    @param "startTime" (string) The starting time for the search. startTime must be less than or equal to the endTime. The searchMode parameter will control whether the comparison will be performed against the event frame&#39;s startTime or endTime. The default is &#39;*-8h&#39;.
-    @param "templateName" (string) Specify that returned event frames must have this template or a template derived from this template. The default is no template filter. Specify this parameter by name.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsEventFrame*/
+
+	@param "canBeAcknowledged" (bool) Specify the returned event frames&#39; canBeAcknowledged property. The default is no canBeAcknowledged filter.
+	@param "categoryName" (string) Specify that returned event frames must have this category. The default is no category filter.
+	@param "endTime" (string) The ending time for the search. The endTime must be greater than or equal to the startTime. The searchMode parameter will control whether the comparison will be performed against the event frame&#39;s startTime or endTime. The default is &#39;*&#39; if searchMode is not one of the &#39;Backward*&#39; or &#39;Forward*&#39; values.
+	@param "isAcknowledged" (bool) Specify the returned event frames&#39; isAcknowledged property. The default no isAcknowledged filter.
+	@param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
+	@param "nameFilter" (string) The name query string used for finding event frames. The default is no filter.
+	@param "referencedElementNameFilter" (string) The name query string which must match the name of a referenced element. The default is no filter.
+	@param "referencedElementTemplateName" (string) Specify that returned event frames must have an element in the event frame&#39;s referenced elements collection that derives from the template. Specify this parameter by name.
+	@param "searchFullHierarchy" (bool) Specifies whether the search should include objects nested further than the immediate children of the search root. The default is &#39;false&#39;.
+	@param "searchMode" (string) Determines how the startTime and endTime parameters are treated when searching for event frame objects to be included in the returned collection. If this parameter is one of the &#39;Backward*&#39; or &#39;Forward*&#39; values, none of endTime, sortField, or sortOrder may be specified. The default is &#39;Overlapped&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "severity" ([]string) Specify that returned event frames must have this severity. Multiple severity values may be specified with multiple instances of the parameter. The default is no severity filter.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. The default is &#39;Name&#39; if searchMode is not one of the &#39;Backward*&#39; or &#39;Forward*&#39; values.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39; if searchMode is not one of the &#39;Backward*&#39; or &#39;Forward*&#39; values.
+	@param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
+	@param "startTime" (string) The starting time for the search. startTime must be less than or equal to the endTime. The searchMode parameter will control whether the comparison will be performed against the event frame&#39;s startTime or endTime. The default is &#39;*-8h&#39;.
+	@param "templateName" (string) Specify that returned event frames must have this template or a template derived from this template. The default is no template filter. Specify this parameter by name.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsEventFrame
+*/
 func (a *EventFrameApiService) EventFrameGetEventFrames(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2066,7 +2166,7 @@ func (a *EventFrameApiService) EventFrameGetEventFrames(ctx context.Context, web
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2077,16 +2177,21 @@ func (a *EventFrameApiService) EventFrameGetEventFrames(ctx context.Context, web
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Retrieve event frames based on the specified conditions. Returns event frames using the specified search query string.
+/*
+	EventFrameApiService Retrieve event frames based on the specified conditions. Returns event frames using the specified search query string.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "databaseWebId" (string) The ID of the asset database to use as the root of the query.
-    @param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
-    @param "query" (string) The query string is a list of filters used to perform an AFSearch for the eventframes in the asset database. An example would be: \&quot;query&#x3D;Name:&#x3D;MyEventFrame* Category:&#x3D;MyCategory Template:&#x3D;EFTemplate*\&quot;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsEventFrame*/
+
+	@param "databaseWebId" (string) The ID of the asset database to use as the root of the query.
+	@param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
+	@param "query" (string) The query string is a list of filters used to perform an AFSearch for the eventframes in the asset database. An example would be: \&quot;query&#x3D;Name:&#x3D;MyEventFrame* Category:&#x3D;MyCategory Template:&#x3D;EFTemplate*\&quot;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsEventFrame
+*/
 func (a *EventFrameApiService) EventFrameGetEventFramesQuery(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2173,7 +2278,7 @@ func (a *EventFrameApiService) EventFrameGetEventFramesQuery(ctx context.Context
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2184,16 +2289,21 @@ func (a *EventFrameApiService) EventFrameGetEventFramesQuery(ctx context.Context
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Retrieve multiple event frames by web ids or paths.
+/*
+	EventFrameApiService Retrieve multiple event frames by web ids or paths.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "asParallel" (bool) Specifies if the retrieval processes should be run in parallel on the server. This may improve the response time for large amounts of requested attributes. The default is &#39;false&#39;.
-    @param "includeMode" (string) The include mode for the return list. The default is &#39;All&#39;.
-    @param "path" ([]string) The path of an event frame. Multiple event frames may be specified with multiple instances of the parameter.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webId" ([]string) The ID of an event frame. Multiple event frames may be specified with multiple instances of the parameter.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsItemEventFrame*/
+
+	@param "asParallel" (bool) Specifies if the retrieval processes should be run in parallel on the server. This may improve the response time for large amounts of requested attributes. The default is &#39;false&#39;.
+	@param "includeMode" (string) The include mode for the return list. The default is &#39;All&#39;.
+	@param "path" ([]string) The path of an event frame. Multiple event frames may be specified with multiple instances of the parameter.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webId" ([]string) The ID of an event frame. Multiple event frames may be specified with multiple instances of the parameter.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsItemEventFrame
+*/
 func (a *EventFrameApiService) EventFrameGetMultiple(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsItemEventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2274,7 +2384,7 @@ func (a *EventFrameApiService) EventFrameGetMultiple(ctx context.Context, localV
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2285,13 +2395,18 @@ func (a *EventFrameApiService) EventFrameGetMultiple(ctx context.Context, localV
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Retrieve the event frame&#39;s referenced elements.
+/*
+	EventFrameApiService Retrieve the event frame&#39;s referenced elements.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame whose referenced elements should be retrieved.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsElement*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsElement
+*/
 func (a *EventFrameApiService) EventFrameGetReferencedElements(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2355,7 +2470,7 @@ func (a *EventFrameApiService) EventFrameGetReferencedElements(ctx context.Conte
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2366,15 +2481,20 @@ func (a *EventFrameApiService) EventFrameGetReferencedElements(ctx context.Conte
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Get the security information of the specified security item associated with the event frame for a specified user.
+/*
+	EventFrameApiService Get the security information of the specified security item associated with the event frame for a specified user.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "forceRefresh" (bool) Indicates if the security cache should be refreshed before getting security information. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsSecurityRights*/
+
+	@param "forceRefresh" (bool) Indicates if the security cache should be refreshed before getting security information. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsSecurityRights
+*/
 func (a *EventFrameApiService) EventFrameGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2445,7 +2565,7 @@ func (a *EventFrameApiService) EventFrameGetSecurity(ctx context.Context, webId 
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2456,14 +2576,19 @@ func (a *EventFrameApiService) EventFrameGetSecurity(ctx context.Context, webId 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Retrieve the security entries associated with the event frame based on the specified criteria. By default, all security entries for this event frame are returned.
+/*
+	EventFrameApiService Retrieve the security entries associated with the event frame based on the specified criteria. By default, all security entries for this event frame are returned.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "nameFilter" (string) The name query string used for filtering security entries. The default is no filter.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsSecurityEntry*/
+
+	@param "nameFilter" (string) The name query string used for filtering security entries. The default is no filter.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsSecurityEntry
+*/
 func (a *EventFrameApiService) EventFrameGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2533,7 +2658,7 @@ func (a *EventFrameApiService) EventFrameGetSecurityEntries(ctx context.Context,
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2544,14 +2669,19 @@ func (a *EventFrameApiService) EventFrameGetSecurityEntries(ctx context.Context,
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Retrieve the security entry associated with the event frame with the specified name.
+/*
+	EventFrameApiService Retrieve the security entry associated with the event frame with the specified name.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return SecurityEntry*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return SecurityEntry
+*/
 func (a *EventFrameApiService) EventFrameGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2616,7 +2746,7 @@ func (a *EventFrameApiService) EventFrameGetSecurityEntryByName(ctx context.Cont
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2627,11 +2757,14 @@ func (a *EventFrameApiService) EventFrameGetSecurityEntryByName(ctx context.Cont
 	return successPayload, localVarHttpResponse, err
 }
 
-/* EventFrameApiService Update an event frame by replacing items in its definition.
+/*
+	EventFrameApiService Update an event frame by replacing items in its definition.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame to update.
 @param eventFrame A partial event frame containing the desired changes.
-@return */
+@return
+*/
 func (a *EventFrameApiService) EventFrameUpdate(ctx context.Context, webId string, eventFrame EventFrame) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
@@ -2683,19 +2816,22 @@ func (a *EventFrameApiService) EventFrameUpdate(ctx context.Context, webId strin
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* EventFrameApiService Update an annotation on an event frame by replacing items in its definition.
+/*
+	EventFrameApiService Update an annotation on an event frame by replacing items in its definition.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param id The Annotation identifier of the annotation to be updated.
 @param webId The ID of the owner event frame of the annotation to update.
 @param annotation A partial annotation containing the desired changes.
-@return */
+@return
+*/
 func (a *EventFrameApiService) EventFrameUpdateAnnotation(ctx context.Context, id string, webId string, annotation Annotation) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
@@ -2748,21 +2884,26 @@ func (a *EventFrameApiService) EventFrameUpdateAnnotation(ctx context.Context, i
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* EventFrameApiService Update a security entry owned by the event frame.
+/*
+	EventFrameApiService Update a security entry owned by the event frame.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the event frame where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
-@return */
+
+	@param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
+
+@return
+*/
 func (a *EventFrameApiService) EventFrameUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
@@ -2822,7 +2963,7 @@ func (a *EventFrameApiService) EventFrameUpdateSecurityEntry(ctx context.Context
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

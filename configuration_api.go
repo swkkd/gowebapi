@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,10 +33,13 @@ var (
 
 type ConfigurationApiService service
 
-/* ConfigurationApiService Delete a configuration item.
+/*
+	ConfigurationApiService Delete a configuration item.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param key The key of the configuration item to remove.
-@return */
+@return
+*/
 func (a *ConfigurationApiService) ConfigurationDelete(ctx context.Context, key string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -86,18 +89,21 @@ func (a *ConfigurationApiService) ConfigurationDelete(ctx context.Context, key s
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* ConfigurationApiService Get the value of a configuration item.
+/*
+	ConfigurationApiService Get the value of a configuration item.
+
 The response content may vary based on the configuration item&#39;s data type.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param key The key of the configuration item.
-@return interface{}*/
+@return interface{}
+*/
 func (a *ConfigurationApiService) ConfigurationGet(ctx context.Context, key string) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -148,7 +154,7 @@ func (a *ConfigurationApiService) ConfigurationGet(ctx context.Context, key stri
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -159,9 +165,11 @@ func (a *ConfigurationApiService) ConfigurationGet(ctx context.Context, key stri
 	return successPayload, localVarHttpResponse, err
 }
 
-/* ConfigurationApiService Get the current system configuration.
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @return map[string]interface{}*/
+/*
+ConfigurationApiService Get the current system configuration.
+* @param ctx context.Context for authentication, logging, tracing, etc.
+@return map[string]interface{}
+*/
 func (a *ConfigurationApiService) ConfigurationList(ctx context.Context) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -211,7 +219,7 @@ func (a *ConfigurationApiService) ConfigurationList(ctx context.Context) (map[st
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

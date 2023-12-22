@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,20 +33,25 @@ var (
 
 type StreamSetApiService service
 
-/* StreamSetApiService Opens a channel that will send messages about any value changes for the attributes of an Element, Event Frame, or Attribute.
+/*
+	StreamSetApiService Opens a channel that will send messages about any value changes for the attributes of an Element, Event Frame, or Attribute.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of an Element, Event Frame or Attribute, which is the base element or parent of all the stream attributes.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
-    @param "heartbeatRate" (int32) Specifies the maximum number of consecutive empty messages that can be elapsed with no new data updates from the PI System, after which the client receives an empty payload. It helps to check if the connection is still alive. Zero/negative values correspond to no heartbeat, and the default value is no heartbeat.
-    @param "includeInitialValues" (bool) Specified if the channel should send a message with the current values of all the streams after the connection is opened. The default is &#39;false&#39;.
-    @param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
-    @param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
-    @param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
-    @param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
-    @param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
+	@param "heartbeatRate" (int32) Specifies the maximum number of consecutive empty messages that can be elapsed with no new data updates from the PI System, after which the client receives an empty payload. It helps to check if the connection is still alive. Zero/negative values correspond to no heartbeat, and the default value is no heartbeat.
+	@param "includeInitialValues" (bool) Specified if the channel should send a message with the current values of all the streams after the connection is opened. The default is &#39;false&#39;.
+	@param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
+	@param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
+	@param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
+	@param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
+	@param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *StreamSetApiService) StreamSetGetChannel(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -151,21 +156,26 @@ func (a *StreamSetApiService) StreamSetGetChannel(ctx context.Context, webId str
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* StreamSetApiService Opens a channel that will send messages about any value changes for the specified streams.
+/*
+	StreamSetApiService Opens a channel that will send messages about any value changes for the specified streams.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "heartbeatRate" (int32) Specifies the maximum number of consecutive empty messages that can be elapsed with no new data updates from the PI System, after which the client receives an empty payload. It helps to check if the connection is still alive. Zero/negative values correspond to no heartbeat, and the default value is no heartbeat.
-    @param "includeInitialValues" (bool) Specified if the channel should send a message with the current values of all the streams after the connection is opened. The default is &#39;false&#39;.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "heartbeatRate" (int32) Specifies the maximum number of consecutive empty messages that can be elapsed with no new data updates from the PI System, after which the client receives an empty payload. It helps to check if the connection is still alive. Zero/negative values correspond to no heartbeat, and the default value is no heartbeat.
+	@param "includeInitialValues" (bool) Specified if the channel should send a message with the current values of all the streams after the connection is opened. The default is &#39;false&#39;.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *StreamSetApiService) StreamSetGetChannelAdHoc(ctx context.Context, webId []string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -234,29 +244,34 @@ func (a *StreamSetApiService) StreamSetGetChannelAdHoc(ctx context.Context, webI
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns End of stream values of the attributes for an Element, Event Frame or Attribute
+/*
+	StreamSetApiService Returns End of stream values of the attributes for an Element, Event Frame or Attribute
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of an Element, Event Frame or Attribute, which is the base element or parent of all the stream attributes.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
-    @param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
-    @param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
-    @param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
-    @param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValue*/
+
+	@param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
+	@param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
+	@param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
+	@param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
+	@param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValue
+*/
 func (a *StreamSetApiService) StreamSetGetEnd(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -368,7 +383,7 @@ func (a *StreamSetApiService) StreamSetGetEnd(ctx context.Context, webId string,
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -379,16 +394,21 @@ func (a *StreamSetApiService) StreamSetGetEnd(ctx context.Context, webId string,
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns End Of Stream values for attributes of the specified streams
+/*
+	StreamSetApiService Returns End Of Stream values for attributes of the specified streams
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValues*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValues
+*/
 func (a *StreamSetApiService) StreamSetGetEndAdHoc(ctx context.Context, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -464,7 +484,7 @@ func (a *StreamSetApiService) StreamSetGetEndAdHoc(ctx context.Context, webId []
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -475,30 +495,35 @@ func (a *StreamSetApiService) StreamSetGetEndAdHoc(ctx context.Context, webId []
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns interpolated values of attributes for an element, event frame or attribute over the specified time range at the specified sampling interval.
+/*
+	StreamSetApiService Returns interpolated values of attributes for an element, event frame or attribute over the specified time range at the specified sampling interval.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of an element, event frame or attribute, which is the base element or parent of all the stream attributes.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
-    @param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
-    @param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. If the attribute does not support filtering, the filter will be ignored. The default is no filtering.
-    @param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
-    @param "interval" (string) The sampling interval, in AFTimeSpan format.
-    @param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
-    @param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
-    @param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
-    @param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
-    @param "syncTime" (string) An optional start time anchor, in AFTime format. When specified, interpolated data retrieval will use the sync time as the origin for calculating the interval times.
-    @param "syncTimeBoundaryType" (string) An optional string specifying the boundary type to use when applying a syncTime. The allowed values are &#39;Inside&#39; and &#39;Outside&#39;. The default is &#39;Inside&#39;.
-    @param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValues*/
+
+	@param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
+	@param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
+	@param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. If the attribute does not support filtering, the filter will be ignored. The default is no filtering.
+	@param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
+	@param "interval" (string) The sampling interval, in AFTimeSpan format.
+	@param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
+	@param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
+	@param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
+	@param "syncTime" (string) An optional start time anchor, in AFTime format. When specified, interpolated data retrieval will use the sync time as the origin for calculating the interval times.
+	@param "syncTimeBoundaryType" (string) An optional string specifying the boundary type to use when applying a syncTime. The allowed values are &#39;Inside&#39; and &#39;Outside&#39;. The default is &#39;Inside&#39;.
+	@param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValues
+*/
 func (a *StreamSetApiService) StreamSetGetInterpolated(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -658,7 +683,7 @@ func (a *StreamSetApiService) StreamSetGetInterpolated(ctx context.Context, webI
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -669,24 +694,29 @@ func (a *StreamSetApiService) StreamSetGetInterpolated(ctx context.Context, webI
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns interpolated values of the specified streams over the specified time range at the specified sampling interval.
+/*
+	StreamSetApiService Returns interpolated values of the specified streams over the specified time range at the specified sampling interval.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "endTime" (string) An optional end time. The default is &#39;*&#39;. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
-    @param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. If the attribute does not support filtering, the filter will be ignored. The default is no filtering.
-    @param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
-    @param "interval" (string) The sampling interval, in AFTimeSpan format.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
-    @param "startTime" (string) An optional start time. The default is &#39;*-1d&#39;.
-    @param "syncTime" (string) An optional start time anchor, in AFTime format. When specified, interpolated data retrieval will use the sync time as the origin for calculating the interval times.
-    @param "syncTimeBoundaryType" (string) An optional string specifying the boundary type to use when applying a syncTime. The allowed values are &#39;Inside&#39; and &#39;Outside&#39;. The default is &#39;Inside&#39;.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValues*/
+
+	@param "endTime" (string) An optional end time. The default is &#39;*&#39;. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
+	@param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. If the attribute does not support filtering, the filter will be ignored. The default is no filtering.
+	@param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
+	@param "interval" (string) The sampling interval, in AFTimeSpan format.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
+	@param "startTime" (string) An optional start time. The default is &#39;*-1d&#39;.
+	@param "syncTime" (string) An optional start time anchor, in AFTime format. When specified, interpolated data retrieval will use the sync time as the origin for calculating the interval times.
+	@param "syncTimeBoundaryType" (string) An optional string specifying the boundary type to use when applying a syncTime. The allowed values are &#39;Inside&#39; and &#39;Outside&#39;. The default is &#39;Inside&#39;.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValues
+*/
 func (a *StreamSetApiService) StreamSetGetInterpolatedAdHoc(ctx context.Context, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -810,7 +840,7 @@ func (a *StreamSetApiService) StreamSetGetInterpolatedAdHoc(ctx context.Context,
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -821,25 +851,30 @@ func (a *StreamSetApiService) StreamSetGetInterpolatedAdHoc(ctx context.Context,
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns interpolated values of attributes for an element, event frame or attribute at the specified times.
+/*
+	StreamSetApiService Returns interpolated values of attributes for an element, event frame or attribute at the specified times.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of an element, event frame or attribute, which is the base element or parent of all the stream attributes.
 @param time The timestamp at which to retrieve a interpolated value. Multiple timestamps may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
-    @param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. If the attribute does not support filtering, the filter will be ignored. The default is no filtering.
-    @param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
-    @param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
-    @param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
-    @param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
-    @param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValues*/
+
+	@param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
+	@param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. If the attribute does not support filtering, the filter will be ignored. The default is no filtering.
+	@param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
+	@param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
+	@param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
+	@param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValues
+*/
 func (a *StreamSetApiService) StreamSetGetInterpolatedAtTimes(ctx context.Context, webId string, time []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -964,7 +999,7 @@ func (a *StreamSetApiService) StreamSetGetInterpolatedAtTimes(ctx context.Contex
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -975,19 +1010,24 @@ func (a *StreamSetApiService) StreamSetGetInterpolatedAtTimes(ctx context.Contex
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns interpolated values of the specified streams at the specified times.
+/*
+	StreamSetApiService Returns interpolated values of the specified streams at the specified times.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param time The timestamp at which to retrieve a interpolated value. Multiple timestamps may be specified with multiple instances of the parameter.
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. If the attribute does not support filtering, the filter will be ignored. The default is no filtering.
-    @param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValues*/
+
+	@param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. If the attribute does not support filtering, the filter will be ignored. The default is no filtering.
+	@param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValues
+*/
 func (a *StreamSetApiService) StreamSetGetInterpolatedAtTimesAdHoc(ctx context.Context, time []string, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1076,7 +1116,7 @@ func (a *StreamSetApiService) StreamSetGetInterpolatedAtTimesAdHoc(ctx context.C
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1087,26 +1127,31 @@ func (a *StreamSetApiService) StreamSetGetInterpolatedAtTimesAdHoc(ctx context.C
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns values of attributes for an element, event frame or attribute over the specified time range suitable for plotting over the number of intervals (typically represents pixels).
+/*
+	StreamSetApiService Returns values of attributes for an element, event frame or attribute over the specified time range suitable for plotting over the number of intervals (typically represents pixels).
+
 For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state). Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of an element, event frame or attribute, which is the base element or parent of all the stream attributes.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
-    @param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
-    @param "intervals" (int32) The number of intervals to plot over. Typically, this would be the number of horizontal pixels in the trend. The default is &#39;24&#39;. For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state).
-    @param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
-    @param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
-    @param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
-    @param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
-    @param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValues*/
+
+	@param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
+	@param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
+	@param "intervals" (int32) The number of intervals to plot over. Typically, this would be the number of horizontal pixels in the trend. The default is &#39;24&#39;. For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state).
+	@param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
+	@param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
+	@param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
+	@param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
+	@param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValues
+*/
 func (a *StreamSetApiService) StreamSetGetPlot(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1242,7 +1287,7 @@ func (a *StreamSetApiService) StreamSetGetPlot(ctx context.Context, webId string
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1253,20 +1298,25 @@ func (a *StreamSetApiService) StreamSetGetPlot(ctx context.Context, webId string
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns values of attributes for the specified streams over the specified time range suitable for plotting over the number of intervals (typically represents pixels).
+/*
+	StreamSetApiService Returns values of attributes for the specified streams over the specified time range suitable for plotting over the number of intervals (typically represents pixels).
+
 For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state). Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "endTime" (string) An optional end time. The default is &#39;*&#39;. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
-    @param "intervals" (int32) The number of intervals to plot over. Typically, this would be the number of horizontal pixels in the trend. The default is &#39;24&#39;. For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state).
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
-    @param "startTime" (string) An optional start time. The default is &#39;*-1d&#39;.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValues*/
+
+	@param "endTime" (string) An optional end time. The default is &#39;*&#39;. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
+	@param "intervals" (int32) The number of intervals to plot over. Typically, this would be the number of horizontal pixels in the trend. The default is &#39;24&#39;. For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state).
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
+	@param "startTime" (string) An optional start time. The default is &#39;*-1d&#39;.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValues
+*/
 func (a *StreamSetApiService) StreamSetGetPlotAdHoc(ctx context.Context, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1366,7 +1416,7 @@ func (a *StreamSetApiService) StreamSetGetPlotAdHoc(ctx context.Context, webId [
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1377,29 +1427,34 @@ func (a *StreamSetApiService) StreamSetGetPlotAdHoc(ctx context.Context, webId [
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns recorded values of the attributes for an element, event frame, or attribute.
+/*
+	StreamSetApiService Returns recorded values of the attributes for an element, event frame, or attribute.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of an element, event frame or attribute, which is the base element or parent of all the stream attributes.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "boundaryType" (string) An optional value that determines how the times and values of the returned end points are determined. The default is &#39;Inside&#39;.
-    @param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
-    @param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
-    @param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. The default is no filtering.
-    @param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
-    @param "maxCount" (int32) The maximum number of values to be returned. The default is 1000.
-    @param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
-    @param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
-    @param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
-    @param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
-    @param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValues*/
+
+	@param "boundaryType" (string) An optional value that determines how the times and values of the returned end points are determined. The default is &#39;Inside&#39;.
+	@param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
+	@param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
+	@param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. The default is no filtering.
+	@param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
+	@param "maxCount" (int32) The maximum number of values to be returned. The default is 1000.
+	@param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
+	@param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
+	@param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
+	@param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
+	@param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValues
+*/
 func (a *StreamSetApiService) StreamSetGetRecorded(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1553,7 +1608,7 @@ func (a *StreamSetApiService) StreamSetGetRecorded(ctx context.Context, webId st
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1564,23 +1619,28 @@ func (a *StreamSetApiService) StreamSetGetRecorded(ctx context.Context, webId st
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns recorded values of the specified streams.
+/*
+	StreamSetApiService Returns recorded values of the specified streams.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "boundaryType" (string) An optional value that determines how the times and values of the returned end points are determined. The default is &#39;Inside&#39;.
-    @param "endTime" (string) An optional end time. The default is &#39;*&#39;. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
-    @param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. The default is no filtering.
-    @param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
-    @param "maxCount" (int32) The maximum number of values to be returned. The default is 1000.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
-    @param "startTime" (string) An optional start time. The default is &#39;*-1d&#39;.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValues*/
+
+	@param "boundaryType" (string) An optional value that determines how the times and values of the returned end points are determined. The default is &#39;Inside&#39;.
+	@param "endTime" (string) An optional end time. The default is &#39;*&#39;. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
+	@param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. The default is no filtering.
+	@param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
+	@param "maxCount" (int32) The maximum number of values to be returned. The default is 1000.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
+	@param "startTime" (string) An optional start time. The default is &#39;*-1d&#39;.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValues
+*/
 func (a *StreamSetApiService) StreamSetGetRecordedAdHoc(ctx context.Context, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1698,7 +1758,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAdHoc(ctx context.Context, web
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1709,23 +1769,28 @@ func (a *StreamSetApiService) StreamSetGetRecordedAdHoc(ctx context.Context, web
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns recorded values of the attributes for an element, event frame, or attribute.
+/*
+	StreamSetApiService Returns recorded values of the attributes for an element, event frame, or attribute.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of an element, event frame or attribute, which is the base element or parent of all the stream attributes.
 @param time The timestamp at which the values are desired.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
-    @param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
-    @param "retrievalMode" (string) An optional value that determines the values to return when values don&#39;t exist at the exact time specified. The default is &#39;Auto&#39;.
-    @param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
-    @param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
-    @param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValue*/
+
+	@param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
+	@param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
+	@param "retrievalMode" (string) An optional value that determines the values to return when values don&#39;t exist at the exact time specified. The default is &#39;Auto&#39;.
+	@param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
+	@param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
+	@param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValue
+*/
 func (a *StreamSetApiService) StreamSetGetRecordedAtTime(ctx context.Context, webId string, time string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1838,7 +1903,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTime(ctx context.Context, we
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1849,17 +1914,22 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTime(ctx context.Context, we
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns recorded values based on the passed time and retrieval mode.
+/*
+	StreamSetApiService Returns recorded values based on the passed time and retrieval mode.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param time The timestamp at which the values are desired.
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "retrievalMode" (string) An optional value that determines the values to return when values don&#39;t exist at the exact time specified. The default is &#39;Auto&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValue*/
+
+	@param "retrievalMode" (string) An optional value that determines the values to return when values don&#39;t exist at the exact time specified. The default is &#39;Auto&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValue
+*/
 func (a *StreamSetApiService) StreamSetGetRecordedAtTimeAdHoc(ctx context.Context, time string, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1936,7 +2006,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTimeAdHoc(ctx context.Contex
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -1947,24 +2017,29 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTimeAdHoc(ctx context.Contex
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns recorded values of attributes for an element, event frame or attribute at the specified times.
+/*
+	StreamSetApiService Returns recorded values of attributes for an element, event frame or attribute at the specified times.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of an element, event frame or attribute, which is the base element or parent of all the stream attributes.
 @param time The timestamp at which to retrieve a recorded value. Multiple timestamps may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
-    @param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
-    @param "retrievalMode" (string) An optional value that determines the values to return when values don&#39;t exist at the exact time specified. The default is &#39;Auto&#39;.
-    @param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
-    @param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
-    @param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValues*/
+
+	@param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
+	@param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
+	@param "retrievalMode" (string) An optional value that determines the values to return when values don&#39;t exist at the exact time specified. The default is &#39;Auto&#39;.
+	@param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
+	@param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValues
+*/
 func (a *StreamSetApiService) StreamSetGetRecordedAtTimes(ctx context.Context, webId string, time []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2083,7 +2158,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTimes(ctx context.Context, w
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2094,18 +2169,23 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTimes(ctx context.Context, w
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns recorded values of the specified streams at the specified times.
+/*
+	StreamSetApiService Returns recorded values of the specified streams at the specified times.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param time The timestamp at which to retrieve a recorded value. Multiple timestamps may be specified with multiple instances of the parameter.
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "retrievalMode" (string) An optional value that determines the values to return when values don&#39;t exist at the exact time specified. The default is &#39;Auto&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValues*/
+
+	@param "retrievalMode" (string) An optional value that determines the values to return when values don&#39;t exist at the exact time specified. The default is &#39;Auto&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValues
+*/
 func (a *StreamSetApiService) StreamSetGetRecordedAtTimesAdHoc(ctx context.Context, time []string, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2188,7 +2268,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTimesAdHoc(ctx context.Conte
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2199,30 +2279,35 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTimesAdHoc(ctx context.Conte
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns summary values of the attributes for an element, event frame or attribute.
+/*
+	StreamSetApiService Returns summary values of the attributes for an element, event frame or attribute.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of an element, event frame or attribute, which is the base element or parent of all the stream attributes.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "calculationBasis" (string) Specifies the method of evaluating the data over the time range. The default is &#39;TimeWeighted&#39;.
-    @param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
-    @param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
-    @param "filterExpression" (string) A string containing a filter expression. Expression variables are relative to the attribute. Use &#39;.&#39; to reference the containing attribute. The default is no filtering.
-    @param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
-    @param "sampleInterval" (string) A time span specifies how often the filter expression is evaluated when computing the summary for an interval, if the sampleType is &#39;Interval&#39;.
-    @param "sampleType" (string) A flag which specifies one or more summaries to compute for each interval over the time range. The default is &#39;ExpressionRecordedValues&#39;.
-    @param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
-    @param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
-    @param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
-    @param "summaryDuration" (string) The duration of each summary interval.
-    @param "summaryType" ([]string) Specifies the kinds of summaries to produce over the range. The default is &#39;Total&#39;. Multiple summary types may be specified by using multiple instances of summaryType.
-    @param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
-    @param "timeType" (string) Specifies how to calculate the timestamp for each interval. The default is &#39;Auto&#39;.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamSummaries*/
+
+	@param "calculationBasis" (string) Specifies the method of evaluating the data over the time range. The default is &#39;TimeWeighted&#39;.
+	@param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
+	@param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
+	@param "filterExpression" (string) A string containing a filter expression. Expression variables are relative to the attribute. Use &#39;.&#39; to reference the containing attribute. The default is no filtering.
+	@param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
+	@param "sampleInterval" (string) A time span specifies how often the filter expression is evaluated when computing the summary for an interval, if the sampleType is &#39;Interval&#39;.
+	@param "sampleType" (string) A flag which specifies one or more summaries to compute for each interval over the time range. The default is &#39;ExpressionRecordedValues&#39;.
+	@param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
+	@param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
+	@param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
+	@param "summaryDuration" (string) The duration of each summary interval.
+	@param "summaryType" ([]string) Specifies the kinds of summaries to produce over the range. The default is &#39;Total&#39;. Multiple summary types may be specified by using multiple instances of summaryType.
+	@param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
+	@param "timeType" (string) Specifies how to calculate the timestamp for each interval. The default is &#39;Auto&#39;.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamSummaries
+*/
 func (a *StreamSetApiService) StreamSetGetSummaries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsStreamSummaries, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2379,7 +2464,7 @@ func (a *StreamSetApiService) StreamSetGetSummaries(ctx context.Context, webId s
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2390,24 +2475,29 @@ func (a *StreamSetApiService) StreamSetGetSummaries(ctx context.Context, webId s
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns summary values of the specified streams.
+/*
+	StreamSetApiService Returns summary values of the specified streams.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "calculationBasis" (string) Specifies the method of evaluating the data over the time range. The default is &#39;TimeWeighted&#39;.
-    @param "endTime" (string) An optional end time. The default is &#39;*&#39;. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
-    @param "filterExpression" (string) A string containing a filter expression. Expression variables are relative to the attribute. Use &#39;.&#39; to reference the containing attribute. The default is no filtering.
-    @param "sampleInterval" (string) A time span specifies how often the filter expression is evaluated when computing the summary for an interval, if the sampleType is &#39;Interval&#39;.
-    @param "sampleType" (string) A flag which specifies one or more summaries to compute for each interval over the time range. The default is &#39;ExpressionRecordedValues&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "startTime" (string) An optional start time. The default is &#39;*-1d&#39;.
-    @param "summaryDuration" (string) The duration of each summary interval.
-    @param "summaryType" ([]string) Specifies the kinds of summaries to produce over the range. The default is &#39;Total&#39;. Multiple summary types may be specified by using multiple instances of summaryType.
-    @param "timeType" (string) Specifies how to calculate the timestamp for each interval. The default is &#39;Auto&#39;.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamSummaries*/
+
+	@param "calculationBasis" (string) Specifies the method of evaluating the data over the time range. The default is &#39;TimeWeighted&#39;.
+	@param "endTime" (string) An optional end time. The default is &#39;*&#39;. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
+	@param "filterExpression" (string) A string containing a filter expression. Expression variables are relative to the attribute. Use &#39;.&#39; to reference the containing attribute. The default is no filtering.
+	@param "sampleInterval" (string) A time span specifies how often the filter expression is evaluated when computing the summary for an interval, if the sampleType is &#39;Interval&#39;.
+	@param "sampleType" (string) A flag which specifies one or more summaries to compute for each interval over the time range. The default is &#39;ExpressionRecordedValues&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "startTime" (string) An optional start time. The default is &#39;*-1d&#39;.
+	@param "summaryDuration" (string) The duration of each summary interval.
+	@param "summaryType" ([]string) Specifies the kinds of summaries to produce over the range. The default is &#39;Total&#39;. Multiple summary types may be specified by using multiple instances of summaryType.
+	@param "timeType" (string) Specifies how to calculate the timestamp for each interval. The default is &#39;Auto&#39;.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamSummaries
+*/
 func (a *StreamSetApiService) StreamSetGetSummariesAdHoc(ctx context.Context, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamSummaries, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2528,7 +2618,7 @@ func (a *StreamSetApiService) StreamSetGetSummariesAdHoc(ctx context.Context, we
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2539,24 +2629,29 @@ func (a *StreamSetApiService) StreamSetGetSummariesAdHoc(ctx context.Context, we
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns values of the attributes for an Element, Event Frame or Attribute at the specified time.
+/*
+	StreamSetApiService Returns values of the attributes for an Element, Event Frame or Attribute at the specified time.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of an Element, Event Frame or Attribute, which is the base element or parent of all the stream attributes.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
-    @param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
-    @param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
-    @param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
-    @param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
-    @param "time" (string) An AF time string, which is used as the time context to get stream values if it is provided. By default, it is not specified, and the default time context of the AF object will be used.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValue*/
+
+	@param "categoryName" (string) Specify that included attributes must have this category. The default is no category filter.
+	@param "nameFilter" (string) The name query string used for filtering attributes. The default is no filter.
+	@param "searchFullHierarchy" (bool) Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "showExcluded" (bool) Specified if the search should include attributes with the Excluded property set. The default is &#39;false&#39;.
+	@param "showHidden" (bool) Specified if the search should include attributes with the Hidden property set. The default is &#39;false&#39;.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
+	@param "templateName" (string) Specify that included attributes must be members of this template. The default is no template filter.
+	@param "time" (string) An AF time string, which is used as the time context to get stream values if it is provided. By default, it is not specified, and the default time context of the AF object will be used.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValue
+*/
 func (a *StreamSetApiService) StreamSetGetValues(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2680,7 +2775,7 @@ func (a *StreamSetApiService) StreamSetGetValues(ctx context.Context, webId stri
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2691,18 +2786,23 @@ func (a *StreamSetApiService) StreamSetGetValues(ctx context.Context, webId stri
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Returns values of the specified streams.
+/*
+	StreamSetApiService Returns values of the specified streams.
+
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
-    @param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
-    @param "time" (string) An AF time string, which is used as the time context to get stream values if it is provided. By default, it is not specified, and the default time context of the AF object will be used.
-    @param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsStreamValue*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "sortField" (string) The field or property of the object used to sort the returned collection. For better performance, by default no sorting is applied. &#39;Name&#39; is the only supported field by which to sort.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;
+	@param "time" (string) An AF time string, which is used as the time context to get stream values if it is provided. By default, it is not specified, and the default time context of the AF object will be used.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsStreamValue
+*/
 func (a *StreamSetApiService) StreamSetGetValuesAdHoc(ctx context.Context, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2790,7 +2890,7 @@ func (a *StreamSetApiService) StreamSetGetValuesAdHoc(ctx context.Context, webId
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2801,14 +2901,19 @@ func (a *StreamSetApiService) StreamSetGetValuesAdHoc(ctx context.Context, webId
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Updates a single value for the specified streams.
+/*
+	StreamSetApiService Updates a single value for the specified streams.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent element, event frame, or attribute. Attributes specified in the body must be descendants of the specified object.
 @param values The values to add or update.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "bufferOption" (string) The desired AFBufferOption. The default is &#39;BufferIfPossible&#39;.
-    @param "updateOption" (string) The desired AFUpdateOption. The default is &#39;Replace&#39;.
-@return ItemsSubstatus*/
+
+	@param "bufferOption" (string) The desired AFBufferOption. The default is &#39;BufferIfPossible&#39;.
+	@param "updateOption" (string) The desired AFUpdateOption. The default is &#39;Replace&#39;.
+
+@return ItemsSubstatus
+*/
 func (a *StreamSetApiService) StreamSetUpdateValue(ctx context.Context, webId string, values []StreamValue, localVarOptionals map[string]interface{}) (ItemsSubstatus, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -2874,7 +2979,7 @@ func (a *StreamSetApiService) StreamSetUpdateValue(ctx context.Context, webId st
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2885,13 +2990,18 @@ func (a *StreamSetApiService) StreamSetUpdateValue(ctx context.Context, webId st
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Updates a single value for the specified streams.
+/*
+	StreamSetApiService Updates a single value for the specified streams.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param values The values to add or update.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "bufferOption" (string) The desired AFBufferOption. The default is &#39;BufferIfPossible&#39;.
-    @param "updateOption" (string) The desired AFUpdateOption. The default is &#39;Replace&#39;.
-@return ItemsSubstatus*/
+
+	@param "bufferOption" (string) The desired AFBufferOption. The default is &#39;BufferIfPossible&#39;.
+	@param "updateOption" (string) The desired AFUpdateOption. The default is &#39;Replace&#39;.
+
+@return ItemsSubstatus
+*/
 func (a *StreamSetApiService) StreamSetUpdateValueAdHoc(ctx context.Context, values []StreamValue, localVarOptionals map[string]interface{}) (ItemsSubstatus, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -2956,7 +3066,7 @@ func (a *StreamSetApiService) StreamSetUpdateValueAdHoc(ctx context.Context, val
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -2967,14 +3077,19 @@ func (a *StreamSetApiService) StreamSetUpdateValueAdHoc(ctx context.Context, val
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Updates multiple values for the specified streams.
+/*
+	StreamSetApiService Updates multiple values for the specified streams.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent element, event frame, or attribute. Attributes specified in the body must be descendants of the specified object.
 @param values The values to add or update.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "bufferOption" (string) The desired AFBufferOption. The default is &#39;BufferIfPossible&#39;.
-    @param "updateOption" (string) The desired AFUpdateOption. The default is &#39;Replace&#39;.
-@return ItemsItemsSubstatus*/
+
+	@param "bufferOption" (string) The desired AFBufferOption. The default is &#39;BufferIfPossible&#39;.
+	@param "updateOption" (string) The desired AFUpdateOption. The default is &#39;Replace&#39;.
+
+@return ItemsItemsSubstatus
+*/
 func (a *StreamSetApiService) StreamSetUpdateValues(ctx context.Context, webId string, values []StreamValues, localVarOptionals map[string]interface{}) (ItemsItemsSubstatus, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -3040,7 +3155,7 @@ func (a *StreamSetApiService) StreamSetUpdateValues(ctx context.Context, webId s
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -3051,13 +3166,18 @@ func (a *StreamSetApiService) StreamSetUpdateValues(ctx context.Context, webId s
 	return successPayload, localVarHttpResponse, err
 }
 
-/* StreamSetApiService Updates multiple values for the specified streams.
+/*
+	StreamSetApiService Updates multiple values for the specified streams.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param values The values to add or update.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "bufferOption" (string) The desired AFBufferOption. The default is &#39;BufferIfPossible&#39;.
-    @param "updateOption" (string) The desired AFUpdateOption. The default is &#39;Replace&#39;.
-@return ItemsItemsSubstatus*/
+
+	@param "bufferOption" (string) The desired AFBufferOption. The default is &#39;BufferIfPossible&#39;.
+	@param "updateOption" (string) The desired AFUpdateOption. The default is &#39;Replace&#39;.
+
+@return ItemsItemsSubstatus
+*/
 func (a *StreamSetApiService) StreamSetUpdateValuesAdHoc(ctx context.Context, values []StreamValues, localVarOptionals map[string]interface{}) (ItemsItemsSubstatus, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -3122,7 +3242,7 @@ func (a *StreamSetApiService) StreamSetUpdateValuesAdHoc(ctx context.Context, va
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

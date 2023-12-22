@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,13 +33,18 @@ var (
 
 type NotificationRuleTemplateApiService service
 
-/* NotificationRuleTemplateApiService Get the specified notification rule template.
+/*
+	NotificationRuleTemplateApiService Get the specified notification rule template.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the notification rule template.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return NotificationRuleTemplate*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return NotificationRuleTemplate
+*/
 func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (NotificationRuleTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -103,7 +108,7 @@ func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGet(ctx con
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -114,13 +119,18 @@ func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGet(ctx con
 	return successPayload, localVarHttpResponse, err
 }
 
-/* NotificationRuleTemplateApiService Retrieve notification rule template subscribers.
+/*
+	NotificationRuleTemplateApiService Retrieve notification rule template subscribers.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the resource to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsNotificationRuleSubscriber*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsNotificationRuleSubscriber
+*/
 func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGetNotificationRuleTemplateSubscribers(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsNotificationRuleSubscriber, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -184,7 +194,7 @@ func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGetNotifica
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -195,16 +205,21 @@ func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGetNotifica
 	return successPayload, localVarHttpResponse, err
 }
 
-/* NotificationRuleTemplateApiService Retrieve Notification rule templates based on the specified conditions. Returns Notification rule templates using the specified search query string.
+/*
+	NotificationRuleTemplateApiService Retrieve Notification rule templates based on the specified conditions. Returns Notification rule templates using the specified search query string.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "databaseWebId" (string) The ID of the asset database to use as the root of the query.
-    @param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
-    @param "query" (string) The query string is a list of filters used to perform an AFSearch for the Notification rule templates in the asset database. An example would be: \&quot;query&#x3D;NotificationRuleTemplate:{ Name:&#x3D;&#39;MyNotificationRuleTemplate&#39; } Type:&#x3D;Int32\&quot;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsNotificationRuleTemplate*/
+
+	@param "databaseWebId" (string) The ID of the asset database to use as the root of the query.
+	@param "maxCount" (int32) The maximum number of objects to be returned per call (page size). The default is 1000.
+	@param "query" (string) The query string is a list of filters used to perform an AFSearch for the Notification rule templates in the asset database. An example would be: \&quot;query&#x3D;NotificationRuleTemplate:{ Name:&#x3D;&#39;MyNotificationRuleTemplate&#39; } Type:&#x3D;Int32\&quot;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "startIndex" (int32) The starting index (zero based) of the items to be returned. The default is 0.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsNotificationRuleTemplate
+*/
 func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGetNotificationRuleTemplatesQuery(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsNotificationRuleTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -291,7 +306,7 @@ func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGetNotifica
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

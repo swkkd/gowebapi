@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,10 +33,13 @@ var (
 
 type PointApiService service
 
-/* PointApiService Delete a point.
+/*
+	PointApiService Delete a point.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the point.
-@return */
+@return
+*/
 func (a *PointApiService) PointDelete(ctx context.Context, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -86,21 +89,25 @@ func (a *PointApiService) PointDelete(ctx context.Context, webId string) (*http.
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* PointApiService Get a point.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+/*
+	PointApiService Get a point.
+
 @param webId The ID of the point.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return Point*/
-func (a *PointApiService) PointGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (Point, *http.Response, error) {
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return Point
+*/
+func (a *PointApiService) PointGet(webId string, localVarOptionals map[string]interface{}) (Point, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -152,7 +159,7 @@ func (a *PointApiService) PointGet(ctx context.Context, webId string, localVarOp
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -163,7 +170,7 @@ func (a *PointApiService) PointGet(ctx context.Context, webId string, localVarOp
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -174,14 +181,19 @@ func (a *PointApiService) PointGet(ctx context.Context, webId string, localVarOp
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PointApiService Get a point attribute by name.
+/*
+	PointApiService Get a point attribute by name.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the attribute.
 @param webId The ID of the point.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return PointAttribute*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return PointAttribute
+*/
 func (a *PointApiService) PointGetAttributeByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (PointAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -246,7 +258,7 @@ func (a *PointApiService) PointGetAttributeByName(ctx context.Context, name stri
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -257,15 +269,20 @@ func (a *PointApiService) PointGetAttributeByName(ctx context.Context, name stri
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PointApiService Get point attributes.
+/*
+	PointApiService Get point attributes.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the point.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "name" ([]string) The name of a point attribute to be returned. Multiple attributes may be specified with multiple instances of the parameter.
-    @param "nameFilter" (string) The filter to the names of the list of point attributes to be returned. The default is no filter.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsPointAttribute*/
+
+	@param "name" ([]string) The name of a point attribute to be returned. Multiple attributes may be specified with multiple instances of the parameter.
+	@param "nameFilter" (string) The filter to the names of the list of point attributes to be returned. The default is no filter.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsPointAttribute
+*/
 func (a *PointApiService) PointGetAttributes(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsPointAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -338,7 +355,7 @@ func (a *PointApiService) PointGetAttributes(ctx context.Context, webId string, 
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -349,14 +366,19 @@ func (a *PointApiService) PointGetAttributes(ctx context.Context, webId string, 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PointApiService Get a point by path.
+/*
+	PointApiService Get a point by path.
+
 This method returns a PI Point based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param path The path to the point.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return Point*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return Point
+*/
 func (a *PointApiService) PointGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (Point, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -420,7 +442,7 @@ func (a *PointApiService) PointGetByPath(ctx context.Context, path string, local
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -431,16 +453,21 @@ func (a *PointApiService) PointGetByPath(ctx context.Context, path string, local
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PointApiService Retrieve multiple points by web id or path.
+/*
+	PointApiService Retrieve multiple points by web id or path.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "asParallel" (bool) Specifies if the retrieval processes should be run in parallel on the server. This may improve the response time for large amounts of requested points. The default is &#39;false&#39;.
-    @param "includeMode" (string) The include mode for the return list. The default is &#39;All&#39;.
-    @param "path" ([]string) The path of a point. Multiple points may be specified with multiple instances of the parameter.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webId" ([]string) The ID of a point. Multiple points may be specified with multiple instances of the parameter.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsItemPoint*/
+
+	@param "asParallel" (bool) Specifies if the retrieval processes should be run in parallel on the server. This may improve the response time for large amounts of requested points. The default is &#39;false&#39;.
+	@param "includeMode" (string) The include mode for the return list. The default is &#39;All&#39;.
+	@param "path" ([]string) The path of a point. Multiple points may be specified with multiple instances of the parameter.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webId" ([]string) The ID of a point. Multiple points may be specified with multiple instances of the parameter.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsItemPoint
+*/
 func (a *PointApiService) PointGetMultiple(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsItemPoint, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -521,7 +548,7 @@ func (a *PointApiService) PointGetMultiple(ctx context.Context, localVarOptional
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -532,11 +559,14 @@ func (a *PointApiService) PointGetMultiple(ctx context.Context, localVarOptional
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PointApiService Update a point.
+/*
+	PointApiService Update a point.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the point.
 @param pointDTO A partial point containing the desired changes.
-@return */
+@return
+*/
 func (a *PointApiService) PointUpdate(ctx context.Context, webId string, pointDTO Point) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
@@ -588,7 +618,7 @@ func (a *PointApiService) PointUpdate(ctx context.Context, webId string, pointDT
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

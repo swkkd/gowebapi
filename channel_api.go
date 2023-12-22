@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,7 +17,7 @@ package gowebapi
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -32,9 +32,11 @@ var (
 
 type ChannelApiService service
 
-/* ChannelApiService Retrieves a list of currently running channel instances.
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @return ItemsChannelInstance*/
+/*
+ChannelApiService Retrieves a list of currently running channel instances.
+* @param ctx context.Context for authentication, logging, tracing, etc.
+@return ItemsChannelInstance
+*/
 func (a *ChannelApiService) ChannelInstances(ctx context.Context) (ItemsChannelInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -84,7 +86,7 @@ func (a *ChannelApiService) ChannelInstances(ctx context.Context) (ItemsChannelI
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

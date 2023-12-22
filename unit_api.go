@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,10 +33,13 @@ var (
 
 type UnitApiService service
 
-/* UnitApiService Delete a unit.
+/*
+	UnitApiService Delete a unit.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the unit.
-@return */
+@return
+*/
 func (a *UnitApiService) UnitDelete(ctx context.Context, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -86,20 +89,25 @@ func (a *UnitApiService) UnitDelete(ctx context.Context, webId string) (*http.Re
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* UnitApiService Retrieve a unit.
+/*
+	UnitApiService Retrieve a unit.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the unit.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return Unit*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return Unit
+*/
 func (a *UnitApiService) UnitGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (Unit, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -163,7 +171,7 @@ func (a *UnitApiService) UnitGet(ctx context.Context, webId string, localVarOpti
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -174,13 +182,18 @@ func (a *UnitApiService) UnitGet(ctx context.Context, webId string, localVarOpti
 	return successPayload, localVarHttpResponse, err
 }
 
-/* UnitApiService Retrieve a unit by path.
+/*
+	UnitApiService Retrieve a unit by path.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param path The path to the unit.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return Unit*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return Unit
+*/
 func (a *UnitApiService) UnitGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (Unit, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -244,7 +257,7 @@ func (a *UnitApiService) UnitGetByPath(ctx context.Context, path string, localVa
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -255,11 +268,14 @@ func (a *UnitApiService) UnitGetByPath(ctx context.Context, path string, localVa
 	return successPayload, localVarHttpResponse, err
 }
 
-/* UnitApiService Update a unit.
+/*
+	UnitApiService Update a unit.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the unit.
 @param unitDTO A partial unit containing the desired changes.
-@return */
+@return
+*/
 func (a *UnitApiService) UnitUpdate(ctx context.Context, webId string, unitDTO Unit) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
@@ -311,7 +327,7 @@ func (a *UnitApiService) UnitUpdate(ctx context.Context, webId string, unitDTO U
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,7 +17,7 @@ package gowebapi
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -32,9 +32,11 @@ var (
 
 type SystemApiService service
 
-/* SystemApiService Get AF cache instances currently in use by the system. These are caches from which user requests are serviced. The number of instances depends on the number of users connected to the service, the service&#39;s authentication method, and the cache instance configuration.
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @return ItemsCacheInstance*/
+/*
+SystemApiService Get AF cache instances currently in use by the system. These are caches from which user requests are serviced. The number of instances depends on the number of users connected to the service, the service&#39;s authentication method, and the cache instance configuration.
+* @param ctx context.Context for authentication, logging, tracing, etc.
+@return ItemsCacheInstance
+*/
 func (a *SystemApiService) SystemCacheInstances(ctx context.Context) (ItemsCacheInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -84,7 +86,7 @@ func (a *SystemApiService) SystemCacheInstances(ctx context.Context) (ItemsCache
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -95,9 +97,11 @@ func (a *SystemApiService) SystemCacheInstances(ctx context.Context) (ItemsCache
 	return successPayload, localVarHttpResponse, err
 }
 
-/* SystemApiService Get system links for this PI System Web API instance.
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @return SystemLanding*/
+/*
+SystemApiService Get system links for this PI System Web API instance.
+* @param ctx context.Context for authentication, logging, tracing, etc.
+@return SystemLanding
+*/
 func (a *SystemApiService) SystemLanding(ctx context.Context) (SystemLanding, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -147,7 +151,7 @@ func (a *SystemApiService) SystemLanding(ctx context.Context) (SystemLanding, *h
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -158,9 +162,11 @@ func (a *SystemApiService) SystemLanding(ctx context.Context) (SystemLanding, *h
 	return successPayload, localVarHttpResponse, err
 }
 
-/* SystemApiService Get information about this PI Web API instance. Examples of information returned include the system uptime, the number of cache instances for this PI System Web API instance, and the system run state.
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @return SystemStatus*/
+/*
+SystemApiService Get information about this PI Web API instance. Examples of information returned include the system uptime, the number of cache instances for this PI System Web API instance, and the system run state.
+* @param ctx context.Context for authentication, logging, tracing, etc.
+@return SystemStatus
+*/
 func (a *SystemApiService) SystemStatus(ctx context.Context) (SystemStatus, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -210,7 +216,7 @@ func (a *SystemApiService) SystemStatus(ctx context.Context) (SystemStatus, *htt
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -221,9 +227,11 @@ func (a *SystemApiService) SystemStatus(ctx context.Context) (SystemStatus, *htt
 	return successPayload, localVarHttpResponse, err
 }
 
-/* SystemApiService Get information about the Windows identity used to fulfill the request. This depends on the service&#39;s authentication method and the credentials passed by the client. The impersonation level of the Windows identity is included.
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @return UserInfo*/
+/*
+SystemApiService Get information about the Windows identity used to fulfill the request. This depends on the service&#39;s authentication method and the credentials passed by the client. The impersonation level of the Windows identity is included.
+* @param ctx context.Context for authentication, logging, tracing, etc.
+@return UserInfo
+*/
 func (a *SystemApiService) SystemUserInfo(ctx context.Context) (UserInfo, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -273,7 +281,7 @@ func (a *SystemApiService) SystemUserInfo(ctx context.Context) (UserInfo, *http.
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -284,9 +292,11 @@ func (a *SystemApiService) SystemUserInfo(ctx context.Context) (UserInfo, *http.
 	return successPayload, localVarHttpResponse, err
 }
 
-/* SystemApiService Get the current versions of the PI Web API instance and all external plugins.
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @return map[string]Version*/
+/*
+SystemApiService Get the current versions of the PI Web API instance and all external plugins.
+* @param ctx context.Context for authentication, logging, tracing, etc.
+@return map[string]Version
+*/
 func (a *SystemApiService) SystemVersions(ctx context.Context) (map[string]Version, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -336,7 +346,7 @@ func (a *SystemApiService) SystemVersions(ctx context.Context) (map[string]Versi
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

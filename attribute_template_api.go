@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,13 +33,18 @@ var (
 
 type AttributeTemplateApiService service
 
-/* AttributeTemplateApiService Create an attribute template as a child of another attribute template.
+/*
+	AttributeTemplateApiService Create an attribute template as a child of another attribute template.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent attribute template on which to create the attribute template.
 @param template The attribute template definition.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *AttributeTemplateApiService) AttributeTemplateCreateAttributeTemplate(ctx context.Context, webId string, template AttributeTemplate, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -98,18 +103,21 @@ func (a *AttributeTemplateApiService) AttributeTemplateCreateAttributeTemplate(c
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AttributeTemplateApiService Delete an attribute template.
+/*
+	AttributeTemplateApiService Delete an attribute template.
+
 Deleting an attribute template will delete the attributes that were created based on the template
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute template.
-@return */
+@return
+*/
 func (a *AttributeTemplateApiService) AttributeTemplateDelete(ctx context.Context, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -159,20 +167,25 @@ func (a *AttributeTemplateApiService) AttributeTemplateDelete(ctx context.Contex
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* AttributeTemplateApiService Retrieve an attribute template.
+/*
+	AttributeTemplateApiService Retrieve an attribute template.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute template.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return AttributeTemplate*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return AttributeTemplate
+*/
 func (a *AttributeTemplateApiService) AttributeTemplateGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (AttributeTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -236,7 +249,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateGet(ctx context.Context, 
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -247,13 +260,18 @@ func (a *AttributeTemplateApiService) AttributeTemplateGet(ctx context.Context, 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AttributeTemplateApiService Retrieve an attribute template&#39;s child attribute templates.
+/*
+	AttributeTemplateApiService Retrieve an attribute template&#39;s child attribute templates.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute template.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsAttributeTemplate*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsAttributeTemplate
+*/
 func (a *AttributeTemplateApiService) AttributeTemplateGetAttributeTemplates(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttributeTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -317,7 +335,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateGetAttributeTemplates(ctx
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -328,14 +346,19 @@ func (a *AttributeTemplateApiService) AttributeTemplateGetAttributeTemplates(ctx
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AttributeTemplateApiService Retrieve an attribute template by path.
+/*
+	AttributeTemplateApiService Retrieve an attribute template by path.
+
 This method returns an attribute template based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param path The path to the attribute template.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return AttributeTemplate*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return AttributeTemplate
+*/
 func (a *AttributeTemplateApiService) AttributeTemplateGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (AttributeTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -399,7 +422,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateGetByPath(ctx context.Con
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -410,13 +433,18 @@ func (a *AttributeTemplateApiService) AttributeTemplateGetByPath(ctx context.Con
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AttributeTemplateApiService Get an attribute template&#39;s categories.
+/*
+	AttributeTemplateApiService Get an attribute template&#39;s categories.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute template.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsAttributeCategory*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsAttributeCategory
+*/
 func (a *AttributeTemplateApiService) AttributeTemplateGetCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttributeCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -480,7 +508,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateGetCategories(ctx context
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -491,12 +519,15 @@ func (a *AttributeTemplateApiService) AttributeTemplateGetCategories(ctx context
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AttributeTemplateApiService Update an existing attribute template by replacing items in its definition.
+/*
+	AttributeTemplateApiService Update an existing attribute template by replacing items in its definition.
+
 Updating an attribute template will propagate changes to the attributes that were created based on the template
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute template.
 @param template A partial attribute template containing the desired changes.
-@return */
+@return
+*/
 func (a *AttributeTemplateApiService) AttributeTemplateUpdate(ctx context.Context, webId string, template AttributeTemplate) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
@@ -548,7 +579,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateUpdate(ctx context.Contex
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

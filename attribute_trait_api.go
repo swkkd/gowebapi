@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,12 +33,17 @@ var (
 
 type AttributeTraitApiService service
 
-/* AttributeTraitApiService Retrieve an attribute trait.
+/*
+	AttributeTraitApiService Retrieve an attribute trait.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name or abbreviation of the attribute trait.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-@return AttributeTrait*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+
+@return AttributeTrait
+*/
 func (a *AttributeTraitApiService) AttributeTraitGet(ctx context.Context, name string, localVarOptionals map[string]interface{}) (AttributeTrait, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -96,7 +101,7 @@ func (a *AttributeTraitApiService) AttributeTraitGet(ctx context.Context, name s
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -107,12 +112,17 @@ func (a *AttributeTraitApiService) AttributeTraitGet(ctx context.Context, name s
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AttributeTraitApiService Retrieve all attribute traits of the specified category/categories.
+/*
+	AttributeTraitApiService Retrieve all attribute traits of the specified category/categories.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param category The category of the attribute traits. Multiple categories may be specified with multiple instances of the parameter. If the parameter is not specified, or if its value is \&quot;all\&quot;, then all attribute traits of all categories will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-@return ItemsAttributeTrait*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+
+@return ItemsAttributeTrait
+*/
 func (a *AttributeTraitApiService) AttributeTraitGetByCategory(ctx context.Context, category []string, localVarOptionals map[string]interface{}) (ItemsAttributeTrait, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -170,7 +180,7 @@ func (a *AttributeTraitApiService) AttributeTraitGetByCategory(ctx context.Conte
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 

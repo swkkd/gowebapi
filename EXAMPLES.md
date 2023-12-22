@@ -11,7 +11,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 
 	pi "github.com/christoofar/gowebapi"
@@ -64,7 +64,7 @@ func GetAttribute() {
 	value, resp, err := client.AttributeApi.AttributeGet(auth, webid, options)
 	if err != nil {
 		log.Println("The call to WebAPI failed [", resp.StatusCode, "]")
-		body, _ := ioutil.ReadAll(resp.Body)
+		body, _ := io.ReadAll(resp.Body)
 		log.Fatal(string(body))
 	}
 
@@ -129,7 +129,7 @@ func GetRecordedValues() {
 	value, resp, err := client.StreamApi.StreamGetRecorded(auth, webid, optionals)
 	if err != nil {
 		log.Println("The call to WebAPI failed [", resp.StatusCode, "]")
-		body, _ := ioutil.ReadAll(resp.Body)
+		body, _ := io.ReadAll(resp.Body)
 		log.Fatal(string(body))
 	}
 

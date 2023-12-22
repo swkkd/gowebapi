@@ -3,9 +3,9 @@
 // * Licensed under the Apache License, Version 2.0 (the "License");
 // * you may not use this file except in compliance with the License.
 // * You may obtain a copy of the License at
-// * 
+// *
 // *   <http://www.apache.org/licenses/LICENSE-2.0>
-// * 
+// *
 // * Unless required by applicable law or agreed to in writing, software
 // * distributed under the License is distributed on an "AS IS" BASIS,
 // * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package gowebapi
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,14 +33,19 @@ var (
 
 type TableApiService service
 
-/* TableApiService Create a security entry owned by the table.
+/*
+	TableApiService Create a security entry owned by the table.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return */
+
+	@param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return
+*/
 func (a *TableApiService) TableCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -105,17 +110,20 @@ func (a *TableApiService) TableCreateSecurityEntry(ctx context.Context, webId st
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* TableApiService Delete a table.
+/*
+	TableApiService Delete a table.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table to delete.
-@return */
+@return
+*/
 func (a *TableApiService) TableDelete(ctx context.Context, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -165,20 +173,25 @@ func (a *TableApiService) TableDelete(ctx context.Context, webId string) (*http.
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* TableApiService Delete a security entry owned by the table.
+/*
+	TableApiService Delete a security entry owned by the table.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the table where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
-@return */
+
+	@param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
+
+@return
+*/
 func (a *TableApiService) TableDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -236,20 +249,25 @@ func (a *TableApiService) TableDeleteSecurityEntry(ctx context.Context, name str
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* TableApiService Retrieve a table.
+/*
+	TableApiService Retrieve a table.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return Table*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return Table
+*/
 func (a *TableApiService) TableGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (Table, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -313,7 +331,7 @@ func (a *TableApiService) TableGet(ctx context.Context, webId string, localVarOp
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -324,13 +342,18 @@ func (a *TableApiService) TableGet(ctx context.Context, webId string, localVarOp
 	return successPayload, localVarHttpResponse, err
 }
 
-/* TableApiService Retrieve a table by path.
+/*
+	TableApiService Retrieve a table by path.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param path The path to the table.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return Table*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return Table
+*/
 func (a *TableApiService) TableGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (Table, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -394,7 +417,7 @@ func (a *TableApiService) TableGetByPath(ctx context.Context, path string, local
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -405,13 +428,18 @@ func (a *TableApiService) TableGetByPath(ctx context.Context, path string, local
 	return successPayload, localVarHttpResponse, err
 }
 
-/* TableApiService Get a table&#39;s categories.
+/*
+	TableApiService Get a table&#39;s categories.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsTableCategory*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsTableCategory
+*/
 func (a *TableApiService) TableGetCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsTableCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -475,7 +503,7 @@ func (a *TableApiService) TableGetCategories(ctx context.Context, webId string, 
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -486,12 +514,17 @@ func (a *TableApiService) TableGetCategories(ctx context.Context, webId string, 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* TableApiService Get the table&#39;s data.
+/*
+	TableApiService Get the table&#39;s data.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-@return TableData*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+
+@return TableData
+*/
 func (a *TableApiService) TableGetData(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (TableData, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -549,7 +582,7 @@ func (a *TableApiService) TableGetData(ctx context.Context, webId string, localV
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -560,15 +593,20 @@ func (a *TableApiService) TableGetData(ctx context.Context, webId string, localV
 	return successPayload, localVarHttpResponse, err
 }
 
-/* TableApiService Get the security information of the specified security item associated with the table for a specified user.
+/*
+	TableApiService Get the security information of the specified security item associated with the table for a specified user.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "forceRefresh" (bool) Indicates if the security cache should be refreshed before getting security information. The default is &#39;false&#39;.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsSecurityRights*/
+
+	@param "forceRefresh" (bool) Indicates if the security cache should be refreshed before getting security information. The default is &#39;false&#39;.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsSecurityRights
+*/
 func (a *TableApiService) TableGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -639,7 +677,7 @@ func (a *TableApiService) TableGetSecurity(ctx context.Context, webId string, us
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -650,14 +688,19 @@ func (a *TableApiService) TableGetSecurity(ctx context.Context, webId string, us
 	return successPayload, localVarHttpResponse, err
 }
 
-/* TableApiService Retrieve the security entries associated with the table based on the specified criteria. By default, all security entries for this table are returned.
+/*
+	TableApiService Retrieve the security entries associated with the table based on the specified criteria. By default, all security entries for this table are returned.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "nameFilter" (string) The name query string used for filtering security entries. The default is no filter.
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return ItemsSecurityEntry*/
+
+	@param "nameFilter" (string) The name query string used for filtering security entries. The default is no filter.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return ItemsSecurityEntry
+*/
 func (a *TableApiService) TableGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -727,7 +770,7 @@ func (a *TableApiService) TableGetSecurityEntries(ctx context.Context, webId str
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -738,14 +781,19 @@ func (a *TableApiService) TableGetSecurityEntries(ctx context.Context, webId str
 	return successPayload, localVarHttpResponse, err
 }
 
-/* TableApiService Retrieve the security entry associated with the table with the specified name.
+/*
+	TableApiService Retrieve the security entry associated with the table with the specified name.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the table.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
-    @param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
-@return SecurityEntry*/
+
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "webIdType" (string) Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item \&quot;WebIDType\&quot;.
+
+@return SecurityEntry
+*/
 func (a *TableApiService) TableGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -810,7 +858,7 @@ func (a *TableApiService) TableGetSecurityEntryByName(ctx context.Context, name 
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
@@ -821,11 +869,14 @@ func (a *TableApiService) TableGetSecurityEntryByName(ctx context.Context, name 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* TableApiService Update a table by replacing items in its definition.
+/*
+	TableApiService Update a table by replacing items in its definition.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table to update.
 @param table A partial table containing the desired changes.
-@return */
+@return
+*/
 func (a *TableApiService) TableUpdate(ctx context.Context, webId string, table Table) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
@@ -877,18 +928,21 @@ func (a *TableApiService) TableUpdate(ctx context.Context, webId string, table T
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* TableApiService Update the table&#39;s data.
+/*
+	TableApiService Update the table&#39;s data.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table on which to update the data.
 @param data The new table data definition.
-@return */
+@return
+*/
 func (a *TableApiService) TableUpdateData(ctx context.Context, webId string, data TableData) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
@@ -940,21 +994,26 @@ func (a *TableApiService) TableUpdateData(ctx context.Context, webId string, dat
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	return localVarHttpResponse, err
 }
 
-/* TableApiService Update a security entry owned by the table.
+/*
+	TableApiService Update a security entry owned by the table.
+
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the table where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
-@return */
+
+	@param "applyToChildren" (bool) If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.
+
+@return
+*/
 func (a *TableApiService) TableUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
@@ -1014,7 +1073,7 @@ func (a *TableApiService) TableUpdateSecurityEntry(ctx context.Context, name str
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
