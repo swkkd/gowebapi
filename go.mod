@@ -1,4 +1,4 @@
-module gowebapi
+module github.com/swkkd/gowebapi
 
 go 1.21.4
 

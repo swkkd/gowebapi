@@ -2,10 +2,11 @@ package gowebapi_test
 
 import (
 	"context"
-	"gowebapi"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/swkkd/gowebapi"
 )
 
 func TestStreamGetValue(t *testing.T) {
