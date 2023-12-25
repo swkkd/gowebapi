@@ -36,7 +36,7 @@ Method | HTTP request | Description
 
 
 # **ElementAddReferencedElement**
-> ElementAddReferencedElement(ctx, webId, referencedElementWebId, optional)
+> ElementAddReferencedElement(a.client.ctx, webId, referencedElementWebId, optional)
 Add a reference to an existing element to the child elements collection.
 
 ### Required Parameters
@@ -73,7 +73,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCreateAnalysis**
-> ElementCreateAnalysis(ctx, webId, analysis, optional)
+> ElementCreateAnalysis(a.client.ctx, webId, analysis, optional)
 Create an Analysis.
 
 ### Required Parameters
@@ -110,7 +110,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCreateAttribute**
-> ElementCreateAttribute(ctx, webId, attribute, optional)
+> ElementCreateAttribute(a.client.ctx, webId, attribute, optional)
 Create a new attribute of the specified element.
 
 ### Required Parameters
@@ -147,7 +147,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCreateConfig**
-> ElementCreateConfig(ctx, webId, optional)
+> ElementCreateConfig(a.client.ctx, webId, optional)
 Executes the create configuration function of the data references found within the attributes of the element, and optionally, its children.
 
 ### Required Parameters
@@ -182,7 +182,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCreateElement**
-> ElementCreateElement(ctx, webId, element, optional)
+> ElementCreateElement(a.client.ctx, webId, element, optional)
 Create a child element.
 
 ### Required Parameters
@@ -219,7 +219,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCreateSearchByAttribute**
-> ItemsElement ElementCreateSearchByAttribute(ctx, query, optional)
+> ItemsElement ElementCreateSearchByAttribute(a.client.ctx, query, optional)
 Create a link for a \"Search Elements By Attribute Value\" operation, whose queries are specified in the request content. The SearchRoot is specified by the Web Id of the root Element. If the SearchRoot is not specified, then the search starts at the Asset Database. ElementTemplate must be provided as the Web ID of the ElementTemplate, which are used to create the Elements. All the attributes in the queries must be defined as AttributeTemplates on the ElementTemplate. An array of attribute value queries are ANDed together to find the desired Element objects. At least one value query must be specified. There are limitations on SearchOperators.
 
 ### Required Parameters
@@ -255,7 +255,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCreateSecurityEntry**
-> ElementCreateSecurityEntry(ctx, webId, securityEntry, optional)
+> ElementCreateSecurityEntry(a.client.ctx, webId, securityEntry, optional)
 Create a security entry owned by the element.
 
 ### Required Parameters
@@ -293,7 +293,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementDelete**
-> ElementDelete(ctx, webId)
+> ElementDelete(a.client.ctx, webId)
 Delete an element.
 
 ### Required Parameters
@@ -319,7 +319,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementDeleteSecurityEntry**
-> ElementDeleteSecurityEntry(ctx, name, webId, optional)
+> ElementDeleteSecurityEntry(a.client.ctx, name, webId, optional)
 Delete a security entry owned by the element.
 
 ### Required Parameters
@@ -356,7 +356,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementExecuteSearchByAttribute**
-> ItemsElement ElementExecuteSearchByAttribute(ctx, searchId, optional)
+> ItemsElement ElementExecuteSearchByAttribute(a.client.ctx, searchId, optional)
 Execute a \"Search Elements By Attribute Value\" operation.
 
 ### Required Parameters
@@ -400,7 +400,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementFindElementAttributes**
-> ItemsAttribute ElementFindElementAttributes(ctx, webId, optional)
+> ItemsAttribute ElementFindElementAttributes(a.client.ctx, webId, optional)
 Retrieves a list of element attributes matching the specified filters from the specified element.
 
 ### Required Parameters
@@ -450,7 +450,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGet**
-> Element ElementGet(ctx, webId, optional)
+> Element ElementGet(a.client.ctx, webId, optional)
 Retrieve an element.
 
 ### Required Parameters
@@ -486,7 +486,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGetAnalyses**
-> ItemsAnalysis ElementGetAnalyses(ctx, webId, optional)
+> ItemsAnalysis ElementGetAnalyses(a.client.ctx, webId, optional)
 Retrieve analyses based on the specified conditions.
 
 Users can search for the analyses based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the analyses that match the default search.
@@ -528,7 +528,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGetAttributes**
-> ItemsAttribute ElementGetAttributes(ctx, webId, optional)
+> ItemsAttribute ElementGetAttributes(a.client.ctx, webId, optional)
 Get the attributes of the specified element.
 
 ### Required Parameters
@@ -577,7 +577,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGetByPath**
-> Element ElementGetByPath(ctx, path, optional)
+> Element ElementGetByPath(a.client.ctx, path, optional)
 Retrieve an element by path.
 
 This method returns an element based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -615,7 +615,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGetCategories**
-> ItemsElementCategory ElementGetCategories(ctx, webId, optional)
+> ItemsElementCategory ElementGetCategories(a.client.ctx, webId, optional)
 Get an element's categories.
 
 ### Required Parameters
@@ -651,7 +651,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGetElements**
-> ItemsElement ElementGetElements(ctx, webId, optional)
+> ItemsElement ElementGetElements(a.client.ctx, webId, optional)
 Retrieve elements based on the specified conditions. By default, this method selects immediate children of the specified element.
 
 Users can search for the elements based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the elements that match the default search.
@@ -699,7 +699,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGetElementsQuery**
-> ItemsElement ElementGetElementsQuery(ctx, optional)
+> ItemsElement ElementGetElementsQuery(a.client.ctx, optional)
 Retrieve elements based on the specified conditions. By default, returns all the elements.
 
 ### Required Parameters
@@ -737,7 +737,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGetEventFrames**
-> ItemsEventFrame ElementGetEventFrames(ctx, webId, optional)
+> ItemsEventFrame ElementGetEventFrames(a.client.ctx, webId, optional)
 Retrieve event frames that reference this element based on the specified conditions. By default, returns all event frames that reference this element that have been active in the past 8 hours.
 
 ### Required Parameters
@@ -786,7 +786,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGetMultiple**
-> ItemsItemElement ElementGetMultiple(ctx, optional)
+> ItemsItemElement ElementGetMultiple(a.client.ctx, optional)
 Retrieve multiple elements by web id or path.
 
 ### Required Parameters
@@ -824,7 +824,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGetNotificationRules**
-> ItemsNotificationRule ElementGetNotificationRules(ctx, webId, optional)
+> ItemsNotificationRule ElementGetNotificationRules(a.client.ctx, webId, optional)
 Retrieve notification rules for an element
 
 ### Required Parameters
@@ -860,7 +860,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGetPaths**
-> ItemsString ElementGetPaths(ctx, webId, optional)
+> ItemsString ElementGetPaths(a.client.ctx, webId, optional)
 Get a list of the full or relative paths to this element.
 
 This method will return paths with the primary path at the first index. If there is no primary path, then null will be at the first index. If relative path is specified but does not exist, null will be returned at the first index.
@@ -897,7 +897,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGetReferencedElements**
-> ItemsElement ElementGetReferencedElements(ctx, webId, optional)
+> ItemsElement ElementGetReferencedElements(a.client.ctx, webId, optional)
 Retrieve referenced elements based on the specified conditions. By default, this method selects all referenced elements of the current resource.
 
 Users can search for the referenced elements based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the elements that match the default search.
@@ -944,7 +944,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGetSecurity**
-> ItemsSecurityRights ElementGetSecurity(ctx, webId, userIdentity, optional)
+> ItemsSecurityRights ElementGetSecurity(a.client.ctx, webId, userIdentity, optional)
 Get the security information of the specified security item associated with the element for a specified user.
 
 ### Required Parameters
@@ -983,7 +983,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGetSecurityEntries**
-> ItemsSecurityEntry ElementGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry ElementGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries associated with the element based on the specified criteria. By default, all security entries for this element are returned.
 
 ### Required Parameters
@@ -1020,7 +1020,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementGetSecurityEntryByName**
-> SecurityEntry ElementGetSecurityEntryByName(ctx, name, webId, optional)
+> SecurityEntry ElementGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry associated with the element with the specified name.
 
 ### Required Parameters
@@ -1058,7 +1058,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementRemoveReferencedElement**
-> ElementRemoveReferencedElement(ctx, webId, referencedElementWebId)
+> ElementRemoveReferencedElement(a.client.ctx, webId, referencedElementWebId)
 Remove a reference to an existing element from the child elements collection.
 
 ### Required Parameters
@@ -1085,7 +1085,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementUpdate**
-> ElementUpdate(ctx, webId, element)
+> ElementUpdate(a.client.ctx, webId, element)
 Update an element by replacing items in its definition.
 
 ### Required Parameters
@@ -1112,7 +1112,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementUpdateSecurityEntry**
-> ElementUpdateSecurityEntry(ctx, name, webId, securityEntry, optional)
+> ElementUpdateSecurityEntry(a.client.ctx, name, webId, securityEntry, optional)
 Update a security entry owned by the element.
 
 ### Required Parameters

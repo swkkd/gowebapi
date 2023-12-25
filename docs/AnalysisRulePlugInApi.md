@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **AnalysisRulePlugInGet**
-> AnalysisRulePlugIn AnalysisRulePlugInGet(ctx, webId, optional)
+> AnalysisRulePlugIn AnalysisRulePlugInGet(a.client.ctx, webId, optional)
 Retrieve an Analysis Rule Plug-in.
 
 ### Required Parameters
@@ -45,7 +45,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisRulePlugInGetByPath**
-> AnalysisRulePlugIn AnalysisRulePlugInGetByPath(ctx, path, optional)
+> AnalysisRulePlugIn AnalysisRulePlugInGetByPath(a.client.ctx, path, optional)
 Retrieve an Analysis Rule Plug-in by path.
 
 This method returns an Analysis Rule Plug-in based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.

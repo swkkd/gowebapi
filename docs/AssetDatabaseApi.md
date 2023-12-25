@@ -45,7 +45,7 @@ Method | HTTP request | Description
 
 
 # **AssetDatabaseAddReferencedElement**
-> AssetDatabaseAddReferencedElement(ctx, webId, referencedElementWebId, optional)
+> AssetDatabaseAddReferencedElement(a.client.ctx, webId, referencedElementWebId, optional)
 Add a reference to an existing element to the specified database.
 
 ### Required Parameters
@@ -82,7 +82,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseCreateAnalysisCategory**
-> AssetDatabaseCreateAnalysisCategory(ctx, webId, analysisCategory, optional)
+> AssetDatabaseCreateAnalysisCategory(a.client.ctx, webId, analysisCategory, optional)
 Create an analysis category at the Asset Database root.
 
 ### Required Parameters
@@ -119,7 +119,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseCreateAnalysisTemplate**
-> AssetDatabaseCreateAnalysisTemplate(ctx, webId, template, optional)
+> AssetDatabaseCreateAnalysisTemplate(a.client.ctx, webId, template, optional)
 Create an analysis template at the Asset Database root.
 
 Analyses that are based on an analysis template will inherit characteristics defined in the template.
@@ -158,7 +158,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseCreateAttributeCategory**
-> AssetDatabaseCreateAttributeCategory(ctx, webId, attributeCategory, optional)
+> AssetDatabaseCreateAttributeCategory(a.client.ctx, webId, attributeCategory, optional)
 Create an attribute category at the Asset Database root.
 
 ### Required Parameters
@@ -195,7 +195,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseCreateElement**
-> AssetDatabaseCreateElement(ctx, webId, element, optional)
+> AssetDatabaseCreateElement(a.client.ctx, webId, element, optional)
 Create a child element.
 
 ### Required Parameters
@@ -232,7 +232,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseCreateElementCategory**
-> AssetDatabaseCreateElementCategory(ctx, webId, elementCategory, optional)
+> AssetDatabaseCreateElementCategory(a.client.ctx, webId, elementCategory, optional)
 Create an element category at the Asset Database root.
 
 ### Required Parameters
@@ -269,7 +269,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseCreateElementTemplate**
-> AssetDatabaseCreateElementTemplate(ctx, webId, template, optional)
+> AssetDatabaseCreateElementTemplate(a.client.ctx, webId, template, optional)
 Create a template at the Asset Database root. Specify InstanceType of \"Element\" or \"EventFrame\" to create element or event frame template respectively. Only these two types of templates can be created.
 
 Elements and event frames that are based on an element template will inherit characteristics defined in the template.
@@ -308,7 +308,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseCreateEnumerationSet**
-> AssetDatabaseCreateEnumerationSet(ctx, webId, enumerationSet, optional)
+> AssetDatabaseCreateEnumerationSet(a.client.ctx, webId, enumerationSet, optional)
 Create an enumeration set at the Asset Database.
 
 ### Required Parameters
@@ -345,7 +345,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseCreateEventFrame**
-> AssetDatabaseCreateEventFrame(ctx, webId, eventFrame, optional)
+> AssetDatabaseCreateEventFrame(a.client.ctx, webId, eventFrame, optional)
 Create an event frame.
 
 ### Required Parameters
@@ -382,7 +382,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseCreateSecurityEntry**
-> AssetDatabaseCreateSecurityEntry(ctx, webId, securityEntry, optional)
+> AssetDatabaseCreateSecurityEntry(a.client.ctx, webId, securityEntry, optional)
 Create a security entry owned by the asset database.
 
 ### Required Parameters
@@ -421,7 +421,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseCreateTable**
-> AssetDatabaseCreateTable(ctx, webId, table, optional)
+> AssetDatabaseCreateTable(a.client.ctx, webId, table, optional)
 Create a table on the Asset Database.
 
 ### Required Parameters
@@ -458,7 +458,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseCreateTableCategory**
-> AssetDatabaseCreateTableCategory(ctx, webId, tableCategory, optional)
+> AssetDatabaseCreateTableCategory(a.client.ctx, webId, tableCategory, optional)
 Create a table category on the Asset Database.
 
 ### Required Parameters
@@ -495,7 +495,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseDelete**
-> AssetDatabaseDelete(ctx, webId)
+> AssetDatabaseDelete(a.client.ctx, webId)
 Delete an asset database.
 
 ### Required Parameters
@@ -521,7 +521,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseDeleteSecurityEntry**
-> AssetDatabaseDeleteSecurityEntry(ctx, name, webId, optional)
+> AssetDatabaseDeleteSecurityEntry(a.client.ctx, name, webId, optional)
 Delete a security entry owned by the asset database.
 
 ### Required Parameters
@@ -559,7 +559,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseExport**
-> AssetDatabaseExport(ctx, webId, optional)
+> AssetDatabaseExport(a.client.ctx, webId, optional)
 Export the asset database.
 
 ### Required Parameters
@@ -596,7 +596,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseFindAnalyses**
-> ItemsAnalysis AssetDatabaseFindAnalyses(ctx, webId, field, optional)
+> ItemsAnalysis AssetDatabaseFindAnalyses(a.client.ctx, webId, field, optional)
 Retrieve analyses based on the specified conditions.
 
 Users can search for the analyses based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the analyses that match the default search.
@@ -641,7 +641,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseFindElementAttributes**
-> ItemsAttribute AssetDatabaseFindElementAttributes(ctx, webId, optional)
+> ItemsAttribute AssetDatabaseFindElementAttributes(a.client.ctx, webId, optional)
 Retrieves a list of element attributes matching the specified filters from the specified asset database.
 
 ### Required Parameters
@@ -691,7 +691,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseFindEventFrameAttributes**
-> ItemsAttribute AssetDatabaseFindEventFrameAttributes(ctx, webId, optional)
+> ItemsAttribute AssetDatabaseFindEventFrameAttributes(a.client.ctx, webId, optional)
 Retrieves a list of event frame attributes matching the specified filters from the specified asset database.
 
 ### Required Parameters
@@ -744,7 +744,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGet**
-> AssetDatabase AssetDatabaseGet(ctx, webId, optional)
+> AssetDatabase AssetDatabaseGet(a.client.ctx, webId, optional)
 Retrieve an Asset Database.
 
 ### Required Parameters
@@ -780,7 +780,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetAnalysisCategories**
-> ItemsAnalysisCategory AssetDatabaseGetAnalysisCategories(ctx, webId, optional)
+> ItemsAnalysisCategory AssetDatabaseGetAnalysisCategories(a.client.ctx, webId, optional)
 Retrieve analysis categories for a given Asset Database.
 
 ### Required Parameters
@@ -816,7 +816,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetAnalysisTemplates**
-> ItemsAnalysisTemplate AssetDatabaseGetAnalysisTemplates(ctx, webId, field, optional)
+> ItemsAnalysisTemplate AssetDatabaseGetAnalysisTemplates(a.client.ctx, webId, field, optional)
 Retrieve analysis templates based on the specified criteria. By default, all analysis templates in the specified Asset Database are returned.
 
 Users can search for the analysis templates based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the templates that match the default search.
@@ -860,7 +860,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetAttributeCategories**
-> ItemsAttributeCategory AssetDatabaseGetAttributeCategories(ctx, webId, optional)
+> ItemsAttributeCategory AssetDatabaseGetAttributeCategories(a.client.ctx, webId, optional)
 Retrieve attribute categories for a given Asset Database.
 
 ### Required Parameters
@@ -896,7 +896,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetByPath**
-> AssetDatabase AssetDatabaseGetByPath(ctx, path, optional)
+> AssetDatabase AssetDatabaseGetByPath(a.client.ctx, path, optional)
 Retrieve an Asset Database by path.
 
 This method returns an asset database based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -934,7 +934,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetElementCategories**
-> ItemsElementCategory AssetDatabaseGetElementCategories(ctx, webId, optional)
+> ItemsElementCategory AssetDatabaseGetElementCategories(a.client.ctx, webId, optional)
 Retrieve element categories for a given Asset Database.
 
 ### Required Parameters
@@ -970,7 +970,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetElementTemplates**
-> ItemsElementTemplate AssetDatabaseGetElementTemplates(ctx, webId, field, optional)
+> ItemsElementTemplate AssetDatabaseGetElementTemplates(a.client.ctx, webId, field, optional)
 Retrieve element templates based on the specified criteria. Only templates of instance type \"Element\" and \"EventFrame\" are returned. By default, all element and event frame templates in the specified Asset Database are returned.
 
 Users can search for the element and event frame template based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the templates that match the default search.
@@ -1014,7 +1014,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetElements**
-> ItemsElement AssetDatabaseGetElements(ctx, webId, optional)
+> ItemsElement AssetDatabaseGetElements(a.client.ctx, webId, optional)
 Retrieve elements based on the specified conditions. By default, this method selects immediate children of the specified asset database.
 
 Users can search for the elements based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the elements that match the default search.
@@ -1062,7 +1062,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetEnumerationSets**
-> ItemsEnumerationSet AssetDatabaseGetEnumerationSets(ctx, webId, optional)
+> ItemsEnumerationSet AssetDatabaseGetEnumerationSets(a.client.ctx, webId, optional)
 Retrieve enumeration sets for given asset database.
 
 ### Required Parameters
@@ -1098,7 +1098,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetEventFrames**
-> ItemsEventFrame AssetDatabaseGetEventFrames(ctx, webId, optional)
+> ItemsEventFrame AssetDatabaseGetEventFrames(a.client.ctx, webId, optional)
 Retrieve event frames based on the specified conditions. By default, returns all children of the specified root resource that have been active in the past 8 hours.
 
 ### Required Parameters
@@ -1150,7 +1150,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetReferencedElements**
-> ItemsElement AssetDatabaseGetReferencedElements(ctx, webId, optional)
+> ItemsElement AssetDatabaseGetReferencedElements(a.client.ctx, webId, optional)
 Retrieve referenced elements based on the specified conditions. By default, this method selects all referenced elements at the root level of the asset database.
 
 Users can search for the referenced elements based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the elements that match the default search.
@@ -1197,7 +1197,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetSecurity**
-> ItemsSecurityRights AssetDatabaseGetSecurity(ctx, webId, securityItem, userIdentity, optional)
+> ItemsSecurityRights AssetDatabaseGetSecurity(a.client.ctx, webId, securityItem, userIdentity, optional)
 Get the security information of the specified security item associated with the asset database for a specified user.
 
 ### Required Parameters
@@ -1238,7 +1238,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetSecurityEntries**
-> ItemsSecurityEntry AssetDatabaseGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry AssetDatabaseGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries of the specified security item associated with the asset database based on the specified criteria. By default, all security entries for this asset database are returned.
 
 ### Required Parameters
@@ -1276,7 +1276,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetSecurityEntryByName**
-> SecurityEntry AssetDatabaseGetSecurityEntryByName(ctx, name, webId, optional)
+> SecurityEntry AssetDatabaseGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry of the specified security item associated with the asset database with the specified name.
 
 ### Required Parameters
@@ -1315,7 +1315,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetTableCategories**
-> ItemsTableCategory AssetDatabaseGetTableCategories(ctx, webId, optional)
+> ItemsTableCategory AssetDatabaseGetTableCategories(a.client.ctx, webId, optional)
 Retrieve table categories for a given Asset Database.
 
 ### Required Parameters
@@ -1351,7 +1351,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseGetTables**
-> ItemsTable AssetDatabaseGetTables(ctx, webId, optional)
+> ItemsTable AssetDatabaseGetTables(a.client.ctx, webId, optional)
 Retrieve tables for given Asset Database.
 
 ### Required Parameters
@@ -1387,7 +1387,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseImport**
-> AssetDatabaseImport(ctx, webId, optional)
+> AssetDatabaseImport(a.client.ctx, webId, optional)
 Import an asset database.
 
 ### Required Parameters
@@ -1422,7 +1422,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseRemoveReferencedElement**
-> AssetDatabaseRemoveReferencedElement(ctx, webId, referencedElementWebId)
+> AssetDatabaseRemoveReferencedElement(a.client.ctx, webId, referencedElementWebId)
 Remove a reference to an existing element from the specified database.
 
 ### Required Parameters
@@ -1449,7 +1449,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseUpdate**
-> AssetDatabaseUpdate(ctx, webId, database)
+> AssetDatabaseUpdate(a.client.ctx, webId, database)
 Update an asset database by replacing items in its definition.
 
 ### Required Parameters
@@ -1476,7 +1476,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetDatabaseUpdateSecurityEntry**
-> AssetDatabaseUpdateSecurityEntry(ctx, name, webId, securityEntry, optional)
+> AssetDatabaseUpdateSecurityEntry(a.client.ctx, name, webId, securityEntry, optional)
 Update a security entry owned by the asset database.
 
 ### Required Parameters

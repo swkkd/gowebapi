@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **EnumerationValueDeleteEnumerationValue**
-> EnumerationValueDeleteEnumerationValue(ctx, webId)
+> EnumerationValueDeleteEnumerationValue(a.client.ctx, webId)
 Delete an enumeration value from an enumeration set.
 
 Deleting a value will remove it from the enumeration set along with any value references within the PI Web API system.
@@ -39,7 +39,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnumerationValueGet**
-> EnumerationValue EnumerationValueGet(ctx, webId, optional)
+> EnumerationValue EnumerationValueGet(a.client.ctx, webId, optional)
 Retrieve an enumeration value mapping
 
 ### Required Parameters
@@ -75,7 +75,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnumerationValueGetByPath**
-> EnumerationValue EnumerationValueGetByPath(ctx, path, optional)
+> EnumerationValue EnumerationValueGetByPath(a.client.ctx, path, optional)
 Retrieve an enumeration value by path.
 
 This method returns a enumeration value based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -113,7 +113,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnumerationValueUpdateEnumerationValue**
-> EnumerationValueUpdateEnumerationValue(ctx, webId, enumerationValue)
+> EnumerationValueUpdateEnumerationValue(a.client.ctx, webId, enumerationValue)
 Update an enumeration value by replacing items in its definition.
 
 ### Required Parameters

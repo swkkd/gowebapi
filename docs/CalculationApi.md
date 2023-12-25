@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **CalculationGetAtIntervals**
-> TimedValues CalculationGetAtIntervals(ctx, optional)
+> TimedValues CalculationGetAtIntervals(a.client.ctx, optional)
 Returns results of evaluating the expression over the time range from the start time to the end time at a defined interval.
 
 ### Required Parameters
@@ -49,7 +49,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CalculationGetAtRecorded**
-> TimedValues CalculationGetAtRecorded(ctx, optional)
+> TimedValues CalculationGetAtRecorded(a.client.ctx, optional)
 Returns the result of evaluating the expression at each point in time over the time range from the start time to the end time where a recorded value exists for a member of the expression.
 
 ### Required Parameters
@@ -86,7 +86,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CalculationGetAtTimes**
-> TimedValues CalculationGetAtTimes(ctx, optional)
+> TimedValues CalculationGetAtTimes(a.client.ctx, optional)
 Returns the result of evaluating the expression at the specified timestamps.
 
 ### Required Parameters
@@ -123,7 +123,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CalculationGetSummary**
-> ItemsSummaryValue CalculationGetSummary(ctx, optional)
+> ItemsSummaryValue CalculationGetSummary(a.client.ctx, optional)
 Returns the result of evaluating the expression over the time range from the start time to the end time. The time range is first divided into a number of summary intervals. Then the calculation is performed for the specified summaries over each interval.
 
 ### Required Parameters

@@ -36,11 +36,10 @@ type EventFrameApiService service
 /*
 	EventFrameApiService Calls the EventFrame&#39;s Acknowledge method.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame.
 @return
 */
-func (a *EventFrameApiService) EventFrameAcknowledge(ctx context.Context, webId string) (*http.Response, error) {
+func (a *EventFrameApiService) EventFrameAcknowledge(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -78,7 +77,7 @@ func (a *EventFrameApiService) EventFrameAcknowledge(ctx context.Context, webId 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -99,11 +98,10 @@ func (a *EventFrameApiService) EventFrameAcknowledge(ctx context.Context, webId 
 /*
 	EventFrameApiService Calls the EventFrame&#39;s CaptureValues method.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame.
 @return
 */
-func (a *EventFrameApiService) EventFrameCaptureValues(ctx context.Context, webId string) (*http.Response, error) {
+func (a *EventFrameApiService) EventFrameCaptureValues(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -141,7 +139,7 @@ func (a *EventFrameApiService) EventFrameCaptureValues(ctx context.Context, webI
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -162,7 +160,6 @@ func (a *EventFrameApiService) EventFrameCaptureValues(ctx context.Context, webI
 /*
 	EventFrameApiService Create an annotation on an event frame.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the owner event frame on which to create the annotation.
 @param annotation The new annotation definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -171,7 +168,7 @@ func (a *EventFrameApiService) EventFrameCaptureValues(ctx context.Context, webI
 
 @return
 */
-func (a *EventFrameApiService) EventFrameCreateAnnotation(ctx context.Context, webId string, annotation Annotation, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *EventFrameApiService) EventFrameCreateAnnotation(webId string, annotation Annotation, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -218,7 +215,7 @@ func (a *EventFrameApiService) EventFrameCreateAnnotation(ctx context.Context, w
 	}
 	// body params
 	localVarPostBody = &annotation
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -239,7 +236,6 @@ func (a *EventFrameApiService) EventFrameCreateAnnotation(ctx context.Context, w
 /*
 	EventFrameApiService Create a new attribute of the specified event frame.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame on which to create the attribute.
 @param attribute The definition of the new attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -248,7 +244,7 @@ func (a *EventFrameApiService) EventFrameCreateAnnotation(ctx context.Context, w
 
 @return
 */
-func (a *EventFrameApiService) EventFrameCreateAttribute(ctx context.Context, webId string, attribute Attribute, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *EventFrameApiService) EventFrameCreateAttribute(webId string, attribute Attribute, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -295,7 +291,7 @@ func (a *EventFrameApiService) EventFrameCreateAttribute(ctx context.Context, we
 	}
 	// body params
 	localVarPostBody = &attribute
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -316,7 +312,6 @@ func (a *EventFrameApiService) EventFrameCreateAttribute(ctx context.Context, we
 /*
 	EventFrameApiService Executes the create configuration function of the data references found within the attributes of the event frame, and optionally, its children.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -324,7 +319,7 @@ func (a *EventFrameApiService) EventFrameCreateAttribute(ctx context.Context, we
 
 @return
 */
-func (a *EventFrameApiService) EventFrameCreateConfig(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *EventFrameApiService) EventFrameCreateConfig(webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -369,7 +364,7 @@ func (a *EventFrameApiService) EventFrameCreateConfig(ctx context.Context, webId
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -390,7 +385,6 @@ func (a *EventFrameApiService) EventFrameCreateConfig(ctx context.Context, webId
 /*
 	EventFrameApiService Create an event frame as a child of the specified event frame.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent event frame on which to create the event frame.
 @param eventFrame The new event frame definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -399,7 +393,7 @@ func (a *EventFrameApiService) EventFrameCreateConfig(ctx context.Context, webId
 
 @return
 */
-func (a *EventFrameApiService) EventFrameCreateEventFrame(ctx context.Context, webId string, eventFrame EventFrame, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *EventFrameApiService) EventFrameCreateEventFrame(webId string, eventFrame EventFrame, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -446,7 +440,7 @@ func (a *EventFrameApiService) EventFrameCreateEventFrame(ctx context.Context, w
 	}
 	// body params
 	localVarPostBody = &eventFrame
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -467,7 +461,6 @@ func (a *EventFrameApiService) EventFrameCreateEventFrame(ctx context.Context, w
 /*
 	EventFrameApiService Create a link for a \&quot;Search EventFrames By Attribute Value\&quot; operation, whose queries are specified in the request content. The SearchRoot is specified by the Web Id of the root EventFrame. If the SearchRoot is not specified, then the search starts at the Asset Database. ElementTemplate must be provided as the Web ID of the ElementTemplate, which are used to create the EventFrames. All the attributes in the queries must be defined as AttributeTemplates on the ElementTemplate. An array of attribute value queries are ANDed together to find the desired Element objects. At least one value query must be specified. There are limitations on SearchOperators.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param query The query of search by attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -477,7 +470,7 @@ func (a *EventFrameApiService) EventFrameCreateEventFrame(ctx context.Context, w
 
 @return ItemsEventFrame
 */
-func (a *EventFrameApiService) EventFrameCreateSearchByAttribute(ctx context.Context, query SearchByAttribute, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameCreateSearchByAttribute(query SearchByAttribute, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -536,7 +529,7 @@ func (a *EventFrameApiService) EventFrameCreateSearchByAttribute(ctx context.Con
 	}
 	// body params
 	localVarPostBody = &query
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -561,7 +554,6 @@ func (a *EventFrameApiService) EventFrameCreateSearchByAttribute(ctx context.Con
 /*
 	EventFrameApiService Create a security entry owned by the event frame.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -571,7 +563,7 @@ func (a *EventFrameApiService) EventFrameCreateSearchByAttribute(ctx context.Con
 
 @return
 */
-func (a *EventFrameApiService) EventFrameCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *EventFrameApiService) EventFrameCreateSecurityEntry(webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -624,7 +616,7 @@ func (a *EventFrameApiService) EventFrameCreateSecurityEntry(ctx context.Context
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -645,11 +637,10 @@ func (a *EventFrameApiService) EventFrameCreateSecurityEntry(ctx context.Context
 /*
 	EventFrameApiService Delete an event frame.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame to delete.
 @return
 */
-func (a *EventFrameApiService) EventFrameDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *EventFrameApiService) EventFrameDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -687,7 +678,7 @@ func (a *EventFrameApiService) EventFrameDelete(ctx context.Context, webId strin
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -708,12 +699,11 @@ func (a *EventFrameApiService) EventFrameDelete(ctx context.Context, webId strin
 /*
 	EventFrameApiService Delete an annotation on an event frame. If the annotation has attached media, the attached media will also be deleted.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param id The Annotation identifier of the annotation to be deleted.
 @param webId The ID of the owner event frame of the annotation to delete.
 @return
 */
-func (a *EventFrameApiService) EventFrameDeleteAnnotation(ctx context.Context, id string, webId string) (*http.Response, error) {
+func (a *EventFrameApiService) EventFrameDeleteAnnotation(id string, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -752,7 +742,7 @@ func (a *EventFrameApiService) EventFrameDeleteAnnotation(ctx context.Context, i
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -773,12 +763,11 @@ func (a *EventFrameApiService) EventFrameDeleteAnnotation(ctx context.Context, i
 /*
 	EventFrameApiService Delete attached media from an annotation on an event frame.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param id The Annotation identifier of the annotation to delete the attached media of.
 @param webId The ID of the owner event frame of the annotation to delete the attached media of.
 @return
 */
-func (a *EventFrameApiService) EventFrameDeleteAnnotationAttachmentMediaById(ctx context.Context, id string, webId string) (*http.Response, error) {
+func (a *EventFrameApiService) EventFrameDeleteAnnotationAttachmentMediaById(id string, webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -817,7 +806,7 @@ func (a *EventFrameApiService) EventFrameDeleteAnnotationAttachmentMediaById(ctx
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -838,7 +827,6 @@ func (a *EventFrameApiService) EventFrameDeleteAnnotationAttachmentMediaById(ctx
 /*
 	EventFrameApiService Delete a security entry owned by the event frame.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the event frame where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -847,7 +835,7 @@ func (a *EventFrameApiService) EventFrameDeleteAnnotationAttachmentMediaById(ctx
 
 @return
 */
-func (a *EventFrameApiService) EventFrameDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *EventFrameApiService) EventFrameDeleteSecurityEntry(name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -893,7 +881,7 @@ func (a *EventFrameApiService) EventFrameDeleteSecurityEntry(ctx context.Context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -914,7 +902,6 @@ func (a *EventFrameApiService) EventFrameDeleteSecurityEntry(ctx context.Context
 /*
 	EventFrameApiService Execute a \&quot;Search EventFrames By Attribute Value\&quot; operation.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param searchId The encoded search Id of the \&quot;Search EventFrames By Attribute Value\&quot; operation.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -936,7 +923,7 @@ func (a *EventFrameApiService) EventFrameDeleteSecurityEntry(ctx context.Context
 
 @return ItemsEventFrame
 */
-func (a *EventFrameApiService) EventFrameExecuteSearchByAttribute(ctx context.Context, searchId string, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameExecuteSearchByAttribute(searchId string, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1063,7 +1050,7 @@ func (a *EventFrameApiService) EventFrameExecuteSearchByAttribute(ctx context.Co
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1088,7 +1075,6 @@ func (a *EventFrameApiService) EventFrameExecuteSearchByAttribute(ctx context.Co
 /*
 	EventFrameApiService Retrieves a list of event frame attributes matching the specified filters from the specified event frame.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1114,7 +1100,7 @@ func (a *EventFrameApiService) EventFrameExecuteSearchByAttribute(ctx context.Co
 
 @return ItemsAttribute
 */
-func (a *EventFrameApiService) EventFrameFindEventFrameAttributes(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameFindEventFrameAttributes(webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1268,7 +1254,7 @@ func (a *EventFrameApiService) EventFrameFindEventFrameAttributes(ctx context.Co
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1293,7 +1279,6 @@ func (a *EventFrameApiService) EventFrameFindEventFrameAttributes(ctx context.Co
 /*
 	EventFrameApiService Retrieve an event frame.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1302,7 +1287,7 @@ func (a *EventFrameApiService) EventFrameFindEventFrameAttributes(ctx context.Co
 
 @return EventFrame
 */
-func (a *EventFrameApiService) EventFrameGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (EventFrame, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameGet(webId string, localVarOptionals map[string]interface{}) (EventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1354,7 +1339,7 @@ func (a *EventFrameApiService) EventFrameGet(ctx context.Context, webId string, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1379,7 +1364,6 @@ func (a *EventFrameApiService) EventFrameGet(ctx context.Context, webId string, 
 /*
 	EventFrameApiService Gets the metadata of the media attached to the specified annotation.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param id The Annotation identifier of the specific annotation.
 @param webId The ID of the owner event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -1389,7 +1373,7 @@ func (a *EventFrameApiService) EventFrameGet(ctx context.Context, webId string, 
 
 @return MediaMetadata
 */
-func (a *EventFrameApiService) EventFrameGetAnnotationAttachmentMediaMetadataById(ctx context.Context, id string, webId string, localVarOptionals map[string]interface{}) (MediaMetadata, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameGetAnnotationAttachmentMediaMetadataById(id string, webId string, localVarOptionals map[string]interface{}) (MediaMetadata, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1442,7 +1426,7 @@ func (a *EventFrameApiService) EventFrameGetAnnotationAttachmentMediaMetadataByI
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1467,7 +1451,6 @@ func (a *EventFrameApiService) EventFrameGetAnnotationAttachmentMediaMetadataByI
 /*
 	EventFrameApiService Get a specific annotation on an event frame.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param id The Annotation identifier of the specific annotation.
 @param webId The ID of the owner event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -1477,7 +1460,7 @@ func (a *EventFrameApiService) EventFrameGetAnnotationAttachmentMediaMetadataByI
 
 @return Annotation
 */
-func (a *EventFrameApiService) EventFrameGetAnnotationById(ctx context.Context, id string, webId string, localVarOptionals map[string]interface{}) (Annotation, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameGetAnnotationById(id string, webId string, localVarOptionals map[string]interface{}) (Annotation, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1530,7 +1513,7 @@ func (a *EventFrameApiService) EventFrameGetAnnotationById(ctx context.Context, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1555,7 +1538,6 @@ func (a *EventFrameApiService) EventFrameGetAnnotationById(ctx context.Context, 
 /*
 	EventFrameApiService Get an event frame&#39;s annotations.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the owner event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1564,7 +1546,7 @@ func (a *EventFrameApiService) EventFrameGetAnnotationById(ctx context.Context, 
 
 @return ItemsAnnotation
 */
-func (a *EventFrameApiService) EventFrameGetAnnotations(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAnnotation, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameGetAnnotations(webId string, localVarOptionals map[string]interface{}) (ItemsAnnotation, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1616,7 +1598,7 @@ func (a *EventFrameApiService) EventFrameGetAnnotations(ctx context.Context, web
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1641,7 +1623,6 @@ func (a *EventFrameApiService) EventFrameGetAnnotations(ctx context.Context, web
 /*
 	EventFrameApiService Get the attributes of the specified event frame.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1663,7 +1644,7 @@ func (a *EventFrameApiService) EventFrameGetAnnotations(ctx context.Context, web
 
 @return ItemsAttribute
 */
-func (a *EventFrameApiService) EventFrameGetAttributes(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameGetAttributes(webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1787,7 +1768,7 @@ func (a *EventFrameApiService) EventFrameGetAttributes(ctx context.Context, webI
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1813,7 +1794,7 @@ func (a *EventFrameApiService) EventFrameGetAttributes(ctx context.Context, webI
 	EventFrameApiService Retrieve an event frame by path.
 
 This method returns an event frame based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1822,7 +1803,7 @@ This method returns an event frame based on the hierarchical path associated wit
 
 @return EventFrame
 */
-func (a *EventFrameApiService) EventFrameGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (EventFrame, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameGetByPath(path string, localVarOptionals map[string]interface{}) (EventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1874,7 +1855,7 @@ func (a *EventFrameApiService) EventFrameGetByPath(ctx context.Context, path str
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1899,7 +1880,6 @@ func (a *EventFrameApiService) EventFrameGetByPath(ctx context.Context, path str
 /*
 	EventFrameApiService Get an event frame&#39;s categories.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1908,7 +1888,7 @@ func (a *EventFrameApiService) EventFrameGetByPath(ctx context.Context, path str
 
 @return ItemsElementCategory
 */
-func (a *EventFrameApiService) EventFrameGetCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsElementCategory, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameGetCategories(webId string, localVarOptionals map[string]interface{}) (ItemsElementCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1960,7 +1940,7 @@ func (a *EventFrameApiService) EventFrameGetCategories(ctx context.Context, webI
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1985,7 +1965,6 @@ func (a *EventFrameApiService) EventFrameGetCategories(ctx context.Context, webI
 /*
 	EventFrameApiService Retrieve event frames based on the specified conditions. By default, returns all children of the specified root event frame that have been active in the past 8 hours.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2010,7 +1989,7 @@ func (a *EventFrameApiService) EventFrameGetCategories(ctx context.Context, webI
 
 @return ItemsEventFrame
 */
-func (a *EventFrameApiService) EventFrameGetEventFrames(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameGetEventFrames(webId string, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2155,7 +2134,7 @@ func (a *EventFrameApiService) EventFrameGetEventFrames(ctx context.Context, web
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2180,7 +2159,6 @@ func (a *EventFrameApiService) EventFrameGetEventFrames(ctx context.Context, web
 /*
 	EventFrameApiService Retrieve event frames based on the specified conditions. Returns event frames using the specified search query string.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "databaseWebId" (string) The ID of the asset database to use as the root of the query.
@@ -2192,7 +2170,7 @@ func (a *EventFrameApiService) EventFrameGetEventFrames(ctx context.Context, web
 
 @return ItemsEventFrame
 */
-func (a *EventFrameApiService) EventFrameGetEventFramesQuery(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameGetEventFramesQuery(localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2267,7 +2245,7 @@ func (a *EventFrameApiService) EventFrameGetEventFramesQuery(ctx context.Context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2292,7 +2270,6 @@ func (a *EventFrameApiService) EventFrameGetEventFramesQuery(ctx context.Context
 /*
 	EventFrameApiService Retrieve multiple event frames by web ids or paths.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "asParallel" (bool) Specifies if the retrieval processes should be run in parallel on the server. This may improve the response time for large amounts of requested attributes. The default is &#39;false&#39;.
@@ -2304,7 +2281,7 @@ func (a *EventFrameApiService) EventFrameGetEventFramesQuery(ctx context.Context
 
 @return ItemsItemEventFrame
 */
-func (a *EventFrameApiService) EventFrameGetMultiple(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsItemEventFrame, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameGetMultiple(localVarOptionals map[string]interface{}) (ItemsItemEventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2373,7 +2350,7 @@ func (a *EventFrameApiService) EventFrameGetMultiple(ctx context.Context, localV
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2398,7 +2375,6 @@ func (a *EventFrameApiService) EventFrameGetMultiple(ctx context.Context, localV
 /*
 	EventFrameApiService Retrieve the event frame&#39;s referenced elements.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame whose referenced elements should be retrieved.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2407,7 +2383,7 @@ func (a *EventFrameApiService) EventFrameGetMultiple(ctx context.Context, localV
 
 @return ItemsElement
 */
-func (a *EventFrameApiService) EventFrameGetReferencedElements(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameGetReferencedElements(webId string, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2459,7 +2435,7 @@ func (a *EventFrameApiService) EventFrameGetReferencedElements(ctx context.Conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2484,7 +2460,6 @@ func (a *EventFrameApiService) EventFrameGetReferencedElements(ctx context.Conte
 /*
 	EventFrameApiService Get the security information of the specified security item associated with the event frame for a specified user.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -2495,7 +2470,7 @@ func (a *EventFrameApiService) EventFrameGetReferencedElements(ctx context.Conte
 
 @return ItemsSecurityRights
 */
-func (a *EventFrameApiService) EventFrameGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameGetSecurity(webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2554,7 +2529,7 @@ func (a *EventFrameApiService) EventFrameGetSecurity(ctx context.Context, webId 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2579,7 +2554,6 @@ func (a *EventFrameApiService) EventFrameGetSecurity(ctx context.Context, webId 
 /*
 	EventFrameApiService Retrieve the security entries associated with the event frame based on the specified criteria. By default, all security entries for this event frame are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2589,7 +2563,7 @@ func (a *EventFrameApiService) EventFrameGetSecurity(ctx context.Context, webId 
 
 @return ItemsSecurityEntry
 */
-func (a *EventFrameApiService) EventFrameGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameGetSecurityEntries(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2647,7 +2621,7 @@ func (a *EventFrameApiService) EventFrameGetSecurityEntries(ctx context.Context,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2672,7 +2646,6 @@ func (a *EventFrameApiService) EventFrameGetSecurityEntries(ctx context.Context,
 /*
 	EventFrameApiService Retrieve the security entry associated with the event frame with the specified name.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the event frame.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -2682,7 +2655,7 @@ func (a *EventFrameApiService) EventFrameGetSecurityEntries(ctx context.Context,
 
 @return SecurityEntry
 */
-func (a *EventFrameApiService) EventFrameGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
+func (a *EventFrameApiService) EventFrameGetSecurityEntryByName(name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2735,7 +2708,7 @@ func (a *EventFrameApiService) EventFrameGetSecurityEntryByName(ctx context.Cont
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2760,12 +2733,11 @@ func (a *EventFrameApiService) EventFrameGetSecurityEntryByName(ctx context.Cont
 /*
 	EventFrameApiService Update an event frame by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the event frame to update.
 @param eventFrame A partial event frame containing the desired changes.
 @return
 */
-func (a *EventFrameApiService) EventFrameUpdate(ctx context.Context, webId string, eventFrame EventFrame) (*http.Response, error) {
+func (a *EventFrameApiService) EventFrameUpdate(webId string, eventFrame EventFrame) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -2805,7 +2777,7 @@ func (a *EventFrameApiService) EventFrameUpdate(ctx context.Context, webId strin
 	}
 	// body params
 	localVarPostBody = &eventFrame
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -2826,13 +2798,12 @@ func (a *EventFrameApiService) EventFrameUpdate(ctx context.Context, webId strin
 /*
 	EventFrameApiService Update an annotation on an event frame by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param id The Annotation identifier of the annotation to be updated.
 @param webId The ID of the owner event frame of the annotation to update.
 @param annotation A partial annotation containing the desired changes.
 @return
 */
-func (a *EventFrameApiService) EventFrameUpdateAnnotation(ctx context.Context, id string, webId string, annotation Annotation) (*http.Response, error) {
+func (a *EventFrameApiService) EventFrameUpdateAnnotation(id string, webId string, annotation Annotation) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -2873,7 +2844,7 @@ func (a *EventFrameApiService) EventFrameUpdateAnnotation(ctx context.Context, i
 	}
 	// body params
 	localVarPostBody = &annotation
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -2894,7 +2865,6 @@ func (a *EventFrameApiService) EventFrameUpdateAnnotation(ctx context.Context, i
 /*
 	EventFrameApiService Update a security entry owned by the event frame.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the event frame where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
@@ -2904,7 +2874,7 @@ func (a *EventFrameApiService) EventFrameUpdateAnnotation(ctx context.Context, i
 
 @return
 */
-func (a *EventFrameApiService) EventFrameUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *EventFrameApiService) EventFrameUpdateSecurityEntry(name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -2952,7 +2922,7 @@ func (a *EventFrameApiService) EventFrameUpdateSecurityEntry(ctx context.Context
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

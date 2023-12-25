@@ -36,7 +36,6 @@ type ElementTemplateApiService service
 /*
 	ElementTemplateApiService Create an attribute template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element template on which to create the attribute template.
 @param template The attribute template definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -45,7 +44,7 @@ type ElementTemplateApiService service
 
 @return
 */
-func (a *ElementTemplateApiService) ElementTemplateCreateAttributeTemplate(ctx context.Context, webId string, template AttributeTemplate, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateCreateAttributeTemplate(webId string, template AttributeTemplate, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -92,7 +91,7 @@ func (a *ElementTemplateApiService) ElementTemplateCreateAttributeTemplate(ctx c
 	}
 	// body params
 	localVarPostBody = &template
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -113,7 +112,6 @@ func (a *ElementTemplateApiService) ElementTemplateCreateAttributeTemplate(ctx c
 /*
 	ElementTemplateApiService Create a security entry owned by the element template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element template where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -123,7 +121,7 @@ func (a *ElementTemplateApiService) ElementTemplateCreateAttributeTemplate(ctx c
 
 @return
 */
-func (a *ElementTemplateApiService) ElementTemplateCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateCreateSecurityEntry(webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -176,7 +174,7 @@ func (a *ElementTemplateApiService) ElementTemplateCreateSecurityEntry(ctx conte
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -198,11 +196,11 @@ func (a *ElementTemplateApiService) ElementTemplateCreateSecurityEntry(ctx conte
 	ElementTemplateApiService Delete an element template.
 
 Deleting an element template will delete all associated templated data from elements which were created from it.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the element template to update.
 @return
 */
-func (a *ElementTemplateApiService) ElementTemplateDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -240,7 +238,7 @@ func (a *ElementTemplateApiService) ElementTemplateDelete(ctx context.Context, w
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -261,7 +259,6 @@ func (a *ElementTemplateApiService) ElementTemplateDelete(ctx context.Context, w
 /*
 	ElementTemplateApiService Delete a security entry owned by the element template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the element template where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -270,7 +267,7 @@ func (a *ElementTemplateApiService) ElementTemplateDelete(ctx context.Context, w
 
 @return
 */
-func (a *ElementTemplateApiService) ElementTemplateDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateDeleteSecurityEntry(name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -316,7 +313,7 @@ func (a *ElementTemplateApiService) ElementTemplateDeleteSecurityEntry(ctx conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -337,7 +334,6 @@ func (a *ElementTemplateApiService) ElementTemplateDeleteSecurityEntry(ctx conte
 /*
 	ElementTemplateApiService Retrieve an element template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -346,7 +342,7 @@ func (a *ElementTemplateApiService) ElementTemplateDeleteSecurityEntry(ctx conte
 
 @return ElementTemplate
 */
-func (a *ElementTemplateApiService) ElementTemplateGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ElementTemplate, *http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateGet(webId string, localVarOptionals map[string]interface{}) (ElementTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -398,7 +394,7 @@ func (a *ElementTemplateApiService) ElementTemplateGet(ctx context.Context, webI
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -423,7 +419,6 @@ func (a *ElementTemplateApiService) ElementTemplateGet(ctx context.Context, webI
 /*
 	ElementTemplateApiService Get analysis templates for an element template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -432,7 +427,7 @@ func (a *ElementTemplateApiService) ElementTemplateGet(ctx context.Context, webI
 
 @return ItemsAnalysisTemplate
 */
-func (a *ElementTemplateApiService) ElementTemplateGetAnalysisTemplates(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAnalysisTemplate, *http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateGetAnalysisTemplates(webId string, localVarOptionals map[string]interface{}) (ItemsAnalysisTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -484,7 +479,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetAnalysisTemplates(ctx cont
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -510,7 +505,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetAnalysisTemplates(ctx cont
 	ElementTemplateApiService Get child attribute templates for an element template.
 
 If &#39;showInherited&#39; and &#39;showDescendants&#39; are &#39;true&#39;, it returns all the attribute templates from current element template and the base template.  If &#39;showInherited&#39; is &#39;false&#39;, it returns all the attribute templates from the current element template.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the element template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -524,7 +519,7 @@ If &#39;showInherited&#39; and &#39;showDescendants&#39; are &#39;true&#39;, it 
 
 @return ItemsAttributeTemplate
 */
-func (a *ElementTemplateApiService) ElementTemplateGetAttributeTemplates(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttributeTemplate, *http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateGetAttributeTemplates(webId string, localVarOptionals map[string]interface{}) (ItemsAttributeTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -606,7 +601,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetAttributeTemplates(ctx con
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -632,7 +627,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetAttributeTemplates(ctx con
 	ElementTemplateApiService Get base element templates for an element template.
 
 The root template will be returned first, followed by successive templates in the inheritance chain.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the element template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -642,7 +637,7 @@ The root template will be returned first, followed by successive templates in th
 
 @return ItemsElementTemplate
 */
-func (a *ElementTemplateApiService) ElementTemplateGetBaseElementTemplates(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsElementTemplate, *http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateGetBaseElementTemplates(webId string, localVarOptionals map[string]interface{}) (ItemsElementTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -700,7 +695,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetBaseElementTemplates(ctx c
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -726,7 +721,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetBaseElementTemplates(ctx c
 	ElementTemplateApiService Retrieve an element template by path.
 
 This method returns an element template based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the element template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -735,7 +730,7 @@ This method returns an element template based on the hierarchical path associate
 
 @return ElementTemplate
 */
-func (a *ElementTemplateApiService) ElementTemplateGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (ElementTemplate, *http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateGetByPath(path string, localVarOptionals map[string]interface{}) (ElementTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -787,7 +782,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetByPath(ctx context.Context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -812,7 +807,6 @@ func (a *ElementTemplateApiService) ElementTemplateGetByPath(ctx context.Context
 /*
 	ElementTemplateApiService Get an element template&#39;s categories.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -822,7 +816,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetByPath(ctx context.Context
 
 @return ItemsElementCategory
 */
-func (a *ElementTemplateApiService) ElementTemplateGetCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsElementCategory, *http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateGetCategories(webId string, localVarOptionals map[string]interface{}) (ItemsElementCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -880,7 +874,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetCategories(ctx context.Con
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -905,7 +899,6 @@ func (a *ElementTemplateApiService) ElementTemplateGetCategories(ctx context.Con
 /*
 	ElementTemplateApiService Get derived element templates for an element template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -916,7 +909,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetCategories(ctx context.Con
 
 @return ItemsElementTemplate
 */
-func (a *ElementTemplateApiService) ElementTemplateGetDerivedElementTemplates(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsElementTemplate, *http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateGetDerivedElementTemplates(webId string, localVarOptionals map[string]interface{}) (ItemsElementTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -980,7 +973,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetDerivedElementTemplates(ct
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1005,7 +998,6 @@ func (a *ElementTemplateApiService) ElementTemplateGetDerivedElementTemplates(ct
 /*
 	ElementTemplateApiService Get notification rule templates for an element template
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1014,7 +1006,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetDerivedElementTemplates(ct
 
 @return ItemsNotificationRuleTemplate
 */
-func (a *ElementTemplateApiService) ElementTemplateGetNotificationRuleTemplates(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsNotificationRuleTemplate, *http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateGetNotificationRuleTemplates(webId string, localVarOptionals map[string]interface{}) (ItemsNotificationRuleTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1066,7 +1058,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetNotificationRuleTemplates(
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1091,7 +1083,6 @@ func (a *ElementTemplateApiService) ElementTemplateGetNotificationRuleTemplates(
 /*
 	ElementTemplateApiService Get the security information of the specified security item associated with the element template for a specified user.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element template for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -1102,7 +1093,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetNotificationRuleTemplates(
 
 @return ItemsSecurityRights
 */
-func (a *ElementTemplateApiService) ElementTemplateGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateGetSecurity(webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1161,7 +1152,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetSecurity(ctx context.Conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1186,7 +1177,6 @@ func (a *ElementTemplateApiService) ElementTemplateGetSecurity(ctx context.Conte
 /*
 	ElementTemplateApiService Retrieve the security entries associated with the element template based on the specified criteria. By default, all security entries for this element template are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1196,7 +1186,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetSecurity(ctx context.Conte
 
 @return ItemsSecurityEntry
 */
-func (a *ElementTemplateApiService) ElementTemplateGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateGetSecurityEntries(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1254,7 +1244,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetSecurityEntries(ctx contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1279,7 +1269,6 @@ func (a *ElementTemplateApiService) ElementTemplateGetSecurityEntries(ctx contex
 /*
 	ElementTemplateApiService Retrieve the security entry associated with the element template with the specified name.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the element template.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -1289,7 +1278,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetSecurityEntries(ctx contex
 
 @return ItemsSecurityEntry
 */
-func (a *ElementTemplateApiService) ElementTemplateGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateGetSecurityEntryByName(name string, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1342,7 +1331,7 @@ func (a *ElementTemplateApiService) ElementTemplateGetSecurityEntryByName(ctx co
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1368,12 +1357,12 @@ func (a *ElementTemplateApiService) ElementTemplateGetSecurityEntryByName(ctx co
 	ElementTemplateApiService Update an element template by replacing items in its definition.
 
 Updating the InstanceType property of an element template will not affect any elements that have already been created from this template; it will only affect any future elements created from this template. All other changes will be propagated to elements based on this template.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the element template to update.
 @param template A partial element template containing the desired changes.
 @return
 */
-func (a *ElementTemplateApiService) ElementTemplateUpdate(ctx context.Context, webId string, template ElementTemplate) (*http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateUpdate(webId string, template ElementTemplate) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -1413,7 +1402,7 @@ func (a *ElementTemplateApiService) ElementTemplateUpdate(ctx context.Context, w
 	}
 	// body params
 	localVarPostBody = &template
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -1434,7 +1423,6 @@ func (a *ElementTemplateApiService) ElementTemplateUpdate(ctx context.Context, w
 /*
 	ElementTemplateApiService Update a security entry owned by the element template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the element template where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
@@ -1444,7 +1432,7 @@ func (a *ElementTemplateApiService) ElementTemplateUpdate(ctx context.Context, w
 
 @return
 */
-func (a *ElementTemplateApiService) ElementTemplateUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementTemplateApiService) ElementTemplateUpdateSecurityEntry(name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -1492,7 +1480,7 @@ func (a *ElementTemplateApiService) ElementTemplateUpdateSecurityEntry(ctx conte
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

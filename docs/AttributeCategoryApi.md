@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **AttributeCategoryCreateSecurityEntry**
-> AttributeCategoryCreateSecurityEntry(ctx, webId, securityEntry, optional)
+> AttributeCategoryCreateSecurityEntry(a.client.ctx, webId, securityEntry, optional)
 Create a security entry owned by the attribute category.
 
 ### Required Parameters
@@ -55,7 +55,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeCategoryDelete**
-> AttributeCategoryDelete(ctx, webId)
+> AttributeCategoryDelete(a.client.ctx, webId)
 Delete an attribute category.
 
 ### Required Parameters
@@ -81,7 +81,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeCategoryDeleteSecurityEntry**
-> AttributeCategoryDeleteSecurityEntry(ctx, name, webId, optional)
+> AttributeCategoryDeleteSecurityEntry(a.client.ctx, name, webId, optional)
 Delete a security entry owned by the attribute category.
 
 ### Required Parameters
@@ -118,7 +118,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeCategoryGet**
-> AttributeCategory AttributeCategoryGet(ctx, webId, optional)
+> AttributeCategory AttributeCategoryGet(a.client.ctx, webId, optional)
 Retrieve an attribute category.
 
 ### Required Parameters
@@ -154,7 +154,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeCategoryGetByPath**
-> AttributeCategory AttributeCategoryGetByPath(ctx, path, optional)
+> AttributeCategory AttributeCategoryGetByPath(a.client.ctx, path, optional)
 Retrieve an attribute category by path.
 
 ### Required Parameters
@@ -190,7 +190,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeCategoryGetSecurity**
-> ItemsSecurityRights AttributeCategoryGetSecurity(ctx, webId, userIdentity, optional)
+> ItemsSecurityRights AttributeCategoryGetSecurity(a.client.ctx, webId, userIdentity, optional)
 Get the security information of the specified security item associated with the attribute category for a specified user.
 
 ### Required Parameters
@@ -229,7 +229,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeCategoryGetSecurityEntries**
-> ItemsSecurityEntry AttributeCategoryGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry AttributeCategoryGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries associated with the attribute category based on the specified criteria. By default, all security entries for this attribute category are returned.
 
 ### Required Parameters
@@ -266,7 +266,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeCategoryGetSecurityEntryByName**
-> SecurityEntry AttributeCategoryGetSecurityEntryByName(ctx, name, webId, optional)
+> SecurityEntry AttributeCategoryGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry associated with the attribute category with the specified name.
 
 ### Required Parameters
@@ -304,7 +304,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeCategoryUpdate**
-> AttributeCategoryUpdate(ctx, webId, category)
+> AttributeCategoryUpdate(a.client.ctx, webId, category)
 Update an attribute category by replacing items in its definition.
 
 ### Required Parameters
@@ -331,7 +331,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeCategoryUpdateSecurityEntry**
-> AttributeCategoryUpdateSecurityEntry(ctx, name, webId, securityEntry, optional)
+> AttributeCategoryUpdateSecurityEntry(a.client.ctx, name, webId, securityEntry, optional)
 Update a security entry owned by the attribute category.
 
 ### Required Parameters

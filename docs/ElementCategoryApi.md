@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **ElementCategoryCreateSecurityEntry**
-> ElementCategoryCreateSecurityEntry(ctx, webId, securityEntry, optional)
+> ElementCategoryCreateSecurityEntry(a.client.ctx, webId, securityEntry, optional)
 Create a security entry owned by the element category.
 
 ### Required Parameters
@@ -55,7 +55,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCategoryDelete**
-> ElementCategoryDelete(ctx, webId)
+> ElementCategoryDelete(a.client.ctx, webId)
 Delete an element category.
 
 ### Required Parameters
@@ -81,7 +81,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCategoryDeleteSecurityEntry**
-> ElementCategoryDeleteSecurityEntry(ctx, name, webId, optional)
+> ElementCategoryDeleteSecurityEntry(a.client.ctx, name, webId, optional)
 Delete a security entry owned by the element category.
 
 ### Required Parameters
@@ -118,7 +118,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCategoryGet**
-> ElementCategory ElementCategoryGet(ctx, webId, optional)
+> ElementCategory ElementCategoryGet(a.client.ctx, webId, optional)
 Retrieve an element category.
 
 ### Required Parameters
@@ -154,7 +154,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCategoryGetByPath**
-> ElementCategory ElementCategoryGetByPath(ctx, path, optional)
+> ElementCategory ElementCategoryGetByPath(a.client.ctx, path, optional)
 Retrieve an element category by path.
 
 ### Required Parameters
@@ -190,7 +190,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCategoryGetSecurity**
-> ItemsSecurityRights ElementCategoryGetSecurity(ctx, webId, userIdentity, optional)
+> ItemsSecurityRights ElementCategoryGetSecurity(a.client.ctx, webId, userIdentity, optional)
 Get the security information of the specified security item associated with the element category for a specified user.
 
 ### Required Parameters
@@ -229,7 +229,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCategoryGetSecurityEntries**
-> ItemsSecurityEntry ElementCategoryGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry ElementCategoryGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries associated with the element category based on the specified criteria. By default, all security entries for this element category are returned.
 
 ### Required Parameters
@@ -266,7 +266,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCategoryGetSecurityEntryByName**
-> SecurityEntry ElementCategoryGetSecurityEntryByName(ctx, name, webId, optional)
+> SecurityEntry ElementCategoryGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry associated with the element category with the specified name.
 
 ### Required Parameters
@@ -304,7 +304,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCategoryUpdate**
-> ElementCategoryUpdate(ctx, webId, elementCategory)
+> ElementCategoryUpdate(a.client.ctx, webId, elementCategory)
 Update an element category by replacing items in its definition.
 
 ### Required Parameters
@@ -331,7 +331,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementCategoryUpdateSecurityEntry**
-> ElementCategoryUpdateSecurityEntry(ctx, name, webId, securityEntry, optional)
+> ElementCategoryUpdateSecurityEntry(a.client.ctx, name, webId, securityEntry, optional)
 Update a security entry owned by the element category.
 
 ### Required Parameters

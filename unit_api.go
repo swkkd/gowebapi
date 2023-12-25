@@ -36,11 +36,10 @@ type UnitApiService service
 /*
 	UnitApiService Delete a unit.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the unit.
 @return
 */
-func (a *UnitApiService) UnitDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *UnitApiService) UnitDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -78,7 +77,7 @@ func (a *UnitApiService) UnitDelete(ctx context.Context, webId string) (*http.Re
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -99,7 +98,6 @@ func (a *UnitApiService) UnitDelete(ctx context.Context, webId string) (*http.Re
 /*
 	UnitApiService Retrieve a unit.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the unit.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -108,7 +106,7 @@ func (a *UnitApiService) UnitDelete(ctx context.Context, webId string) (*http.Re
 
 @return Unit
 */
-func (a *UnitApiService) UnitGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (Unit, *http.Response, error) {
+func (a *UnitApiService) UnitGet(webId string, localVarOptionals map[string]interface{}) (Unit, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -160,7 +158,7 @@ func (a *UnitApiService) UnitGet(ctx context.Context, webId string, localVarOpti
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -185,7 +183,6 @@ func (a *UnitApiService) UnitGet(ctx context.Context, webId string, localVarOpti
 /*
 	UnitApiService Retrieve a unit by path.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param path The path to the unit.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -194,7 +191,7 @@ func (a *UnitApiService) UnitGet(ctx context.Context, webId string, localVarOpti
 
 @return Unit
 */
-func (a *UnitApiService) UnitGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (Unit, *http.Response, error) {
+func (a *UnitApiService) UnitGetByPath(path string, localVarOptionals map[string]interface{}) (Unit, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -246,7 +243,7 @@ func (a *UnitApiService) UnitGetByPath(ctx context.Context, path string, localVa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -271,12 +268,11 @@ func (a *UnitApiService) UnitGetByPath(ctx context.Context, path string, localVa
 /*
 	UnitApiService Update a unit.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the unit.
 @param unitDTO A partial unit containing the desired changes.
 @return
 */
-func (a *UnitApiService) UnitUpdate(ctx context.Context, webId string, unitDTO Unit) (*http.Response, error) {
+func (a *UnitApiService) UnitUpdate(webId string, unitDTO Unit) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -316,7 +312,7 @@ func (a *UnitApiService) UnitUpdate(ctx context.Context, webId string, unitDTO U
 	}
 	// body params
 	localVarPostBody = &unitDTO
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

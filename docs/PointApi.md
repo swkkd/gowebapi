@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **PointDelete**
-> PointDelete(ctx, webId)
+> PointDelete(a.client.ctx, webId)
 Delete a point.
 
 ### Required Parameters
@@ -40,7 +40,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PointGet**
-> Point PointGet(ctx, webId, optional)
+> Point PointGet(a.client.ctx, webId, optional)
 Get a point.
 
 ### Required Parameters
@@ -76,7 +76,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PointGetAttributeByName**
-> PointAttribute PointGetAttributeByName(ctx, name, webId, optional)
+> PointAttribute PointGetAttributeByName(a.client.ctx, name, webId, optional)
 Get a point attribute by name.
 
 ### Required Parameters
@@ -114,7 +114,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PointGetAttributes**
-> ItemsPointAttribute PointGetAttributes(ctx, webId, optional)
+> ItemsPointAttribute PointGetAttributes(a.client.ctx, webId, optional)
 Get point attributes.
 
 ### Required Parameters
@@ -152,7 +152,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PointGetByPath**
-> Point PointGetByPath(ctx, path, optional)
+> Point PointGetByPath(a.client.ctx, path, optional)
 Get a point by path.
 
 This method returns a PI Point based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -190,7 +190,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PointGetMultiple**
-> ItemsItemPoint PointGetMultiple(ctx, optional)
+> ItemsItemPoint PointGetMultiple(a.client.ctx, optional)
 Retrieve multiple points by web id or path.
 
 ### Required Parameters
@@ -228,7 +228,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PointUpdate**
-> PointUpdate(ctx, webId, pointDTO)
+> PointUpdate(a.client.ctx, webId, pointDTO)
 Update a point.
 
 ### Required Parameters

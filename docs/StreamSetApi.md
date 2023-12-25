@@ -31,7 +31,7 @@ Method | HTTP request | Description
 
 
 # **StreamSetGetChannel**
-> StreamSetGetChannel(ctx, webId, optional)
+> StreamSetGetChannel(a.client.ctx, webId, optional)
 Opens a channel that will send messages about any value changes for the attributes of an Element, Event Frame, or Attribute.
 
 ### Required Parameters
@@ -74,7 +74,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetChannelAdHoc**
-> StreamSetGetChannelAdHoc(ctx, webId, optional)
+> StreamSetGetChannelAdHoc(a.client.ctx, webId, optional)
 Opens a channel that will send messages about any value changes for the specified streams.
 
 ### Required Parameters
@@ -111,7 +111,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetEnd**
-> ItemsStreamValue StreamSetGetEnd(ctx, webId, optional)
+> ItemsStreamValue StreamSetGetEnd(a.client.ctx, webId, optional)
 Returns End of stream values of the attributes for an Element, Event Frame or Attribute
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -157,7 +157,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetEndAdHoc**
-> ItemsStreamValues StreamSetGetEndAdHoc(ctx, webId, optional)
+> ItemsStreamValues StreamSetGetEndAdHoc(a.client.ctx, webId, optional)
 Returns End Of Stream values for attributes of the specified streams
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -197,7 +197,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetInterpolated**
-> ItemsStreamValues StreamSetGetInterpolated(ctx, webId, optional)
+> ItemsStreamValues StreamSetGetInterpolated(a.client.ctx, webId, optional)
 Returns interpolated values of attributes for an element, event frame or attribute over the specified time range at the specified sampling interval.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -251,7 +251,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetInterpolatedAdHoc**
-> ItemsStreamValues StreamSetGetInterpolatedAdHoc(ctx, webId, optional)
+> ItemsStreamValues StreamSetGetInterpolatedAdHoc(a.client.ctx, webId, optional)
 Returns interpolated values of the specified streams over the specified time range at the specified sampling interval.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -299,7 +299,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetInterpolatedAtTimes**
-> ItemsStreamValues StreamSetGetInterpolatedAtTimes(ctx, webId, time, optional)
+> ItemsStreamValues StreamSetGetInterpolatedAtTimes(a.client.ctx, webId, time, optional)
 Returns interpolated values of attributes for an element, event frame or attribute at the specified times.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -349,7 +349,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetInterpolatedAtTimesAdHoc**
-> ItemsStreamValues StreamSetGetInterpolatedAtTimesAdHoc(ctx, time, webId, optional)
+> ItemsStreamValues StreamSetGetInterpolatedAtTimesAdHoc(a.client.ctx, time, webId, optional)
 Returns interpolated values of the specified streams at the specified times.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -393,7 +393,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetPlot**
-> ItemsStreamValues StreamSetGetPlot(ctx, webId, optional)
+> ItemsStreamValues StreamSetGetPlot(a.client.ctx, webId, optional)
 Returns values of attributes for an element, event frame or attribute over the specified time range suitable for plotting over the number of intervals (typically represents pixels).
 
 For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state). Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -443,7 +443,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetPlotAdHoc**
-> ItemsStreamValues StreamSetGetPlotAdHoc(ctx, webId, optional)
+> ItemsStreamValues StreamSetGetPlotAdHoc(a.client.ctx, webId, optional)
 Returns values of attributes for the specified streams over the specified time range suitable for plotting over the number of intervals (typically represents pixels).
 
 For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state). Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -487,7 +487,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetRecorded**
-> ItemsStreamValues StreamSetGetRecorded(ctx, webId, optional)
+> ItemsStreamValues StreamSetGetRecorded(a.client.ctx, webId, optional)
 Returns recorded values of the attributes for an element, event frame, or attribute.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -540,7 +540,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetRecordedAdHoc**
-> ItemsStreamValues StreamSetGetRecordedAdHoc(ctx, webId, optional)
+> ItemsStreamValues StreamSetGetRecordedAdHoc(a.client.ctx, webId, optional)
 Returns recorded values of the specified streams.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -587,7 +587,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetRecordedAtTime**
-> ItemsStreamValue StreamSetGetRecordedAtTime(ctx, webId, time, optional)
+> ItemsStreamValue StreamSetGetRecordedAtTime(a.client.ctx, webId, time, optional)
 Returns recorded values of the attributes for an element, event frame, or attribute.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -635,7 +635,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetRecordedAtTimeAdHoc**
-> ItemsStreamValue StreamSetGetRecordedAtTimeAdHoc(ctx, time, webId, optional)
+> ItemsStreamValue StreamSetGetRecordedAtTimeAdHoc(a.client.ctx, time, webId, optional)
 Returns recorded values based on the passed time and retrieval mode.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -677,7 +677,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetRecordedAtTimes**
-> ItemsStreamValues StreamSetGetRecordedAtTimes(ctx, webId, time, optional)
+> ItemsStreamValues StreamSetGetRecordedAtTimes(a.client.ctx, webId, time, optional)
 Returns recorded values of attributes for an element, event frame or attribute at the specified times.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -726,7 +726,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetRecordedAtTimesAdHoc**
-> ItemsStreamValues StreamSetGetRecordedAtTimesAdHoc(ctx, time, webId, optional)
+> ItemsStreamValues StreamSetGetRecordedAtTimesAdHoc(a.client.ctx, time, webId, optional)
 Returns recorded values of the specified streams at the specified times.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -769,7 +769,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetSummaries**
-> ItemsStreamSummaries StreamSetGetSummaries(ctx, webId, optional)
+> ItemsStreamSummaries StreamSetGetSummaries(a.client.ctx, webId, optional)
 Returns summary values of the attributes for an element, event frame or attribute.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -823,7 +823,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetSummariesAdHoc**
-> ItemsStreamSummaries StreamSetGetSummariesAdHoc(ctx, webId, optional)
+> ItemsStreamSummaries StreamSetGetSummariesAdHoc(a.client.ctx, webId, optional)
 Returns summary values of the specified streams.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -871,7 +871,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetValues**
-> ItemsStreamValue StreamSetGetValues(ctx, webId, optional)
+> ItemsStreamValue StreamSetGetValues(a.client.ctx, webId, optional)
 Returns values of the attributes for an Element, Event Frame or Attribute at the specified time.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -919,7 +919,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetGetValuesAdHoc**
-> ItemsStreamValue StreamSetGetValuesAdHoc(ctx, webId, optional)
+> ItemsStreamValue StreamSetGetValuesAdHoc(a.client.ctx, webId, optional)
 Returns values of the specified streams.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -961,7 +961,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetUpdateValue**
-> ItemsSubstatus StreamSetUpdateValue(ctx, webId, values, optional)
+> ItemsSubstatus StreamSetUpdateValue(a.client.ctx, webId, values, optional)
 Updates a single value for the specified streams.
 
 ### Required Parameters
@@ -999,7 +999,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetUpdateValueAdHoc**
-> ItemsSubstatus StreamSetUpdateValueAdHoc(ctx, values, optional)
+> ItemsSubstatus StreamSetUpdateValueAdHoc(a.client.ctx, values, optional)
 Updates a single value for the specified streams.
 
 ### Required Parameters
@@ -1035,7 +1035,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetUpdateValues**
-> ItemsItemsSubstatus StreamSetUpdateValues(ctx, webId, values, optional)
+> ItemsItemsSubstatus StreamSetUpdateValues(a.client.ctx, webId, values, optional)
 Updates multiple values for the specified streams.
 
 ### Required Parameters
@@ -1073,7 +1073,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamSetUpdateValuesAdHoc**
-> ItemsItemsSubstatus StreamSetUpdateValuesAdHoc(ctx, values, optional)
+> ItemsItemsSubstatus StreamSetUpdateValuesAdHoc(a.client.ctx, values, optional)
 Updates multiple values for the specified streams.
 
 ### Required Parameters

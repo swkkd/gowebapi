@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **AnalysisCreateSecurityEntry**
-> AnalysisCreateSecurityEntry(ctx, webId, securityEntry, optional)
+> AnalysisCreateSecurityEntry(a.client.ctx, webId, securityEntry, optional)
 Create a security entry owned by the analysis.
 
 ### Required Parameters
@@ -57,7 +57,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisDelete**
-> AnalysisDelete(ctx, webId)
+> AnalysisDelete(a.client.ctx, webId)
 Delete an Analysis.
 
 ### Required Parameters
@@ -83,7 +83,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisDeleteSecurityEntry**
-> AnalysisDeleteSecurityEntry(ctx, name, webId, optional)
+> AnalysisDeleteSecurityEntry(a.client.ctx, name, webId, optional)
 Delete a security entry owned by the analysis.
 
 ### Required Parameters
@@ -120,7 +120,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisGet**
-> Analysis AnalysisGet(ctx, webId, optional)
+> Analysis AnalysisGet(a.client.ctx, webId, optional)
 Retrieve an Analysis.
 
 ### Required Parameters
@@ -156,7 +156,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisGetAnalysesQuery**
-> ItemsAnalysis AnalysisGetAnalysesQuery(ctx, optional)
+> ItemsAnalysis AnalysisGetAnalysesQuery(a.client.ctx, optional)
 Retrieve analyses based on the specified conditions. By default, returns all analyses.
 
 ### Required Parameters
@@ -194,7 +194,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisGetByPath**
-> Analysis AnalysisGetByPath(ctx, path, optional)
+> Analysis AnalysisGetByPath(a.client.ctx, path, optional)
 Retrieve an Analysis by path.
 
 This method returns an Analysis based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -232,7 +232,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisGetCategories**
-> ItemsAnalysisCategory AnalysisGetCategories(ctx, webId, optional)
+> ItemsAnalysisCategory AnalysisGetCategories(a.client.ctx, webId, optional)
 Get an Analysis' categories.
 
 ### Required Parameters
@@ -268,7 +268,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisGetSecurity**
-> ItemsSecurityRights AnalysisGetSecurity(ctx, webId, userIdentity, optional)
+> ItemsSecurityRights AnalysisGetSecurity(a.client.ctx, webId, userIdentity, optional)
 Get the security information of the specified security item associated with the Analysis for a specified user.
 
 ### Required Parameters
@@ -307,7 +307,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisGetSecurityEntries**
-> ItemsSecurityEntry AnalysisGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry AnalysisGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries associated with the analysis based on the specified criteria. By default, all security entries for this analysis are returned.
 
 ### Required Parameters
@@ -344,7 +344,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisGetSecurityEntryByName**
-> SecurityEntry AnalysisGetSecurityEntryByName(ctx, name, webId, optional)
+> SecurityEntry AnalysisGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry associated with the analysis with the specified name.
 
 ### Required Parameters
@@ -382,7 +382,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisUpdate**
-> AnalysisUpdate(ctx, webId, analysis)
+> AnalysisUpdate(a.client.ctx, webId, analysis)
 Update an Analysis.
 
 ### Required Parameters
@@ -409,7 +409,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisUpdateSecurityEntry**
-> AnalysisUpdateSecurityEntry(ctx, name, webId, securityEntry, optional)
+> AnalysisUpdateSecurityEntry(a.client.ctx, name, webId, securityEntry, optional)
 Update a security entry owned by the analysis.
 
 ### Required Parameters

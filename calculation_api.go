@@ -35,7 +35,6 @@ type CalculationApiService service
 /*
 	CalculationApiService Returns results of evaluating the expression over the time range from the start time to the end time at a defined interval.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
@@ -47,7 +46,7 @@ type CalculationApiService service
 
 @return TimedValues
 */
-func (a *CalculationApiService) CalculationGetAtIntervals(ctx context.Context, localVarOptionals map[string]interface{}) (TimedValues, *http.Response, error) {
+func (a *CalculationApiService) CalculationGetAtIntervals(localVarOptionals map[string]interface{}) (TimedValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -122,7 +121,7 @@ func (a *CalculationApiService) CalculationGetAtIntervals(ctx context.Context, l
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -147,7 +146,6 @@ func (a *CalculationApiService) CalculationGetAtIntervals(ctx context.Context, l
 /*
 	CalculationApiService Returns the result of evaluating the expression at each point in time over the time range from the start time to the end time where a recorded value exists for a member of the expression.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
@@ -158,7 +156,7 @@ func (a *CalculationApiService) CalculationGetAtIntervals(ctx context.Context, l
 
 @return TimedValues
 */
-func (a *CalculationApiService) CalculationGetAtRecorded(ctx context.Context, localVarOptionals map[string]interface{}) (TimedValues, *http.Response, error) {
+func (a *CalculationApiService) CalculationGetAtRecorded(localVarOptionals map[string]interface{}) (TimedValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -227,7 +225,7 @@ func (a *CalculationApiService) CalculationGetAtRecorded(ctx context.Context, lo
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -252,7 +250,6 @@ func (a *CalculationApiService) CalculationGetAtRecorded(ctx context.Context, lo
 /*
 	CalculationApiService Returns the result of evaluating the expression at the specified timestamps.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "expression" (string) A string containing the expression to be evaluated. The syntax for the expression generally follows the Performance Equation syntax as described in the PI Server documentation, with the exception that expressions which target AF objects use attribute names in place of tag names in the equation.
@@ -263,7 +260,7 @@ func (a *CalculationApiService) CalculationGetAtRecorded(ctx context.Context, lo
 
 @return TimedValues
 */
-func (a *CalculationApiService) CalculationGetAtTimes(ctx context.Context, localVarOptionals map[string]interface{}) (TimedValues, *http.Response, error) {
+func (a *CalculationApiService) CalculationGetAtTimes(localVarOptionals map[string]interface{}) (TimedValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -329,7 +326,7 @@ func (a *CalculationApiService) CalculationGetAtTimes(ctx context.Context, local
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -354,7 +351,6 @@ func (a *CalculationApiService) CalculationGetAtTimes(ctx context.Context, local
 /*
 	CalculationApiService Returns the result of evaluating the expression over the time range from the start time to the end time. The time range is first divided into a number of summary intervals. Then the calculation is performed for the specified summaries over each interval.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "calculationBasis" (string) Specifies the method of evaluating the data over the time range. The default is &#39;TimeWeighted&#39;.
@@ -371,7 +367,7 @@ func (a *CalculationApiService) CalculationGetAtTimes(ctx context.Context, local
 
 @return ItemsSummaryValue
 */
-func (a *CalculationApiService) CalculationGetSummary(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsSummaryValue, *http.Response, error) {
+func (a *CalculationApiService) CalculationGetSummary(localVarOptionals map[string]interface{}) (ItemsSummaryValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -473,7 +469,7 @@ func (a *CalculationApiService) CalculationGetSummary(ctx context.Context, local
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}

@@ -34,10 +34,10 @@ type HomeApiService service
 
 /*
 HomeApiService Get top level links for this PI System Web API instance.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @return Landing
 */
-func (a *HomeApiService) HomeGet(ctx context.Context) (Landing, *http.Response, error) {
+func (a *HomeApiService) HomeGet() (Landing, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -75,7 +75,7 @@ func (a *HomeApiService) HomeGet(ctx context.Context) (Landing, *http.Response, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}

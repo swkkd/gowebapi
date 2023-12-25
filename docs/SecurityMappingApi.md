@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **SecurityMappingDelete**
-> SecurityMappingDelete(ctx, webId)
+> SecurityMappingDelete(a.client.ctx, webId)
 Delete a security mapping.
 
 ### Required Parameters
@@ -40,7 +40,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SecurityMappingGet**
-> SecurityMapping SecurityMappingGet(ctx, webId, optional)
+> SecurityMapping SecurityMappingGet(a.client.ctx, webId, optional)
 Retrieve a security mapping.
 
 ### Required Parameters
@@ -76,7 +76,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SecurityMappingGetByPath**
-> SecurityMapping SecurityMappingGetByPath(ctx, path, optional)
+> SecurityMapping SecurityMappingGetByPath(a.client.ctx, path, optional)
 Retrieve a security mapping by path.
 
 This method returns a security mapping based on the path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -114,7 +114,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SecurityMappingGetSecurity**
-> ItemsSecurityRights SecurityMappingGetSecurity(ctx, webId, userIdentity, optional)
+> ItemsSecurityRights SecurityMappingGetSecurity(a.client.ctx, webId, userIdentity, optional)
 Get the security information of the specified security item associated with the security mapping for a specified user.
 
 ### Required Parameters
@@ -153,7 +153,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SecurityMappingGetSecurityEntries**
-> ItemsSecurityEntry SecurityMappingGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry SecurityMappingGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries associated with the security mapping based on the specified criteria. By default, all security entries for this security mapping are returned.
 
 ### Required Parameters
@@ -190,7 +190,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SecurityMappingGetSecurityEntryByName**
-> SecurityEntry SecurityMappingGetSecurityEntryByName(ctx, name, webId, optional)
+> SecurityEntry SecurityMappingGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry associated with the security mapping with the specified name.
 
 ### Required Parameters
@@ -228,7 +228,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SecurityMappingUpdate**
-> SecurityMappingUpdate(ctx, webId, securityMapping)
+> SecurityMappingUpdate(a.client.ctx, webId, securityMapping)
 Update a security mapping by replacing items in its definition.
 
 ### Required Parameters

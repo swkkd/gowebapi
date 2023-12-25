@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **TableCategoryCreateSecurityEntry**
-> TableCategoryCreateSecurityEntry(ctx, webId, securityEntry, optional)
+> TableCategoryCreateSecurityEntry(a.client.ctx, webId, securityEntry, optional)
 Create a security entry owned by the table category.
 
 ### Required Parameters
@@ -55,7 +55,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableCategoryDelete**
-> TableCategoryDelete(ctx, webId)
+> TableCategoryDelete(a.client.ctx, webId)
 Delete a table category.
 
 ### Required Parameters
@@ -81,7 +81,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableCategoryDeleteSecurityEntry**
-> TableCategoryDeleteSecurityEntry(ctx, name, webId, optional)
+> TableCategoryDeleteSecurityEntry(a.client.ctx, name, webId, optional)
 Delete a security entry owned by the table category.
 
 ### Required Parameters
@@ -118,7 +118,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableCategoryGet**
-> TableCategory TableCategoryGet(ctx, webId, optional)
+> TableCategory TableCategoryGet(a.client.ctx, webId, optional)
 Retrieve a table category.
 
 ### Required Parameters
@@ -154,7 +154,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableCategoryGetByPath**
-> TableCategory TableCategoryGetByPath(ctx, path, optional)
+> TableCategory TableCategoryGetByPath(a.client.ctx, path, optional)
 Retrieve a table category by path.
 
 This method returns a Table Category based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -192,7 +192,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableCategoryGetSecurity**
-> ItemsSecurityRights TableCategoryGetSecurity(ctx, webId, userIdentity, optional)
+> ItemsSecurityRights TableCategoryGetSecurity(a.client.ctx, webId, userIdentity, optional)
 Get the security information of the specified security item associated with the table category for a specified user.
 
 ### Required Parameters
@@ -231,7 +231,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableCategoryGetSecurityEntries**
-> ItemsSecurityEntry TableCategoryGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry TableCategoryGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries associated with the table category based on the specified criteria. By default, all security entries for this table category are returned.
 
 ### Required Parameters
@@ -268,7 +268,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableCategoryGetSecurityEntryByName**
-> SecurityEntry TableCategoryGetSecurityEntryByName(ctx, name, webId, optional)
+> SecurityEntry TableCategoryGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry associated with the table category with the specified name.
 
 ### Required Parameters
@@ -306,7 +306,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableCategoryUpdate**
-> TableCategoryUpdate(ctx, webId, tableCategory)
+> TableCategoryUpdate(a.client.ctx, webId, tableCategory)
 Update a table category by replacing items in its definition.
 
 ### Required Parameters
@@ -333,7 +333,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableCategoryUpdateSecurityEntry**
-> TableCategoryUpdateSecurityEntry(ctx, name, webId, securityEntry, optional)
+> TableCategoryUpdateSecurityEntry(a.client.ctx, name, webId, securityEntry, optional)
 Update a security entry owned by the table category.
 
 ### Required Parameters

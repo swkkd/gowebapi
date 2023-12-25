@@ -29,7 +29,7 @@ Method | HTTP request | Description
 
 
 # **AssetServerCreateAssetDatabase**
-> AssetServerCreateAssetDatabase(ctx, webId, database, optional)
+> AssetServerCreateAssetDatabase(a.client.ctx, webId, database, optional)
 Create an asset database.
 
 ### Required Parameters
@@ -66,7 +66,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerCreateSecurityEntry**
-> AssetServerCreateSecurityEntry(ctx, webId, securityEntry, optional)
+> AssetServerCreateSecurityEntry(a.client.ctx, webId, securityEntry, optional)
 Create a security entry owned by the asset server.
 
 ### Required Parameters
@@ -105,7 +105,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerCreateSecurityIdentity**
-> AssetServerCreateSecurityIdentity(ctx, webId, securityIdentity, optional)
+> AssetServerCreateSecurityIdentity(a.client.ctx, webId, securityIdentity, optional)
 Create a security identity.
 
 ### Required Parameters
@@ -142,7 +142,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerCreateSecurityMapping**
-> AssetServerCreateSecurityMapping(ctx, webId, securityMapping, optional)
+> AssetServerCreateSecurityMapping(a.client.ctx, webId, securityMapping, optional)
 Create a security mapping.
 
 ### Required Parameters
@@ -179,7 +179,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerCreateUnitClass**
-> AssetServerCreateUnitClass(ctx, webId, unitClass, optional)
+> AssetServerCreateUnitClass(a.client.ctx, webId, unitClass, optional)
 Create a unit class in the specified Asset Server.
 
 ### Required Parameters
@@ -216,7 +216,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerDeleteSecurityEntry**
-> AssetServerDeleteSecurityEntry(ctx, name, webId, optional)
+> AssetServerDeleteSecurityEntry(a.client.ctx, name, webId, optional)
 Delete a security entry owned by the asset server.
 
 ### Required Parameters
@@ -254,7 +254,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerGet**
-> AssetServer AssetServerGet(ctx, webId, optional)
+> AssetServer AssetServerGet(a.client.ctx, webId, optional)
 Retrieve an Asset Server.
 
 ### Required Parameters
@@ -290,7 +290,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerGetAnalysisRulePlugIns**
-> ItemsAnalysisRulePlugIn AssetServerGetAnalysisRulePlugIns(ctx, webId, optional)
+> ItemsAnalysisRulePlugIn AssetServerGetAnalysisRulePlugIns(a.client.ctx, webId, optional)
 Retrieve a list of all Analysis Rule Plug-in's.
 
 ### Required Parameters
@@ -326,7 +326,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerGetByName**
-> AssetServer AssetServerGetByName(ctx, name, optional)
+> AssetServer AssetServerGetByName(a.client.ctx, name, optional)
 Retrieve an Asset Server by name.
 
 This method returns an asset server based on the name associated with it. Users should primarily search with the WebID when available.
@@ -364,7 +364,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerGetByPath**
-> AssetServer AssetServerGetByPath(ctx, path, optional)
+> AssetServer AssetServerGetByPath(a.client.ctx, path, optional)
 Retrieve an Asset Server by path.
 
 This method returns an asset server based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -402,7 +402,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerGetDatabases**
-> ItemsAssetDatabase AssetServerGetDatabases(ctx, webId, optional)
+> ItemsAssetDatabase AssetServerGetDatabases(a.client.ctx, webId, optional)
 Retrieve a list of all Asset Databases on the specified Asset Server.
 
 ### Required Parameters
@@ -438,7 +438,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerGetNotificationContactTemplates**
-> ItemsNotificationContactTemplate AssetServerGetNotificationContactTemplates(ctx, webId, optional)
+> ItemsNotificationContactTemplate AssetServerGetNotificationContactTemplates(a.client.ctx, webId, optional)
 Retrieve a list of all notification contact templates on the specified Asset Server.
 
 ### Required Parameters
@@ -474,7 +474,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerGetSecurity**
-> ItemsSecurityRights AssetServerGetSecurity(ctx, webId, securityItem, userIdentity, optional)
+> ItemsSecurityRights AssetServerGetSecurity(a.client.ctx, webId, securityItem, userIdentity, optional)
 Get the security information of the specified security item associated with the asset server for a specified user.
 
 ### Required Parameters
@@ -515,7 +515,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerGetSecurityEntries**
-> ItemsSecurityEntry AssetServerGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry AssetServerGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries of the specified security item associated with the asset server based on the specified criteria. By default, all security entries for this asset server are returned.
 
 ### Required Parameters
@@ -553,7 +553,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerGetSecurityEntryByName**
-> SecurityEntry AssetServerGetSecurityEntryByName(ctx, name, webId, optional)
+> SecurityEntry AssetServerGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry of the specified security item associated with the asset server with the specified name.
 
 ### Required Parameters
@@ -592,7 +592,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerGetSecurityIdentities**
-> ItemsSecurityIdentity AssetServerGetSecurityIdentities(ctx, webId, optional)
+> ItemsSecurityIdentity AssetServerGetSecurityIdentities(a.client.ctx, webId, optional)
 Retrieve security identities based on the specified criteria. By default, all security identities in the specified Asset Server are returned.
 
 ### Required Parameters
@@ -633,7 +633,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerGetSecurityIdentitiesForUser**
-> ItemsSecurityIdentity AssetServerGetSecurityIdentitiesForUser(ctx, webId, userIdentity, optional)
+> ItemsSecurityIdentity AssetServerGetSecurityIdentitiesForUser(a.client.ctx, webId, userIdentity, optional)
 Retrieve security identities for a specific user.
 
 ### Required Parameters
@@ -671,7 +671,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerGetSecurityMappings**
-> ItemsSecurityMapping AssetServerGetSecurityMappings(ctx, webId, optional)
+> ItemsSecurityMapping AssetServerGetSecurityMappings(a.client.ctx, webId, optional)
 Retrieve security mappings based on the specified criteria. By default, all security mappings in the specified Asset Server are returned.
 
 ### Required Parameters
@@ -712,7 +712,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerGetTimeRulePlugIns**
-> ItemsTimeRulePlugIn AssetServerGetTimeRulePlugIns(ctx, webId, optional)
+> ItemsTimeRulePlugIn AssetServerGetTimeRulePlugIns(a.client.ctx, webId, optional)
 Retrieve a list of all Time Rule Plug-in's.
 
 ### Required Parameters
@@ -748,7 +748,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerGetUnitClasses**
-> ItemsUnitClass AssetServerGetUnitClasses(ctx, webId, optional)
+> ItemsUnitClass AssetServerGetUnitClasses(a.client.ctx, webId, optional)
 Retrieve a list of all unit classes on the specified Asset Server.
 
 ### Required Parameters
@@ -784,7 +784,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerList**
-> ItemsAssetServer AssetServerList(ctx, optional)
+> ItemsAssetServer AssetServerList(a.client.ctx, optional)
 Retrieve a list of all Asset Servers known to this service.
 
 ### Required Parameters
@@ -818,7 +818,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssetServerUpdateSecurityEntry**
-> AssetServerUpdateSecurityEntry(ctx, name, webId, securityEntry, optional)
+> AssetServerUpdateSecurityEntry(a.client.ctx, name, webId, securityEntry, optional)
 Update a security entry owned by the asset server.
 
 ### Required Parameters

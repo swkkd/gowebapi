@@ -36,7 +36,6 @@ type AttributeApiService service
 /*
 	AttributeApiService Create a new attribute as a child of the specified attribute.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent attribute on which to create the attribute.
 @param attribute The definition of the new attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -45,7 +44,7 @@ type AttributeApiService service
 
 @return
 */
-func (a *AttributeApiService) AttributeCreateAttribute(ctx context.Context, webId string, attribute Attribute, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AttributeApiService) AttributeCreateAttribute(webId string, attribute Attribute, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -92,7 +91,7 @@ func (a *AttributeApiService) AttributeCreateAttribute(ctx context.Context, webI
 	}
 	// body params
 	localVarPostBody = &attribute
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -113,7 +112,6 @@ func (a *AttributeApiService) AttributeCreateAttribute(ctx context.Context, webI
 /*
 	AttributeApiService Create or update an attribute&#39;s DataReference configuration (Create/Update PI point for PI Point DataReference).
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -121,7 +119,7 @@ func (a *AttributeApiService) AttributeCreateAttribute(ctx context.Context, webI
 
 @return
 */
-func (a *AttributeApiService) AttributeCreateConfig(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AttributeApiService) AttributeCreateConfig(webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -166,7 +164,7 @@ func (a *AttributeApiService) AttributeCreateConfig(ctx context.Context, webId s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -187,11 +185,10 @@ func (a *AttributeApiService) AttributeCreateConfig(ctx context.Context, webId s
 /*
 	AttributeApiService Delete an attribute.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute.
 @return
 */
-func (a *AttributeApiService) AttributeDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *AttributeApiService) AttributeDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -229,7 +226,7 @@ func (a *AttributeApiService) AttributeDelete(ctx context.Context, webId string)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -250,7 +247,6 @@ func (a *AttributeApiService) AttributeDelete(ctx context.Context, webId string)
 /*
 	AttributeApiService Retrieve an attribute.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -259,7 +255,7 @@ func (a *AttributeApiService) AttributeDelete(ctx context.Context, webId string)
 
 @return Attribute
 */
-func (a *AttributeApiService) AttributeGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (Attribute, *http.Response, error) {
+func (a *AttributeApiService) AttributeGet(webId string, localVarOptionals map[string]interface{}) (Attribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -311,7 +307,7 @@ func (a *AttributeApiService) AttributeGet(ctx context.Context, webId string, lo
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -336,7 +332,6 @@ func (a *AttributeApiService) AttributeGet(ctx context.Context, webId string, lo
 /*
 	AttributeApiService Get the child attributes of the specified attribute.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -358,7 +353,7 @@ func (a *AttributeApiService) AttributeGet(ctx context.Context, webId string, lo
 
 @return ItemsAttribute
 */
-func (a *AttributeApiService) AttributeGetAttributes(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
+func (a *AttributeApiService) AttributeGetAttributes(webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -482,7 +477,7 @@ func (a *AttributeApiService) AttributeGetAttributes(ctx context.Context, webId 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -507,7 +502,6 @@ func (a *AttributeApiService) AttributeGetAttributes(ctx context.Context, webId 
 /*
 	AttributeApiService Retrieve attributes based on the specified conditions. Returns attributes using the specified search query string.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "databaseWebId" (string) The ID of the asset database to use as the root of the query.
@@ -519,7 +513,7 @@ func (a *AttributeApiService) AttributeGetAttributes(ctx context.Context, webId 
 
 @return ItemsAttribute
 */
-func (a *AttributeApiService) AttributeGetAttributesQuery(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
+func (a *AttributeApiService) AttributeGetAttributesQuery(localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -594,7 +588,7 @@ func (a *AttributeApiService) AttributeGetAttributesQuery(ctx context.Context, l
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -620,7 +614,7 @@ func (a *AttributeApiService) AttributeGetAttributesQuery(ctx context.Context, l
 	AttributeApiService Retrieve an attribute by path.
 
 This method returns an attribute based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -629,7 +623,7 @@ This method returns an attribute based on the hierarchical path associated with 
 
 @return Attribute
 */
-func (a *AttributeApiService) AttributeGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (Attribute, *http.Response, error) {
+func (a *AttributeApiService) AttributeGetByPath(path string, localVarOptionals map[string]interface{}) (Attribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -681,7 +675,7 @@ func (a *AttributeApiService) AttributeGetByPath(ctx context.Context, path strin
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -706,7 +700,6 @@ func (a *AttributeApiService) AttributeGetByPath(ctx context.Context, path strin
 /*
 	AttributeApiService Get an attribute&#39;s categories.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -715,7 +708,7 @@ func (a *AttributeApiService) AttributeGetByPath(ctx context.Context, path strin
 
 @return ItemsAttributeCategory
 */
-func (a *AttributeApiService) AttributeGetCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttributeCategory, *http.Response, error) {
+func (a *AttributeApiService) AttributeGetCategories(webId string, localVarOptionals map[string]interface{}) (ItemsAttributeCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -767,7 +760,7 @@ func (a *AttributeApiService) AttributeGetCategories(ctx context.Context, webId 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -792,7 +785,6 @@ func (a *AttributeApiService) AttributeGetCategories(ctx context.Context, webId 
 /*
 	AttributeApiService Retrieve multiple attributes by web id or path.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "asParallel" (bool) Specifies if the retrieval processes should be run in parallel on the server. This may improve the response time for large amounts of requested attributes. The default is &#39;false&#39;.
@@ -804,7 +796,7 @@ func (a *AttributeApiService) AttributeGetCategories(ctx context.Context, webId 
 
 @return ItemsItemAttribute
 */
-func (a *AttributeApiService) AttributeGetMultiple(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsItemAttribute, *http.Response, error) {
+func (a *AttributeApiService) AttributeGetMultiple(localVarOptionals map[string]interface{}) (ItemsItemAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -873,7 +865,7 @@ func (a *AttributeApiService) AttributeGetMultiple(ctx context.Context, localVar
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -898,7 +890,6 @@ func (a *AttributeApiService) AttributeGetMultiple(ctx context.Context, localVar
 /*
 	AttributeApiService Get the attribute&#39;s value. This call is intended for use with attributes that have no data reference only. For attributes with a data reference, consult the documentation for Streams.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -906,7 +897,7 @@ func (a *AttributeApiService) AttributeGetMultiple(ctx context.Context, localVar
 
 @return TimedValue
 */
-func (a *AttributeApiService) AttributeGetValue(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (TimedValue, *http.Response, error) {
+func (a *AttributeApiService) AttributeGetValue(webId string, localVarOptionals map[string]interface{}) (TimedValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -952,7 +943,7 @@ func (a *AttributeApiService) AttributeGetValue(ctx context.Context, webId strin
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -978,12 +969,12 @@ func (a *AttributeApiService) AttributeGetValue(ctx context.Context, webId strin
 	AttributeApiService Set the value of a configuration item attribute. For attributes with a data reference or non-configuration item attributes, consult the documentation for streams.
 
 Users must be aware of the value type that the attribute takes before changing the value. If a value entered by the user does not match the value type expressed in the attribute, it will not work or it will return an error. Users should also be careful of what the value type means, for instance, if a value type accepts strings and the user enters a number, the attribute will interpret it as a string of characters and not as the integer value that the user may have wanted.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the attribute.
 @param value The value to write.
 @return
 */
-func (a *AttributeApiService) AttributeSetValue(ctx context.Context, webId string, value TimedValue) (*http.Response, error) {
+func (a *AttributeApiService) AttributeSetValue(webId string, value TimedValue) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -1023,7 +1014,7 @@ func (a *AttributeApiService) AttributeSetValue(ctx context.Context, webId strin
 	}
 	// body params
 	localVarPostBody = &value
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -1045,12 +1036,12 @@ func (a *AttributeApiService) AttributeSetValue(ctx context.Context, webId strin
 	AttributeApiService Update an attribute by replacing items in its definition.
 
 If an attribute is based on a template, the user must make sure to update the attribute appropriately so that it does not conflict with the template&#39;s design. Once a template is applied to an attribute, it can not be changed.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the attribute.
 @param attribute A partial attribute containing the desired changes.
 @return
 */
-func (a *AttributeApiService) AttributeUpdate(ctx context.Context, webId string, attribute Attribute) (*http.Response, error) {
+func (a *AttributeApiService) AttributeUpdate(webId string, attribute Attribute) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -1090,7 +1081,7 @@ func (a *AttributeApiService) AttributeUpdate(ctx context.Context, webId string,
 	}
 	// body params
 	localVarPostBody = &attribute
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

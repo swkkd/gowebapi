@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **TimeRuleDelete**
-> TimeRuleDelete(ctx, webId)
+> TimeRuleDelete(a.client.ctx, webId)
 Delete a Time Rule.
 
 ### Required Parameters
@@ -37,7 +37,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TimeRuleGet**
-> TimeRule TimeRuleGet(ctx, webId, optional)
+> TimeRule TimeRuleGet(a.client.ctx, webId, optional)
 Retrieve a Time Rule.
 
 ### Required Parameters
@@ -73,7 +73,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TimeRuleGetByPath**
-> TimeRule TimeRuleGetByPath(ctx, path, optional)
+> TimeRule TimeRuleGetByPath(a.client.ctx, path, optional)
 Retrieve a Time Rule by path.
 
 This method returns a Time Rule based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -111,7 +111,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TimeRuleUpdate**
-> TimeRuleUpdate(ctx, webId, timeRule)
+> TimeRuleUpdate(a.client.ctx, webId, timeRule)
 Update a Time Rule by replacing items in its definition.
 
 ### Required Parameters

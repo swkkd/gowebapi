@@ -36,7 +36,6 @@ type AttributeTraitApiService service
 /*
 	AttributeTraitApiService Retrieve an attribute trait.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name or abbreviation of the attribute trait.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -44,7 +43,7 @@ type AttributeTraitApiService service
 
 @return AttributeTrait
 */
-func (a *AttributeTraitApiService) AttributeTraitGet(ctx context.Context, name string, localVarOptionals map[string]interface{}) (AttributeTrait, *http.Response, error) {
+func (a *AttributeTraitApiService) AttributeTraitGet(name string, localVarOptionals map[string]interface{}) (AttributeTrait, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -90,7 +89,7 @@ func (a *AttributeTraitApiService) AttributeTraitGet(ctx context.Context, name s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -115,7 +114,6 @@ func (a *AttributeTraitApiService) AttributeTraitGet(ctx context.Context, name s
 /*
 	AttributeTraitApiService Retrieve all attribute traits of the specified category/categories.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param category The category of the attribute traits. Multiple categories may be specified with multiple instances of the parameter. If the parameter is not specified, or if its value is \&quot;all\&quot;, then all attribute traits of all categories will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -123,7 +121,7 @@ func (a *AttributeTraitApiService) AttributeTraitGet(ctx context.Context, name s
 
 @return ItemsAttributeTrait
 */
-func (a *AttributeTraitApiService) AttributeTraitGetByCategory(ctx context.Context, category []string, localVarOptionals map[string]interface{}) (ItemsAttributeTrait, *http.Response, error) {
+func (a *AttributeTraitApiService) AttributeTraitGetByCategory(category []string, localVarOptionals map[string]interface{}) (ItemsAttributeTrait, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -169,7 +167,7 @@ func (a *AttributeTraitApiService) AttributeTraitGetByCategory(ctx context.Conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}

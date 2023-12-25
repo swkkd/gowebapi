@@ -36,7 +36,6 @@ type AssetServerApiService service
 /*
 	AssetServerApiService Create an asset database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server on which to create the database.
 @param database The new database definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -45,7 +44,7 @@ type AssetServerApiService service
 
 @return
 */
-func (a *AssetServerApiService) AssetServerCreateAssetDatabase(ctx context.Context, webId string, database AssetDatabase, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetServerApiService) AssetServerCreateAssetDatabase(webId string, database AssetDatabase, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -92,7 +91,7 @@ func (a *AssetServerApiService) AssetServerCreateAssetDatabase(ctx context.Conte
 	}
 	// body params
 	localVarPostBody = &database
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -113,7 +112,6 @@ func (a *AssetServerApiService) AssetServerCreateAssetDatabase(ctx context.Conte
 /*
 	AssetServerApiService Create a security entry owned by the asset server.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -124,7 +122,7 @@ func (a *AssetServerApiService) AssetServerCreateAssetDatabase(ctx context.Conte
 
 @return
 */
-func (a *AssetServerApiService) AssetServerCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetServerApiService) AssetServerCreateSecurityEntry(webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -183,7 +181,7 @@ func (a *AssetServerApiService) AssetServerCreateSecurityEntry(ctx context.Conte
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -204,7 +202,6 @@ func (a *AssetServerApiService) AssetServerCreateSecurityEntry(ctx context.Conte
 /*
 	AssetServerApiService Create a security identity.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server on which to create the security identity.
 @param securityIdentity The new security identity definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -213,7 +210,7 @@ func (a *AssetServerApiService) AssetServerCreateSecurityEntry(ctx context.Conte
 
 @return
 */
-func (a *AssetServerApiService) AssetServerCreateSecurityIdentity(ctx context.Context, webId string, securityIdentity SecurityIdentity, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetServerApiService) AssetServerCreateSecurityIdentity(webId string, securityIdentity SecurityIdentity, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -260,7 +257,7 @@ func (a *AssetServerApiService) AssetServerCreateSecurityIdentity(ctx context.Co
 	}
 	// body params
 	localVarPostBody = &securityIdentity
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -281,7 +278,6 @@ func (a *AssetServerApiService) AssetServerCreateSecurityIdentity(ctx context.Co
 /*
 	AssetServerApiService Create a security mapping.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server on which to create the security mapping.
 @param securityMapping The new security mapping definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -290,7 +286,7 @@ func (a *AssetServerApiService) AssetServerCreateSecurityIdentity(ctx context.Co
 
 @return
 */
-func (a *AssetServerApiService) AssetServerCreateSecurityMapping(ctx context.Context, webId string, securityMapping SecurityMapping, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetServerApiService) AssetServerCreateSecurityMapping(webId string, securityMapping SecurityMapping, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -337,7 +333,7 @@ func (a *AssetServerApiService) AssetServerCreateSecurityMapping(ctx context.Con
 	}
 	// body params
 	localVarPostBody = &securityMapping
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -358,7 +354,6 @@ func (a *AssetServerApiService) AssetServerCreateSecurityMapping(ctx context.Con
 /*
 	AssetServerApiService Create a unit class in the specified Asset Server.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param unitClass The new unit class definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -367,7 +362,7 @@ func (a *AssetServerApiService) AssetServerCreateSecurityMapping(ctx context.Con
 
 @return
 */
-func (a *AssetServerApiService) AssetServerCreateUnitClass(ctx context.Context, webId string, unitClass UnitClass, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetServerApiService) AssetServerCreateUnitClass(webId string, unitClass UnitClass, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -414,7 +409,7 @@ func (a *AssetServerApiService) AssetServerCreateUnitClass(ctx context.Context, 
 	}
 	// body params
 	localVarPostBody = &unitClass
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -435,7 +430,6 @@ func (a *AssetServerApiService) AssetServerCreateUnitClass(ctx context.Context, 
 /*
 	AssetServerApiService Delete a security entry owned by the asset server.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the asset server where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -445,7 +439,7 @@ func (a *AssetServerApiService) AssetServerCreateUnitClass(ctx context.Context, 
 
 @return
 */
-func (a *AssetServerApiService) AssetServerDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetServerApiService) AssetServerDeleteSecurityEntry(name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -497,7 +491,7 @@ func (a *AssetServerApiService) AssetServerDeleteSecurityEntry(ctx context.Conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -518,7 +512,6 @@ func (a *AssetServerApiService) AssetServerDeleteSecurityEntry(ctx context.Conte
 /*
 	AssetServerApiService Retrieve an Asset Server.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -527,7 +520,7 @@ func (a *AssetServerApiService) AssetServerDeleteSecurityEntry(ctx context.Conte
 
 @return AssetServer
 */
-func (a *AssetServerApiService) AssetServerGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (AssetServer, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerGet(webId string, localVarOptionals map[string]interface{}) (AssetServer, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -579,7 +572,7 @@ func (a *AssetServerApiService) AssetServerGet(ctx context.Context, webId string
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -604,7 +597,6 @@ func (a *AssetServerApiService) AssetServerGet(ctx context.Context, webId string
 /*
 	AssetServerApiService Retrieve a list of all Analysis Rule Plug-in&#39;s.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server, where the Analysis Rule Plug-in&#39;s are installed.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -613,7 +605,7 @@ func (a *AssetServerApiService) AssetServerGet(ctx context.Context, webId string
 
 @return ItemsAnalysisRulePlugIn
 */
-func (a *AssetServerApiService) AssetServerGetAnalysisRulePlugIns(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAnalysisRulePlugIn, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerGetAnalysisRulePlugIns(webId string, localVarOptionals map[string]interface{}) (ItemsAnalysisRulePlugIn, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -665,7 +657,7 @@ func (a *AssetServerApiService) AssetServerGetAnalysisRulePlugIns(ctx context.Co
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -691,7 +683,7 @@ func (a *AssetServerApiService) AssetServerGetAnalysisRulePlugIns(ctx context.Co
 	AssetServerApiService Retrieve an Asset Server by name.
 
 This method returns an asset server based on the name associated with it. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param name The name of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -700,7 +692,7 @@ This method returns an asset server based on the name associated with it. Users 
 
 @return AssetServer
 */
-func (a *AssetServerApiService) AssetServerGetByName(ctx context.Context, name string, localVarOptionals map[string]interface{}) (AssetServer, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerGetByName(name string, localVarOptionals map[string]interface{}) (AssetServer, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -752,7 +744,7 @@ func (a *AssetServerApiService) AssetServerGetByName(ctx context.Context, name s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -778,7 +770,7 @@ func (a *AssetServerApiService) AssetServerGetByName(ctx context.Context, name s
 	AssetServerApiService Retrieve an Asset Server by path.
 
 This method returns an asset server based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the server.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -787,7 +779,7 @@ This method returns an asset server based on the hierarchical path associated wi
 
 @return AssetServer
 */
-func (a *AssetServerApiService) AssetServerGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (AssetServer, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerGetByPath(path string, localVarOptionals map[string]interface{}) (AssetServer, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -839,7 +831,7 @@ func (a *AssetServerApiService) AssetServerGetByPath(ctx context.Context, path s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -864,7 +856,6 @@ func (a *AssetServerApiService) AssetServerGetByPath(ctx context.Context, path s
 /*
 	AssetServerApiService Retrieve a list of all Asset Databases on the specified Asset Server.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -873,7 +864,7 @@ func (a *AssetServerApiService) AssetServerGetByPath(ctx context.Context, path s
 
 @return ItemsAssetDatabase
 */
-func (a *AssetServerApiService) AssetServerGetDatabases(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAssetDatabase, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerGetDatabases(webId string, localVarOptionals map[string]interface{}) (ItemsAssetDatabase, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -925,7 +916,7 @@ func (a *AssetServerApiService) AssetServerGetDatabases(ctx context.Context, web
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -950,7 +941,6 @@ func (a *AssetServerApiService) AssetServerGetDatabases(ctx context.Context, web
 /*
 	AssetServerApiService Retrieve a list of all notification contact templates on the specified Asset Server.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -959,7 +949,7 @@ func (a *AssetServerApiService) AssetServerGetDatabases(ctx context.Context, web
 
 @return ItemsNotificationContactTemplate
 */
-func (a *AssetServerApiService) AssetServerGetNotificationContactTemplates(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsNotificationContactTemplate, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerGetNotificationContactTemplates(webId string, localVarOptionals map[string]interface{}) (ItemsNotificationContactTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1011,7 +1001,7 @@ func (a *AssetServerApiService) AssetServerGetNotificationContactTemplates(ctx c
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1036,7 +1026,6 @@ func (a *AssetServerApiService) AssetServerGetNotificationContactTemplates(ctx c
 /*
 	AssetServerApiService Get the security information of the specified security item associated with the asset server for a specified user.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server for the security to be checked.
 @param securityItem The security item of the desired security information to be returned. Multiple security items may be specified with multiple instances of the parameter. If the parameter is not specified, only &#39;Default&#39; security item of the security information will be returned.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
@@ -1048,7 +1037,7 @@ func (a *AssetServerApiService) AssetServerGetNotificationContactTemplates(ctx c
 
 @return ItemsSecurityRights
 */
-func (a *AssetServerApiService) AssetServerGetSecurity(ctx context.Context, webId string, securityItem []string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerGetSecurity(webId string, securityItem []string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1108,7 +1097,7 @@ func (a *AssetServerApiService) AssetServerGetSecurity(ctx context.Context, webI
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1133,7 +1122,6 @@ func (a *AssetServerApiService) AssetServerGetSecurity(ctx context.Context, webI
 /*
 	AssetServerApiService Retrieve the security entries of the specified security item associated with the asset server based on the specified criteria. By default, all security entries for this asset server are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1144,7 +1132,7 @@ func (a *AssetServerApiService) AssetServerGetSecurity(ctx context.Context, webI
 
 @return ItemsSecurityEntry
 */
-func (a *AssetServerApiService) AssetServerGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerGetSecurityEntries(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1208,7 +1196,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityEntries(ctx context.Contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1233,7 +1221,6 @@ func (a *AssetServerApiService) AssetServerGetSecurityEntries(ctx context.Contex
 /*
 	AssetServerApiService Retrieve the security entry of the specified security item associated with the asset server with the specified name.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the asset server.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -1244,7 +1231,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityEntries(ctx context.Contex
 
 @return SecurityEntry
 */
-func (a *AssetServerApiService) AssetServerGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerGetSecurityEntryByName(name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1303,7 +1290,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityEntryByName(ctx context.Co
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1328,7 +1315,6 @@ func (a *AssetServerApiService) AssetServerGetSecurityEntryByName(ctx context.Co
 /*
 	AssetServerApiService Retrieve security identities based on the specified criteria. By default, all security identities in the specified Asset Server are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server to search.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1342,7 +1328,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityEntryByName(ctx context.Co
 
 @return ItemsSecurityIdentity
 */
-func (a *AssetServerApiService) AssetServerGetSecurityIdentities(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityIdentity, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerGetSecurityIdentities(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityIdentity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1424,7 +1410,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityIdentities(ctx context.Con
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1449,7 +1435,6 @@ func (a *AssetServerApiService) AssetServerGetSecurityIdentities(ctx context.Con
 /*
 	AssetServerApiService Retrieve security identities for a specific user.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param userIdentity The user identity to search for.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -1459,7 +1444,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityIdentities(ctx context.Con
 
 @return ItemsSecurityIdentity
 */
-func (a *AssetServerApiService) AssetServerGetSecurityIdentitiesForUser(ctx context.Context, webId string, userIdentity string, localVarOptionals map[string]interface{}) (ItemsSecurityIdentity, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerGetSecurityIdentitiesForUser(webId string, userIdentity string, localVarOptionals map[string]interface{}) (ItemsSecurityIdentity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1512,7 +1497,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityIdentitiesForUser(ctx cont
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1537,7 +1522,6 @@ func (a *AssetServerApiService) AssetServerGetSecurityIdentitiesForUser(ctx cont
 /*
 	AssetServerApiService Retrieve security mappings based on the specified criteria. By default, all security mappings in the specified Asset Server are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server to search.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1551,7 +1535,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityIdentitiesForUser(ctx cont
 
 @return ItemsSecurityMapping
 */
-func (a *AssetServerApiService) AssetServerGetSecurityMappings(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityMapping, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerGetSecurityMappings(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityMapping, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1633,7 +1617,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityMappings(ctx context.Conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1658,7 +1642,6 @@ func (a *AssetServerApiService) AssetServerGetSecurityMappings(ctx context.Conte
 /*
 	AssetServerApiService Retrieve a list of all Time Rule Plug-in&#39;s.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset server, where the Time Rule Plug-in&#39;s are installed.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1667,7 +1650,7 @@ func (a *AssetServerApiService) AssetServerGetSecurityMappings(ctx context.Conte
 
 @return ItemsTimeRulePlugIn
 */
-func (a *AssetServerApiService) AssetServerGetTimeRulePlugIns(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsTimeRulePlugIn, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerGetTimeRulePlugIns(webId string, localVarOptionals map[string]interface{}) (ItemsTimeRulePlugIn, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1719,7 +1702,7 @@ func (a *AssetServerApiService) AssetServerGetTimeRulePlugIns(ctx context.Contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1744,7 +1727,6 @@ func (a *AssetServerApiService) AssetServerGetTimeRulePlugIns(ctx context.Contex
 /*
 	AssetServerApiService Retrieve a list of all unit classes on the specified Asset Server.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1753,7 +1735,7 @@ func (a *AssetServerApiService) AssetServerGetTimeRulePlugIns(ctx context.Contex
 
 @return ItemsUnitClass
 */
-func (a *AssetServerApiService) AssetServerGetUnitClasses(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsUnitClass, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerGetUnitClasses(webId string, localVarOptionals map[string]interface{}) (ItemsUnitClass, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1805,7 +1787,7 @@ func (a *AssetServerApiService) AssetServerGetUnitClasses(ctx context.Context, w
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1830,7 +1812,6 @@ func (a *AssetServerApiService) AssetServerGetUnitClasses(ctx context.Context, w
 /*
 	AssetServerApiService Retrieve a list of all Asset Servers known to this service.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
@@ -1838,7 +1819,7 @@ func (a *AssetServerApiService) AssetServerGetUnitClasses(ctx context.Context, w
 
 @return ItemsAssetServer
 */
-func (a *AssetServerApiService) AssetServerList(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsAssetServer, *http.Response, error) {
+func (a *AssetServerApiService) AssetServerList(localVarOptionals map[string]interface{}) (ItemsAssetServer, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1889,7 +1870,7 @@ func (a *AssetServerApiService) AssetServerList(ctx context.Context, localVarOpt
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1914,7 +1895,6 @@ func (a *AssetServerApiService) AssetServerList(ctx context.Context, localVarOpt
 /*
 	AssetServerApiService Update a security entry owned by the asset server.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the asset server where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
@@ -1925,7 +1905,7 @@ func (a *AssetServerApiService) AssetServerList(ctx context.Context, localVarOpt
 
 @return
 */
-func (a *AssetServerApiService) AssetServerUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetServerApiService) AssetServerUpdateSecurityEntry(name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -1979,7 +1959,7 @@ func (a *AssetServerApiService) AssetServerUpdateSecurityEntry(ctx context.Conte
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

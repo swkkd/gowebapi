@@ -36,7 +36,6 @@ type AnalysisRuleApiService service
 /*
 	AnalysisRuleApiService Create a new Analysis Rule as a child of an existing Analysis Rule.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent Analysis Rule, on which to create the child Analysis Rule.
 @param analysisRule The definition of the new Analysis Rule.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -45,7 +44,7 @@ type AnalysisRuleApiService service
 
 @return
 */
-func (a *AnalysisRuleApiService) AnalysisRuleCreateAnalysisRule(ctx context.Context, webId string, analysisRule AnalysisRule, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AnalysisRuleApiService) AnalysisRuleCreateAnalysisRule(webId string, analysisRule AnalysisRule, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -92,7 +91,7 @@ func (a *AnalysisRuleApiService) AnalysisRuleCreateAnalysisRule(ctx context.Cont
 	}
 	// body params
 	localVarPostBody = &analysisRule
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -113,11 +112,10 @@ func (a *AnalysisRuleApiService) AnalysisRuleCreateAnalysisRule(ctx context.Cont
 /*
 	AnalysisRuleApiService Delete an Analysis Rule.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the Analysis Rule.
 @return
 */
-func (a *AnalysisRuleApiService) AnalysisRuleDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *AnalysisRuleApiService) AnalysisRuleDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -155,7 +153,7 @@ func (a *AnalysisRuleApiService) AnalysisRuleDelete(ctx context.Context, webId s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -176,7 +174,6 @@ func (a *AnalysisRuleApiService) AnalysisRuleDelete(ctx context.Context, webId s
 /*
 	AnalysisRuleApiService Retrieve an Analysis Rule.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the Analysis Rule.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -185,7 +182,7 @@ func (a *AnalysisRuleApiService) AnalysisRuleDelete(ctx context.Context, webId s
 
 @return AnalysisRule
 */
-func (a *AnalysisRuleApiService) AnalysisRuleGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (AnalysisRule, *http.Response, error) {
+func (a *AnalysisRuleApiService) AnalysisRuleGet(webId string, localVarOptionals map[string]interface{}) (AnalysisRule, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -237,7 +234,7 @@ func (a *AnalysisRuleApiService) AnalysisRuleGet(ctx context.Context, webId stri
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -262,7 +259,6 @@ func (a *AnalysisRuleApiService) AnalysisRuleGet(ctx context.Context, webId stri
 /*
 	AnalysisRuleApiService Get the child Analysis Rules of the Analysis Rule.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent Analysis Rule.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -277,7 +273,7 @@ func (a *AnalysisRuleApiService) AnalysisRuleGet(ctx context.Context, webId stri
 
 @return ItemsAnalysisRule
 */
-func (a *AnalysisRuleApiService) AnalysisRuleGetAnalysisRules(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAnalysisRule, *http.Response, error) {
+func (a *AnalysisRuleApiService) AnalysisRuleGetAnalysisRules(webId string, localVarOptionals map[string]interface{}) (ItemsAnalysisRule, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -365,7 +361,7 @@ func (a *AnalysisRuleApiService) AnalysisRuleGetAnalysisRules(ctx context.Contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -391,7 +387,7 @@ func (a *AnalysisRuleApiService) AnalysisRuleGetAnalysisRules(ctx context.Contex
 	AnalysisRuleApiService Retrieve an Analysis Rule by path.
 
 This method returns an Analysis Rule based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the Analysis Rule.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -400,7 +396,7 @@ This method returns an Analysis Rule based on the hierarchical path associated w
 
 @return AnalysisRule
 */
-func (a *AnalysisRuleApiService) AnalysisRuleGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (AnalysisRule, *http.Response, error) {
+func (a *AnalysisRuleApiService) AnalysisRuleGetByPath(path string, localVarOptionals map[string]interface{}) (AnalysisRule, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -452,7 +448,7 @@ func (a *AnalysisRuleApiService) AnalysisRuleGetByPath(ctx context.Context, path
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -477,12 +473,11 @@ func (a *AnalysisRuleApiService) AnalysisRuleGetByPath(ctx context.Context, path
 /*
 	AnalysisRuleApiService Update an Analysis Rule by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the Analysis Rule.
 @param analysisRule A partial Analysis Rule containing the desired changes.
 @return
 */
-func (a *AnalysisRuleApiService) AnalysisRuleUpdate(ctx context.Context, webId string, analysisRule AnalysisRule) (*http.Response, error) {
+func (a *AnalysisRuleApiService) AnalysisRuleUpdate(webId string, analysisRule AnalysisRule) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -522,7 +517,7 @@ func (a *AnalysisRuleApiService) AnalysisRuleUpdate(ctx context.Context, webId s
 	}
 	// body params
 	localVarPostBody = &analysisRule
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

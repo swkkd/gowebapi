@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **UnitDelete**
-> UnitDelete(ctx, webId)
+> UnitDelete(a.client.ctx, webId)
 Delete a unit.
 
 ### Required Parameters
@@ -37,7 +37,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UnitGet**
-> Unit UnitGet(ctx, webId, optional)
+> Unit UnitGet(a.client.ctx, webId, optional)
 Retrieve a unit.
 
 ### Required Parameters
@@ -73,7 +73,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UnitGetByPath**
-> Unit UnitGetByPath(ctx, path, optional)
+> Unit UnitGetByPath(a.client.ctx, path, optional)
 Retrieve a unit by path.
 
 ### Required Parameters
@@ -109,7 +109,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UnitUpdate**
-> UnitUpdate(ctx, webId, unitDTO)
+> UnitUpdate(a.client.ctx, webId, unitDTO)
 Update a unit.
 
 ### Required Parameters

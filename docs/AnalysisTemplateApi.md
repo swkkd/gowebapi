@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **AnalysisTemplateCreateFromAnalysis**
-> AnalysisTemplateCreateFromAnalysis(ctx, analysisWebId, optional)
+> AnalysisTemplateCreateFromAnalysis(a.client.ctx, analysisWebId, optional)
 Create an Analysis template based upon a specified Analysis.
 
 ### Required Parameters
@@ -56,7 +56,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisTemplateCreateSecurityEntry**
-> AnalysisTemplateCreateSecurityEntry(ctx, webId, securityEntry, optional)
+> AnalysisTemplateCreateSecurityEntry(a.client.ctx, webId, securityEntry, optional)
 Create a security entry owned by the analysis template.
 
 ### Required Parameters
@@ -94,7 +94,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisTemplateDelete**
-> AnalysisTemplateDelete(ctx, webId)
+> AnalysisTemplateDelete(a.client.ctx, webId)
 Delete an analysis template.
 
 Deleting an analysis template will delete any analysis which was created from it, unless the analysis is tied to a notification.
@@ -122,7 +122,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisTemplateDeleteSecurityEntry**
-> AnalysisTemplateDeleteSecurityEntry(ctx, name, webId, optional)
+> AnalysisTemplateDeleteSecurityEntry(a.client.ctx, name, webId, optional)
 Delete a security entry owned by the analysis template.
 
 ### Required Parameters
@@ -159,7 +159,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisTemplateGet**
-> AnalysisTemplate AnalysisTemplateGet(ctx, webId, optional)
+> AnalysisTemplate AnalysisTemplateGet(a.client.ctx, webId, optional)
 Retrieve an analysis template.
 
 ### Required Parameters
@@ -195,7 +195,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisTemplateGetAnalysisTemplatesQuery**
-> ItemsAnalysisTemplate AnalysisTemplateGetAnalysisTemplatesQuery(ctx, optional)
+> ItemsAnalysisTemplate AnalysisTemplateGetAnalysisTemplatesQuery(a.client.ctx, optional)
 Retrieve analysis templates based on the specified conditions. By default, returns all analysis templates.
 
 ### Required Parameters
@@ -233,7 +233,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisTemplateGetByPath**
-> AnalysisTemplate AnalysisTemplateGetByPath(ctx, path, optional)
+> AnalysisTemplate AnalysisTemplateGetByPath(a.client.ctx, path, optional)
 Retrieve an analysis template by path.
 
 This method returns an analysis template based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -271,7 +271,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisTemplateGetCategories**
-> ItemsAnalysisCategory AnalysisTemplateGetCategories(ctx, webId, optional)
+> ItemsAnalysisCategory AnalysisTemplateGetCategories(a.client.ctx, webId, optional)
 Get an analysis template's categories.
 
 ### Required Parameters
@@ -307,7 +307,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisTemplateGetSecurity**
-> ItemsSecurityRights AnalysisTemplateGetSecurity(ctx, webId, userIdentity, optional)
+> ItemsSecurityRights AnalysisTemplateGetSecurity(a.client.ctx, webId, userIdentity, optional)
 Get the security information of the specified security item associated with the analysis template for a specified user.
 
 ### Required Parameters
@@ -346,7 +346,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisTemplateGetSecurityEntries**
-> ItemsSecurityEntry AnalysisTemplateGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry AnalysisTemplateGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries associated with the analysis template based on the specified criteria. By default, all security entries for this analysis template are returned.
 
 ### Required Parameters
@@ -383,7 +383,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisTemplateGetSecurityEntryByName**
-> SecurityEntry AnalysisTemplateGetSecurityEntryByName(ctx, name, webId, optional)
+> SecurityEntry AnalysisTemplateGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry associated with the analysis template with the specified name.
 
 ### Required Parameters
@@ -421,7 +421,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisTemplateUpdate**
-> AnalysisTemplateUpdate(ctx, webId, template)
+> AnalysisTemplateUpdate(a.client.ctx, webId, template)
 Update an analysis template by replacing items in its definition.
 
 ### Required Parameters
@@ -448,7 +448,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisTemplateUpdateSecurityEntry**
-> AnalysisTemplateUpdateSecurityEntry(ctx, name, webId, securityEntry, optional)
+> AnalysisTemplateUpdateSecurityEntry(a.client.ctx, name, webId, securityEntry, optional)
 Update a security entry owned by the analysis template.
 
 ### Required Parameters

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **SecurityIdentityDelete**
-> SecurityIdentityDelete(ctx, webId)
+> SecurityIdentityDelete(a.client.ctx, webId)
 Delete a security identity.
 
 ### Required Parameters
@@ -41,7 +41,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SecurityIdentityGet**
-> SecurityIdentity SecurityIdentityGet(ctx, webId, optional)
+> SecurityIdentity SecurityIdentityGet(a.client.ctx, webId, optional)
 Retrieve a security identity.
 
 ### Required Parameters
@@ -77,7 +77,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SecurityIdentityGetByPath**
-> SecurityIdentity SecurityIdentityGetByPath(ctx, path, optional)
+> SecurityIdentity SecurityIdentityGetByPath(a.client.ctx, path, optional)
 Retrieve a security identity by path.
 
 This method returns a security identity based on the path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -115,7 +115,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SecurityIdentityGetSecurity**
-> ItemsSecurityRights SecurityIdentityGetSecurity(ctx, webId, userIdentity, optional)
+> ItemsSecurityRights SecurityIdentityGetSecurity(a.client.ctx, webId, userIdentity, optional)
 Get the security information of the specified security item associated with the security identity for a specified user.
 
 ### Required Parameters
@@ -154,7 +154,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SecurityIdentityGetSecurityEntries**
-> ItemsSecurityEntry SecurityIdentityGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry SecurityIdentityGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries associated with the security identity based on the specified criteria. By default, all security entries for this security identity are returned.
 
 ### Required Parameters
@@ -191,7 +191,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SecurityIdentityGetSecurityEntryByName**
-> SecurityEntry SecurityIdentityGetSecurityEntryByName(ctx, name, webId, optional)
+> SecurityEntry SecurityIdentityGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry associated with the security identity with the specified name.
 
 ### Required Parameters
@@ -229,7 +229,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SecurityIdentityGetSecurityMappings**
-> ItemsSecurityMapping SecurityIdentityGetSecurityMappings(ctx, webId, optional)
+> ItemsSecurityMapping SecurityIdentityGetSecurityMappings(a.client.ctx, webId, optional)
 Get security mappings for the specified security identity.
 
 ### Required Parameters
@@ -265,7 +265,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SecurityIdentityUpdate**
-> SecurityIdentityUpdate(ctx, webId, securityIdentity)
+> SecurityIdentityUpdate(a.client.ctx, webId, securityIdentity)
 Update a security identity by replacing items in its definition.
 
 ### Required Parameters

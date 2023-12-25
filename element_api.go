@@ -36,7 +36,6 @@ type ElementApiService service
 /*
 	ElementApiService Add a reference to an existing element to the child elements collection.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element which the referenced element will be added to.
 @param referencedElementWebId The ID of the referenced element. Multiple referenced elements may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -45,7 +44,7 @@ type ElementApiService service
 
 @return
 */
-func (a *ElementApiService) ElementAddReferencedElement(ctx context.Context, webId string, referencedElementWebId []string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementApiService) ElementAddReferencedElement(webId string, referencedElementWebId []string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -91,7 +90,7 @@ func (a *ElementApiService) ElementAddReferencedElement(ctx context.Context, web
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -112,7 +111,6 @@ func (a *ElementApiService) ElementAddReferencedElement(ctx context.Context, web
 /*
 	ElementApiService Create an Analysis.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element on which to create the Analysis.
 @param analysis The new Analysis definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -121,7 +119,7 @@ func (a *ElementApiService) ElementAddReferencedElement(ctx context.Context, web
 
 @return
 */
-func (a *ElementApiService) ElementCreateAnalysis(ctx context.Context, webId string, analysis Analysis, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementApiService) ElementCreateAnalysis(webId string, analysis Analysis, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -168,7 +166,7 @@ func (a *ElementApiService) ElementCreateAnalysis(ctx context.Context, webId str
 	}
 	// body params
 	localVarPostBody = &analysis
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -189,7 +187,6 @@ func (a *ElementApiService) ElementCreateAnalysis(ctx context.Context, webId str
 /*
 	ElementApiService Create a new attribute of the specified element.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element on which to create the attribute.
 @param attribute The definition of the new attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -198,7 +195,7 @@ func (a *ElementApiService) ElementCreateAnalysis(ctx context.Context, webId str
 
 @return
 */
-func (a *ElementApiService) ElementCreateAttribute(ctx context.Context, webId string, attribute Attribute, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementApiService) ElementCreateAttribute(webId string, attribute Attribute, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -245,7 +242,7 @@ func (a *ElementApiService) ElementCreateAttribute(ctx context.Context, webId st
 	}
 	// body params
 	localVarPostBody = &attribute
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -266,7 +263,6 @@ func (a *ElementApiService) ElementCreateAttribute(ctx context.Context, webId st
 /*
 	ElementApiService Executes the create configuration function of the data references found within the attributes of the element, and optionally, its children.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -274,7 +270,7 @@ func (a *ElementApiService) ElementCreateAttribute(ctx context.Context, webId st
 
 @return
 */
-func (a *ElementApiService) ElementCreateConfig(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementApiService) ElementCreateConfig(webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -319,7 +315,7 @@ func (a *ElementApiService) ElementCreateConfig(ctx context.Context, webId strin
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -340,7 +336,6 @@ func (a *ElementApiService) ElementCreateConfig(ctx context.Context, webId strin
 /*
 	ElementApiService Create a child element.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent element on which to create the element.
 @param element The new element definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -349,7 +344,7 @@ func (a *ElementApiService) ElementCreateConfig(ctx context.Context, webId strin
 
 @return
 */
-func (a *ElementApiService) ElementCreateElement(ctx context.Context, webId string, element Element, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementApiService) ElementCreateElement(webId string, element Element, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -396,7 +391,7 @@ func (a *ElementApiService) ElementCreateElement(ctx context.Context, webId stri
 	}
 	// body params
 	localVarPostBody = &element
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -417,7 +412,6 @@ func (a *ElementApiService) ElementCreateElement(ctx context.Context, webId stri
 /*
 	ElementApiService Create a link for a \&quot;Search Elements By Attribute Value\&quot; operation, whose queries are specified in the request content. The SearchRoot is specified by the Web Id of the root Element. If the SearchRoot is not specified, then the search starts at the Asset Database. ElementTemplate must be provided as the Web ID of the ElementTemplate, which are used to create the Elements. All the attributes in the queries must be defined as AttributeTemplates on the ElementTemplate. An array of attribute value queries are ANDed together to find the desired Element objects. At least one value query must be specified. There are limitations on SearchOperators.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param query The query of search by attribute.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -426,7 +420,7 @@ func (a *ElementApiService) ElementCreateElement(ctx context.Context, webId stri
 
 @return ItemsElement
 */
-func (a *ElementApiService) ElementCreateSearchByAttribute(ctx context.Context, query SearchByAttribute, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
+func (a *ElementApiService) ElementCreateSearchByAttribute(query SearchByAttribute, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -479,7 +473,7 @@ func (a *ElementApiService) ElementCreateSearchByAttribute(ctx context.Context, 
 	}
 	// body params
 	localVarPostBody = &query
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -504,7 +498,6 @@ func (a *ElementApiService) ElementCreateSearchByAttribute(ctx context.Context, 
 /*
 	ElementApiService Create a security entry owned by the element.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -514,7 +507,7 @@ func (a *ElementApiService) ElementCreateSearchByAttribute(ctx context.Context, 
 
 @return
 */
-func (a *ElementApiService) ElementCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementApiService) ElementCreateSecurityEntry(webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -567,7 +560,7 @@ func (a *ElementApiService) ElementCreateSecurityEntry(ctx context.Context, webI
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -588,11 +581,10 @@ func (a *ElementApiService) ElementCreateSecurityEntry(ctx context.Context, webI
 /*
 	ElementApiService Delete an element.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element.
 @return
 */
-func (a *ElementApiService) ElementDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *ElementApiService) ElementDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -630,7 +622,7 @@ func (a *ElementApiService) ElementDelete(ctx context.Context, webId string) (*h
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -651,7 +643,6 @@ func (a *ElementApiService) ElementDelete(ctx context.Context, webId string) (*h
 /*
 	ElementApiService Delete a security entry owned by the element.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the element where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -660,7 +651,7 @@ func (a *ElementApiService) ElementDelete(ctx context.Context, webId string) (*h
 
 @return
 */
-func (a *ElementApiService) ElementDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementApiService) ElementDeleteSecurityEntry(name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -706,7 +697,7 @@ func (a *ElementApiService) ElementDeleteSecurityEntry(ctx context.Context, name
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -727,7 +718,6 @@ func (a *ElementApiService) ElementDeleteSecurityEntry(ctx context.Context, name
 /*
 	ElementApiService Execute a \&quot;Search Elements By Attribute Value\&quot; operation.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param searchId The encoded search Id of the \&quot;Search Elements By Attribute Value\&quot; operation.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -744,7 +734,7 @@ func (a *ElementApiService) ElementDeleteSecurityEntry(ctx context.Context, name
 
 @return ItemsElement
 */
-func (a *ElementApiService) ElementExecuteSearchByAttribute(ctx context.Context, searchId string, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
+func (a *ElementApiService) ElementExecuteSearchByAttribute(searchId string, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -844,7 +834,7 @@ func (a *ElementApiService) ElementExecuteSearchByAttribute(ctx context.Context,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -869,7 +859,6 @@ func (a *ElementApiService) ElementExecuteSearchByAttribute(ctx context.Context,
 /*
 	ElementApiService Retrieves a list of element attributes matching the specified filters from the specified element.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -892,7 +881,7 @@ func (a *ElementApiService) ElementExecuteSearchByAttribute(ctx context.Context,
 
 @return ItemsAttribute
 */
-func (a *ElementApiService) ElementFindElementAttributes(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
+func (a *ElementApiService) ElementFindElementAttributes(webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1028,7 +1017,7 @@ func (a *ElementApiService) ElementFindElementAttributes(ctx context.Context, we
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1053,7 +1042,6 @@ func (a *ElementApiService) ElementFindElementAttributes(ctx context.Context, we
 /*
 	ElementApiService Retrieve an element.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1062,7 +1050,7 @@ func (a *ElementApiService) ElementFindElementAttributes(ctx context.Context, we
 
 @return Element
 */
-func (a *ElementApiService) ElementGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (Element, *http.Response, error) {
+func (a *ElementApiService) ElementGet(webId string, localVarOptionals map[string]interface{}) (Element, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1114,7 +1102,7 @@ func (a *ElementApiService) ElementGet(ctx context.Context, webId string, localV
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1140,7 +1128,7 @@ func (a *ElementApiService) ElementGet(ctx context.Context, webId string, localV
 	ElementApiService Retrieve analyses based on the specified conditions.
 
 Users can search for the analyses based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the analyses that match the default search.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the element, which is the Target of the analyses.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1153,7 +1141,7 @@ Users can search for the analyses based on specific search parameters. If no par
 
 @return ItemsAnalysis
 */
-func (a *ElementApiService) ElementGetAnalyses(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAnalysis, *http.Response, error) {
+func (a *ElementApiService) ElementGetAnalyses(webId string, localVarOptionals map[string]interface{}) (ItemsAnalysis, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1229,7 +1217,7 @@ func (a *ElementApiService) ElementGetAnalyses(ctx context.Context, webId string
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1254,7 +1242,6 @@ func (a *ElementApiService) ElementGetAnalyses(ctx context.Context, webId string
 /*
 	ElementApiService Get the attributes of the specified element.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1276,7 +1263,7 @@ func (a *ElementApiService) ElementGetAnalyses(ctx context.Context, webId string
 
 @return ItemsAttribute
 */
-func (a *ElementApiService) ElementGetAttributes(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
+func (a *ElementApiService) ElementGetAttributes(webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1400,7 +1387,7 @@ func (a *ElementApiService) ElementGetAttributes(ctx context.Context, webId stri
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1426,7 +1413,7 @@ func (a *ElementApiService) ElementGetAttributes(ctx context.Context, webId stri
 	ElementApiService Retrieve an element by path.
 
 This method returns an element based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the element.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1435,7 +1422,7 @@ This method returns an element based on the hierarchical path associated with it
 
 @return Element
 */
-func (a *ElementApiService) ElementGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (Element, *http.Response, error) {
+func (a *ElementApiService) ElementGetByPath(path string, localVarOptionals map[string]interface{}) (Element, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1487,7 +1474,7 @@ func (a *ElementApiService) ElementGetByPath(ctx context.Context, path string, l
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1512,7 +1499,6 @@ func (a *ElementApiService) ElementGetByPath(ctx context.Context, path string, l
 /*
 	ElementApiService Get an element&#39;s categories.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1521,7 +1507,7 @@ func (a *ElementApiService) ElementGetByPath(ctx context.Context, path string, l
 
 @return ItemsElementCategory
 */
-func (a *ElementApiService) ElementGetCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsElementCategory, *http.Response, error) {
+func (a *ElementApiService) ElementGetCategories(webId string, localVarOptionals map[string]interface{}) (ItemsElementCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1573,7 +1559,7 @@ func (a *ElementApiService) ElementGetCategories(ctx context.Context, webId stri
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1599,7 +1585,7 @@ func (a *ElementApiService) ElementGetCategories(ctx context.Context, webId stri
 	ElementApiService Retrieve elements based on the specified conditions. By default, this method selects immediate children of the specified element.
 
 Users can search for the elements based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the elements that match the default search.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the element to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1618,7 +1604,7 @@ Users can search for the elements based on specific search parameters. If no par
 
 @return ItemsElement
 */
-func (a *ElementApiService) ElementGetElements(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
+func (a *ElementApiService) ElementGetElements(webId string, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1730,7 +1716,7 @@ func (a *ElementApiService) ElementGetElements(ctx context.Context, webId string
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1755,7 +1741,6 @@ func (a *ElementApiService) ElementGetElements(ctx context.Context, webId string
 /*
 	ElementApiService Retrieve elements based on the specified conditions. By default, returns all the elements.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "databaseWebId" (string) The ID of the asset database to use as the root of the query.
@@ -1767,7 +1752,7 @@ func (a *ElementApiService) ElementGetElements(ctx context.Context, webId string
 
 @return ItemsElement
 */
-func (a *ElementApiService) ElementGetElementsQuery(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
+func (a *ElementApiService) ElementGetElementsQuery(localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1842,7 +1827,7 @@ func (a *ElementApiService) ElementGetElementsQuery(ctx context.Context, localVa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1867,7 +1852,6 @@ func (a *ElementApiService) ElementGetElementsQuery(ctx context.Context, localVa
 /*
 	ElementApiService Retrieve event frames that reference this element based on the specified conditions. By default, returns all event frames that reference this element that have been active in the past 8 hours.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element whose related event frames are sought.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1889,7 +1873,7 @@ func (a *ElementApiService) ElementGetElementsQuery(ctx context.Context, localVa
 
 @return ItemsEventFrame
 */
-func (a *ElementApiService) ElementGetEventFrames(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
+func (a *ElementApiService) ElementGetEventFrames(webId string, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2016,7 +2000,7 @@ func (a *ElementApiService) ElementGetEventFrames(ctx context.Context, webId str
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2041,7 +2025,6 @@ func (a *ElementApiService) ElementGetEventFrames(ctx context.Context, webId str
 /*
 	ElementApiService Retrieve multiple elements by web id or path.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "asParallel" (bool) Specifies if the retrieval processes should be run in parallel on the server. This may improve the response time for large amounts of requested attributes. The default is &#39;false&#39;.
@@ -2053,7 +2036,7 @@ func (a *ElementApiService) ElementGetEventFrames(ctx context.Context, webId str
 
 @return ItemsItemElement
 */
-func (a *ElementApiService) ElementGetMultiple(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsItemElement, *http.Response, error) {
+func (a *ElementApiService) ElementGetMultiple(localVarOptionals map[string]interface{}) (ItemsItemElement, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2122,7 +2105,7 @@ func (a *ElementApiService) ElementGetMultiple(ctx context.Context, localVarOpti
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2147,7 +2130,6 @@ func (a *ElementApiService) ElementGetMultiple(ctx context.Context, localVarOpti
 /*
 	ElementApiService Retrieve notification rules for an element
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the resource to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2156,7 +2138,7 @@ func (a *ElementApiService) ElementGetMultiple(ctx context.Context, localVarOpti
 
 @return ItemsNotificationRule
 */
-func (a *ElementApiService) ElementGetNotificationRules(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsNotificationRule, *http.Response, error) {
+func (a *ElementApiService) ElementGetNotificationRules(webId string, localVarOptionals map[string]interface{}) (ItemsNotificationRule, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2208,7 +2190,7 @@ func (a *ElementApiService) ElementGetNotificationRules(ctx context.Context, web
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2234,7 +2216,7 @@ func (a *ElementApiService) ElementGetNotificationRules(ctx context.Context, web
 	ElementApiService Get a list of the full or relative paths to this element.
 
 This method will return paths with the primary path at the first index. If there is no primary path, then null will be at the first index. If relative path is specified but does not exist, null will be returned at the first index.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the element.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2242,7 +2224,7 @@ This method will return paths with the primary path at the first index. If there
 
 @return ItemsString
 */
-func (a *ElementApiService) ElementGetPaths(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsString, *http.Response, error) {
+func (a *ElementApiService) ElementGetPaths(webId string, localVarOptionals map[string]interface{}) (ItemsString, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2288,7 +2270,7 @@ func (a *ElementApiService) ElementGetPaths(ctx context.Context, webId string, l
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2314,7 +2296,7 @@ func (a *ElementApiService) ElementGetPaths(ctx context.Context, webId string, l
 	ElementApiService Retrieve referenced elements based on the specified conditions. By default, this method selects all referenced elements of the current resource.
 
 Users can search for the referenced elements based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the elements that match the default search.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the resource to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2332,7 +2314,7 @@ Users can search for the referenced elements based on specific search parameters
 
 @return ItemsElement
 */
-func (a *ElementApiService) ElementGetReferencedElements(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
+func (a *ElementApiService) ElementGetReferencedElements(webId string, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2438,7 +2420,7 @@ func (a *ElementApiService) ElementGetReferencedElements(ctx context.Context, we
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2463,7 +2445,6 @@ func (a *ElementApiService) ElementGetReferencedElements(ctx context.Context, we
 /*
 	ElementApiService Get the security information of the specified security item associated with the element for a specified user.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -2474,7 +2455,7 @@ func (a *ElementApiService) ElementGetReferencedElements(ctx context.Context, we
 
 @return ItemsSecurityRights
 */
-func (a *ElementApiService) ElementGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
+func (a *ElementApiService) ElementGetSecurity(webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2533,7 +2514,7 @@ func (a *ElementApiService) ElementGetSecurity(ctx context.Context, webId string
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2558,7 +2539,6 @@ func (a *ElementApiService) ElementGetSecurity(ctx context.Context, webId string
 /*
 	ElementApiService Retrieve the security entries associated with the element based on the specified criteria. By default, all security entries for this element are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2568,7 +2548,7 @@ func (a *ElementApiService) ElementGetSecurity(ctx context.Context, webId string
 
 @return ItemsSecurityEntry
 */
-func (a *ElementApiService) ElementGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
+func (a *ElementApiService) ElementGetSecurityEntries(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2626,7 +2606,7 @@ func (a *ElementApiService) ElementGetSecurityEntries(ctx context.Context, webId
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2651,7 +2631,6 @@ func (a *ElementApiService) ElementGetSecurityEntries(ctx context.Context, webId
 /*
 	ElementApiService Retrieve the security entry associated with the element with the specified name.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the element.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -2661,7 +2640,7 @@ func (a *ElementApiService) ElementGetSecurityEntries(ctx context.Context, webId
 
 @return SecurityEntry
 */
-func (a *ElementApiService) ElementGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
+func (a *ElementApiService) ElementGetSecurityEntryByName(name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2714,7 +2693,7 @@ func (a *ElementApiService) ElementGetSecurityEntryByName(ctx context.Context, n
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2739,12 +2718,11 @@ func (a *ElementApiService) ElementGetSecurityEntryByName(ctx context.Context, n
 /*
 	ElementApiService Remove a reference to an existing element from the child elements collection.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element which the referenced element will be removed from.
 @param referencedElementWebId The ID of the referenced element. Multiple referenced elements may be specified with multiple instances of the parameter.
 @return
 */
-func (a *ElementApiService) ElementRemoveReferencedElement(ctx context.Context, webId string, referencedElementWebId []string) (*http.Response, error) {
+func (a *ElementApiService) ElementRemoveReferencedElement(webId string, referencedElementWebId []string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -2783,7 +2761,7 @@ func (a *ElementApiService) ElementRemoveReferencedElement(ctx context.Context, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -2804,12 +2782,11 @@ func (a *ElementApiService) ElementRemoveReferencedElement(ctx context.Context, 
 /*
 	ElementApiService Update an element by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element.
 @param element A partial element containing the desired changes.
 @return
 */
-func (a *ElementApiService) ElementUpdate(ctx context.Context, webId string, element Element) (*http.Response, error) {
+func (a *ElementApiService) ElementUpdate(webId string, element Element) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -2849,7 +2826,7 @@ func (a *ElementApiService) ElementUpdate(ctx context.Context, webId string, ele
 	}
 	// body params
 	localVarPostBody = &element
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -2870,7 +2847,6 @@ func (a *ElementApiService) ElementUpdate(ctx context.Context, webId string, ele
 /*
 	ElementApiService Update a security entry owned by the element.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the element where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
@@ -2880,7 +2856,7 @@ func (a *ElementApiService) ElementUpdate(ctx context.Context, webId string, ele
 
 @return
 */
-func (a *ElementApiService) ElementUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementApiService) ElementUpdateSecurityEntry(name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -2928,7 +2904,7 @@ func (a *ElementApiService) ElementUpdateSecurityEntry(ctx context.Context, name
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

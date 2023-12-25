@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **AnalysisCategoryCreateSecurityEntry**
-> AnalysisCategoryCreateSecurityEntry(ctx, webId, securityEntry, optional)
+> AnalysisCategoryCreateSecurityEntry(a.client.ctx, webId, securityEntry, optional)
 Create a security entry owned by the analysis category.
 
 ### Required Parameters
@@ -55,7 +55,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisCategoryDelete**
-> AnalysisCategoryDelete(ctx, webId)
+> AnalysisCategoryDelete(a.client.ctx, webId)
 Delete an analysis category.
 
 ### Required Parameters
@@ -81,7 +81,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisCategoryDeleteSecurityEntry**
-> AnalysisCategoryDeleteSecurityEntry(ctx, name, webId, optional)
+> AnalysisCategoryDeleteSecurityEntry(a.client.ctx, name, webId, optional)
 Delete a security entry owned by the analysis category.
 
 ### Required Parameters
@@ -118,7 +118,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisCategoryGet**
-> AnalysisCategory AnalysisCategoryGet(ctx, webId, optional)
+> AnalysisCategory AnalysisCategoryGet(a.client.ctx, webId, optional)
 Retrieve an analysis category.
 
 ### Required Parameters
@@ -154,7 +154,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisCategoryGetByPath**
-> AnalysisCategory AnalysisCategoryGetByPath(ctx, path, optional)
+> AnalysisCategory AnalysisCategoryGetByPath(a.client.ctx, path, optional)
 Retrieve an analysis category by path.
 
 ### Required Parameters
@@ -190,7 +190,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisCategoryGetSecurity**
-> ItemsSecurityRights AnalysisCategoryGetSecurity(ctx, webId, userIdentity, optional)
+> ItemsSecurityRights AnalysisCategoryGetSecurity(a.client.ctx, webId, userIdentity, optional)
 Get the security information of the specified security item associated with the analysis category for a specified user.
 
 ### Required Parameters
@@ -229,7 +229,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisCategoryGetSecurityEntries**
-> ItemsSecurityEntry AnalysisCategoryGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry AnalysisCategoryGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries associated with the analysis category based on the specified criteria. By default, all security entries for this analysis category are returned.
 
 ### Required Parameters
@@ -266,7 +266,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisCategoryGetSecurityEntryByName**
-> SecurityEntry AnalysisCategoryGetSecurityEntryByName(ctx, name, webId, optional)
+> SecurityEntry AnalysisCategoryGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry associated with the analysis category with the specified name.
 
 ### Required Parameters
@@ -304,7 +304,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisCategoryUpdate**
-> AnalysisCategoryUpdate(ctx, webId, category)
+> AnalysisCategoryUpdate(a.client.ctx, webId, category)
 Update an analysis category by replacing items in its definition.
 
 ### Required Parameters
@@ -331,7 +331,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisCategoryUpdateSecurityEntry**
-> AnalysisCategoryUpdateSecurityEntry(ctx, name, webId, securityEntry, optional)
+> AnalysisCategoryUpdateSecurityEntry(a.client.ctx, name, webId, securityEntry, optional)
 Update a security entry owned by the analysis category.
 
 ### Required Parameters

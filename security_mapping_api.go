@@ -36,11 +36,10 @@ type SecurityMappingApiService service
 /*
 	SecurityMappingApiService Delete a security mapping.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security mapping.
 @return
 */
-func (a *SecurityMappingApiService) SecurityMappingDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *SecurityMappingApiService) SecurityMappingDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -78,7 +77,7 @@ func (a *SecurityMappingApiService) SecurityMappingDelete(ctx context.Context, w
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -99,7 +98,6 @@ func (a *SecurityMappingApiService) SecurityMappingDelete(ctx context.Context, w
 /*
 	SecurityMappingApiService Retrieve a security mapping.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security mapping.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -108,7 +106,7 @@ func (a *SecurityMappingApiService) SecurityMappingDelete(ctx context.Context, w
 
 @return SecurityMapping
 */
-func (a *SecurityMappingApiService) SecurityMappingGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (SecurityMapping, *http.Response, error) {
+func (a *SecurityMappingApiService) SecurityMappingGet(webId string, localVarOptionals map[string]interface{}) (SecurityMapping, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -160,7 +158,7 @@ func (a *SecurityMappingApiService) SecurityMappingGet(ctx context.Context, webI
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -186,7 +184,7 @@ func (a *SecurityMappingApiService) SecurityMappingGet(ctx context.Context, webI
 	SecurityMappingApiService Retrieve a security mapping by path.
 
 This method returns a security mapping based on the path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the security mapping.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -195,7 +193,7 @@ This method returns a security mapping based on the path associated with it, and
 
 @return SecurityMapping
 */
-func (a *SecurityMappingApiService) SecurityMappingGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (SecurityMapping, *http.Response, error) {
+func (a *SecurityMappingApiService) SecurityMappingGetByPath(path string, localVarOptionals map[string]interface{}) (SecurityMapping, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -247,7 +245,7 @@ func (a *SecurityMappingApiService) SecurityMappingGetByPath(ctx context.Context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -272,7 +270,6 @@ func (a *SecurityMappingApiService) SecurityMappingGetByPath(ctx context.Context
 /*
 	SecurityMappingApiService Get the security information of the specified security item associated with the security mapping for a specified user.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security mapping for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -283,7 +280,7 @@ func (a *SecurityMappingApiService) SecurityMappingGetByPath(ctx context.Context
 
 @return ItemsSecurityRights
 */
-func (a *SecurityMappingApiService) SecurityMappingGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
+func (a *SecurityMappingApiService) SecurityMappingGetSecurity(webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -342,7 +339,7 @@ func (a *SecurityMappingApiService) SecurityMappingGetSecurity(ctx context.Conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -367,7 +364,6 @@ func (a *SecurityMappingApiService) SecurityMappingGetSecurity(ctx context.Conte
 /*
 	SecurityMappingApiService Retrieve the security entries associated with the security mapping based on the specified criteria. By default, all security entries for this security mapping are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security mapping.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -377,7 +373,7 @@ func (a *SecurityMappingApiService) SecurityMappingGetSecurity(ctx context.Conte
 
 @return ItemsSecurityEntry
 */
-func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
+func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntries(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -435,7 +431,7 @@ func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntries(ctx contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -460,7 +456,6 @@ func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntries(ctx contex
 /*
 	SecurityMappingApiService Retrieve the security entry associated with the security mapping with the specified name.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the security mapping.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -470,7 +465,7 @@ func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntries(ctx contex
 
 @return SecurityEntry
 */
-func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
+func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntryByName(name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -523,7 +518,7 @@ func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntryByName(ctx co
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -548,12 +543,11 @@ func (a *SecurityMappingApiService) SecurityMappingGetSecurityEntryByName(ctx co
 /*
 	SecurityMappingApiService Update a security mapping by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security mapping.
 @param securityMapping A partial security mapping containing the desired changes.
 @return
 */
-func (a *SecurityMappingApiService) SecurityMappingUpdate(ctx context.Context, webId string, securityMapping SecurityMapping) (*http.Response, error) {
+func (a *SecurityMappingApiService) SecurityMappingUpdate(webId string, securityMapping SecurityMapping) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -593,7 +587,7 @@ func (a *SecurityMappingApiService) SecurityMappingUpdate(ctx context.Context, w
 	}
 	// body params
 	localVarPostBody = &securityMapping
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

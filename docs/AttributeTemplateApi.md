@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **AttributeTemplateCreateAttributeTemplate**
-> AttributeTemplateCreateAttributeTemplate(ctx, webId, template, optional)
+> AttributeTemplateCreateAttributeTemplate(a.client.ctx, webId, template, optional)
 Create an attribute template as a child of another attribute template.
 
 ### Required Parameters
@@ -51,7 +51,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeTemplateDelete**
-> AttributeTemplateDelete(ctx, webId)
+> AttributeTemplateDelete(a.client.ctx, webId)
 Delete an attribute template.
 
 Deleting an attribute template will delete the attributes that were created based on the template
@@ -79,7 +79,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeTemplateGet**
-> AttributeTemplate AttributeTemplateGet(ctx, webId, optional)
+> AttributeTemplate AttributeTemplateGet(a.client.ctx, webId, optional)
 Retrieve an attribute template.
 
 ### Required Parameters
@@ -115,7 +115,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeTemplateGetAttributeTemplates**
-> ItemsAttributeTemplate AttributeTemplateGetAttributeTemplates(ctx, webId, optional)
+> ItemsAttributeTemplate AttributeTemplateGetAttributeTemplates(a.client.ctx, webId, optional)
 Retrieve an attribute template's child attribute templates.
 
 ### Required Parameters
@@ -151,7 +151,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeTemplateGetByPath**
-> AttributeTemplate AttributeTemplateGetByPath(ctx, path, optional)
+> AttributeTemplate AttributeTemplateGetByPath(a.client.ctx, path, optional)
 Retrieve an attribute template by path.
 
 This method returns an attribute template based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -189,7 +189,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeTemplateGetCategories**
-> ItemsAttributeCategory AttributeTemplateGetCategories(ctx, webId, optional)
+> ItemsAttributeCategory AttributeTemplateGetCategories(a.client.ctx, webId, optional)
 Get an attribute template's categories.
 
 ### Required Parameters
@@ -225,7 +225,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeTemplateUpdate**
-> AttributeTemplateUpdate(ctx, webId, template)
+> AttributeTemplateUpdate(a.client.ctx, webId, template)
 Update an existing attribute template by replacing items in its definition.
 
 Updating an attribute template will propagate changes to the attributes that were created based on the template

@@ -37,11 +37,11 @@ type EnumerationValueApiService service
 	EnumerationValueApiService Delete an enumeration value from an enumeration set.
 
 Deleting a value will remove it from the enumeration set along with any value references within the PI Web API system.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the enumeration value.
 @return
 */
-func (a *EnumerationValueApiService) EnumerationValueDeleteEnumerationValue(ctx context.Context, webId string) (*http.Response, error) {
+func (a *EnumerationValueApiService) EnumerationValueDeleteEnumerationValue(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -79,7 +79,7 @@ func (a *EnumerationValueApiService) EnumerationValueDeleteEnumerationValue(ctx 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -100,7 +100,6 @@ func (a *EnumerationValueApiService) EnumerationValueDeleteEnumerationValue(ctx 
 /*
 	EnumerationValueApiService Retrieve an enumeration value mapping
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the enumeration value.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -109,7 +108,7 @@ func (a *EnumerationValueApiService) EnumerationValueDeleteEnumerationValue(ctx 
 
 @return EnumerationValue
 */
-func (a *EnumerationValueApiService) EnumerationValueGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (EnumerationValue, *http.Response, error) {
+func (a *EnumerationValueApiService) EnumerationValueGet(webId string, localVarOptionals map[string]interface{}) (EnumerationValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -161,7 +160,7 @@ func (a *EnumerationValueApiService) EnumerationValueGet(ctx context.Context, we
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -187,7 +186,7 @@ func (a *EnumerationValueApiService) EnumerationValueGet(ctx context.Context, we
 	EnumerationValueApiService Retrieve an enumeration value by path.
 
 This method returns a enumeration value based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the target enumeration value.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -196,7 +195,7 @@ This method returns a enumeration value based on the hierarchical path associate
 
 @return EnumerationValue
 */
-func (a *EnumerationValueApiService) EnumerationValueGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (EnumerationValue, *http.Response, error) {
+func (a *EnumerationValueApiService) EnumerationValueGetByPath(path string, localVarOptionals map[string]interface{}) (EnumerationValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -248,7 +247,7 @@ func (a *EnumerationValueApiService) EnumerationValueGetByPath(ctx context.Conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -273,12 +272,11 @@ func (a *EnumerationValueApiService) EnumerationValueGetByPath(ctx context.Conte
 /*
 	EnumerationValueApiService Update an enumeration value by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the enumeration value to update.
 @param enumerationValue A partial enumeration value containing the desired changes.
 @return
 */
-func (a *EnumerationValueApiService) EnumerationValueUpdateEnumerationValue(ctx context.Context, webId string, enumerationValue EnumerationValue) (*http.Response, error) {
+func (a *EnumerationValueApiService) EnumerationValueUpdateEnumerationValue(webId string, enumerationValue EnumerationValue) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -318,7 +316,7 @@ func (a *EnumerationValueApiService) EnumerationValueUpdateEnumerationValue(ctx 
 	}
 	// body params
 	localVarPostBody = &enumerationValue
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

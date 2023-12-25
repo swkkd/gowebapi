@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **AttributeCreateAttribute**
-> AttributeCreateAttribute(ctx, webId, attribute, optional)
+> AttributeCreateAttribute(a.client.ctx, webId, attribute, optional)
 Create a new attribute as a child of the specified attribute.
 
 ### Required Parameters
@@ -56,7 +56,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeCreateConfig**
-> AttributeCreateConfig(ctx, webId, optional)
+> AttributeCreateConfig(a.client.ctx, webId, optional)
 Create or update an attribute's DataReference configuration (Create/Update PI point for PI Point DataReference).
 
 ### Required Parameters
@@ -91,7 +91,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeDelete**
-> AttributeDelete(ctx, webId)
+> AttributeDelete(a.client.ctx, webId)
 Delete an attribute.
 
 ### Required Parameters
@@ -117,7 +117,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeGet**
-> Attribute AttributeGet(ctx, webId, optional)
+> Attribute AttributeGet(a.client.ctx, webId, optional)
 Retrieve an attribute.
 
 ### Required Parameters
@@ -153,7 +153,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeGetAttributes**
-> ItemsAttribute AttributeGetAttributes(ctx, webId, optional)
+> ItemsAttribute AttributeGetAttributes(a.client.ctx, webId, optional)
 Get the child attributes of the specified attribute.
 
 ### Required Parameters
@@ -202,7 +202,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeGetAttributesQuery**
-> ItemsAttribute AttributeGetAttributesQuery(ctx, optional)
+> ItemsAttribute AttributeGetAttributesQuery(a.client.ctx, optional)
 Retrieve attributes based on the specified conditions. Returns attributes using the specified search query string.
 
 ### Required Parameters
@@ -240,7 +240,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeGetByPath**
-> Attribute AttributeGetByPath(ctx, path, optional)
+> Attribute AttributeGetByPath(a.client.ctx, path, optional)
 Retrieve an attribute by path.
 
 This method returns an attribute based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -278,7 +278,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeGetCategories**
-> ItemsAttributeCategory AttributeGetCategories(ctx, webId, optional)
+> ItemsAttributeCategory AttributeGetCategories(a.client.ctx, webId, optional)
 Get an attribute's categories.
 
 ### Required Parameters
@@ -314,7 +314,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeGetMultiple**
-> ItemsItemAttribute AttributeGetMultiple(ctx, optional)
+> ItemsItemAttribute AttributeGetMultiple(a.client.ctx, optional)
 Retrieve multiple attributes by web id or path.
 
 ### Required Parameters
@@ -352,7 +352,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeGetValue**
-> TimedValue AttributeGetValue(ctx, webId, optional)
+> TimedValue AttributeGetValue(a.client.ctx, webId, optional)
 Get the attribute's value. This call is intended for use with attributes that have no data reference only. For attributes with a data reference, consult the documentation for Streams.
 
 ### Required Parameters
@@ -387,7 +387,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeSetValue**
-> AttributeSetValue(ctx, webId, value)
+> AttributeSetValue(a.client.ctx, webId, value)
 Set the value of a configuration item attribute. For attributes with a data reference or non-configuration item attributes, consult the documentation for streams.
 
 Users must be aware of the value type that the attribute takes before changing the value. If a value entered by the user does not match the value type expressed in the attribute, it will not work or it will return an error. Users should also be careful of what the value type means, for instance, if a value type accepts strings and the user enters a number, the attribute will interpret it as a string of characters and not as the integer value that the user may have wanted.
@@ -416,7 +416,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeUpdate**
-> AttributeUpdate(ctx, webId, attribute)
+> AttributeUpdate(a.client.ctx, webId, attribute)
 Update an attribute by replacing items in its definition.
 
 If an attribute is based on a template, the user must make sure to update the attribute appropriately so that it does not conflict with the template's design. Once a template is applied to an attribute, it can not be changed.

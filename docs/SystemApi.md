@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **SystemCacheInstances**
-> ItemsCacheInstance SystemCacheInstances(ctx, )
+> ItemsCacheInstance SystemCacheInstances(a.client.ctx, )
 Get AF cache instances currently in use by the system. These are caches from which user requests are serviced. The number of instances depends on the number of users connected to the service, the service's authentication method, and the cache instance configuration.
 
 ### Required Parameters
@@ -34,7 +34,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SystemLanding**
-> SystemLanding SystemLanding(ctx, )
+> SystemLanding SystemLanding(a.client.ctx, )
 Get system links for this PI System Web API instance.
 
 ### Required Parameters
@@ -56,7 +56,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SystemStatus**
-> SystemStatus SystemStatus(ctx, )
+> SystemStatus SystemStatus(a.client.ctx, )
 Get information about this PI Web API instance. Examples of information returned include the system uptime, the number of cache instances for this PI System Web API instance, and the system run state.
 
 ### Required Parameters
@@ -78,7 +78,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SystemUserInfo**
-> UserInfo SystemUserInfo(ctx, )
+> UserInfo SystemUserInfo(a.client.ctx, )
 Get information about the Windows identity used to fulfill the request. This depends on the service's authentication method and the credentials passed by the client. The impersonation level of the Windows identity is included.
 
 ### Required Parameters
@@ -100,7 +100,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SystemVersions**
-> map[string]Version SystemVersions(ctx, )
+> map[string]Version SystemVersions(a.client.ctx, )
 Get the current versions of the PI Web API instance and all external plugins.
 
 ### Required Parameters

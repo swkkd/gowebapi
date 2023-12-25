@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **NotificationRuleTemplateGet**
-> NotificationRuleTemplate NotificationRuleTemplateGet(ctx, webId, optional)
+> NotificationRuleTemplate NotificationRuleTemplateGet(a.client.ctx, webId, optional)
 Get the specified notification rule template.
 
 ### Required Parameters
@@ -46,7 +46,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **NotificationRuleTemplateGetNotificationRuleTemplateSubscribers**
-> ItemsNotificationRuleSubscriber NotificationRuleTemplateGetNotificationRuleTemplateSubscribers(ctx, webId, optional)
+> ItemsNotificationRuleSubscriber NotificationRuleTemplateGetNotificationRuleTemplateSubscribers(a.client.ctx, webId, optional)
 Retrieve notification rule template subscribers.
 
 ### Required Parameters
@@ -82,7 +82,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **NotificationRuleTemplateGetNotificationRuleTemplatesQuery**
-> ItemsNotificationRuleTemplate NotificationRuleTemplateGetNotificationRuleTemplatesQuery(ctx, optional)
+> ItemsNotificationRuleTemplate NotificationRuleTemplateGetNotificationRuleTemplatesQuery(a.client.ctx, optional)
 Retrieve Notification rule templates based on the specified conditions. Returns Notification rule templates using the specified search query string.
 
 ### Required Parameters

@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **TableCreateSecurityEntry**
-> TableCreateSecurityEntry(ctx, webId, securityEntry, optional)
+> TableCreateSecurityEntry(a.client.ctx, webId, securityEntry, optional)
 Create a security entry owned by the table.
 
 ### Required Parameters
@@ -58,7 +58,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableDelete**
-> TableDelete(ctx, webId)
+> TableDelete(a.client.ctx, webId)
 Delete a table.
 
 ### Required Parameters
@@ -84,7 +84,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableDeleteSecurityEntry**
-> TableDeleteSecurityEntry(ctx, name, webId, optional)
+> TableDeleteSecurityEntry(a.client.ctx, name, webId, optional)
 Delete a security entry owned by the table.
 
 ### Required Parameters
@@ -121,7 +121,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableGet**
-> Table TableGet(ctx, webId, optional)
+> Table TableGet(a.client.ctx, webId, optional)
 Retrieve a table.
 
 ### Required Parameters
@@ -157,7 +157,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableGetByPath**
-> Table TableGetByPath(ctx, path, optional)
+> Table TableGetByPath(a.client.ctx, path, optional)
 Retrieve a table by path.
 
 ### Required Parameters
@@ -193,7 +193,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableGetCategories**
-> ItemsTableCategory TableGetCategories(ctx, webId, optional)
+> ItemsTableCategory TableGetCategories(a.client.ctx, webId, optional)
 Get a table's categories.
 
 ### Required Parameters
@@ -229,7 +229,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableGetData**
-> TableData TableGetData(ctx, webId, optional)
+> TableData TableGetData(a.client.ctx, webId, optional)
 Get the table's data.
 
 ### Required Parameters
@@ -264,7 +264,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableGetSecurity**
-> ItemsSecurityRights TableGetSecurity(ctx, webId, userIdentity, optional)
+> ItemsSecurityRights TableGetSecurity(a.client.ctx, webId, userIdentity, optional)
 Get the security information of the specified security item associated with the table for a specified user.
 
 ### Required Parameters
@@ -303,7 +303,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableGetSecurityEntries**
-> ItemsSecurityEntry TableGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry TableGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries associated with the table based on the specified criteria. By default, all security entries for this table are returned.
 
 ### Required Parameters
@@ -340,7 +340,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableGetSecurityEntryByName**
-> SecurityEntry TableGetSecurityEntryByName(ctx, name, webId, optional)
+> SecurityEntry TableGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry associated with the table with the specified name.
 
 ### Required Parameters
@@ -378,7 +378,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableUpdate**
-> TableUpdate(ctx, webId, table)
+> TableUpdate(a.client.ctx, webId, table)
 Update a table by replacing items in its definition.
 
 ### Required Parameters
@@ -405,7 +405,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableUpdateData**
-> TableUpdateData(ctx, webId, data)
+> TableUpdateData(a.client.ctx, webId, data)
 Update the table's data.
 
 ### Required Parameters
@@ -432,7 +432,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TableUpdateSecurityEntry**
-> TableUpdateSecurityEntry(ctx, name, webId, securityEntry, optional)
+> TableUpdateSecurityEntry(a.client.ctx, name, webId, securityEntry, optional)
 Update a security entry owned by the table.
 
 ### Required Parameters

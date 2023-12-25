@@ -34,10 +34,10 @@ type SystemApiService service
 
 /*
 SystemApiService Get AF cache instances currently in use by the system. These are caches from which user requests are serviced. The number of instances depends on the number of users connected to the service, the service&#39;s authentication method, and the cache instance configuration.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @return ItemsCacheInstance
 */
-func (a *SystemApiService) SystemCacheInstances(ctx context.Context) (ItemsCacheInstance, *http.Response, error) {
+func (a *SystemApiService) SystemCacheInstances() (ItemsCacheInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -75,7 +75,7 @@ func (a *SystemApiService) SystemCacheInstances(ctx context.Context) (ItemsCache
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -99,10 +99,10 @@ func (a *SystemApiService) SystemCacheInstances(ctx context.Context) (ItemsCache
 
 /*
 SystemApiService Get system links for this PI System Web API instance.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @return SystemLanding
 */
-func (a *SystemApiService) SystemLanding(ctx context.Context) (SystemLanding, *http.Response, error) {
+func (a *SystemApiService) SystemLanding() (SystemLanding, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -140,7 +140,7 @@ func (a *SystemApiService) SystemLanding(ctx context.Context) (SystemLanding, *h
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -164,10 +164,10 @@ func (a *SystemApiService) SystemLanding(ctx context.Context) (SystemLanding, *h
 
 /*
 SystemApiService Get information about this PI Web API instance. Examples of information returned include the system uptime, the number of cache instances for this PI System Web API instance, and the system run state.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @return SystemStatus
 */
-func (a *SystemApiService) SystemStatus(ctx context.Context) (SystemStatus, *http.Response, error) {
+func (a *SystemApiService) SystemStatus() (SystemStatus, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -205,7 +205,7 @@ func (a *SystemApiService) SystemStatus(ctx context.Context) (SystemStatus, *htt
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -229,10 +229,10 @@ func (a *SystemApiService) SystemStatus(ctx context.Context) (SystemStatus, *htt
 
 /*
 SystemApiService Get information about the Windows identity used to fulfill the request. This depends on the service&#39;s authentication method and the credentials passed by the client. The impersonation level of the Windows identity is included.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @return UserInfo
 */
-func (a *SystemApiService) SystemUserInfo(ctx context.Context) (UserInfo, *http.Response, error) {
+func (a *SystemApiService) SystemUserInfo() (UserInfo, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -270,7 +270,7 @@ func (a *SystemApiService) SystemUserInfo(ctx context.Context) (UserInfo, *http.
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -294,10 +294,10 @@ func (a *SystemApiService) SystemUserInfo(ctx context.Context) (UserInfo, *http.
 
 /*
 SystemApiService Get the current versions of the PI Web API instance and all external plugins.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @return map[string]Version
 */
-func (a *SystemApiService) SystemVersions(ctx context.Context) (map[string]Version, *http.Response, error) {
+func (a *SystemApiService) SystemVersions() (map[string]Version, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -335,7 +335,7 @@ func (a *SystemApiService) SystemVersions(ctx context.Context) (map[string]Versi
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}

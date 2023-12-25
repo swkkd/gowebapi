@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **DataServerCreateEnumerationSet**
-> DataServerCreateEnumerationSet(ctx, webId, enumerationSet, optional)
+> DataServerCreateEnumerationSet(a.client.ctx, webId, enumerationSet, optional)
 Create an enumeration set on the Data Server.
 
 ### Required Parameters
@@ -53,7 +53,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DataServerCreatePoint**
-> DataServerCreatePoint(ctx, webId, pointDTO, optional)
+> DataServerCreatePoint(a.client.ctx, webId, pointDTO, optional)
 Create a point in the specified Data Server.
 
 ### Required Parameters
@@ -90,7 +90,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DataServerGet**
-> DataServer DataServerGet(ctx, webId, optional)
+> DataServer DataServerGet(a.client.ctx, webId, optional)
 Retrieve a Data Server.
 
 ### Required Parameters
@@ -126,7 +126,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DataServerGetByName**
-> DataServer DataServerGetByName(ctx, name, optional)
+> DataServer DataServerGetByName(a.client.ctx, name, optional)
 Retrieve a Data Server by name.
 
 This method returns a data server based on the name. Users should primarily search with the WebID when available.
@@ -164,7 +164,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DataServerGetByPath**
-> DataServer DataServerGetByPath(ctx, path, optional)
+> DataServer DataServerGetByPath(a.client.ctx, path, optional)
 Retrieve a Data Server by path.
 
 This method returns a data server based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -202,7 +202,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DataServerGetEnumerationSets**
-> ItemsEnumerationSet DataServerGetEnumerationSets(ctx, webId, optional)
+> ItemsEnumerationSet DataServerGetEnumerationSets(a.client.ctx, webId, optional)
 Retrieve enumeration sets for given Data Server.
 
 ### Required Parameters
@@ -238,7 +238,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DataServerGetLicense**
-> DataServerLicense DataServerGetLicense(ctx, webId, optional)
+> DataServerLicense DataServerGetLicense(a.client.ctx, webId, optional)
 Retrieves the specified license for the given Data Server. The fields of the response object are string representations of the numerical values reported by the Data Server, with \"Infinity\" representing a license field with no limit.
 
 ### Required Parameters
@@ -275,7 +275,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DataServerGetPoints**
-> ItemsPoint DataServerGetPoints(ctx, webId, optional)
+> ItemsPoint DataServerGetPoints(a.client.ctx, webId, optional)
 Retrieve a list of points on a specified Data Server.
 
 Users can search for the data servers based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the data servers that match the default search.
@@ -316,7 +316,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DataServerList**
-> ItemsDataServer DataServerList(ctx, optional)
+> ItemsDataServer DataServerList(a.client.ctx, optional)
 Retrieve a list of Data Servers known to this service.
 
 This method returns a list of all available known Data Servers that the user can connect to. Even though a server may be returned in the list, the user may not have permission to access it.

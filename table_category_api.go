@@ -36,7 +36,6 @@ type TableCategoryApiService service
 /*
 	TableCategoryApiService Create a security entry owned by the table category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table category where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -46,7 +45,7 @@ type TableCategoryApiService service
 
 @return
 */
-func (a *TableCategoryApiService) TableCategoryCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *TableCategoryApiService) TableCategoryCreateSecurityEntry(webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -99,7 +98,7 @@ func (a *TableCategoryApiService) TableCategoryCreateSecurityEntry(ctx context.C
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -120,11 +119,10 @@ func (a *TableCategoryApiService) TableCategoryCreateSecurityEntry(ctx context.C
 /*
 	TableCategoryApiService Delete a table category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table category to delete.
 @return
 */
-func (a *TableCategoryApiService) TableCategoryDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *TableCategoryApiService) TableCategoryDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -162,7 +160,7 @@ func (a *TableCategoryApiService) TableCategoryDelete(ctx context.Context, webId
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -183,7 +181,6 @@ func (a *TableCategoryApiService) TableCategoryDelete(ctx context.Context, webId
 /*
 	TableCategoryApiService Delete a security entry owned by the table category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the table category where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -192,7 +189,7 @@ func (a *TableCategoryApiService) TableCategoryDelete(ctx context.Context, webId
 
 @return
 */
-func (a *TableCategoryApiService) TableCategoryDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *TableCategoryApiService) TableCategoryDeleteSecurityEntry(name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -238,7 +235,7 @@ func (a *TableCategoryApiService) TableCategoryDeleteSecurityEntry(ctx context.C
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -259,7 +256,6 @@ func (a *TableCategoryApiService) TableCategoryDeleteSecurityEntry(ctx context.C
 /*
 	TableCategoryApiService Retrieve a table category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The id of the table category.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -268,7 +264,7 @@ func (a *TableCategoryApiService) TableCategoryDeleteSecurityEntry(ctx context.C
 
 @return TableCategory
 */
-func (a *TableCategoryApiService) TableCategoryGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (TableCategory, *http.Response, error) {
+func (a *TableCategoryApiService) TableCategoryGet(webId string, localVarOptionals map[string]interface{}) (TableCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -320,7 +316,7 @@ func (a *TableCategoryApiService) TableCategoryGet(ctx context.Context, webId st
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -346,7 +342,7 @@ func (a *TableCategoryApiService) TableCategoryGet(ctx context.Context, webId st
 	TableCategoryApiService Retrieve a table category by path.
 
 This method returns a Table Category based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the target table category.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -355,7 +351,7 @@ This method returns a Table Category based on the hierarchical path associated w
 
 @return TableCategory
 */
-func (a *TableCategoryApiService) TableCategoryGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (TableCategory, *http.Response, error) {
+func (a *TableCategoryApiService) TableCategoryGetByPath(path string, localVarOptionals map[string]interface{}) (TableCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -407,7 +403,7 @@ func (a *TableCategoryApiService) TableCategoryGetByPath(ctx context.Context, pa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -432,7 +428,6 @@ func (a *TableCategoryApiService) TableCategoryGetByPath(ctx context.Context, pa
 /*
 	TableCategoryApiService Get the security information of the specified security item associated with the table category for a specified user.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table category for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -443,7 +438,7 @@ func (a *TableCategoryApiService) TableCategoryGetByPath(ctx context.Context, pa
 
 @return ItemsSecurityRights
 */
-func (a *TableCategoryApiService) TableCategoryGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
+func (a *TableCategoryApiService) TableCategoryGetSecurity(webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -502,7 +497,7 @@ func (a *TableCategoryApiService) TableCategoryGetSecurity(ctx context.Context, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -527,7 +522,6 @@ func (a *TableCategoryApiService) TableCategoryGetSecurity(ctx context.Context, 
 /*
 	TableCategoryApiService Retrieve the security entries associated with the table category based on the specified criteria. By default, all security entries for this table category are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table category.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -537,7 +531,7 @@ func (a *TableCategoryApiService) TableCategoryGetSecurity(ctx context.Context, 
 
 @return ItemsSecurityEntry
 */
-func (a *TableCategoryApiService) TableCategoryGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
+func (a *TableCategoryApiService) TableCategoryGetSecurityEntries(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -595,7 +589,7 @@ func (a *TableCategoryApiService) TableCategoryGetSecurityEntries(ctx context.Co
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -620,7 +614,6 @@ func (a *TableCategoryApiService) TableCategoryGetSecurityEntries(ctx context.Co
 /*
 	TableCategoryApiService Retrieve the security entry associated with the table category with the specified name.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the table category.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -630,7 +623,7 @@ func (a *TableCategoryApiService) TableCategoryGetSecurityEntries(ctx context.Co
 
 @return SecurityEntry
 */
-func (a *TableCategoryApiService) TableCategoryGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
+func (a *TableCategoryApiService) TableCategoryGetSecurityEntryByName(name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -683,7 +676,7 @@ func (a *TableCategoryApiService) TableCategoryGetSecurityEntryByName(ctx contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -708,12 +701,11 @@ func (a *TableCategoryApiService) TableCategoryGetSecurityEntryByName(ctx contex
 /*
 	TableCategoryApiService Update a table category by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table category to update.
 @param tableCategory A partial table category containing the desired changes.
 @return
 */
-func (a *TableCategoryApiService) TableCategoryUpdate(ctx context.Context, webId string, tableCategory TableCategory) (*http.Response, error) {
+func (a *TableCategoryApiService) TableCategoryUpdate(webId string, tableCategory TableCategory) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -753,7 +745,7 @@ func (a *TableCategoryApiService) TableCategoryUpdate(ctx context.Context, webId
 	}
 	// body params
 	localVarPostBody = &tableCategory
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -774,7 +766,6 @@ func (a *TableCategoryApiService) TableCategoryUpdate(ctx context.Context, webId
 /*
 	TableCategoryApiService Update a security entry owned by the table category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the table category where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
@@ -784,7 +775,7 @@ func (a *TableCategoryApiService) TableCategoryUpdate(ctx context.Context, webId
 
 @return
 */
-func (a *TableCategoryApiService) TableCategoryUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *TableCategoryApiService) TableCategoryUpdateSecurityEntry(name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -832,7 +823,7 @@ func (a *TableCategoryApiService) TableCategoryUpdateSecurityEntry(ctx context.C
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

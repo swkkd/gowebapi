@@ -36,7 +36,6 @@ type AnalysisCategoryApiService service
 /*
 	AnalysisCategoryApiService Create a security entry owned by the analysis category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis category, where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -46,7 +45,7 @@ type AnalysisCategoryApiService service
 
 @return
 */
-func (a *AnalysisCategoryApiService) AnalysisCategoryCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AnalysisCategoryApiService) AnalysisCategoryCreateSecurityEntry(webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -99,7 +98,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryCreateSecurityEntry(ctx con
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -120,11 +119,10 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryCreateSecurityEntry(ctx con
 /*
 	AnalysisCategoryApiService Delete an analysis category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis category to delete.
 @return
 */
-func (a *AnalysisCategoryApiService) AnalysisCategoryDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *AnalysisCategoryApiService) AnalysisCategoryDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -162,7 +160,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryDelete(ctx context.Context,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -183,7 +181,6 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryDelete(ctx context.Context,
 /*
 	AnalysisCategoryApiService Delete a security entry owned by the analysis category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the analysis category, where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -192,7 +189,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryDelete(ctx context.Context,
 
 @return
 */
-func (a *AnalysisCategoryApiService) AnalysisCategoryDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AnalysisCategoryApiService) AnalysisCategoryDeleteSecurityEntry(name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -238,7 +235,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryDeleteSecurityEntry(ctx con
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -259,7 +256,6 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryDeleteSecurityEntry(ctx con
 /*
 	AnalysisCategoryApiService Retrieve an analysis category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis category.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -268,7 +264,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryDeleteSecurityEntry(ctx con
 
 @return AnalysisCategory
 */
-func (a *AnalysisCategoryApiService) AnalysisCategoryGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (AnalysisCategory, *http.Response, error) {
+func (a *AnalysisCategoryApiService) AnalysisCategoryGet(webId string, localVarOptionals map[string]interface{}) (AnalysisCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -320,7 +316,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGet(ctx context.Context, we
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -345,7 +341,6 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGet(ctx context.Context, we
 /*
 	AnalysisCategoryApiService Retrieve an analysis category by path.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param path The path to the target analysis category.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -354,7 +349,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGet(ctx context.Context, we
 
 @return AnalysisCategory
 */
-func (a *AnalysisCategoryApiService) AnalysisCategoryGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (AnalysisCategory, *http.Response, error) {
+func (a *AnalysisCategoryApiService) AnalysisCategoryGetByPath(path string, localVarOptionals map[string]interface{}) (AnalysisCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -406,7 +401,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetByPath(ctx context.Conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -431,7 +426,6 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetByPath(ctx context.Conte
 /*
 	AnalysisCategoryApiService Get the security information of the specified security item associated with the analysis category for a specified user.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis category for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -442,7 +436,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetByPath(ctx context.Conte
 
 @return ItemsSecurityRights
 */
-func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
+func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurity(webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -501,7 +495,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurity(ctx context.Con
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -526,7 +520,6 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurity(ctx context.Con
 /*
 	AnalysisCategoryApiService Retrieve the security entries associated with the analysis category based on the specified criteria. By default, all security entries for this analysis category are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis category.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -536,7 +529,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurity(ctx context.Con
 
 @return ItemsSecurityEntry
 */
-func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
+func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntries(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -594,7 +587,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntries(ctx cont
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -619,7 +612,6 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntries(ctx cont
 /*
 	AnalysisCategoryApiService Retrieve the security entry associated with the analysis category with the specified name.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the analysis category.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -629,7 +621,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntries(ctx cont
 
 @return SecurityEntry
 */
-func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
+func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntryByName(name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -682,7 +674,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntryByName(ctx 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -707,12 +699,11 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryGetSecurityEntryByName(ctx 
 /*
 	AnalysisCategoryApiService Update an analysis category by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis category to update.
 @param category A partial analysis category containing the desired changes.
 @return
 */
-func (a *AnalysisCategoryApiService) AnalysisCategoryUpdate(ctx context.Context, webId string, category AnalysisCategory) (*http.Response, error) {
+func (a *AnalysisCategoryApiService) AnalysisCategoryUpdate(webId string, category AnalysisCategory) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -752,7 +743,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryUpdate(ctx context.Context,
 	}
 	// body params
 	localVarPostBody = &category
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -773,7 +764,6 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryUpdate(ctx context.Context,
 /*
 	AnalysisCategoryApiService Update a security entry owned by the analysis category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the analysis category, where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
@@ -783,7 +773,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryUpdate(ctx context.Context,
 
 @return
 */
-func (a *AnalysisCategoryApiService) AnalysisCategoryUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AnalysisCategoryApiService) AnalysisCategoryUpdateSecurityEntry(name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -831,7 +821,7 @@ func (a *AnalysisCategoryApiService) AnalysisCategoryUpdateSecurityEntry(ctx con
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

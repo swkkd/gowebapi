@@ -36,7 +36,6 @@ type ElementCategoryApiService service
 /*
 	ElementCategoryApiService Create a security entry owned by the element category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element category where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -46,7 +45,7 @@ type ElementCategoryApiService service
 
 @return
 */
-func (a *ElementCategoryApiService) ElementCategoryCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementCategoryApiService) ElementCategoryCreateSecurityEntry(webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -99,7 +98,7 @@ func (a *ElementCategoryApiService) ElementCategoryCreateSecurityEntry(ctx conte
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -120,11 +119,10 @@ func (a *ElementCategoryApiService) ElementCategoryCreateSecurityEntry(ctx conte
 /*
 	ElementCategoryApiService Delete an element category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element category to delete.
 @return
 */
-func (a *ElementCategoryApiService) ElementCategoryDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *ElementCategoryApiService) ElementCategoryDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -162,7 +160,7 @@ func (a *ElementCategoryApiService) ElementCategoryDelete(ctx context.Context, w
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -183,7 +181,6 @@ func (a *ElementCategoryApiService) ElementCategoryDelete(ctx context.Context, w
 /*
 	ElementCategoryApiService Delete a security entry owned by the element category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the element category where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -192,7 +189,7 @@ func (a *ElementCategoryApiService) ElementCategoryDelete(ctx context.Context, w
 
 @return
 */
-func (a *ElementCategoryApiService) ElementCategoryDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementCategoryApiService) ElementCategoryDeleteSecurityEntry(name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -238,7 +235,7 @@ func (a *ElementCategoryApiService) ElementCategoryDeleteSecurityEntry(ctx conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -259,7 +256,6 @@ func (a *ElementCategoryApiService) ElementCategoryDeleteSecurityEntry(ctx conte
 /*
 	ElementCategoryApiService Retrieve an element category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The id of the element category.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -268,7 +264,7 @@ func (a *ElementCategoryApiService) ElementCategoryDeleteSecurityEntry(ctx conte
 
 @return ElementCategory
 */
-func (a *ElementCategoryApiService) ElementCategoryGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ElementCategory, *http.Response, error) {
+func (a *ElementCategoryApiService) ElementCategoryGet(webId string, localVarOptionals map[string]interface{}) (ElementCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -320,7 +316,7 @@ func (a *ElementCategoryApiService) ElementCategoryGet(ctx context.Context, webI
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -345,7 +341,6 @@ func (a *ElementCategoryApiService) ElementCategoryGet(ctx context.Context, webI
 /*
 	ElementCategoryApiService Retrieve an element category by path.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param path The path to the target element category.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -354,7 +349,7 @@ func (a *ElementCategoryApiService) ElementCategoryGet(ctx context.Context, webI
 
 @return ElementCategory
 */
-func (a *ElementCategoryApiService) ElementCategoryGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (ElementCategory, *http.Response, error) {
+func (a *ElementCategoryApiService) ElementCategoryGetByPath(path string, localVarOptionals map[string]interface{}) (ElementCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -406,7 +401,7 @@ func (a *ElementCategoryApiService) ElementCategoryGetByPath(ctx context.Context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -431,7 +426,6 @@ func (a *ElementCategoryApiService) ElementCategoryGetByPath(ctx context.Context
 /*
 	ElementCategoryApiService Get the security information of the specified security item associated with the element category for a specified user.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element category for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -442,7 +436,7 @@ func (a *ElementCategoryApiService) ElementCategoryGetByPath(ctx context.Context
 
 @return ItemsSecurityRights
 */
-func (a *ElementCategoryApiService) ElementCategoryGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
+func (a *ElementCategoryApiService) ElementCategoryGetSecurity(webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -501,7 +495,7 @@ func (a *ElementCategoryApiService) ElementCategoryGetSecurity(ctx context.Conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -526,7 +520,6 @@ func (a *ElementCategoryApiService) ElementCategoryGetSecurity(ctx context.Conte
 /*
 	ElementCategoryApiService Retrieve the security entries associated with the element category based on the specified criteria. By default, all security entries for this element category are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element category.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -536,7 +529,7 @@ func (a *ElementCategoryApiService) ElementCategoryGetSecurity(ctx context.Conte
 
 @return ItemsSecurityEntry
 */
-func (a *ElementCategoryApiService) ElementCategoryGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
+func (a *ElementCategoryApiService) ElementCategoryGetSecurityEntries(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -594,7 +587,7 @@ func (a *ElementCategoryApiService) ElementCategoryGetSecurityEntries(ctx contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -619,7 +612,6 @@ func (a *ElementCategoryApiService) ElementCategoryGetSecurityEntries(ctx contex
 /*
 	ElementCategoryApiService Retrieve the security entry associated with the element category with the specified name.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the element category.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -629,7 +621,7 @@ func (a *ElementCategoryApiService) ElementCategoryGetSecurityEntries(ctx contex
 
 @return SecurityEntry
 */
-func (a *ElementCategoryApiService) ElementCategoryGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
+func (a *ElementCategoryApiService) ElementCategoryGetSecurityEntryByName(name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -682,7 +674,7 @@ func (a *ElementCategoryApiService) ElementCategoryGetSecurityEntryByName(ctx co
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -707,12 +699,11 @@ func (a *ElementCategoryApiService) ElementCategoryGetSecurityEntryByName(ctx co
 /*
 	ElementCategoryApiService Update an element category by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the element category to update.
 @param elementCategory A partial element category containing the desired changes.
 @return
 */
-func (a *ElementCategoryApiService) ElementCategoryUpdate(ctx context.Context, webId string, elementCategory ElementCategory) (*http.Response, error) {
+func (a *ElementCategoryApiService) ElementCategoryUpdate(webId string, elementCategory ElementCategory) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -752,7 +743,7 @@ func (a *ElementCategoryApiService) ElementCategoryUpdate(ctx context.Context, w
 	}
 	// body params
 	localVarPostBody = &elementCategory
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -773,7 +764,6 @@ func (a *ElementCategoryApiService) ElementCategoryUpdate(ctx context.Context, w
 /*
 	ElementCategoryApiService Update a security entry owned by the element category.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the element category where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
@@ -783,7 +773,7 @@ func (a *ElementCategoryApiService) ElementCategoryUpdate(ctx context.Context, w
 
 @return
 */
-func (a *ElementCategoryApiService) ElementCategoryUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *ElementCategoryApiService) ElementCategoryUpdateSecurityEntry(name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -831,7 +821,7 @@ func (a *ElementCategoryApiService) ElementCategoryUpdateSecurityEntry(ctx conte
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

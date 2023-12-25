@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **NotificationRuleSubscriberGetNotificationRuleSubscriber**
-> NotificationRuleSubscriber NotificationRuleSubscriberGetNotificationRuleSubscriber(ctx, webId, optional)
+> NotificationRuleSubscriber NotificationRuleSubscriberGetNotificationRuleSubscriber(a.client.ctx, webId, optional)
 Retrieve a notification rule subscriber.
 
 ### Required Parameters
@@ -46,7 +46,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **NotificationRuleSubscriberGetNotificationRuleSubscriberByPath**
-> NotificationRuleSubscriber NotificationRuleSubscriberGetNotificationRuleSubscriberByPath(ctx, path, optional)
+> NotificationRuleSubscriber NotificationRuleSubscriberGetNotificationRuleSubscriberByPath(a.client.ctx, path, optional)
 Retrieve a notification rule subscriber by path.
 
 ### Required Parameters
@@ -82,7 +82,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **NotificationRuleSubscriberGetNotificationRuleSubscribers**
-> ItemsNotificationRuleSubscriber NotificationRuleSubscriberGetNotificationRuleSubscribers(ctx, webId, optional)
+> ItemsNotificationRuleSubscriber NotificationRuleSubscriberGetNotificationRuleSubscribers(a.client.ctx, webId, optional)
 Retrieve notification rule subscriber subscribers.
 
 ### Required Parameters

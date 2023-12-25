@@ -36,7 +36,6 @@ type DataServerApiService service
 /*
 	DataServerApiService Create an enumeration set on the Data Server.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server on which to create the enumeration set.
 @param enumerationSet The new enumeration set definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -45,7 +44,7 @@ type DataServerApiService service
 
 @return
 */
-func (a *DataServerApiService) DataServerCreateEnumerationSet(ctx context.Context, webId string, enumerationSet EnumerationSet, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *DataServerApiService) DataServerCreateEnumerationSet(webId string, enumerationSet EnumerationSet, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -92,7 +91,7 @@ func (a *DataServerApiService) DataServerCreateEnumerationSet(ctx context.Contex
 	}
 	// body params
 	localVarPostBody = &enumerationSet
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -113,7 +112,6 @@ func (a *DataServerApiService) DataServerCreateEnumerationSet(ctx context.Contex
 /*
 	DataServerApiService Create a point in the specified Data Server.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param pointDTO The new point definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -122,7 +120,7 @@ func (a *DataServerApiService) DataServerCreateEnumerationSet(ctx context.Contex
 
 @return
 */
-func (a *DataServerApiService) DataServerCreatePoint(ctx context.Context, webId string, pointDTO Point, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *DataServerApiService) DataServerCreatePoint(webId string, pointDTO Point, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -169,7 +167,7 @@ func (a *DataServerApiService) DataServerCreatePoint(ctx context.Context, webId 
 	}
 	// body params
 	localVarPostBody = &pointDTO
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -190,7 +188,6 @@ func (a *DataServerApiService) DataServerCreatePoint(ctx context.Context, webId 
 /*
 	DataServerApiService Retrieve a Data Server.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -199,7 +196,7 @@ func (a *DataServerApiService) DataServerCreatePoint(ctx context.Context, webId 
 
 @return DataServer
 */
-func (a *DataServerApiService) DataServerGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (DataServer, *http.Response, error) {
+func (a *DataServerApiService) DataServerGet(webId string, localVarOptionals map[string]interface{}) (DataServer, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -251,7 +248,7 @@ func (a *DataServerApiService) DataServerGet(ctx context.Context, webId string, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -277,7 +274,7 @@ func (a *DataServerApiService) DataServerGet(ctx context.Context, webId string, 
 	DataServerApiService Retrieve a Data Server by name.
 
 This method returns a data server based on the name. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param name The name of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -286,7 +283,7 @@ This method returns a data server based on the name. Users should primarily sear
 
 @return DataServer
 */
-func (a *DataServerApiService) DataServerGetByName(ctx context.Context, name string, localVarOptionals map[string]interface{}) (DataServer, *http.Response, error) {
+func (a *DataServerApiService) DataServerGetByName(name string, localVarOptionals map[string]interface{}) (DataServer, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -338,7 +335,7 @@ func (a *DataServerApiService) DataServerGetByName(ctx context.Context, name str
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -364,7 +361,7 @@ func (a *DataServerApiService) DataServerGetByName(ctx context.Context, name str
 	DataServerApiService Retrieve a Data Server by path.
 
 This method returns a data server based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the server. Note that the path supplied to this method must be of the form &#39;\\\\servername&#39;.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -373,7 +370,7 @@ This method returns a data server based on the hierarchical path associated with
 
 @return DataServer
 */
-func (a *DataServerApiService) DataServerGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (DataServer, *http.Response, error) {
+func (a *DataServerApiService) DataServerGetByPath(path string, localVarOptionals map[string]interface{}) (DataServer, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -425,7 +422,7 @@ func (a *DataServerApiService) DataServerGetByPath(ctx context.Context, path str
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -450,7 +447,6 @@ func (a *DataServerApiService) DataServerGetByPath(ctx context.Context, path str
 /*
 	DataServerApiService Retrieve enumeration sets for given Data Server.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -459,7 +455,7 @@ func (a *DataServerApiService) DataServerGetByPath(ctx context.Context, path str
 
 @return ItemsEnumerationSet
 */
-func (a *DataServerApiService) DataServerGetEnumerationSets(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsEnumerationSet, *http.Response, error) {
+func (a *DataServerApiService) DataServerGetEnumerationSets(webId string, localVarOptionals map[string]interface{}) (ItemsEnumerationSet, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -511,7 +507,7 @@ func (a *DataServerApiService) DataServerGetEnumerationSets(ctx context.Context,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -536,7 +532,6 @@ func (a *DataServerApiService) DataServerGetEnumerationSets(ctx context.Context,
 /*
 	DataServerApiService Retrieves the specified license for the given Data Server. The fields of the response object are string representations of the numerical values reported by the Data Server, with \&quot;Infinity\&quot; representing a license field with no limit.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -546,7 +541,7 @@ func (a *DataServerApiService) DataServerGetEnumerationSets(ctx context.Context,
 
 @return DataServerLicense
 */
-func (a *DataServerApiService) DataServerGetLicense(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (DataServerLicense, *http.Response, error) {
+func (a *DataServerApiService) DataServerGetLicense(webId string, localVarOptionals map[string]interface{}) (DataServerLicense, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -604,7 +599,7 @@ func (a *DataServerApiService) DataServerGetLicense(ctx context.Context, webId s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -630,7 +625,7 @@ func (a *DataServerApiService) DataServerGetLicense(ctx context.Context, webId s
 	DataServerApiService Retrieve a list of points on a specified Data Server.
 
 Users can search for the data servers based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the data servers that match the default search.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the server.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -642,7 +637,7 @@ Users can search for the data servers based on specific search parameters. If no
 
 @return ItemsPoint
 */
-func (a *DataServerApiService) DataServerGetPoints(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsPoint, *http.Response, error) {
+func (a *DataServerApiService) DataServerGetPoints(webId string, localVarOptionals map[string]interface{}) (ItemsPoint, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -712,7 +707,7 @@ func (a *DataServerApiService) DataServerGetPoints(ctx context.Context, webId st
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -738,7 +733,7 @@ func (a *DataServerApiService) DataServerGetPoints(ctx context.Context, webId st
 	DataServerApiService Retrieve a list of Data Servers known to this service.
 
 This method returns a list of all available known Data Servers that the user can connect to. Even though a server may be returned in the list, the user may not have permission to access it.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
@@ -746,7 +741,7 @@ This method returns a list of all available known Data Servers that the user can
 
 @return ItemsDataServer
 */
-func (a *DataServerApiService) DataServerList(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsDataServer, *http.Response, error) {
+func (a *DataServerApiService) DataServerList(localVarOptionals map[string]interface{}) (ItemsDataServer, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -797,7 +792,7 @@ func (a *DataServerApiService) DataServerList(ctx context.Context, localVarOptio
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}

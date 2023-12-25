@@ -36,7 +36,6 @@ type TableApiService service
 /*
 	TableApiService Create a security entry owned by the table.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -46,7 +45,7 @@ type TableApiService service
 
 @return
 */
-func (a *TableApiService) TableCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *TableApiService) TableCreateSecurityEntry(webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -99,7 +98,7 @@ func (a *TableApiService) TableCreateSecurityEntry(ctx context.Context, webId st
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -120,11 +119,10 @@ func (a *TableApiService) TableCreateSecurityEntry(ctx context.Context, webId st
 /*
 	TableApiService Delete a table.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table to delete.
 @return
 */
-func (a *TableApiService) TableDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *TableApiService) TableDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -162,7 +160,7 @@ func (a *TableApiService) TableDelete(ctx context.Context, webId string) (*http.
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -183,7 +181,6 @@ func (a *TableApiService) TableDelete(ctx context.Context, webId string) (*http.
 /*
 	TableApiService Delete a security entry owned by the table.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the table where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -192,7 +189,7 @@ func (a *TableApiService) TableDelete(ctx context.Context, webId string) (*http.
 
 @return
 */
-func (a *TableApiService) TableDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *TableApiService) TableDeleteSecurityEntry(name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -238,7 +235,7 @@ func (a *TableApiService) TableDeleteSecurityEntry(ctx context.Context, name str
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -259,7 +256,6 @@ func (a *TableApiService) TableDeleteSecurityEntry(ctx context.Context, name str
 /*
 	TableApiService Retrieve a table.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -268,7 +264,7 @@ func (a *TableApiService) TableDeleteSecurityEntry(ctx context.Context, name str
 
 @return Table
 */
-func (a *TableApiService) TableGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (Table, *http.Response, error) {
+func (a *TableApiService) TableGet(webId string, localVarOptionals map[string]interface{}) (Table, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -320,7 +316,7 @@ func (a *TableApiService) TableGet(ctx context.Context, webId string, localVarOp
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -345,7 +341,6 @@ func (a *TableApiService) TableGet(ctx context.Context, webId string, localVarOp
 /*
 	TableApiService Retrieve a table by path.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param path The path to the table.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -354,7 +349,7 @@ func (a *TableApiService) TableGet(ctx context.Context, webId string, localVarOp
 
 @return Table
 */
-func (a *TableApiService) TableGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (Table, *http.Response, error) {
+func (a *TableApiService) TableGetByPath(path string, localVarOptionals map[string]interface{}) (Table, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -406,7 +401,7 @@ func (a *TableApiService) TableGetByPath(ctx context.Context, path string, local
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -431,7 +426,6 @@ func (a *TableApiService) TableGetByPath(ctx context.Context, path string, local
 /*
 	TableApiService Get a table&#39;s categories.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -440,7 +434,7 @@ func (a *TableApiService) TableGetByPath(ctx context.Context, path string, local
 
 @return ItemsTableCategory
 */
-func (a *TableApiService) TableGetCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsTableCategory, *http.Response, error) {
+func (a *TableApiService) TableGetCategories(webId string, localVarOptionals map[string]interface{}) (ItemsTableCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -492,7 +486,7 @@ func (a *TableApiService) TableGetCategories(ctx context.Context, webId string, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -517,7 +511,6 @@ func (a *TableApiService) TableGetCategories(ctx context.Context, webId string, 
 /*
 	TableApiService Get the table&#39;s data.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -525,7 +518,7 @@ func (a *TableApiService) TableGetCategories(ctx context.Context, webId string, 
 
 @return TableData
 */
-func (a *TableApiService) TableGetData(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (TableData, *http.Response, error) {
+func (a *TableApiService) TableGetData(webId string, localVarOptionals map[string]interface{}) (TableData, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -571,7 +564,7 @@ func (a *TableApiService) TableGetData(ctx context.Context, webId string, localV
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -596,7 +589,6 @@ func (a *TableApiService) TableGetData(ctx context.Context, webId string, localV
 /*
 	TableApiService Get the security information of the specified security item associated with the table for a specified user.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -607,7 +599,7 @@ func (a *TableApiService) TableGetData(ctx context.Context, webId string, localV
 
 @return ItemsSecurityRights
 */
-func (a *TableApiService) TableGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
+func (a *TableApiService) TableGetSecurity(webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -666,7 +658,7 @@ func (a *TableApiService) TableGetSecurity(ctx context.Context, webId string, us
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -691,7 +683,6 @@ func (a *TableApiService) TableGetSecurity(ctx context.Context, webId string, us
 /*
 	TableApiService Retrieve the security entries associated with the table based on the specified criteria. By default, all security entries for this table are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -701,7 +692,7 @@ func (a *TableApiService) TableGetSecurity(ctx context.Context, webId string, us
 
 @return ItemsSecurityEntry
 */
-func (a *TableApiService) TableGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
+func (a *TableApiService) TableGetSecurityEntries(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -759,7 +750,7 @@ func (a *TableApiService) TableGetSecurityEntries(ctx context.Context, webId str
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -784,7 +775,6 @@ func (a *TableApiService) TableGetSecurityEntries(ctx context.Context, webId str
 /*
 	TableApiService Retrieve the security entry associated with the table with the specified name.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the table.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -794,7 +784,7 @@ func (a *TableApiService) TableGetSecurityEntries(ctx context.Context, webId str
 
 @return SecurityEntry
 */
-func (a *TableApiService) TableGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
+func (a *TableApiService) TableGetSecurityEntryByName(name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -847,7 +837,7 @@ func (a *TableApiService) TableGetSecurityEntryByName(ctx context.Context, name 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -872,12 +862,11 @@ func (a *TableApiService) TableGetSecurityEntryByName(ctx context.Context, name 
 /*
 	TableApiService Update a table by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table to update.
 @param table A partial table containing the desired changes.
 @return
 */
-func (a *TableApiService) TableUpdate(ctx context.Context, webId string, table Table) (*http.Response, error) {
+func (a *TableApiService) TableUpdate(webId string, table Table) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -917,7 +906,7 @@ func (a *TableApiService) TableUpdate(ctx context.Context, webId string, table T
 	}
 	// body params
 	localVarPostBody = &table
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -938,12 +927,11 @@ func (a *TableApiService) TableUpdate(ctx context.Context, webId string, table T
 /*
 	TableApiService Update the table&#39;s data.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the table on which to update the data.
 @param data The new table data definition.
 @return
 */
-func (a *TableApiService) TableUpdateData(ctx context.Context, webId string, data TableData) (*http.Response, error) {
+func (a *TableApiService) TableUpdateData(webId string, data TableData) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -983,7 +971,7 @@ func (a *TableApiService) TableUpdateData(ctx context.Context, webId string, dat
 	}
 	// body params
 	localVarPostBody = &data
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -1004,7 +992,6 @@ func (a *TableApiService) TableUpdateData(ctx context.Context, webId string, dat
 /*
 	TableApiService Update a security entry owned by the table.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the table where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
@@ -1014,7 +1001,7 @@ func (a *TableApiService) TableUpdateData(ctx context.Context, webId string, dat
 
 @return
 */
-func (a *TableApiService) TableUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *TableApiService) TableUpdateSecurityEntry(name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -1062,7 +1049,7 @@ func (a *TableApiService) TableUpdateSecurityEntry(ctx context.Context, name str
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

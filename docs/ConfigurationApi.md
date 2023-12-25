@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **ConfigurationDelete**
-> ConfigurationDelete(ctx, key)
+> ConfigurationDelete(a.client.ctx, key)
 Delete a configuration item.
 
 ### Required Parameters
@@ -36,7 +36,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ConfigurationGet**
-> interface{} ConfigurationGet(ctx, key)
+> interface{} ConfigurationGet(a.client.ctx, key)
 Get the value of a configuration item.
 
 The response content may vary based on the configuration item's data type.
@@ -64,7 +64,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ConfigurationList**
-> map[string]interface{} ConfigurationList(ctx, )
+> map[string]interface{} ConfigurationList(a.client.ctx, )
 Get the current system configuration.
 
 ### Required Parameters

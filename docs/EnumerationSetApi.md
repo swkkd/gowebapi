@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **EnumerationSetCreateSecurityEntry**
-> EnumerationSetCreateSecurityEntry(ctx, webId, securityEntry, optional)
+> EnumerationSetCreateSecurityEntry(a.client.ctx, webId, securityEntry, optional)
 Create a security entry owned by the enumeration set.
 
 ### Required Parameters
@@ -57,7 +57,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnumerationSetCreateValue**
-> EnumerationSetCreateValue(ctx, webId, enumerationValue, optional)
+> EnumerationSetCreateValue(a.client.ctx, webId, enumerationValue, optional)
 Create an enumeration value for a enumeration set.
 
 ### Required Parameters
@@ -94,7 +94,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnumerationSetDelete**
-> EnumerationSetDelete(ctx, webId)
+> EnumerationSetDelete(a.client.ctx, webId)
 Delete an enumeration set.
 
 ### Required Parameters
@@ -120,7 +120,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnumerationSetDeleteSecurityEntry**
-> EnumerationSetDeleteSecurityEntry(ctx, name, webId, optional)
+> EnumerationSetDeleteSecurityEntry(a.client.ctx, name, webId, optional)
 Delete a security entry owned by the enumeration set.
 
 ### Required Parameters
@@ -157,7 +157,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnumerationSetGet**
-> EnumerationSet EnumerationSetGet(ctx, webId, optional)
+> EnumerationSet EnumerationSetGet(a.client.ctx, webId, optional)
 Retrieve an enumeration set.
 
 ### Required Parameters
@@ -193,7 +193,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnumerationSetGetByPath**
-> EnumerationSet EnumerationSetGetByPath(ctx, path, optional)
+> EnumerationSet EnumerationSetGetByPath(a.client.ctx, path, optional)
 Retrieve an enumeration set by path.
 
 This method returns an enumeration set based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -231,7 +231,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnumerationSetGetSecurity**
-> ItemsSecurityRights EnumerationSetGetSecurity(ctx, webId, userIdentity, optional)
+> ItemsSecurityRights EnumerationSetGetSecurity(a.client.ctx, webId, userIdentity, optional)
 Get the security information of the specified security item associated with the enumeration set for a specified user.
 
 ### Required Parameters
@@ -270,7 +270,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnumerationSetGetSecurityEntries**
-> ItemsSecurityEntry EnumerationSetGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry EnumerationSetGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries associated with the enumeration set based on the specified criteria. By default, all security entries for this enumeration set are returned.
 
 ### Required Parameters
@@ -307,7 +307,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnumerationSetGetSecurityEntryByName**
-> SecurityEntry EnumerationSetGetSecurityEntryByName(ctx, name, webId, optional)
+> SecurityEntry EnumerationSetGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry associated with the enumeration set with the specified name.
 
 ### Required Parameters
@@ -345,7 +345,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnumerationSetGetValues**
-> ItemsEnumerationValue EnumerationSetGetValues(ctx, webId, optional)
+> ItemsEnumerationValue EnumerationSetGetValues(a.client.ctx, webId, optional)
 Retrieve an enumeration set's values.
 
 ### Required Parameters
@@ -381,7 +381,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnumerationSetUpdate**
-> EnumerationSetUpdate(ctx, webId, enumerationSet)
+> EnumerationSetUpdate(a.client.ctx, webId, enumerationSet)
 Update an enumeration set by replacing items in its definition.
 
 ### Required Parameters
@@ -408,7 +408,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnumerationSetUpdateSecurityEntry**
-> EnumerationSetUpdateSecurityEntry(ctx, name, webId, securityEntry, optional)
+> EnumerationSetUpdateSecurityEntry(a.client.ctx, name, webId, securityEntry, optional)
 Update a security entry owned by the enumeration set.
 
 ### Required Parameters

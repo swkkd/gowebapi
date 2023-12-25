@@ -36,7 +36,6 @@ type AssetDatabaseApiService service
 /*
 	AssetDatabaseApiService Add a reference to an existing element to the specified database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database which the referenced element will be added to.
 @param referencedElementWebId The ID of the referenced element. Multiple referenced elements may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -45,7 +44,7 @@ type AssetDatabaseApiService service
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseAddReferencedElement(ctx context.Context, webId string, referencedElementWebId []string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseAddReferencedElement(webId string, referencedElementWebId []string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -91,7 +90,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseAddReferencedElement(ctx context.
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -112,7 +111,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseAddReferencedElement(ctx context.
 /*
 	AssetDatabaseApiService Create an analysis category at the Asset Database root.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database in which to create the analysis category.
 @param analysisCategory The new analysis category definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -121,7 +119,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseAddReferencedElement(ctx context.
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseCreateAnalysisCategory(ctx context.Context, webId string, analysisCategory AnalysisCategory, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseCreateAnalysisCategory(webId string, analysisCategory AnalysisCategory, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -168,7 +166,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateAnalysisCategory(ctx contex
 	}
 	// body params
 	localVarPostBody = &analysisCategory
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -190,7 +188,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateAnalysisCategory(ctx contex
 	AssetDatabaseApiService Create an analysis template at the Asset Database root.
 
 Analyses that are based on an analysis template will inherit characteristics defined in the template.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the database in which to create the analysis template.
 @param template The new analysis template definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -199,7 +197,7 @@ Analyses that are based on an analysis template will inherit characteristics def
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseCreateAnalysisTemplate(ctx context.Context, webId string, template AnalysisTemplate, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseCreateAnalysisTemplate(webId string, template AnalysisTemplate, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -246,7 +244,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateAnalysisTemplate(ctx contex
 	}
 	// body params
 	localVarPostBody = &template
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -267,7 +265,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateAnalysisTemplate(ctx contex
 /*
 	AssetDatabaseApiService Create an attribute category at the Asset Database root.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database in which to create the attribute category.
 @param attributeCategory The new attribute category definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -276,7 +273,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateAnalysisTemplate(ctx contex
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseCreateAttributeCategory(ctx context.Context, webId string, attributeCategory AttributeCategory, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseCreateAttributeCategory(webId string, attributeCategory AttributeCategory, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -323,7 +320,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateAttributeCategory(ctx conte
 	}
 	// body params
 	localVarPostBody = &attributeCategory
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -344,7 +341,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateAttributeCategory(ctx conte
 /*
 	AssetDatabaseApiService Create a child element.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset database on which to create the element.
 @param element The new element definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -353,7 +349,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateAttributeCategory(ctx conte
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseCreateElement(ctx context.Context, webId string, element Element, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseCreateElement(webId string, element Element, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -400,7 +396,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateElement(ctx context.Context
 	}
 	// body params
 	localVarPostBody = &element
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -421,7 +417,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateElement(ctx context.Context
 /*
 	AssetDatabaseApiService Create an element category at the Asset Database root.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database in which to create the element category.
 @param elementCategory The new element category definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -430,7 +425,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateElement(ctx context.Context
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseCreateElementCategory(ctx context.Context, webId string, elementCategory ElementCategory, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseCreateElementCategory(webId string, elementCategory ElementCategory, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -477,7 +472,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateElementCategory(ctx context
 	}
 	// body params
 	localVarPostBody = &elementCategory
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -499,7 +494,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateElementCategory(ctx context
 	AssetDatabaseApiService Create a template at the Asset Database root. Specify InstanceType of \&quot;Element\&quot; or \&quot;EventFrame\&quot; to create element or event frame template respectively. Only these two types of templates can be created.
 
 Elements and event frames that are based on an element template will inherit characteristics defined in the template.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the database in which to create the element template.
 @param template The new element template definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -508,7 +503,7 @@ Elements and event frames that are based on an element template will inherit cha
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseCreateElementTemplate(ctx context.Context, webId string, template ElementTemplate, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseCreateElementTemplate(webId string, template ElementTemplate, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -555,7 +550,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateElementTemplate(ctx context
 	}
 	// body params
 	localVarPostBody = &template
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -576,7 +571,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateElementTemplate(ctx context
 /*
 	AssetDatabaseApiService Create an enumeration set at the Asset Database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database in which to create the enumeration set.
 @param enumerationSet The new enumeration set definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -585,7 +579,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateElementTemplate(ctx context
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseCreateEnumerationSet(ctx context.Context, webId string, enumerationSet EnumerationSet, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseCreateEnumerationSet(webId string, enumerationSet EnumerationSet, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -632,7 +626,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateEnumerationSet(ctx context.
 	}
 	// body params
 	localVarPostBody = &enumerationSet
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -653,7 +647,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateEnumerationSet(ctx context.
 /*
 	AssetDatabaseApiService Create an event frame.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database on which to create the event frame.
 @param eventFrame The new event frame definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -662,7 +655,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateEnumerationSet(ctx context.
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseCreateEventFrame(ctx context.Context, webId string, eventFrame EventFrame, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseCreateEventFrame(webId string, eventFrame EventFrame, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -709,7 +702,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateEventFrame(ctx context.Cont
 	}
 	// body params
 	localVarPostBody = &eventFrame
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -730,7 +723,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateEventFrame(ctx context.Cont
 /*
 	AssetDatabaseApiService Create a security entry owned by the asset database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset database where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -741,7 +733,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateEventFrame(ctx context.Cont
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseCreateSecurityEntry(webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -800,7 +792,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateSecurityEntry(ctx context.C
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -821,7 +813,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateSecurityEntry(ctx context.C
 /*
 	AssetDatabaseApiService Create a table on the Asset Database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database in which to create the table.
 @param table The new table definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -830,7 +821,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateSecurityEntry(ctx context.C
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseCreateTable(ctx context.Context, webId string, table Table, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseCreateTable(webId string, table Table, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -877,7 +868,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateTable(ctx context.Context, 
 	}
 	// body params
 	localVarPostBody = &table
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -898,7 +889,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateTable(ctx context.Context, 
 /*
 	AssetDatabaseApiService Create a table category on the Asset Database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database in which to create the table category.
 @param tableCategory The new table category definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -907,7 +897,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateTable(ctx context.Context, 
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseCreateTableCategory(ctx context.Context, webId string, tableCategory TableCategory, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseCreateTableCategory(webId string, tableCategory TableCategory, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -954,7 +944,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateTableCategory(ctx context.C
 	}
 	// body params
 	localVarPostBody = &tableCategory
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -975,11 +965,10 @@ func (a *AssetDatabaseApiService) AssetDatabaseCreateTableCategory(ctx context.C
 /*
 	AssetDatabaseApiService Delete an asset database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database.
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -1017,7 +1006,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseDelete(ctx context.Context, webId
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -1038,7 +1027,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseDelete(ctx context.Context, webId
 /*
 	AssetDatabaseApiService Delete a security entry owned by the asset database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the asset database where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -1048,7 +1036,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseDelete(ctx context.Context, webId
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseDeleteSecurityEntry(name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -1100,7 +1088,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseDeleteSecurityEntry(ctx context.C
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -1121,7 +1109,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseDeleteSecurityEntry(ctx context.C
 /*
 	AssetDatabaseApiService Export the asset database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1131,7 +1118,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseDeleteSecurityEntry(ctx context.C
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseExport(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseExport(webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1185,7 +1172,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseExport(ctx context.Context, webId
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -1207,7 +1194,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseExport(ctx context.Context, webId
 	AssetDatabaseApiService Retrieve analyses based on the specified conditions.
 
 Users can search for the analyses based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the analyses that match the default search.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the database to search for the analyses.
 @param field Specifies which of the object&#39;s properties are searched. Multiple search fields may be specified with multiple instances of the parameter. The default is &#39;Name&#39;.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -1222,7 +1209,7 @@ Users can search for the analyses based on specific search parameters. If no par
 
 @return ItemsAnalysis
 */
-func (a *AssetDatabaseApiService) AssetDatabaseFindAnalyses(ctx context.Context, webId string, field []string, localVarOptionals map[string]interface{}) (ItemsAnalysis, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseFindAnalyses(webId string, field []string, localVarOptionals map[string]interface{}) (ItemsAnalysis, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1305,7 +1292,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseFindAnalyses(ctx context.Context,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1330,7 +1317,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseFindAnalyses(ctx context.Context,
 /*
 	AssetDatabaseApiService Retrieves a list of element attributes matching the specified filters from the specified asset database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset database to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1353,7 +1339,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseFindAnalyses(ctx context.Context,
 
 @return ItemsAttribute
 */
-func (a *AssetDatabaseApiService) AssetDatabaseFindElementAttributes(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseFindElementAttributes(webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1489,7 +1475,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseFindElementAttributes(ctx context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1514,7 +1500,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseFindElementAttributes(ctx context
 /*
 	AssetDatabaseApiService Retrieves a list of event frame attributes matching the specified filters from the specified asset database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset database to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1540,7 +1525,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseFindElementAttributes(ctx context
 
 @return ItemsAttribute
 */
-func (a *AssetDatabaseApiService) AssetDatabaseFindEventFrameAttributes(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseFindEventFrameAttributes(webId string, localVarOptionals map[string]interface{}) (ItemsAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1694,7 +1679,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseFindEventFrameAttributes(ctx cont
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1719,7 +1704,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseFindEventFrameAttributes(ctx cont
 /*
 	AssetDatabaseApiService Retrieve an Asset Database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1728,7 +1712,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseFindEventFrameAttributes(ctx cont
 
 @return AssetDatabase
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (AssetDatabase, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGet(webId string, localVarOptionals map[string]interface{}) (AssetDatabase, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1780,7 +1764,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGet(ctx context.Context, webId st
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1805,7 +1789,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseGet(ctx context.Context, webId st
 /*
 	AssetDatabaseApiService Retrieve analysis categories for a given Asset Database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1814,7 +1797,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGet(ctx context.Context, webId st
 
 @return ItemsAnalysisCategory
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetAnalysisCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAnalysisCategory, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetAnalysisCategories(webId string, localVarOptionals map[string]interface{}) (ItemsAnalysisCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1866,7 +1849,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetAnalysisCategories(ctx context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1892,7 +1875,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetAnalysisCategories(ctx context
 	AssetDatabaseApiService Retrieve analysis templates based on the specified criteria. By default, all analysis templates in the specified Asset Database are returned.
 
 Users can search for the analysis templates based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the templates that match the default search.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the database to search.
 @param field Specifies which of the object&#39;s properties are searched. Multiple search fields may be specified with multiple instances of the parameter. The default is &#39;Name&#39;.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -1906,7 +1889,7 @@ Users can search for the analysis templates based on specific search parameters.
 
 @return ItemsAnalysisTemplate
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetAnalysisTemplates(ctx context.Context, webId string, field []string, localVarOptionals map[string]interface{}) (ItemsAnalysisTemplate, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetAnalysisTemplates(webId string, field []string, localVarOptionals map[string]interface{}) (ItemsAnalysisTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1983,7 +1966,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetAnalysisTemplates(ctx context.
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2008,7 +1991,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetAnalysisTemplates(ctx context.
 /*
 	AssetDatabaseApiService Retrieve attribute categories for a given Asset Database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2017,7 +1999,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetAnalysisTemplates(ctx context.
 
 @return ItemsAttributeCategory
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetAttributeCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttributeCategory, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetAttributeCategories(webId string, localVarOptionals map[string]interface{}) (ItemsAttributeCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2069,7 +2051,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetAttributeCategories(ctx contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2095,7 +2077,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetAttributeCategories(ctx contex
 	AssetDatabaseApiService Retrieve an Asset Database by path.
 
 This method returns an asset database based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the database.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2104,7 +2086,7 @@ This method returns an asset database based on the hierarchical path associated 
 
 @return AssetDatabase
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (AssetDatabase, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetByPath(path string, localVarOptionals map[string]interface{}) (AssetDatabase, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2156,7 +2138,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetByPath(ctx context.Context, pa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2181,7 +2163,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetByPath(ctx context.Context, pa
 /*
 	AssetDatabaseApiService Retrieve element categories for a given Asset Database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2190,7 +2171,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetByPath(ctx context.Context, pa
 
 @return ItemsElementCategory
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetElementCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsElementCategory, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetElementCategories(webId string, localVarOptionals map[string]interface{}) (ItemsElementCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2242,7 +2223,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetElementCategories(ctx context.
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2268,7 +2249,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetElementCategories(ctx context.
 	AssetDatabaseApiService Retrieve element templates based on the specified criteria. Only templates of instance type \&quot;Element\&quot; and \&quot;EventFrame\&quot; are returned. By default, all element and event frame templates in the specified Asset Database are returned.
 
 Users can search for the element and event frame template based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the templates that match the default search.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the database to search.
 @param field Specifies which of the object&#39;s properties are searched. Multiple search fields may be specified with multiple instances of the parameter. The default is &#39;Name&#39;.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -2282,7 +2263,7 @@ Users can search for the element and event frame template based on specific sear
 
 @return ItemsElementTemplate
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetElementTemplates(ctx context.Context, webId string, field []string, localVarOptionals map[string]interface{}) (ItemsElementTemplate, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetElementTemplates(webId string, field []string, localVarOptionals map[string]interface{}) (ItemsElementTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2359,7 +2340,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetElementTemplates(ctx context.C
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2385,7 +2366,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetElementTemplates(ctx context.C
 	AssetDatabaseApiService Retrieve elements based on the specified conditions. By default, this method selects immediate children of the specified asset database.
 
 Users can search for the elements based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the elements that match the default search.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the database to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2404,7 +2385,7 @@ Users can search for the elements based on specific search parameters. If no par
 
 @return ItemsElement
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetElements(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetElements(webId string, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2516,7 +2497,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetElements(ctx context.Context, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2541,7 +2522,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetElements(ctx context.Context, 
 /*
 	AssetDatabaseApiService Retrieve enumeration sets for given asset database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2550,7 +2530,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetElements(ctx context.Context, 
 
 @return ItemsEnumerationSet
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetEnumerationSets(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsEnumerationSet, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetEnumerationSets(webId string, localVarOptionals map[string]interface{}) (ItemsEnumerationSet, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2602,7 +2582,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetEnumerationSets(ctx context.Co
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2627,7 +2607,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetEnumerationSets(ctx context.Co
 /*
 	AssetDatabaseApiService Retrieve event frames based on the specified conditions. By default, returns all children of the specified root resource that have been active in the past 8 hours.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset database to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2652,7 +2631,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetEnumerationSets(ctx context.Co
 
 @return ItemsEventFrame
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetEventFrames(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetEventFrames(webId string, localVarOptionals map[string]interface{}) (ItemsEventFrame, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2797,7 +2776,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetEventFrames(ctx context.Contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2823,7 +2802,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetEventFrames(ctx context.Contex
 	AssetDatabaseApiService Retrieve referenced elements based on the specified conditions. By default, this method selects all referenced elements at the root level of the asset database.
 
 Users can search for the referenced elements based on specific search parameters. If no parameters are specified in the search, the default values for each parameter will be used and will return the elements that match the default search.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the resource to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2841,7 +2820,7 @@ Users can search for the referenced elements based on specific search parameters
 
 @return ItemsElement
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetReferencedElements(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetReferencedElements(webId string, localVarOptionals map[string]interface{}) (ItemsElement, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2947,7 +2926,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetReferencedElements(ctx context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2972,7 +2951,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetReferencedElements(ctx context
 /*
 	AssetDatabaseApiService Get the security information of the specified security item associated with the asset database for a specified user.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset database for the security to be checked.
 @param securityItem The security item of the desired security information to be returned. Multiple security items may be specified with multiple instances of the parameter. If the parameter is not specified, only &#39;Default&#39; security item of the security information will be returned.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
@@ -2984,7 +2962,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetReferencedElements(ctx context
 
 @return ItemsSecurityRights
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetSecurity(ctx context.Context, webId string, securityItem []string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetSecurity(webId string, securityItem []string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -3044,7 +3022,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetSecurity(ctx context.Context, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -3069,7 +3047,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetSecurity(ctx context.Context, 
 /*
 	AssetDatabaseApiService Retrieve the security entries of the specified security item associated with the asset database based on the specified criteria. By default, all security entries for this asset database are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset database.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -3080,7 +3057,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetSecurity(ctx context.Context, 
 
 @return ItemsSecurityEntry
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetSecurityEntries(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -3144,7 +3121,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetSecurityEntries(ctx context.Co
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -3169,7 +3146,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetSecurityEntries(ctx context.Co
 /*
 	AssetDatabaseApiService Retrieve the security entry of the specified security item associated with the asset database with the specified name.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the asset database.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -3180,7 +3156,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetSecurityEntries(ctx context.Co
 
 @return SecurityEntry
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetSecurityEntryByName(name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -3239,7 +3215,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetSecurityEntryByName(ctx contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -3264,7 +3240,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetSecurityEntryByName(ctx contex
 /*
 	AssetDatabaseApiService Retrieve table categories for a given Asset Database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -3273,7 +3248,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetSecurityEntryByName(ctx contex
 
 @return ItemsTableCategory
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetTableCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsTableCategory, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetTableCategories(webId string, localVarOptionals map[string]interface{}) (ItemsTableCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -3325,7 +3300,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetTableCategories(ctx context.Co
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -3350,7 +3325,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetTableCategories(ctx context.Co
 /*
 	AssetDatabaseApiService Retrieve tables for given Asset Database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -3359,7 +3333,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetTableCategories(ctx context.Co
 
 @return ItemsTable
 */
-func (a *AssetDatabaseApiService) AssetDatabaseGetTables(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsTable, *http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseGetTables(webId string, localVarOptionals map[string]interface{}) (ItemsTable, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -3411,7 +3385,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetTables(ctx context.Context, we
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -3436,7 +3410,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetTables(ctx context.Context, we
 /*
 	AssetDatabaseApiService Import an asset database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the asset database.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -3444,7 +3417,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseGetTables(ctx context.Context, we
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseImport(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseImport(webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -3485,7 +3458,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseImport(ctx context.Context, webId
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -3506,12 +3479,11 @@ func (a *AssetDatabaseApiService) AssetDatabaseImport(ctx context.Context, webId
 /*
 	AssetDatabaseApiService Remove a reference to an existing element from the specified database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database which the referenced element will be removed from.
 @param referencedElementWebId The ID of the referenced element. Multiple referenced elements may be specified with multiple instances of the parameter.
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseRemoveReferencedElement(ctx context.Context, webId string, referencedElementWebId []string) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseRemoveReferencedElement(webId string, referencedElementWebId []string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -3550,7 +3522,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseRemoveReferencedElement(ctx conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -3571,12 +3543,11 @@ func (a *AssetDatabaseApiService) AssetDatabaseRemoveReferencedElement(ctx conte
 /*
 	AssetDatabaseApiService Update an asset database by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the database.
 @param database A partial database containing the desired changes.
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseUpdate(ctx context.Context, webId string, database AssetDatabase) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseUpdate(webId string, database AssetDatabase) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -3616,7 +3587,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseUpdate(ctx context.Context, webId
 	}
 	// body params
 	localVarPostBody = &database
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -3637,7 +3608,6 @@ func (a *AssetDatabaseApiService) AssetDatabaseUpdate(ctx context.Context, webId
 /*
 	AssetDatabaseApiService Update a security entry owned by the asset database.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the asset database where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
@@ -3648,7 +3618,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseUpdate(ctx context.Context, webId
 
 @return
 */
-func (a *AssetDatabaseApiService) AssetDatabaseUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AssetDatabaseApiService) AssetDatabaseUpdateSecurityEntry(name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -3702,7 +3672,7 @@ func (a *AssetDatabaseApiService) AssetDatabaseUpdateSecurityEntry(ctx context.C
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

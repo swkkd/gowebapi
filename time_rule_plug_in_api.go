@@ -36,7 +36,6 @@ type TimeRulePlugInApiService service
 /*
 	TimeRulePlugInApiService Retrieve a Time Rule Plug-in.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the Time Rule Plug-in.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -45,7 +44,7 @@ type TimeRulePlugInApiService service
 
 @return TimeRulePlugIn
 */
-func (a *TimeRulePlugInApiService) TimeRulePlugInGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (TimeRulePlugIn, *http.Response, error) {
+func (a *TimeRulePlugInApiService) TimeRulePlugInGet(webId string, localVarOptionals map[string]interface{}) (TimeRulePlugIn, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -97,7 +96,7 @@ func (a *TimeRulePlugInApiService) TimeRulePlugInGet(ctx context.Context, webId 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -123,7 +122,7 @@ func (a *TimeRulePlugInApiService) TimeRulePlugInGet(ctx context.Context, webId 
 	TimeRulePlugInApiService Retrieve a Time Rule Plug-in by path.
 
 This method returns a Time Rule Plug-in based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the Time Rule Plug-in.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -132,7 +131,7 @@ This method returns a Time Rule Plug-in based on the hierarchical path associate
 
 @return TimeRulePlugIn
 */
-func (a *TimeRulePlugInApiService) TimeRulePlugInGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (TimeRulePlugIn, *http.Response, error) {
+func (a *TimeRulePlugInApiService) TimeRulePlugInGetByPath(path string, localVarOptionals map[string]interface{}) (TimeRulePlugIn, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -184,7 +183,7 @@ func (a *TimeRulePlugInApiService) TimeRulePlugInGetByPath(ctx context.Context, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}

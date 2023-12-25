@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **NotificationContactTemplateGet**
-> NotificationContactTemplate NotificationContactTemplateGet(ctx, webId, optional)
+> NotificationContactTemplate NotificationContactTemplateGet(a.client.ctx, webId, optional)
 Retrieve a notification contact template.
 
 ### Required Parameters

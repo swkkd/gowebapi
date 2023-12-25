@@ -36,11 +36,10 @@ type TimeRuleApiService service
 /*
 	TimeRuleApiService Delete a Time Rule.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the Time Rule.
 @return
 */
-func (a *TimeRuleApiService) TimeRuleDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *TimeRuleApiService) TimeRuleDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -78,7 +77,7 @@ func (a *TimeRuleApiService) TimeRuleDelete(ctx context.Context, webId string) (
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -99,7 +98,6 @@ func (a *TimeRuleApiService) TimeRuleDelete(ctx context.Context, webId string) (
 /*
 	TimeRuleApiService Retrieve a Time Rule.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the Time Rule.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -108,7 +106,7 @@ func (a *TimeRuleApiService) TimeRuleDelete(ctx context.Context, webId string) (
 
 @return TimeRule
 */
-func (a *TimeRuleApiService) TimeRuleGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (TimeRule, *http.Response, error) {
+func (a *TimeRuleApiService) TimeRuleGet(webId string, localVarOptionals map[string]interface{}) (TimeRule, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -160,7 +158,7 @@ func (a *TimeRuleApiService) TimeRuleGet(ctx context.Context, webId string, loca
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -186,7 +184,7 @@ func (a *TimeRuleApiService) TimeRuleGet(ctx context.Context, webId string, loca
 	TimeRuleApiService Retrieve a Time Rule by path.
 
 This method returns a Time Rule based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the Time Rule.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -195,7 +193,7 @@ This method returns a Time Rule based on the hierarchical path associated with i
 
 @return TimeRule
 */
-func (a *TimeRuleApiService) TimeRuleGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (TimeRule, *http.Response, error) {
+func (a *TimeRuleApiService) TimeRuleGetByPath(path string, localVarOptionals map[string]interface{}) (TimeRule, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -247,7 +245,7 @@ func (a *TimeRuleApiService) TimeRuleGetByPath(ctx context.Context, path string,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -272,12 +270,11 @@ func (a *TimeRuleApiService) TimeRuleGetByPath(ctx context.Context, path string,
 /*
 	TimeRuleApiService Update a Time Rule by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the Time Rule.
 @param timeRule A partial Time Rule containing the desired changes.
 @return
 */
-func (a *TimeRuleApiService) TimeRuleUpdate(ctx context.Context, webId string, timeRule TimeRule) (*http.Response, error) {
+func (a *TimeRuleApiService) TimeRuleUpdate(webId string, timeRule TimeRule) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -317,7 +314,7 @@ func (a *TimeRuleApiService) TimeRuleUpdate(ctx context.Context, webId string, t
 	}
 	// body params
 	localVarPostBody = &timeRule
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

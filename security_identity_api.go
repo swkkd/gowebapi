@@ -36,11 +36,10 @@ type SecurityIdentityApiService service
 /*
 	SecurityIdentityApiService Delete a security identity.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security identity.
 @return
 */
-func (a *SecurityIdentityApiService) SecurityIdentityDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *SecurityIdentityApiService) SecurityIdentityDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -78,7 +77,7 @@ func (a *SecurityIdentityApiService) SecurityIdentityDelete(ctx context.Context,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -99,7 +98,6 @@ func (a *SecurityIdentityApiService) SecurityIdentityDelete(ctx context.Context,
 /*
 	SecurityIdentityApiService Retrieve a security identity.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security identity.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -108,7 +106,7 @@ func (a *SecurityIdentityApiService) SecurityIdentityDelete(ctx context.Context,
 
 @return SecurityIdentity
 */
-func (a *SecurityIdentityApiService) SecurityIdentityGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (SecurityIdentity, *http.Response, error) {
+func (a *SecurityIdentityApiService) SecurityIdentityGet(webId string, localVarOptionals map[string]interface{}) (SecurityIdentity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -160,7 +158,7 @@ func (a *SecurityIdentityApiService) SecurityIdentityGet(ctx context.Context, we
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -186,7 +184,7 @@ func (a *SecurityIdentityApiService) SecurityIdentityGet(ctx context.Context, we
 	SecurityIdentityApiService Retrieve a security identity by path.
 
 This method returns a security identity based on the path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the security identity.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -195,7 +193,7 @@ This method returns a security identity based on the path associated with it, an
 
 @return SecurityIdentity
 */
-func (a *SecurityIdentityApiService) SecurityIdentityGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (SecurityIdentity, *http.Response, error) {
+func (a *SecurityIdentityApiService) SecurityIdentityGetByPath(path string, localVarOptionals map[string]interface{}) (SecurityIdentity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -247,7 +245,7 @@ func (a *SecurityIdentityApiService) SecurityIdentityGetByPath(ctx context.Conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -272,7 +270,6 @@ func (a *SecurityIdentityApiService) SecurityIdentityGetByPath(ctx context.Conte
 /*
 	SecurityIdentityApiService Get the security information of the specified security item associated with the security identity for a specified user.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security identity for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -283,7 +280,7 @@ func (a *SecurityIdentityApiService) SecurityIdentityGetByPath(ctx context.Conte
 
 @return ItemsSecurityRights
 */
-func (a *SecurityIdentityApiService) SecurityIdentityGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
+func (a *SecurityIdentityApiService) SecurityIdentityGetSecurity(webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -342,7 +339,7 @@ func (a *SecurityIdentityApiService) SecurityIdentityGetSecurity(ctx context.Con
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -367,7 +364,6 @@ func (a *SecurityIdentityApiService) SecurityIdentityGetSecurity(ctx context.Con
 /*
 	SecurityIdentityApiService Retrieve the security entries associated with the security identity based on the specified criteria. By default, all security entries for this security identity are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security identity.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -377,7 +373,7 @@ func (a *SecurityIdentityApiService) SecurityIdentityGetSecurity(ctx context.Con
 
 @return ItemsSecurityEntry
 */
-func (a *SecurityIdentityApiService) SecurityIdentityGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
+func (a *SecurityIdentityApiService) SecurityIdentityGetSecurityEntries(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -435,7 +431,7 @@ func (a *SecurityIdentityApiService) SecurityIdentityGetSecurityEntries(ctx cont
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -460,7 +456,6 @@ func (a *SecurityIdentityApiService) SecurityIdentityGetSecurityEntries(ctx cont
 /*
 	SecurityIdentityApiService Retrieve the security entry associated with the security identity with the specified name.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the security identity.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -470,7 +465,7 @@ func (a *SecurityIdentityApiService) SecurityIdentityGetSecurityEntries(ctx cont
 
 @return SecurityEntry
 */
-func (a *SecurityIdentityApiService) SecurityIdentityGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
+func (a *SecurityIdentityApiService) SecurityIdentityGetSecurityEntryByName(name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -523,7 +518,7 @@ func (a *SecurityIdentityApiService) SecurityIdentityGetSecurityEntryByName(ctx 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -548,7 +543,6 @@ func (a *SecurityIdentityApiService) SecurityIdentityGetSecurityEntryByName(ctx 
 /*
 	SecurityIdentityApiService Get security mappings for the specified security identity.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security identity.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -557,7 +551,7 @@ func (a *SecurityIdentityApiService) SecurityIdentityGetSecurityEntryByName(ctx 
 
 @return ItemsSecurityMapping
 */
-func (a *SecurityIdentityApiService) SecurityIdentityGetSecurityMappings(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityMapping, *http.Response, error) {
+func (a *SecurityIdentityApiService) SecurityIdentityGetSecurityMappings(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityMapping, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -609,7 +603,7 @@ func (a *SecurityIdentityApiService) SecurityIdentityGetSecurityMappings(ctx con
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -634,12 +628,11 @@ func (a *SecurityIdentityApiService) SecurityIdentityGetSecurityMappings(ctx con
 /*
 	SecurityIdentityApiService Update a security identity by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the security identity.
 @param securityIdentity A partial security identity containing the desired changes.
 @return
 */
-func (a *SecurityIdentityApiService) SecurityIdentityUpdate(ctx context.Context, webId string, securityIdentity SecurityIdentity) (*http.Response, error) {
+func (a *SecurityIdentityApiService) SecurityIdentityUpdate(webId string, securityIdentity SecurityIdentity) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -679,7 +672,7 @@ func (a *SecurityIdentityApiService) SecurityIdentityUpdate(ctx context.Context,
 	}
 	// body params
 	localVarPostBody = &securityIdentity
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

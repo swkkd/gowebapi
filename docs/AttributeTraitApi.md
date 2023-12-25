@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **AttributeTraitGet**
-> AttributeTrait AttributeTraitGet(ctx, name, optional)
+> AttributeTrait AttributeTraitGet(a.client.ctx, name, optional)
 Retrieve an attribute trait.
 
 ### Required Parameters
@@ -44,7 +44,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AttributeTraitGetByCategory**
-> ItemsAttributeTrait AttributeTraitGetByCategory(ctx, category, optional)
+> ItemsAttributeTrait AttributeTraitGetByCategory(a.client.ctx, category, optional)
 Retrieve all attribute traits of the specified category/categories.
 
 ### Required Parameters

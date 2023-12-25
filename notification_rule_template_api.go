@@ -36,7 +36,6 @@ type NotificationRuleTemplateApiService service
 /*
 	NotificationRuleTemplateApiService Get the specified notification rule template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the notification rule template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -45,7 +44,7 @@ type NotificationRuleTemplateApiService service
 
 @return NotificationRuleTemplate
 */
-func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (NotificationRuleTemplate, *http.Response, error) {
+func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGet(webId string, localVarOptionals map[string]interface{}) (NotificationRuleTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -97,7 +96,7 @@ func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGet(ctx con
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -122,7 +121,6 @@ func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGet(ctx con
 /*
 	NotificationRuleTemplateApiService Retrieve notification rule template subscribers.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the resource to use as the root of the search.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -131,7 +129,7 @@ func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGet(ctx con
 
 @return ItemsNotificationRuleSubscriber
 */
-func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGetNotificationRuleTemplateSubscribers(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsNotificationRuleSubscriber, *http.Response, error) {
+func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGetNotificationRuleTemplateSubscribers(webId string, localVarOptionals map[string]interface{}) (ItemsNotificationRuleSubscriber, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -183,7 +181,7 @@ func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGetNotifica
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -208,7 +206,6 @@ func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGetNotifica
 /*
 	NotificationRuleTemplateApiService Retrieve Notification rule templates based on the specified conditions. Returns Notification rule templates using the specified search query string.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "databaseWebId" (string) The ID of the asset database to use as the root of the query.
@@ -220,7 +217,7 @@ func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGetNotifica
 
 @return ItemsNotificationRuleTemplate
 */
-func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGetNotificationRuleTemplatesQuery(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsNotificationRuleTemplate, *http.Response, error) {
+func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGetNotificationRuleTemplatesQuery(localVarOptionals map[string]interface{}) (ItemsNotificationRuleTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -295,7 +292,7 @@ func (a *NotificationRuleTemplateApiService) NotificationRuleTemplateGetNotifica
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}

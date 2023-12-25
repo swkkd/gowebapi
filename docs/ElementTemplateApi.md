@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 
 # **ElementTemplateCreateAttributeTemplate**
-> ElementTemplateCreateAttributeTemplate(ctx, webId, template, optional)
+> ElementTemplateCreateAttributeTemplate(a.client.ctx, webId, template, optional)
 Create an attribute template.
 
 ### Required Parameters
@@ -61,7 +61,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateCreateSecurityEntry**
-> ElementTemplateCreateSecurityEntry(ctx, webId, securityEntry, optional)
+> ElementTemplateCreateSecurityEntry(a.client.ctx, webId, securityEntry, optional)
 Create a security entry owned by the element template.
 
 ### Required Parameters
@@ -99,7 +99,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateDelete**
-> ElementTemplateDelete(ctx, webId)
+> ElementTemplateDelete(a.client.ctx, webId)
 Delete an element template.
 
 Deleting an element template will delete all associated templated data from elements which were created from it.
@@ -127,7 +127,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateDeleteSecurityEntry**
-> ElementTemplateDeleteSecurityEntry(ctx, name, webId, optional)
+> ElementTemplateDeleteSecurityEntry(a.client.ctx, name, webId, optional)
 Delete a security entry owned by the element template.
 
 ### Required Parameters
@@ -164,7 +164,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateGet**
-> ElementTemplate ElementTemplateGet(ctx, webId, optional)
+> ElementTemplate ElementTemplateGet(a.client.ctx, webId, optional)
 Retrieve an element template.
 
 ### Required Parameters
@@ -200,7 +200,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateGetAnalysisTemplates**
-> ItemsAnalysisTemplate ElementTemplateGetAnalysisTemplates(ctx, webId, optional)
+> ItemsAnalysisTemplate ElementTemplateGetAnalysisTemplates(a.client.ctx, webId, optional)
 Get analysis templates for an element template.
 
 ### Required Parameters
@@ -236,7 +236,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateGetAttributeTemplates**
-> ItemsAttributeTemplate ElementTemplateGetAttributeTemplates(ctx, webId, optional)
+> ItemsAttributeTemplate ElementTemplateGetAttributeTemplates(a.client.ctx, webId, optional)
 Get child attribute templates for an element template.
 
 If 'showInherited' and 'showDescendants' are 'true', it returns all the attribute templates from current element template and the base template.  If 'showInherited' is 'false', it returns all the attribute templates from the current element template.
@@ -279,7 +279,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateGetBaseElementTemplates**
-> ItemsElementTemplate ElementTemplateGetBaseElementTemplates(ctx, webId, optional)
+> ItemsElementTemplate ElementTemplateGetBaseElementTemplates(a.client.ctx, webId, optional)
 Get base element templates for an element template.
 
 The root template will be returned first, followed by successive templates in the inheritance chain.
@@ -318,7 +318,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateGetByPath**
-> ElementTemplate ElementTemplateGetByPath(ctx, path, optional)
+> ElementTemplate ElementTemplateGetByPath(a.client.ctx, path, optional)
 Retrieve an element template by path.
 
 This method returns an element template based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -356,7 +356,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateGetCategories**
-> ItemsElementCategory ElementTemplateGetCategories(ctx, webId, optional)
+> ItemsElementCategory ElementTemplateGetCategories(a.client.ctx, webId, optional)
 Get an element template's categories.
 
 ### Required Parameters
@@ -393,7 +393,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateGetDerivedElementTemplates**
-> ItemsElementTemplate ElementTemplateGetDerivedElementTemplates(ctx, webId, optional)
+> ItemsElementTemplate ElementTemplateGetDerivedElementTemplates(a.client.ctx, webId, optional)
 Get derived element templates for an element template.
 
 ### Required Parameters
@@ -431,7 +431,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateGetNotificationRuleTemplates**
-> ItemsNotificationRuleTemplate ElementTemplateGetNotificationRuleTemplates(ctx, webId, optional)
+> ItemsNotificationRuleTemplate ElementTemplateGetNotificationRuleTemplates(a.client.ctx, webId, optional)
 Get notification rule templates for an element template
 
 ### Required Parameters
@@ -467,7 +467,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateGetSecurity**
-> ItemsSecurityRights ElementTemplateGetSecurity(ctx, webId, userIdentity, optional)
+> ItemsSecurityRights ElementTemplateGetSecurity(a.client.ctx, webId, userIdentity, optional)
 Get the security information of the specified security item associated with the element template for a specified user.
 
 ### Required Parameters
@@ -506,7 +506,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateGetSecurityEntries**
-> ItemsSecurityEntry ElementTemplateGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry ElementTemplateGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries associated with the element template based on the specified criteria. By default, all security entries for this element template are returned.
 
 ### Required Parameters
@@ -543,7 +543,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateGetSecurityEntryByName**
-> ItemsSecurityEntry ElementTemplateGetSecurityEntryByName(ctx, name, webId, optional)
+> ItemsSecurityEntry ElementTemplateGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry associated with the element template with the specified name.
 
 ### Required Parameters
@@ -581,7 +581,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateUpdate**
-> ElementTemplateUpdate(ctx, webId, template)
+> ElementTemplateUpdate(a.client.ctx, webId, template)
 Update an element template by replacing items in its definition.
 
 Updating the InstanceType property of an element template will not affect any elements that have already been created from this template; it will only affect any future elements created from this template. All other changes will be propagated to elements based on this template.
@@ -610,7 +610,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ElementTemplateUpdateSecurityEntry**
-> ElementTemplateUpdateSecurityEntry(ctx, name, webId, securityEntry, optional)
+> ElementTemplateUpdateSecurityEntry(a.client.ctx, name, webId, securityEntry, optional)
 Update a security entry owned by the element template.
 
 ### Required Parameters

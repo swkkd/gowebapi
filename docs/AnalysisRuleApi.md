@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **AnalysisRuleCreateAnalysisRule**
-> AnalysisRuleCreateAnalysisRule(ctx, webId, analysisRule, optional)
+> AnalysisRuleCreateAnalysisRule(a.client.ctx, webId, analysisRule, optional)
 Create a new Analysis Rule as a child of an existing Analysis Rule.
 
 ### Required Parameters
@@ -50,7 +50,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisRuleDelete**
-> AnalysisRuleDelete(ctx, webId)
+> AnalysisRuleDelete(a.client.ctx, webId)
 Delete an Analysis Rule.
 
 ### Required Parameters
@@ -76,7 +76,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisRuleGet**
-> AnalysisRule AnalysisRuleGet(ctx, webId, optional)
+> AnalysisRule AnalysisRuleGet(a.client.ctx, webId, optional)
 Retrieve an Analysis Rule.
 
 ### Required Parameters
@@ -112,7 +112,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisRuleGetAnalysisRules**
-> ItemsAnalysisRule AnalysisRuleGetAnalysisRules(ctx, webId, optional)
+> ItemsAnalysisRule AnalysisRuleGetAnalysisRules(a.client.ctx, webId, optional)
 Get the child Analysis Rules of the Analysis Rule.
 
 ### Required Parameters
@@ -154,7 +154,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisRuleGetByPath**
-> AnalysisRule AnalysisRuleGetByPath(ctx, path, optional)
+> AnalysisRule AnalysisRuleGetByPath(a.client.ctx, path, optional)
 Retrieve an Analysis Rule by path.
 
 This method returns an Analysis Rule based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -192,7 +192,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AnalysisRuleUpdate**
-> AnalysisRuleUpdate(ctx, webId, analysisRule)
+> AnalysisRuleUpdate(a.client.ctx, webId, analysisRule)
 Update an Analysis Rule by replacing items in its definition.
 
 ### Required Parameters

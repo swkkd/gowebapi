@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **HomeGet**
-> Landing HomeGet(ctx, )
+> Landing HomeGet(a.client.ctx, )
 Get top level links for this PI System Web API instance.
 
 ### Required Parameters

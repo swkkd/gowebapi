@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **UnitClassCreateUnit**
-> UnitClassCreateUnit(ctx, webId, unitDTO, optional)
+> UnitClassCreateUnit(a.client.ctx, webId, unitDTO, optional)
 Create a unit in the specified Unit Class.
 
 ### Required Parameters
@@ -51,7 +51,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UnitClassDelete**
-> UnitClassDelete(ctx, webId)
+> UnitClassDelete(a.client.ctx, webId)
 Delete a unit class.
 
 ### Required Parameters
@@ -77,7 +77,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UnitClassGet**
-> UnitClass UnitClassGet(ctx, webId, optional)
+> UnitClass UnitClassGet(a.client.ctx, webId, optional)
 Retrieve a unit class.
 
 ### Required Parameters
@@ -113,7 +113,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UnitClassGetByPath**
-> UnitClass UnitClassGetByPath(ctx, path, optional)
+> UnitClass UnitClassGetByPath(a.client.ctx, path, optional)
 Retrieve a unit class by path.
 
 ### Required Parameters
@@ -149,7 +149,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UnitClassGetCanonicalUnit**
-> Unit UnitClassGetCanonicalUnit(ctx, webId, optional)
+> Unit UnitClassGetCanonicalUnit(a.client.ctx, webId, optional)
 Get the canonical unit of a unit class.
 
 ### Required Parameters
@@ -185,7 +185,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UnitClassGetUnits**
-> Unit UnitClassGetUnits(ctx, webId, optional)
+> Unit UnitClassGetUnits(a.client.ctx, webId, optional)
 Get a list of all units belonging to the unit class.
 
 ### Required Parameters
@@ -221,7 +221,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UnitClassUpdate**
-> UnitClassUpdate(ctx, webId, unitClassDTO)
+> UnitClassUpdate(a.client.ctx, webId, unitClassDTO)
 Update a unit class.
 
 ### Required Parameters

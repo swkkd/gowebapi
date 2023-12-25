@@ -36,7 +36,6 @@ type AnalysisTemplateApiService service
 /*
 	AnalysisTemplateApiService Create an Analysis template based upon a specified Analysis.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param analysisWebId The ID of the Analysis, on which the template is created.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -45,7 +44,7 @@ type AnalysisTemplateApiService service
 
 @return
 */
-func (a *AnalysisTemplateApiService) AnalysisTemplateCreateFromAnalysis(ctx context.Context, analysisWebId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AnalysisTemplateApiService) AnalysisTemplateCreateFromAnalysis(analysisWebId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -96,7 +95,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateCreateFromAnalysis(ctx cont
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -117,7 +116,6 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateCreateFromAnalysis(ctx cont
 /*
 	AnalysisTemplateApiService Create a security entry owned by the analysis template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis template, where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -127,7 +125,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateCreateFromAnalysis(ctx cont
 
 @return
 */
-func (a *AnalysisTemplateApiService) AnalysisTemplateCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AnalysisTemplateApiService) AnalysisTemplateCreateSecurityEntry(webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -180,7 +178,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateCreateSecurityEntry(ctx con
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -202,11 +200,11 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateCreateSecurityEntry(ctx con
 	AnalysisTemplateApiService Delete an analysis template.
 
 Deleting an analysis template will delete any analysis which was created from it, unless the analysis is tied to a notification.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of the analysis template to update.
 @return
 */
-func (a *AnalysisTemplateApiService) AnalysisTemplateDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *AnalysisTemplateApiService) AnalysisTemplateDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -244,7 +242,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateDelete(ctx context.Context,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -265,7 +263,6 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateDelete(ctx context.Context,
 /*
 	AnalysisTemplateApiService Delete a security entry owned by the analysis template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the analysis template, where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -274,7 +271,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateDelete(ctx context.Context,
 
 @return
 */
-func (a *AnalysisTemplateApiService) AnalysisTemplateDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AnalysisTemplateApiService) AnalysisTemplateDeleteSecurityEntry(name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -320,7 +317,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateDeleteSecurityEntry(ctx con
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -341,7 +338,6 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateDeleteSecurityEntry(ctx con
 /*
 	AnalysisTemplateApiService Retrieve an analysis template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -350,7 +346,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateDeleteSecurityEntry(ctx con
 
 @return AnalysisTemplate
 */
-func (a *AnalysisTemplateApiService) AnalysisTemplateGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (AnalysisTemplate, *http.Response, error) {
+func (a *AnalysisTemplateApiService) AnalysisTemplateGet(webId string, localVarOptionals map[string]interface{}) (AnalysisTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -402,7 +398,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGet(ctx context.Context, we
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -427,7 +423,6 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGet(ctx context.Context, we
 /*
 	AnalysisTemplateApiService Retrieve analysis templates based on the specified conditions. By default, returns all analysis templates.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "databaseWebId" (string) The ID of the asset database to use as the root of the query.
@@ -439,7 +434,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGet(ctx context.Context, we
 
 @return ItemsAnalysisTemplate
 */
-func (a *AnalysisTemplateApiService) AnalysisTemplateGetAnalysisTemplatesQuery(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsAnalysisTemplate, *http.Response, error) {
+func (a *AnalysisTemplateApiService) AnalysisTemplateGetAnalysisTemplatesQuery(localVarOptionals map[string]interface{}) (ItemsAnalysisTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -514,7 +509,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetAnalysisTemplatesQuery(c
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -540,7 +535,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetAnalysisTemplatesQuery(c
 	AnalysisTemplateApiService Retrieve an analysis template by path.
 
 This method returns an analysis template based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the analysis template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -549,7 +544,7 @@ This method returns an analysis template based on the hierarchical path associat
 
 @return AnalysisTemplate
 */
-func (a *AnalysisTemplateApiService) AnalysisTemplateGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (AnalysisTemplate, *http.Response, error) {
+func (a *AnalysisTemplateApiService) AnalysisTemplateGetByPath(path string, localVarOptionals map[string]interface{}) (AnalysisTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -601,7 +596,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetByPath(ctx context.Conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -626,7 +621,6 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetByPath(ctx context.Conte
 /*
 	AnalysisTemplateApiService Get an analysis template&#39;s categories.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -635,7 +629,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetByPath(ctx context.Conte
 
 @return ItemsAnalysisCategory
 */
-func (a *AnalysisTemplateApiService) AnalysisTemplateGetCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAnalysisCategory, *http.Response, error) {
+func (a *AnalysisTemplateApiService) AnalysisTemplateGetCategories(webId string, localVarOptionals map[string]interface{}) (ItemsAnalysisCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -687,7 +681,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetCategories(ctx context.C
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -712,7 +706,6 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetCategories(ctx context.C
 /*
 	AnalysisTemplateApiService Get the security information of the specified security item associated with the analysis template for a specified user.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis template for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -723,7 +716,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetCategories(ctx context.C
 
 @return ItemsSecurityRights
 */
-func (a *AnalysisTemplateApiService) AnalysisTemplateGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
+func (a *AnalysisTemplateApiService) AnalysisTemplateGetSecurity(webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -782,7 +775,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetSecurity(ctx context.Con
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -807,7 +800,6 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetSecurity(ctx context.Con
 /*
 	AnalysisTemplateApiService Retrieve the security entries associated with the analysis template based on the specified criteria. By default, all security entries for this analysis template are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -817,7 +809,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetSecurity(ctx context.Con
 
 @return ItemsSecurityEntry
 */
-func (a *AnalysisTemplateApiService) AnalysisTemplateGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
+func (a *AnalysisTemplateApiService) AnalysisTemplateGetSecurityEntries(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -875,7 +867,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetSecurityEntries(ctx cont
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -900,7 +892,6 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetSecurityEntries(ctx cont
 /*
 	AnalysisTemplateApiService Retrieve the security entry associated with the analysis template with the specified name.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the analysis template.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -910,7 +901,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetSecurityEntries(ctx cont
 
 @return SecurityEntry
 */
-func (a *AnalysisTemplateApiService) AnalysisTemplateGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
+func (a *AnalysisTemplateApiService) AnalysisTemplateGetSecurityEntryByName(name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -963,7 +954,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetSecurityEntryByName(ctx 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -988,12 +979,11 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateGetSecurityEntryByName(ctx 
 /*
 	AnalysisTemplateApiService Update an analysis template by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the analysis template to update.
 @param template A partial analysis template containing the desired changes.
 @return
 */
-func (a *AnalysisTemplateApiService) AnalysisTemplateUpdate(ctx context.Context, webId string, template AnalysisTemplate) (*http.Response, error) {
+func (a *AnalysisTemplateApiService) AnalysisTemplateUpdate(webId string, template AnalysisTemplate) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -1033,7 +1023,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateUpdate(ctx context.Context,
 	}
 	// body params
 	localVarPostBody = &template
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -1054,7 +1044,6 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateUpdate(ctx context.Context,
 /*
 	AnalysisTemplateApiService Update a security entry owned by the analysis template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the analysis template, where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
@@ -1064,7 +1053,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateUpdate(ctx context.Context,
 
 @return
 */
-func (a *AnalysisTemplateApiService) AnalysisTemplateUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AnalysisTemplateApiService) AnalysisTemplateUpdateSecurityEntry(name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -1112,7 +1101,7 @@ func (a *AnalysisTemplateApiService) AnalysisTemplateUpdateSecurityEntry(ctx con
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

@@ -34,10 +34,10 @@ type ChannelApiService service
 
 /*
 ChannelApiService Retrieves a list of currently running channel instances.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @return ItemsChannelInstance
 */
-func (a *ChannelApiService) ChannelInstances(ctx context.Context) (ItemsChannelInstance, *http.Response, error) {
+func (a *ChannelApiService) ChannelInstances() (ItemsChannelInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -75,7 +75,7 @@ func (a *ChannelApiService) ChannelInstances(ctx context.Context) (ItemsChannelI
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}

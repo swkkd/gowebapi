@@ -36,7 +36,6 @@ type EnumerationSetApiService service
 /*
 	EnumerationSetApiService Create a security entry owned by the enumeration set.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the enumeration set where the security entry will be created.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -46,7 +45,7 @@ type EnumerationSetApiService service
 
 @return
 */
-func (a *EnumerationSetApiService) EnumerationSetCreateSecurityEntry(ctx context.Context, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *EnumerationSetApiService) EnumerationSetCreateSecurityEntry(webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -99,7 +98,7 @@ func (a *EnumerationSetApiService) EnumerationSetCreateSecurityEntry(ctx context
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -120,7 +119,6 @@ func (a *EnumerationSetApiService) EnumerationSetCreateSecurityEntry(ctx context
 /*
 	EnumerationSetApiService Create an enumeration value for a enumeration set.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the enumeration set on which to create the enumeration value.
 @param enumerationValue The new enumeration value definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -129,7 +127,7 @@ func (a *EnumerationSetApiService) EnumerationSetCreateSecurityEntry(ctx context
 
 @return
 */
-func (a *EnumerationSetApiService) EnumerationSetCreateValue(ctx context.Context, webId string, enumerationValue EnumerationValue, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *EnumerationSetApiService) EnumerationSetCreateValue(webId string, enumerationValue EnumerationValue, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -176,7 +174,7 @@ func (a *EnumerationSetApiService) EnumerationSetCreateValue(ctx context.Context
 	}
 	// body params
 	localVarPostBody = &enumerationValue
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -197,11 +195,10 @@ func (a *EnumerationSetApiService) EnumerationSetCreateValue(ctx context.Context
 /*
 	EnumerationSetApiService Delete an enumeration set.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the enumeration set to delete.
 @return
 */
-func (a *EnumerationSetApiService) EnumerationSetDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *EnumerationSetApiService) EnumerationSetDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -239,7 +236,7 @@ func (a *EnumerationSetApiService) EnumerationSetDelete(ctx context.Context, web
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -260,7 +257,6 @@ func (a *EnumerationSetApiService) EnumerationSetDelete(ctx context.Context, web
 /*
 	EnumerationSetApiService Delete a security entry owned by the enumeration set.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the enumeration set where the security entry will be deleted.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -269,7 +265,7 @@ func (a *EnumerationSetApiService) EnumerationSetDelete(ctx context.Context, web
 
 @return
 */
-func (a *EnumerationSetApiService) EnumerationSetDeleteSecurityEntry(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *EnumerationSetApiService) EnumerationSetDeleteSecurityEntry(name string, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -315,7 +311,7 @@ func (a *EnumerationSetApiService) EnumerationSetDeleteSecurityEntry(ctx context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -336,7 +332,6 @@ func (a *EnumerationSetApiService) EnumerationSetDeleteSecurityEntry(ctx context
 /*
 	EnumerationSetApiService Retrieve an enumeration set.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the enumeration set.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -345,7 +340,7 @@ func (a *EnumerationSetApiService) EnumerationSetDeleteSecurityEntry(ctx context
 
 @return EnumerationSet
 */
-func (a *EnumerationSetApiService) EnumerationSetGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (EnumerationSet, *http.Response, error) {
+func (a *EnumerationSetApiService) EnumerationSetGet(webId string, localVarOptionals map[string]interface{}) (EnumerationSet, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -397,7 +392,7 @@ func (a *EnumerationSetApiService) EnumerationSetGet(ctx context.Context, webId 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -423,7 +418,7 @@ func (a *EnumerationSetApiService) EnumerationSetGet(ctx context.Context, webId 
 	EnumerationSetApiService Retrieve an enumeration set by path.
 
 This method returns an enumeration set based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the target enumeration set.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -432,7 +427,7 @@ This method returns an enumeration set based on the hierarchical path associated
 
 @return EnumerationSet
 */
-func (a *EnumerationSetApiService) EnumerationSetGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (EnumerationSet, *http.Response, error) {
+func (a *EnumerationSetApiService) EnumerationSetGetByPath(path string, localVarOptionals map[string]interface{}) (EnumerationSet, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -484,7 +479,7 @@ func (a *EnumerationSetApiService) EnumerationSetGetByPath(ctx context.Context, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -509,7 +504,6 @@ func (a *EnumerationSetApiService) EnumerationSetGetByPath(ctx context.Context, 
 /*
 	EnumerationSetApiService Get the security information of the specified security item associated with the enumeration set for a specified user.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the enumeration set for the security to be checked.
 @param userIdentity The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user&#39;s security rights will be returned.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -520,7 +514,7 @@ func (a *EnumerationSetApiService) EnumerationSetGetByPath(ctx context.Context, 
 
 @return ItemsSecurityRights
 */
-func (a *EnumerationSetApiService) EnumerationSetGetSecurity(ctx context.Context, webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
+func (a *EnumerationSetApiService) EnumerationSetGetSecurity(webId string, userIdentity []string, localVarOptionals map[string]interface{}) (ItemsSecurityRights, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -579,7 +573,7 @@ func (a *EnumerationSetApiService) EnumerationSetGetSecurity(ctx context.Context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -604,7 +598,6 @@ func (a *EnumerationSetApiService) EnumerationSetGetSecurity(ctx context.Context
 /*
 	EnumerationSetApiService Retrieve the security entries associated with the enumeration set based on the specified criteria. By default, all security entries for this enumeration set are returned.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the enumeration set.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -614,7 +607,7 @@ func (a *EnumerationSetApiService) EnumerationSetGetSecurity(ctx context.Context
 
 @return ItemsSecurityEntry
 */
-func (a *EnumerationSetApiService) EnumerationSetGetSecurityEntries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
+func (a *EnumerationSetApiService) EnumerationSetGetSecurityEntries(webId string, localVarOptionals map[string]interface{}) (ItemsSecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -672,7 +665,7 @@ func (a *EnumerationSetApiService) EnumerationSetGetSecurityEntries(ctx context.
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -697,7 +690,6 @@ func (a *EnumerationSetApiService) EnumerationSetGetSecurityEntries(ctx context.
 /*
 	EnumerationSetApiService Retrieve the security entry associated with the enumeration set with the specified name.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry. For every backslash character (\\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\\username.
 @param webId The ID of the enumeration set.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -707,7 +699,7 @@ func (a *EnumerationSetApiService) EnumerationSetGetSecurityEntries(ctx context.
 
 @return SecurityEntry
 */
-func (a *EnumerationSetApiService) EnumerationSetGetSecurityEntryByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
+func (a *EnumerationSetApiService) EnumerationSetGetSecurityEntryByName(name string, webId string, localVarOptionals map[string]interface{}) (SecurityEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -760,7 +752,7 @@ func (a *EnumerationSetApiService) EnumerationSetGetSecurityEntryByName(ctx cont
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -785,7 +777,6 @@ func (a *EnumerationSetApiService) EnumerationSetGetSecurityEntryByName(ctx cont
 /*
 	EnumerationSetApiService Retrieve an enumeration set&#39;s values.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the enumeration set.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -794,7 +785,7 @@ func (a *EnumerationSetApiService) EnumerationSetGetSecurityEntryByName(ctx cont
 
 @return ItemsEnumerationValue
 */
-func (a *EnumerationSetApiService) EnumerationSetGetValues(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsEnumerationValue, *http.Response, error) {
+func (a *EnumerationSetApiService) EnumerationSetGetValues(webId string, localVarOptionals map[string]interface{}) (ItemsEnumerationValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -846,7 +837,7 @@ func (a *EnumerationSetApiService) EnumerationSetGetValues(ctx context.Context, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -871,12 +862,11 @@ func (a *EnumerationSetApiService) EnumerationSetGetValues(ctx context.Context, 
 /*
 	EnumerationSetApiService Update an enumeration set by replacing items in its definition.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the enumeration set to update.
 @param enumerationSet A partial enumeration set containing the desired changes.
 @return
 */
-func (a *EnumerationSetApiService) EnumerationSetUpdate(ctx context.Context, webId string, enumerationSet EnumerationSet) (*http.Response, error) {
+func (a *EnumerationSetApiService) EnumerationSetUpdate(webId string, enumerationSet EnumerationSet) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -916,7 +906,7 @@ func (a *EnumerationSetApiService) EnumerationSetUpdate(ctx context.Context, web
 	}
 	// body params
 	localVarPostBody = &enumerationSet
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -937,7 +927,6 @@ func (a *EnumerationSetApiService) EnumerationSetUpdate(ctx context.Context, web
 /*
 	EnumerationSetApiService Update a security entry owned by the enumeration set.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the security entry.
 @param webId The ID of the enumeration set where the security entry will be updated.
 @param securityEntry The new security entry definition. The full list of allow and deny rights must be supplied or they will be removed.
@@ -947,7 +936,7 @@ func (a *EnumerationSetApiService) EnumerationSetUpdate(ctx context.Context, web
 
 @return
 */
-func (a *EnumerationSetApiService) EnumerationSetUpdateSecurityEntry(ctx context.Context, name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *EnumerationSetApiService) EnumerationSetUpdateSecurityEntry(name string, webId string, securityEntry SecurityEntry, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -995,7 +984,7 @@ func (a *EnumerationSetApiService) EnumerationSetUpdateSecurityEntry(ctx context
 	}
 	// body params
 	localVarPostBody = &securityEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

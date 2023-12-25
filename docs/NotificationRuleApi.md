@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **NotificationRuleGetNotificationRuleSubscribers**
-> ItemsNotificationRuleSubscriber NotificationRuleGetNotificationRuleSubscribers(ctx, webId, optional)
+> ItemsNotificationRuleSubscriber NotificationRuleGetNotificationRuleSubscribers(a.client.ctx, webId, optional)
 Retrieve notification rule subscribers.
 
 ### Required Parameters
@@ -46,7 +46,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **NotificationRuleGetNotificationRules**
-> NotificationRule NotificationRuleGetNotificationRules(ctx, webId, optional)
+> NotificationRule NotificationRuleGetNotificationRules(a.client.ctx, webId, optional)
 Retrieve a notification rule.
 
 ### Required Parameters
@@ -82,7 +82,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **NotificationRuleGetNotificationRulesQuery**
-> ItemsNotificationRule NotificationRuleGetNotificationRulesQuery(ctx, optional)
+> ItemsNotificationRule NotificationRuleGetNotificationRulesQuery(a.client.ctx, optional)
 Retrieve notification rules based on the specified conditions. Returns notification rules using the specified search query string.
 
 ### Required Parameters

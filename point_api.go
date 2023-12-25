@@ -36,11 +36,10 @@ type PointApiService service
 /*
 	PointApiService Delete a point.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the point.
 @return
 */
-func (a *PointApiService) PointDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *PointApiService) PointDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -78,7 +77,7 @@ func (a *PointApiService) PointDelete(ctx context.Context, webId string) (*http.
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -184,7 +183,6 @@ func (a *PointApiService) PointGet(webId string, localVarOptionals map[string]in
 /*
 	PointApiService Get a point attribute by name.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param name The name of the attribute.
 @param webId The ID of the point.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -194,7 +192,7 @@ func (a *PointApiService) PointGet(webId string, localVarOptionals map[string]in
 
 @return PointAttribute
 */
-func (a *PointApiService) PointGetAttributeByName(ctx context.Context, name string, webId string, localVarOptionals map[string]interface{}) (PointAttribute, *http.Response, error) {
+func (a *PointApiService) PointGetAttributeByName(name string, webId string, localVarOptionals map[string]interface{}) (PointAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -247,7 +245,7 @@ func (a *PointApiService) PointGetAttributeByName(ctx context.Context, name stri
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -272,7 +270,6 @@ func (a *PointApiService) PointGetAttributeByName(ctx context.Context, name stri
 /*
 	PointApiService Get point attributes.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the point.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -283,7 +280,7 @@ func (a *PointApiService) PointGetAttributeByName(ctx context.Context, name stri
 
 @return ItemsPointAttribute
 */
-func (a *PointApiService) PointGetAttributes(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsPointAttribute, *http.Response, error) {
+func (a *PointApiService) PointGetAttributes(webId string, localVarOptionals map[string]interface{}) (ItemsPointAttribute, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -344,7 +341,7 @@ func (a *PointApiService) PointGetAttributes(ctx context.Context, webId string, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -370,7 +367,7 @@ func (a *PointApiService) PointGetAttributes(ctx context.Context, webId string, 
 	PointApiService Get a point by path.
 
 This method returns a PI Point based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the point.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -379,7 +376,7 @@ This method returns a PI Point based on the hierarchical path associated with it
 
 @return Point
 */
-func (a *PointApiService) PointGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (Point, *http.Response, error) {
+func (a *PointApiService) PointGetByPath(path string, localVarOptionals map[string]interface{}) (Point, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -431,7 +428,7 @@ func (a *PointApiService) PointGetByPath(ctx context.Context, path string, local
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -456,7 +453,6 @@ func (a *PointApiService) PointGetByPath(ctx context.Context, path string, local
 /*
 	PointApiService Retrieve multiple points by web id or path.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param optional (nil or map[string]interface{}) with one or more of:
 
 	@param "asParallel" (bool) Specifies if the retrieval processes should be run in parallel on the server. This may improve the response time for large amounts of requested points. The default is &#39;false&#39;.
@@ -468,7 +464,7 @@ func (a *PointApiService) PointGetByPath(ctx context.Context, path string, local
 
 @return ItemsItemPoint
 */
-func (a *PointApiService) PointGetMultiple(ctx context.Context, localVarOptionals map[string]interface{}) (ItemsItemPoint, *http.Response, error) {
+func (a *PointApiService) PointGetMultiple(localVarOptionals map[string]interface{}) (ItemsItemPoint, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -537,7 +533,7 @@ func (a *PointApiService) PointGetMultiple(ctx context.Context, localVarOptional
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -562,12 +558,11 @@ func (a *PointApiService) PointGetMultiple(ctx context.Context, localVarOptional
 /*
 	PointApiService Update a point.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the point.
 @param pointDTO A partial point containing the desired changes.
 @return
 */
-func (a *PointApiService) PointUpdate(ctx context.Context, webId string, pointDTO Point) (*http.Response, error) {
+func (a *PointApiService) PointUpdate(webId string, pointDTO Point) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -607,7 +602,7 @@ func (a *PointApiService) PointUpdate(ctx context.Context, webId string, pointDT
 	}
 	// body params
 	localVarPostBody = &pointDTO
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

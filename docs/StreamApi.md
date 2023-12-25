@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **StreamGetChannel**
-> StreamGetChannel(ctx, webId, optional)
+> StreamGetChannel(a.client.ctx, webId, optional)
 Opens a channel that will send messages about any value changes for the specified stream.
 
 ### Required Parameters
@@ -56,7 +56,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamGetEnd**
-> TimedValue StreamGetEnd(ctx, webId, optional)
+> TimedValue StreamGetEnd(a.client.ctx, webId, optional)
 Returns the end-of-stream value of the stream.
 
 ### Required Parameters
@@ -92,7 +92,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamGetInterpolated**
-> TimedValues StreamGetInterpolated(ctx, webId, optional)
+> TimedValues StreamGetInterpolated(a.client.ctx, webId, optional)
 Retrieves interpolated values over the specified time range at the specified sampling interval.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -138,7 +138,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamGetInterpolatedAtTimes**
-> TimedValues StreamGetInterpolatedAtTimes(ctx, webId, optional)
+> TimedValues StreamGetInterpolatedAtTimes(a.client.ctx, webId, optional)
 Retrieves interpolated values over the specified time range at the specified sampling interval.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -181,7 +181,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamGetPlot**
-> TimedValues StreamGetPlot(ctx, webId, optional)
+> TimedValues StreamGetPlot(a.client.ctx, webId, optional)
 Retrieves values over the specified time range suitable for plotting over the number of intervals (typically represents pixels).
 
 For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state). Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.
@@ -223,7 +223,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamGetRecorded**
-> ExtendedTimedValues StreamGetRecorded(ctx, webId, optional)
+> ExtendedTimedValues StreamGetRecorded(a.client.ctx, webId, optional)
 Returns a list of compressed values for the requested time range from the source provider.
 
 Returned times are affected by the specified boundary type. If no values are found for the time range and conditions specified then the HTTP response will be success, with a body containing an empty array of Items. When specifying true for the includeFilteredValues parameter, consecutive filtered events are not returned. The first value that would be filtered out is returned with its time and the enumeration value \"Filtered\". The next value in the collection will be the next compressed value in the specified direction that passes the filter criteria - if any. When both boundaryType and a filterExpression are specified, the events returned for the boundary condition specified are passed through the filter. If the includeFilteredValues parameter is true, the boundary values will be reported at the proper timestamps with the enumeration value \"Filtered\" when the filter conditions are not met at the boundary time. If the includeFilteredValues parameter is false for this case, no event is returned for the boundary time. Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.   If only recorded values with annotations are desired, the filterExpression parameter should include the filter IsSet('.', \"a\").
@@ -269,7 +269,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamGetRecordedAtTime**
-> ExtendedTimedValue StreamGetRecordedAtTime(ctx, webId, time, optional)
+> ExtendedTimedValue StreamGetRecordedAtTime(a.client.ctx, webId, time, optional)
 Returns a single recorded value based on the passed time and retrieval mode from the stream.
 
 If only recorded values with annotations are desired, the filterExpression parameter should include the filter IsSet('.', \"a\").
@@ -312,7 +312,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamGetRecordedAtTimes**
-> ExtendedTimedValues StreamGetRecordedAtTimes(ctx, webId, optional)
+> ExtendedTimedValues StreamGetRecordedAtTimes(a.client.ctx, webId, optional)
 Retrieves recorded values at the specified times.
 
 Any time series value in the response that contains an 'Errors' property indicates PI Web API encountered a handled error during the transfer of the response stream.   If only recorded values with annotations are desired, the filterExpression parameter should include the filter IsSet('.', \"a\").
@@ -355,7 +355,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamGetSummary**
-> ItemsSummaryValue StreamGetSummary(ctx, webId, optional)
+> ItemsSummaryValue StreamGetSummary(a.client.ctx, webId, optional)
 Returns a summary over the specified time range for the stream.
 
 Count is the only summary type supported on non-numeric streams. Requesting a summary for any other type will generate an error. Time-weighted totals are computed by integrating the rate tag values over the requested time range. If some of the data are bad in the time range, the calculated total is divided by the fraction of the time period for which there are good values. This approach is equivalent to assuming that during the period of bad data, the tag takes on the average values for the entire calculation time range. The PercentGood summary may be used to determine if the calculation results are suitable for the application's purposes. For time-weighted totals, if the time unit rate of the stream cannot be determined, then the value will be totaled assuming a unit of \"per day\" and no unit of measure will be assigned to the value. If the measured time component of the tag is not based on a day, the user of the data must convert the totalized value to the correct units.
@@ -402,7 +402,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamGetValue**
-> TimedValue StreamGetValue(ctx, webId, optional)
+> TimedValue StreamGetValue(a.client.ctx, webId, optional)
 Returns the value of the stream at the specified time. By default, this is usually the current value.
 
 ### Required Parameters
@@ -440,7 +440,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamUpdateValue**
-> StreamUpdateValue(ctx, webId, value, optional)
+> StreamUpdateValue(a.client.ctx, webId, value, optional)
 Updates a value for the specified stream.
 
 ### Required Parameters
@@ -479,7 +479,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **StreamUpdateValues**
-> ItemsSubstatus StreamUpdateValues(ctx, webId, values, optional)
+> ItemsSubstatus StreamUpdateValues(a.client.ctx, webId, values, optional)
 Updates multiple values for the specified stream.
 
 ### Required Parameters

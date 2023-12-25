@@ -36,7 +36,6 @@ type NotificationContactTemplateApiService service
 /*
 	NotificationContactTemplateApiService Retrieve a notification contact template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the notification contact template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -45,7 +44,7 @@ type NotificationContactTemplateApiService service
 
 @return NotificationContactTemplate
 */
-func (a *NotificationContactTemplateApiService) NotificationContactTemplateGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (NotificationContactTemplate, *http.Response, error) {
+func (a *NotificationContactTemplateApiService) NotificationContactTemplateGet(webId string, localVarOptionals map[string]interface{}) (NotificationContactTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -97,7 +96,7 @@ func (a *NotificationContactTemplateApiService) NotificationContactTemplateGet(c
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}

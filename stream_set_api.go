@@ -36,7 +36,6 @@ type StreamSetApiService service
 /*
 	StreamSetApiService Opens a channel that will send messages about any value changes for the attributes of an Element, Event Frame, or Attribute.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of an Element, Event Frame or Attribute, which is the base element or parent of all the stream attributes.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -52,7 +51,7 @@ type StreamSetApiService service
 
 @return
 */
-func (a *StreamSetApiService) StreamSetGetChannel(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetChannel(webId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -145,7 +144,7 @@ func (a *StreamSetApiService) StreamSetGetChannel(ctx context.Context, webId str
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -166,7 +165,6 @@ func (a *StreamSetApiService) StreamSetGetChannel(ctx context.Context, webId str
 /*
 	StreamSetApiService Opens a channel that will send messages about any value changes for the specified streams.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -176,7 +174,7 @@ func (a *StreamSetApiService) StreamSetGetChannel(ctx context.Context, webId str
 
 @return
 */
-func (a *StreamSetApiService) StreamSetGetChannelAdHoc(ctx context.Context, webId []string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetChannelAdHoc(webId []string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -233,7 +231,7 @@ func (a *StreamSetApiService) StreamSetGetChannelAdHoc(ctx context.Context, webI
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -255,7 +253,7 @@ func (a *StreamSetApiService) StreamSetGetChannelAdHoc(ctx context.Context, webI
 	StreamSetApiService Returns End of stream values of the attributes for an Element, Event Frame or Attribute
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of an Element, Event Frame or Attribute, which is the base element or parent of all the stream attributes.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -272,7 +270,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamValue
 */
-func (a *StreamSetApiService) StreamSetGetEnd(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetEnd(webId string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -372,7 +370,7 @@ func (a *StreamSetApiService) StreamSetGetEnd(ctx context.Context, webId string,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -398,7 +396,7 @@ func (a *StreamSetApiService) StreamSetGetEnd(ctx context.Context, webId string,
 	StreamSetApiService Returns End Of Stream values for attributes of the specified streams
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -409,7 +407,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamValues
 */
-func (a *StreamSetApiService) StreamSetGetEndAdHoc(ctx context.Context, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetEndAdHoc(webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -473,7 +471,7 @@ func (a *StreamSetApiService) StreamSetGetEndAdHoc(ctx context.Context, webId []
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -499,7 +497,7 @@ func (a *StreamSetApiService) StreamSetGetEndAdHoc(ctx context.Context, webId []
 	StreamSetApiService Returns interpolated values of attributes for an element, event frame or attribute over the specified time range at the specified sampling interval.
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of an element, event frame or attribute, which is the base element or parent of all the stream attributes.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -524,7 +522,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamValues
 */
-func (a *StreamSetApiService) StreamSetGetInterpolated(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetInterpolated(webId string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -672,7 +670,7 @@ func (a *StreamSetApiService) StreamSetGetInterpolated(ctx context.Context, webI
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -698,7 +696,7 @@ func (a *StreamSetApiService) StreamSetGetInterpolated(ctx context.Context, webI
 	StreamSetApiService Returns interpolated values of the specified streams over the specified time range at the specified sampling interval.
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -717,7 +715,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamValues
 */
-func (a *StreamSetApiService) StreamSetGetInterpolatedAdHoc(ctx context.Context, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetInterpolatedAdHoc(webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -829,7 +827,7 @@ func (a *StreamSetApiService) StreamSetGetInterpolatedAdHoc(ctx context.Context,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -855,7 +853,7 @@ func (a *StreamSetApiService) StreamSetGetInterpolatedAdHoc(ctx context.Context,
 	StreamSetApiService Returns interpolated values of attributes for an element, event frame or attribute at the specified times.
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of an element, event frame or attribute, which is the base element or parent of all the stream attributes.
 @param time The timestamp at which to retrieve a interpolated value. Multiple timestamps may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -875,7 +873,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamValues
 */
-func (a *StreamSetApiService) StreamSetGetInterpolatedAtTimes(ctx context.Context, webId string, time []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetInterpolatedAtTimes(webId string, time []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -988,7 +986,7 @@ func (a *StreamSetApiService) StreamSetGetInterpolatedAtTimes(ctx context.Contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1014,7 +1012,7 @@ func (a *StreamSetApiService) StreamSetGetInterpolatedAtTimes(ctx context.Contex
 	StreamSetApiService Returns interpolated values of the specified streams at the specified times.
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param time The timestamp at which to retrieve a interpolated value. Multiple timestamps may be specified with multiple instances of the parameter.
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -1028,7 +1026,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamValues
 */
-func (a *StreamSetApiService) StreamSetGetInterpolatedAtTimesAdHoc(ctx context.Context, time []string, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetInterpolatedAtTimesAdHoc(time []string, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1105,7 +1103,7 @@ func (a *StreamSetApiService) StreamSetGetInterpolatedAtTimesAdHoc(ctx context.C
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1131,7 +1129,7 @@ func (a *StreamSetApiService) StreamSetGetInterpolatedAtTimesAdHoc(ctx context.C
 	StreamSetApiService Returns values of attributes for an element, event frame or attribute over the specified time range suitable for plotting over the number of intervals (typically represents pixels).
 
 For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state). Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of an element, event frame or attribute, which is the base element or parent of all the stream attributes.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1152,7 +1150,7 @@ For each interval, the data available is examined and significant values are ret
 
 @return ItemsStreamValues
 */
-func (a *StreamSetApiService) StreamSetGetPlot(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetPlot(webId string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1276,7 +1274,7 @@ func (a *StreamSetApiService) StreamSetGetPlot(ctx context.Context, webId string
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1302,7 +1300,7 @@ func (a *StreamSetApiService) StreamSetGetPlot(ctx context.Context, webId string
 	StreamSetApiService Returns values of attributes for the specified streams over the specified time range suitable for plotting over the number of intervals (typically represents pixels).
 
 For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state). Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1317,7 +1315,7 @@ For each interval, the data available is examined and significant values are ret
 
 @return ItemsStreamValues
 */
-func (a *StreamSetApiService) StreamSetGetPlotAdHoc(ctx context.Context, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetPlotAdHoc(webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1405,7 +1403,7 @@ func (a *StreamSetApiService) StreamSetGetPlotAdHoc(ctx context.Context, webId [
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1431,7 +1429,7 @@ func (a *StreamSetApiService) StreamSetGetPlotAdHoc(ctx context.Context, webId [
 	StreamSetApiService Returns recorded values of the attributes for an element, event frame, or attribute.
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of an element, event frame or attribute, which is the base element or parent of all the stream attributes.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1455,7 +1453,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamValues
 */
-func (a *StreamSetApiService) StreamSetGetRecorded(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetRecorded(webId string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1597,7 +1595,7 @@ func (a *StreamSetApiService) StreamSetGetRecorded(ctx context.Context, webId st
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1623,7 +1621,7 @@ func (a *StreamSetApiService) StreamSetGetRecorded(ctx context.Context, webId st
 	StreamSetApiService Returns recorded values of the specified streams.
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -1641,7 +1639,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamValues
 */
-func (a *StreamSetApiService) StreamSetGetRecordedAdHoc(ctx context.Context, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetRecordedAdHoc(webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1747,7 +1745,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAdHoc(ctx context.Context, web
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1773,7 +1771,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAdHoc(ctx context.Context, web
 	StreamSetApiService Returns recorded values of the attributes for an element, event frame, or attribute.
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of an element, event frame or attribute, which is the base element or parent of all the stream attributes.
 @param time The timestamp at which the values are desired.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -1791,7 +1789,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamValue
 */
-func (a *StreamSetApiService) StreamSetGetRecordedAtTime(ctx context.Context, webId string, time string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetRecordedAtTime(webId string, time string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1892,7 +1890,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTime(ctx context.Context, we
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1918,7 +1916,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTime(ctx context.Context, we
 	StreamSetApiService Returns recorded values based on the passed time and retrieval mode.
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param time The timestamp at which the values are desired.
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -1930,7 +1928,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamValue
 */
-func (a *StreamSetApiService) StreamSetGetRecordedAtTimeAdHoc(ctx context.Context, time string, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetRecordedAtTimeAdHoc(time string, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1995,7 +1993,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTimeAdHoc(ctx context.Contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2021,7 +2019,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTimeAdHoc(ctx context.Contex
 	StreamSetApiService Returns recorded values of attributes for an element, event frame or attribute at the specified times.
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of an element, event frame or attribute, which is the base element or parent of all the stream attributes.
 @param time The timestamp at which to retrieve a recorded value. Multiple timestamps may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -2040,7 +2038,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamValues
 */
-func (a *StreamSetApiService) StreamSetGetRecordedAtTimes(ctx context.Context, webId string, time []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetRecordedAtTimes(webId string, time []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2147,7 +2145,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTimes(ctx context.Context, w
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2173,7 +2171,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTimes(ctx context.Context, w
 	StreamSetApiService Returns recorded values of the specified streams at the specified times.
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param time The timestamp at which to retrieve a recorded value. Multiple timestamps may be specified with multiple instances of the parameter.
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -2186,7 +2184,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamValues
 */
-func (a *StreamSetApiService) StreamSetGetRecordedAtTimesAdHoc(ctx context.Context, time []string, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetRecordedAtTimesAdHoc(time []string, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValues, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2257,7 +2255,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTimesAdHoc(ctx context.Conte
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2283,7 +2281,7 @@ func (a *StreamSetApiService) StreamSetGetRecordedAtTimesAdHoc(ctx context.Conte
 	StreamSetApiService Returns summary values of the attributes for an element, event frame or attribute.
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of an element, event frame or attribute, which is the base element or parent of all the stream attributes.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2308,7 +2306,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamSummaries
 */
-func (a *StreamSetApiService) StreamSetGetSummaries(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsStreamSummaries, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetSummaries(webId string, localVarOptionals map[string]interface{}) (ItemsStreamSummaries, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2453,7 +2451,7 @@ func (a *StreamSetApiService) StreamSetGetSummaries(ctx context.Context, webId s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2479,7 +2477,7 @@ func (a *StreamSetApiService) StreamSetGetSummaries(ctx context.Context, webId s
 	StreamSetApiService Returns summary values of the specified streams.
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2498,7 +2496,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamSummaries
 */
-func (a *StreamSetApiService) StreamSetGetSummariesAdHoc(ctx context.Context, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamSummaries, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetSummariesAdHoc(webId []string, localVarOptionals map[string]interface{}) (ItemsStreamSummaries, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2607,7 +2605,7 @@ func (a *StreamSetApiService) StreamSetGetSummariesAdHoc(ctx context.Context, we
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2633,7 +2631,7 @@ func (a *StreamSetApiService) StreamSetGetSummariesAdHoc(ctx context.Context, we
 	StreamSetApiService Returns values of the attributes for an Element, Event Frame or Attribute at the specified time.
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of an Element, Event Frame or Attribute, which is the base element or parent of all the stream attributes.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2652,7 +2650,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamValue
 */
-func (a *StreamSetApiService) StreamSetGetValues(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetValues(webId string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2764,7 +2762,7 @@ func (a *StreamSetApiService) StreamSetGetValues(ctx context.Context, webId stri
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2790,7 +2788,7 @@ func (a *StreamSetApiService) StreamSetGetValues(ctx context.Context, webId stri
 	StreamSetApiService Returns values of the specified streams.
 
 Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param webId The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -2803,7 +2801,7 @@ Any time series value in the response that contains an &#39;Errors&#39; property
 
 @return ItemsStreamValue
 */
-func (a *StreamSetApiService) StreamSetGetValuesAdHoc(ctx context.Context, webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetGetValuesAdHoc(webId []string, localVarOptionals map[string]interface{}) (ItemsStreamValue, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2879,7 +2877,7 @@ func (a *StreamSetApiService) StreamSetGetValuesAdHoc(ctx context.Context, webId
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2904,7 +2902,6 @@ func (a *StreamSetApiService) StreamSetGetValuesAdHoc(ctx context.Context, webId
 /*
 	StreamSetApiService Updates a single value for the specified streams.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent element, event frame, or attribute. Attributes specified in the body must be descendants of the specified object.
 @param values The values to add or update.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -2914,7 +2911,7 @@ func (a *StreamSetApiService) StreamSetGetValuesAdHoc(ctx context.Context, webId
 
 @return ItemsSubstatus
 */
-func (a *StreamSetApiService) StreamSetUpdateValue(ctx context.Context, webId string, values []StreamValue, localVarOptionals map[string]interface{}) (ItemsSubstatus, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetUpdateValue(webId string, values []StreamValue, localVarOptionals map[string]interface{}) (ItemsSubstatus, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -2968,7 +2965,7 @@ func (a *StreamSetApiService) StreamSetUpdateValue(ctx context.Context, webId st
 	}
 	// body params
 	localVarPostBody = &values
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -2993,7 +2990,6 @@ func (a *StreamSetApiService) StreamSetUpdateValue(ctx context.Context, webId st
 /*
 	StreamSetApiService Updates a single value for the specified streams.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param values The values to add or update.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -3002,7 +2998,7 @@ func (a *StreamSetApiService) StreamSetUpdateValue(ctx context.Context, webId st
 
 @return ItemsSubstatus
 */
-func (a *StreamSetApiService) StreamSetUpdateValueAdHoc(ctx context.Context, values []StreamValue, localVarOptionals map[string]interface{}) (ItemsSubstatus, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetUpdateValueAdHoc(values []StreamValue, localVarOptionals map[string]interface{}) (ItemsSubstatus, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -3055,7 +3051,7 @@ func (a *StreamSetApiService) StreamSetUpdateValueAdHoc(ctx context.Context, val
 	}
 	// body params
 	localVarPostBody = &values
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -3080,7 +3076,6 @@ func (a *StreamSetApiService) StreamSetUpdateValueAdHoc(ctx context.Context, val
 /*
 	StreamSetApiService Updates multiple values for the specified streams.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent element, event frame, or attribute. Attributes specified in the body must be descendants of the specified object.
 @param values The values to add or update.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -3090,7 +3085,7 @@ func (a *StreamSetApiService) StreamSetUpdateValueAdHoc(ctx context.Context, val
 
 @return ItemsItemsSubstatus
 */
-func (a *StreamSetApiService) StreamSetUpdateValues(ctx context.Context, webId string, values []StreamValues, localVarOptionals map[string]interface{}) (ItemsItemsSubstatus, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetUpdateValues(webId string, values []StreamValues, localVarOptionals map[string]interface{}) (ItemsItemsSubstatus, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -3144,7 +3139,7 @@ func (a *StreamSetApiService) StreamSetUpdateValues(ctx context.Context, webId s
 	}
 	// body params
 	localVarPostBody = &values
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -3169,7 +3164,6 @@ func (a *StreamSetApiService) StreamSetUpdateValues(ctx context.Context, webId s
 /*
 	StreamSetApiService Updates multiple values for the specified streams.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param values The values to add or update.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -3178,7 +3172,7 @@ func (a *StreamSetApiService) StreamSetUpdateValues(ctx context.Context, webId s
 
 @return ItemsItemsSubstatus
 */
-func (a *StreamSetApiService) StreamSetUpdateValuesAdHoc(ctx context.Context, values []StreamValues, localVarOptionals map[string]interface{}) (ItemsItemsSubstatus, *http.Response, error) {
+func (a *StreamSetApiService) StreamSetUpdateValuesAdHoc(values []StreamValues, localVarOptionals map[string]interface{}) (ItemsItemsSubstatus, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -3231,7 +3225,7 @@ func (a *StreamSetApiService) StreamSetUpdateValuesAdHoc(ctx context.Context, va
 	}
 	// body params
 	localVarPostBody = &values
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}

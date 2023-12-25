@@ -36,7 +36,6 @@ type AnalysisRulePlugInApiService service
 /*
 	AnalysisRulePlugInApiService Retrieve an Analysis Rule Plug-in.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the Analysis Rule Plug-in.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -45,7 +44,7 @@ type AnalysisRulePlugInApiService service
 
 @return AnalysisRulePlugIn
 */
-func (a *AnalysisRulePlugInApiService) AnalysisRulePlugInGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (AnalysisRulePlugIn, *http.Response, error) {
+func (a *AnalysisRulePlugInApiService) AnalysisRulePlugInGet(webId string, localVarOptionals map[string]interface{}) (AnalysisRulePlugIn, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -97,7 +96,7 @@ func (a *AnalysisRulePlugInApiService) AnalysisRulePlugInGet(ctx context.Context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -123,7 +122,7 @@ func (a *AnalysisRulePlugInApiService) AnalysisRulePlugInGet(ctx context.Context
 	AnalysisRulePlugInApiService Retrieve an Analysis Rule Plug-in by path.
 
 This method returns an Analysis Rule Plug-in based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the Analysis Rule Plug-in.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -132,7 +131,7 @@ This method returns an Analysis Rule Plug-in based on the hierarchical path asso
 
 @return AnalysisRulePlugIn
 */
-func (a *AnalysisRulePlugInApiService) AnalysisRulePlugInGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (AnalysisRulePlugIn, *http.Response, error) {
+func (a *AnalysisRulePlugInApiService) AnalysisRulePlugInGetByPath(path string, localVarOptionals map[string]interface{}) (AnalysisRulePlugIn, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -184,7 +183,7 @@ func (a *AnalysisRulePlugInApiService) AnalysisRulePlugInGetByPath(ctx context.C
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}

@@ -36,11 +36,10 @@ type ConfigurationApiService service
 /*
 	ConfigurationApiService Delete a configuration item.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param key The key of the configuration item to remove.
 @return
 */
-func (a *ConfigurationApiService) ConfigurationDelete(ctx context.Context, key string) (*http.Response, error) {
+func (a *ConfigurationApiService) ConfigurationDelete(key string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -78,7 +77,7 @@ func (a *ConfigurationApiService) ConfigurationDelete(ctx context.Context, key s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -100,11 +99,11 @@ func (a *ConfigurationApiService) ConfigurationDelete(ctx context.Context, key s
 	ConfigurationApiService Get the value of a configuration item.
 
 The response content may vary based on the configuration item&#39;s data type.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param key The key of the configuration item.
 @return interface{}
 */
-func (a *ConfigurationApiService) ConfigurationGet(ctx context.Context, key string) (interface{}, *http.Response, error) {
+func (a *ConfigurationApiService) ConfigurationGet(key string) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -143,7 +142,7 @@ func (a *ConfigurationApiService) ConfigurationGet(ctx context.Context, key stri
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -167,10 +166,10 @@ func (a *ConfigurationApiService) ConfigurationGet(ctx context.Context, key stri
 
 /*
 ConfigurationApiService Get the current system configuration.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @return map[string]interface{}
 */
-func (a *ConfigurationApiService) ConfigurationList(ctx context.Context) (map[string]interface{}, *http.Response, error) {
+func (a *ConfigurationApiService) ConfigurationList() (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -208,7 +207,7 @@ func (a *ConfigurationApiService) ConfigurationList(ctx context.Context) (map[st
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}

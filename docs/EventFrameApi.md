@@ -38,7 +38,7 @@ Method | HTTP request | Description
 
 
 # **EventFrameAcknowledge**
-> EventFrameAcknowledge(ctx, webId)
+> EventFrameAcknowledge(a.client.ctx, webId)
 Calls the EventFrame's Acknowledge method.
 
 ### Required Parameters
@@ -64,7 +64,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameCaptureValues**
-> EventFrameCaptureValues(ctx, webId)
+> EventFrameCaptureValues(a.client.ctx, webId)
 Calls the EventFrame's CaptureValues method.
 
 ### Required Parameters
@@ -90,7 +90,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameCreateAnnotation**
-> EventFrameCreateAnnotation(ctx, webId, annotation, optional)
+> EventFrameCreateAnnotation(a.client.ctx, webId, annotation, optional)
 Create an annotation on an event frame.
 
 ### Required Parameters
@@ -127,7 +127,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameCreateAttribute**
-> EventFrameCreateAttribute(ctx, webId, attribute, optional)
+> EventFrameCreateAttribute(a.client.ctx, webId, attribute, optional)
 Create a new attribute of the specified event frame.
 
 ### Required Parameters
@@ -164,7 +164,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameCreateConfig**
-> EventFrameCreateConfig(ctx, webId, optional)
+> EventFrameCreateConfig(a.client.ctx, webId, optional)
 Executes the create configuration function of the data references found within the attributes of the event frame, and optionally, its children.
 
 ### Required Parameters
@@ -199,7 +199,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameCreateEventFrame**
-> EventFrameCreateEventFrame(ctx, webId, eventFrame, optional)
+> EventFrameCreateEventFrame(a.client.ctx, webId, eventFrame, optional)
 Create an event frame as a child of the specified event frame.
 
 ### Required Parameters
@@ -236,7 +236,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameCreateSearchByAttribute**
-> ItemsEventFrame EventFrameCreateSearchByAttribute(ctx, query, optional)
+> ItemsEventFrame EventFrameCreateSearchByAttribute(a.client.ctx, query, optional)
 Create a link for a \"Search EventFrames By Attribute Value\" operation, whose queries are specified in the request content. The SearchRoot is specified by the Web Id of the root EventFrame. If the SearchRoot is not specified, then the search starts at the Asset Database. ElementTemplate must be provided as the Web ID of the ElementTemplate, which are used to create the EventFrames. All the attributes in the queries must be defined as AttributeTemplates on the ElementTemplate. An array of attribute value queries are ANDed together to find the desired Element objects. At least one value query must be specified. There are limitations on SearchOperators.
 
 ### Required Parameters
@@ -273,7 +273,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameCreateSecurityEntry**
-> EventFrameCreateSecurityEntry(ctx, webId, securityEntry, optional)
+> EventFrameCreateSecurityEntry(a.client.ctx, webId, securityEntry, optional)
 Create a security entry owned by the event frame.
 
 ### Required Parameters
@@ -311,7 +311,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameDelete**
-> EventFrameDelete(ctx, webId)
+> EventFrameDelete(a.client.ctx, webId)
 Delete an event frame.
 
 ### Required Parameters
@@ -337,7 +337,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameDeleteAnnotation**
-> EventFrameDeleteAnnotation(ctx, id, webId)
+> EventFrameDeleteAnnotation(a.client.ctx, id, webId)
 Delete an annotation on an event frame. If the annotation has attached media, the attached media will also be deleted.
 
 ### Required Parameters
@@ -364,7 +364,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameDeleteAnnotationAttachmentMediaById**
-> EventFrameDeleteAnnotationAttachmentMediaById(ctx, id, webId)
+> EventFrameDeleteAnnotationAttachmentMediaById(a.client.ctx, id, webId)
 Delete attached media from an annotation on an event frame.
 
 ### Required Parameters
@@ -391,7 +391,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameDeleteSecurityEntry**
-> EventFrameDeleteSecurityEntry(ctx, name, webId, optional)
+> EventFrameDeleteSecurityEntry(a.client.ctx, name, webId, optional)
 Delete a security entry owned by the event frame.
 
 ### Required Parameters
@@ -428,7 +428,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameExecuteSearchByAttribute**
-> ItemsEventFrame EventFrameExecuteSearchByAttribute(ctx, searchId, optional)
+> ItemsEventFrame EventFrameExecuteSearchByAttribute(a.client.ctx, searchId, optional)
 Execute a \"Search EventFrames By Attribute Value\" operation.
 
 ### Required Parameters
@@ -477,7 +477,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameFindEventFrameAttributes**
-> ItemsAttribute EventFrameFindEventFrameAttributes(ctx, webId, optional)
+> ItemsAttribute EventFrameFindEventFrameAttributes(a.client.ctx, webId, optional)
 Retrieves a list of event frame attributes matching the specified filters from the specified event frame.
 
 ### Required Parameters
@@ -530,7 +530,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameGet**
-> EventFrame EventFrameGet(ctx, webId, optional)
+> EventFrame EventFrameGet(a.client.ctx, webId, optional)
 Retrieve an event frame.
 
 ### Required Parameters
@@ -566,7 +566,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameGetAnnotationAttachmentMediaMetadataById**
-> MediaMetadata EventFrameGetAnnotationAttachmentMediaMetadataById(ctx, id, webId, optional)
+> MediaMetadata EventFrameGetAnnotationAttachmentMediaMetadataById(a.client.ctx, id, webId, optional)
 Gets the metadata of the media attached to the specified annotation.
 
 ### Required Parameters
@@ -604,7 +604,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameGetAnnotationById**
-> Annotation EventFrameGetAnnotationById(ctx, id, webId, optional)
+> Annotation EventFrameGetAnnotationById(a.client.ctx, id, webId, optional)
 Get a specific annotation on an event frame.
 
 ### Required Parameters
@@ -642,7 +642,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameGetAnnotations**
-> ItemsAnnotation EventFrameGetAnnotations(ctx, webId, optional)
+> ItemsAnnotation EventFrameGetAnnotations(a.client.ctx, webId, optional)
 Get an event frame's annotations.
 
 ### Required Parameters
@@ -678,7 +678,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameGetAttributes**
-> ItemsAttribute EventFrameGetAttributes(ctx, webId, optional)
+> ItemsAttribute EventFrameGetAttributes(a.client.ctx, webId, optional)
 Get the attributes of the specified event frame.
 
 ### Required Parameters
@@ -727,7 +727,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameGetByPath**
-> EventFrame EventFrameGetByPath(ctx, path, optional)
+> EventFrame EventFrameGetByPath(a.client.ctx, path, optional)
 Retrieve an event frame by path.
 
 This method returns an event frame based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
@@ -765,7 +765,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameGetCategories**
-> ItemsElementCategory EventFrameGetCategories(ctx, webId, optional)
+> ItemsElementCategory EventFrameGetCategories(a.client.ctx, webId, optional)
 Get an event frame's categories.
 
 ### Required Parameters
@@ -801,7 +801,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameGetEventFrames**
-> ItemsEventFrame EventFrameGetEventFrames(ctx, webId, optional)
+> ItemsEventFrame EventFrameGetEventFrames(a.client.ctx, webId, optional)
 Retrieve event frames based on the specified conditions. By default, returns all children of the specified root event frame that have been active in the past 8 hours.
 
 ### Required Parameters
@@ -853,7 +853,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameGetEventFramesQuery**
-> ItemsEventFrame EventFrameGetEventFramesQuery(ctx, optional)
+> ItemsEventFrame EventFrameGetEventFramesQuery(a.client.ctx, optional)
 Retrieve event frames based on the specified conditions. Returns event frames using the specified search query string.
 
 ### Required Parameters
@@ -891,7 +891,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameGetMultiple**
-> ItemsItemEventFrame EventFrameGetMultiple(ctx, optional)
+> ItemsItemEventFrame EventFrameGetMultiple(a.client.ctx, optional)
 Retrieve multiple event frames by web ids or paths.
 
 ### Required Parameters
@@ -929,7 +929,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameGetReferencedElements**
-> ItemsElement EventFrameGetReferencedElements(ctx, webId, optional)
+> ItemsElement EventFrameGetReferencedElements(a.client.ctx, webId, optional)
 Retrieve the event frame's referenced elements.
 
 ### Required Parameters
@@ -965,7 +965,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameGetSecurity**
-> ItemsSecurityRights EventFrameGetSecurity(ctx, webId, userIdentity, optional)
+> ItemsSecurityRights EventFrameGetSecurity(a.client.ctx, webId, userIdentity, optional)
 Get the security information of the specified security item associated with the event frame for a specified user.
 
 ### Required Parameters
@@ -1004,7 +1004,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameGetSecurityEntries**
-> ItemsSecurityEntry EventFrameGetSecurityEntries(ctx, webId, optional)
+> ItemsSecurityEntry EventFrameGetSecurityEntries(a.client.ctx, webId, optional)
 Retrieve the security entries associated with the event frame based on the specified criteria. By default, all security entries for this event frame are returned.
 
 ### Required Parameters
@@ -1041,7 +1041,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameGetSecurityEntryByName**
-> SecurityEntry EventFrameGetSecurityEntryByName(ctx, name, webId, optional)
+> SecurityEntry EventFrameGetSecurityEntryByName(a.client.ctx, name, webId, optional)
 Retrieve the security entry associated with the event frame with the specified name.
 
 ### Required Parameters
@@ -1079,7 +1079,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameUpdate**
-> EventFrameUpdate(ctx, webId, eventFrame)
+> EventFrameUpdate(a.client.ctx, webId, eventFrame)
 Update an event frame by replacing items in its definition.
 
 ### Required Parameters
@@ -1106,7 +1106,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameUpdateAnnotation**
-> EventFrameUpdateAnnotation(ctx, id, webId, annotation)
+> EventFrameUpdateAnnotation(a.client.ctx, id, webId, annotation)
 Update an annotation on an event frame by replacing items in its definition.
 
 ### Required Parameters
@@ -1134,7 +1134,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EventFrameUpdateSecurityEntry**
-> EventFrameUpdateSecurityEntry(ctx, name, webId, securityEntry, optional)
+> EventFrameUpdateSecurityEntry(a.client.ctx, name, webId, securityEntry, optional)
 Update a security entry owned by the event frame.
 
 ### Required Parameters

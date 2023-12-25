@@ -36,7 +36,6 @@ type AttributeTemplateApiService service
 /*
 	AttributeTemplateApiService Create an attribute template as a child of another attribute template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the parent attribute template on which to create the attribute template.
 @param template The attribute template definition.
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -45,7 +44,7 @@ type AttributeTemplateApiService service
 
 @return
 */
-func (a *AttributeTemplateApiService) AttributeTemplateCreateAttributeTemplate(ctx context.Context, webId string, template AttributeTemplate, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *AttributeTemplateApiService) AttributeTemplateCreateAttributeTemplate(webId string, template AttributeTemplate, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -92,7 +91,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateCreateAttributeTemplate(c
 	}
 	// body params
 	localVarPostBody = &template
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -113,12 +112,12 @@ func (a *AttributeTemplateApiService) AttributeTemplateCreateAttributeTemplate(c
 /*
 	AttributeTemplateApiService Delete an attribute template.
 
-Deleting an attribute template will delete the attributes that were created based on the template
-* @param ctx context.Context for authentication, logging, tracing, etc.
+# Deleting an attribute template will delete the attributes that were created based on the template
+
 @param webId The ID of the attribute template.
 @return
 */
-func (a *AttributeTemplateApiService) AttributeTemplateDelete(ctx context.Context, webId string) (*http.Response, error) {
+func (a *AttributeTemplateApiService) AttributeTemplateDelete(webId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -156,7 +155,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateDelete(ctx context.Contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -177,7 +176,6 @@ func (a *AttributeTemplateApiService) AttributeTemplateDelete(ctx context.Contex
 /*
 	AttributeTemplateApiService Retrieve an attribute template.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -186,7 +184,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateDelete(ctx context.Contex
 
 @return AttributeTemplate
 */
-func (a *AttributeTemplateApiService) AttributeTemplateGet(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (AttributeTemplate, *http.Response, error) {
+func (a *AttributeTemplateApiService) AttributeTemplateGet(webId string, localVarOptionals map[string]interface{}) (AttributeTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -238,7 +236,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateGet(ctx context.Context, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -263,7 +261,6 @@ func (a *AttributeTemplateApiService) AttributeTemplateGet(ctx context.Context, 
 /*
 	AttributeTemplateApiService Retrieve an attribute template&#39;s child attribute templates.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -272,7 +269,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateGet(ctx context.Context, 
 
 @return ItemsAttributeTemplate
 */
-func (a *AttributeTemplateApiService) AttributeTemplateGetAttributeTemplates(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttributeTemplate, *http.Response, error) {
+func (a *AttributeTemplateApiService) AttributeTemplateGetAttributeTemplates(webId string, localVarOptionals map[string]interface{}) (ItemsAttributeTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -324,7 +321,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateGetAttributeTemplates(ctx
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -350,7 +347,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateGetAttributeTemplates(ctx
 	AttributeTemplateApiService Retrieve an attribute template by path.
 
 This method returns an attribute template based on the hierarchical path associated with it, and should be used when a path has been received from a separate part of the PI System for use in the PI Web API. Users should primarily search with the WebID when available.
-* @param ctx context.Context for authentication, logging, tracing, etc.
+
 @param path The path to the attribute template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -359,7 +356,7 @@ This method returns an attribute template based on the hierarchical path associa
 
 @return AttributeTemplate
 */
-func (a *AttributeTemplateApiService) AttributeTemplateGetByPath(ctx context.Context, path string, localVarOptionals map[string]interface{}) (AttributeTemplate, *http.Response, error) {
+func (a *AttributeTemplateApiService) AttributeTemplateGetByPath(path string, localVarOptionals map[string]interface{}) (AttributeTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -411,7 +408,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateGetByPath(ctx context.Con
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -436,7 +433,6 @@ func (a *AttributeTemplateApiService) AttributeTemplateGetByPath(ctx context.Con
 /*
 	AttributeTemplateApiService Get an attribute template&#39;s categories.
 
-* @param ctx context.Context for authentication, logging, tracing, etc.
 @param webId The ID of the attribute template.
 @param optional (nil or map[string]interface{}) with one or more of:
 
@@ -445,7 +441,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateGetByPath(ctx context.Con
 
 @return ItemsAttributeCategory
 */
-func (a *AttributeTemplateApiService) AttributeTemplateGetCategories(ctx context.Context, webId string, localVarOptionals map[string]interface{}) (ItemsAttributeCategory, *http.Response, error) {
+func (a *AttributeTemplateApiService) AttributeTemplateGetCategories(webId string, localVarOptionals map[string]interface{}) (ItemsAttributeCategory, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -497,7 +493,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateGetCategories(ctx context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -522,13 +518,13 @@ func (a *AttributeTemplateApiService) AttributeTemplateGetCategories(ctx context
 /*
 	AttributeTemplateApiService Update an existing attribute template by replacing items in its definition.
 
-Updating an attribute template will propagate changes to the attributes that were created based on the template
-* @param ctx context.Context for authentication, logging, tracing, etc.
+# Updating an attribute template will propagate changes to the attributes that were created based on the template
+
 @param webId The ID of the attribute template.
 @param template A partial attribute template containing the desired changes.
 @return
 */
-func (a *AttributeTemplateApiService) AttributeTemplateUpdate(ctx context.Context, webId string, template AttributeTemplate) (*http.Response, error) {
+func (a *AttributeTemplateApiService) AttributeTemplateUpdate(webId string, template AttributeTemplate) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -568,7 +564,7 @@ func (a *AttributeTemplateApiService) AttributeTemplateUpdate(ctx context.Contex
 	}
 	// body params
 	localVarPostBody = &template
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}

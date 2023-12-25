@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **ChannelInstances**
-> ItemsChannelInstance ChannelInstances(ctx, )
+> ItemsChannelInstance ChannelInstances(a.client.ctx, )
 Retrieves a list of currently running channel instances.
 
 ### Required Parameters
