@@ -1,4 +1,5 @@
 # Go Client for OSIsoft PI Web API
+# dont look at the expamples. they are wrong for now. the auth is changed
 
 This is the Go programming language interface to PI Web API.
 
