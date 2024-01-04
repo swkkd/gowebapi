@@ -76,9 +76,20 @@ func (a *BatchApiService) BatchExecute(batch interface{}) (map[string]Response, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	localVarHeaderParams["x-requested-with"] = "Accept"
 	// body params
 	localVarPostBody = &batch
-	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(
+		a.client.ctx,
+		localVarPath,
+		localVarHttpMethod,
+		localVarPostBody,
+		localVarHeaderParams,
+		localVarQueryParams,
+		localVarFormParams,
+		localVarFileName,
+		localVarFileBytes,
+	)
 	if err != nil {
 		return successPayload, nil, err
 	}
