@@ -40,6 +40,9 @@ func main() {
 Here I have stood up a global http client that is ready to send requests to the PI Web API endpoint.   I have replaced the "gowebapi" package name with the faster-to-type mnemonic called `pi`.
 
 If you try to compile this, Go will immediately complain that the variable `auth` is not being used.   That's because it isn't.  It is the security context used to send stateless web requests.   To make the error go away we need to use `auth` in something.
+###### UPDATE: 
+##### important !!!!
+The `auth` variable is now used in the `client` object. The example has been updated to reflect this change.
 
 ## Getting an AF Attribute
 At my office I have a AF database called `Chris` where I have some of my computers being monitored by PI Perfmon.  I would like to see the details about the Attribute I created called `Memory % In Use` hanging off a machine called CLSAF, which also happens to be my PI Server. 
@@ -61,7 +64,7 @@ func GetAttribute() {
 	options := make(map[string]interface{})
 	options["webIdType"] = "PathOnly"
 
-	value, resp, err := client.AttributeApi.AttributeGet(auth, webid, options)
+	value, resp, err := client.AttributeApi.AttributeGet(webid, options)
 	if err != nil {
 		log.Println("The call to WebAPI failed [", resp.StatusCode, "]")
 		body, _ := io.ReadAll(resp.Body)
@@ -92,7 +95,7 @@ func GetSinusoidTag() {
 	optionals["endTime"] = "*"
 	optionals["maxCount"] = int32(5000)
 
-	value, resp, err := client.StreamApi.StreamGetRecorded(auth, webid, optionals)
+	value, resp, err := client.StreamApi.StreamGetRecorded(webid, optionals)
 	if err != nil {
 		log.Fatal("Couldn't get PI tag CLSAF\\SINUSOID [", resp.StatusCode, "] ", err)
 	}
@@ -126,7 +129,7 @@ func GetRecordedValues() {
 	optionals["startTime"] = "*-100d"
 	optionals["maxCount"] = int32(500)
 
-	value, resp, err := client.StreamApi.StreamGetRecorded(auth, webid, optionals)
+	value, resp, err := client.StreamApi.StreamGetRecorded(webid, optionals)
 	if err != nil {
 		log.Println("The call to WebAPI failed [", resp.StatusCode, "]")
 		body, _ := io.ReadAll(resp.Body)
@@ -162,13 +165,6 @@ There's only one method `Execute` which takes an array of stuff.
 Let's send two requests at once to pull recorded values from the server.  To implement the individual request batches we need to define a struct where we can put our batch request content, which I've called `BatchRequest`.  If I don't fill something out in the `BatchRequest` struct I want to make sure the JSON for the empty fields do not get sent.  You can attach hints to struct fields like this:
 
 ```go
-
-type BatchRequest struct {
-	Resource string `json:"Resource,omitempty"`
-	Method   string `json:"Method,omitempty"`
-	Content  string `json:"Content,omitempty"`
-}
-
 func BatchExample() {
 
 	webid := pi.EncodeWebID(pi.NewPIPointWebID("CLSAF\\SINUSOID"))	
@@ -177,12 +173,12 @@ func BatchExample() {
 	batches := make(map[string]BatchRequest)
 	
 	// Setup request 1
-	var batch1 BatchRequest
+	var batch1 gowebapi.BatchRequest
 	batch1.Method = "GET"
 	batch1.Resource = "https://localhost/piwebapi/streams/" + webid + "/recorded"
 
 	// Setup Request 2
-	var batch2 BatchRequest
+	var batch2 gowebapi.BatchRequest
 	batch2.Method = "GET"
 	batch2.Resource = "https://localhost/piwebapi/streams/" + webid2 + "/recorded"
 
@@ -191,7 +187,7 @@ func BatchExample() {
 	batches["2"] = batch2
 
 	// Ship it!!!
-	value, resp, err := client.BatchApi.BatchExecute(auth, batches)
+	value, resp, err := client.BatchApi.BatchExecute(batches)
 	if err != nil {
 		log.Fatal("Batch request failed.  [", resp.StatusCode, "] ", err)
 	}
@@ -211,6 +207,61 @@ map[1:{200 map[Content-Type:application/json; charset=utf-8] 0xc420304090}
 Request completed.
 ~/go/piwebapitest $ 
 ```
+## Newly added functionality in the Batch service.
+### Generate Batch elements
+Allows you to generate batch elements by calling the `BatchApi` service functions.
+Goes in handy when you have a map of tags, and you want to generate batch elements for each tag.
+    
+```go
+func main() {
+	var tagsMap = make(map[string]string)
+	tagsMap["tag1"] = "Foo"
+	tagsMap["tag2"] = "Bar"
+	tagsMap["tag3"] = "FooBar"
+	Foo(tagsMap)
+}
+
+func Foo(tagMap map[string]string) {
+
+    optionals := make(map[string]interface{})
+    batches := make(map[string]gowebapi.BatchRequest)
+    for key, tag := range tagMap {
+        // Generate webid for each tag
+        path := "some.path\\" + tag
+        pipoint := gowebapi.NewPIPointWebID(path)
+        webid := gowebapi.EncodeWebID(pipoint)
+
+        // Add optional parameters
+        optionals["startTime"] = "*-1m"
+        optionals["endTime"] = "*"
+        optionals["maxCount"] = int32(500)
+        optionals["timeZone"] = "Europe/Tallinn"
+
+        var batchRequest gowebapi.BatchRequest
+        batchRequest, _ = client.BatchApi.StreamGetSummary(webid, optionals)
+        //batchRequest, _ = client.BatchApi.StreamGetRecorded(webid, optionals)
+        //batchRequest, _ = client.BatchApi.StreamGetValue(webid, optionals)
+		
+
+        batches[key] = batchRequest
+    }
+	
+    value, _, err := client.BatchApi.BatchExecute(batches)
+    if err != nil {
+    fmt.Println(err)
+    }
+    for k, v := range value {
+    fmt.Println(k, v)
+    //fmt.Println("Value", *v.Content)
+    }
+}
+```
+Result:
+```
+tag2 {200 map[Content-Type:application/json; charset=utf-8] 0xc0000b20e0}
+tag3 {200 map[Content-Type:application/json; charset=utf-8] 0xc0000b2190}
+tag1 {200 map[Content-Type:application/json; charset=utf-8] 0xc0000b2250}
+```
 
 ### Dealing with dynamic data returns
 
@@ -228,7 +279,7 @@ As you can see, we got back a memory address for the data (0xc420304090 and 0xc4
 		fmt.Println("   Content: ")
 		fmt.Println("\t", *element.Content)
 	}
-```	
+```
 
 Now, let's look at the output:
 ![here's the output](./af5.png)
@@ -334,7 +385,7 @@ func BatchExample() {
 	batches["1"] = batch1
 	batches["2"] = batch2
 
-	value, resp, err := client.BatchApi.BatchExecute(auth, batches)
+	value, resp, err := client.BatchApi.BatchExecute(batches)
 	if err != nil {
 		log.Fatal("Batch request failed.  [", resp.StatusCode, "] ", err)
 	}
