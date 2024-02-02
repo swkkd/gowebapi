@@ -1,3 +1,6 @@
+THIS IS A COPY OF 
+github.com/christoofar/gowebapi
+ORIGINAL LIBRARY
 # Go Client for OSIsoft PI Web API
 
 This is the Go programming language interface to PI Web API.
@@ -9,10 +12,6 @@ It was built against the **PI Web API 2018** specification.
 To compile Go programs you will need the [Go installation kit](https://golang.org/dl/).
 
 Issue the following command to install this package:
-
-THIS IS A COPY OF 
-github.com/christoofar/gowebapi
-ORIGINAL LIBRARY
 
 
 ## Getting Started
