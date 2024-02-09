@@ -1229,6 +1229,7 @@ func (a *StreamApiService) StreamUpdateValue(webId string, value TimedValue, loc
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	// Handling optional parameters
 	if err := typeCheckParameter(localVarOptionals["bufferOption"], "string", "bufferOption"); err != nil {
 		return nil, err
 	}
@@ -1239,6 +1240,7 @@ func (a *StreamApiService) StreamUpdateValue(webId string, value TimedValue, loc
 		return nil, err
 	}
 
+	// Adding optional query parameters
 	if localVarTempParam, localVarOk := localVarOptionals["bufferOption"].(string); localVarOk {
 		localVarQueryParams.Add("bufferOption", parameterToString(localVarTempParam, ""))
 	}
@@ -1248,47 +1250,55 @@ func (a *StreamApiService) StreamUpdateValue(webId string, value TimedValue, loc
 	if localVarTempParam, localVarOk := localVarOptionals["webIdType"].(string); localVarOk {
 		localVarQueryParams.Add("webIdType", parameterToString(localVarTempParam, ""))
 	}
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/json", "text/json"}
 
-	// set Content-Type header
+	// Content-Type header
+	localVarHttpContentTypes := []string{"application/json", "text/json"}
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
 	if localVarHttpContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
 	}
 
 	localVarHeaderParams["x-requested-with"] = "Accept"
-	// to determine the Accept header
+
+	// Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
 		"text/json",
-		"text/html",
-		"application/x-ms-application",
 	}
-
-	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
+
+	// Setting the request body
 	localVarPostBody = &value
+
+	// Preparing the request
 	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
+	// Making the request
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
 	defer localVarHttpResponse.Body.Close()
+
+	// Check for non-successful response codes
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
-		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return localVarHttpResponse, fmt.Errorf("status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
-	return localVarHttpResponse, err
+	// Handling responses with Content-Length: 0
+	if localVarHttpResponse.ContentLength == 0 && localVarHttpResponse.StatusCode == 202 {
+		fmt.Println("No content in response, but request was accepted")
+		return localVarHttpResponse, nil
+	}
+
+	return localVarHttpResponse, nil
 }
 
 /*
@@ -1321,9 +1331,11 @@ func (a *StreamApiService) StreamUpdateValues(webId string, values []TimedValue,
 	localVarFormParams := url.Values{}
 
 	if err := typeCheckParameter(localVarOptionals["bufferOption"], "string", "bufferOption"); err != nil {
+		fmt.Println("bufferOption err")
 		return successPayload, nil, err
 	}
 	if err := typeCheckParameter(localVarOptionals["updateOption"], "string", "updateOption"); err != nil {
+		fmt.Println("updateOption err")
 		return successPayload, nil, err
 	}
 
@@ -1360,22 +1372,43 @@ func (a *StreamApiService) StreamUpdateValues(webId string, values []TimedValue,
 	localVarPostBody = &values
 	r, err := a.client.prepareRequest(a.client.ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
+		fmt.Println("prepareRequest err")
 		return successPayload, nil, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
+		fmt.Println("callAPI err")
 		return successPayload, localVarHttpResponse, err
 	}
 	defer localVarHttpResponse.Body.Close()
+
+	// check if the answer length is 0 and the status code is 202
+	if localVarHttpResponse.ContentLength == 0 && localVarHttpResponse.StatusCode == 202 {
+		fmt.Println("No content in response, but request was accepted")
+		return successPayload, localVarHttpResponse, nil
+	}
+
 	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := io.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		bodyBytes, err := io.ReadAll(localVarHttpResponse.Body)
+		if err != nil {
+			fmt.Println("ReadAll err")
+			return successPayload, localVarHttpResponse, err
+		}
+		return successPayload, localVarHttpResponse, fmt.Errorf("status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+	// Decode only if the content length is greater than 0
+	if localVarHttpResponse.ContentLength > 0 {
+		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+			fmt.Println("Decode err")
+			fmt.Printf("\nlocalVarHttpResponse %v\n", localVarHttpResponse.Body)
+			fmt.Println("err ", err)
+			return successPayload, localVarHttpResponse, err
+		}
+	} else {
+		return successPayload, localVarHttpResponse, nil
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, localVarHttpResponse, nil
 }
