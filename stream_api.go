@@ -1257,6 +1257,7 @@ func (a *StreamApiService) StreamUpdateValue(webId string, value TimedValue, loc
 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
 	}
 
+	localVarHeaderParams["x-requested-with"] = "Accept"
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
@@ -1341,6 +1342,7 @@ func (a *StreamApiService) StreamUpdateValues(webId string, values []TimedValue,
 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
 	}
 
+	localVarHeaderParams["x-requested-with"] = "Accept"
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
