@@ -19,6 +19,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"net/url"
 	"strings"
@@ -802,7 +803,6 @@ func (a *BatchApiService) CalculationGetAtTimes(localVarOptionals map[string]int
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/calculation/times"
-
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -837,28 +837,7 @@ func (a *BatchApiService) CalculationGetAtTimes(localVarOptionals map[string]int
 	if localVarTempParam, localVarOk := localVarOptionals["webId"].(string); localVarOk {
 		localVarQueryParams.Add("webId", parameterToString(localVarTempParam, ""))
 	}
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
 
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-		"text/json",
-		"text/html",
-		"application/x-ms-application",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
 	r, err := a.client.prepareRequest(
 		a.client.ctx,
 		localVarPath,
@@ -878,8 +857,8 @@ func (a *BatchApiService) CalculationGetAtTimes(localVarOptionals map[string]int
 	batch = BatchRequest{
 		Method:   r.Method,
 		Resource: r.URL.String(),
-		Content:  string(localVarPostBody.([]byte)),
 	}
 
+	log.Println(batch)
 	return batch, err
 }
