@@ -299,7 +299,9 @@ func (a *CalculationApiService) CalculationGetAtTimes(localVarOptionals map[stri
 		localVarQueryParams.Add("sortOrder", parameterToString(localVarTempParam, ""))
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["time"].([]string); localVarOk {
-		localVarQueryParams.Add("time", parameterToString(localVarTempParam, "multi"))
+		for _, t := range localVarTempParam {
+			localVarQueryParams.Add("time", t)
+		}
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["webId"].(string); localVarOk {
 		localVarQueryParams.Add("webId", parameterToString(localVarTempParam, ""))
@@ -439,7 +441,9 @@ func (a *CalculationApiService) CalculationGetSummary(localVarOptionals map[stri
 		localVarQueryParams.Add("summaryDuration", parameterToString(localVarTempParam, ""))
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["summaryType"].([]string); localVarOk {
-		localVarQueryParams.Add("summaryType", parameterToString(localVarTempParam, "multi"))
+		for _, t := range localVarTempParam {
+			localVarQueryParams.Add("summaryType", t)
+		}
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["timeType"].(string); localVarOk {
 		localVarQueryParams.Add("timeType", parameterToString(localVarTempParam, ""))

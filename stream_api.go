@@ -418,7 +418,9 @@ func (a *StreamApiService) StreamGetInterpolatedAtTimes(webId string, localVarOp
 		localVarQueryParams.Add("sortOrder", parameterToString(localVarTempParam, ""))
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["time"].([]string); localVarOk {
-		localVarQueryParams.Add("time", parameterToString(localVarTempParam, "multi"))
+		for _, t := range localVarTempParam {
+			localVarQueryParams.Add("time", t)
+		}
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["timeZone"].(string); localVarOk {
 		localVarQueryParams.Add("timeZone", parameterToString(localVarTempParam, ""))
@@ -905,7 +907,9 @@ func (a *StreamApiService) StreamGetRecordedAtTimes(webId string, localVarOption
 		localVarQueryParams.Add("sortOrder", parameterToString(localVarTempParam, ""))
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["time"].([]string); localVarOk {
-		localVarQueryParams.Add("time", parameterToString(localVarTempParam, "multi"))
+		for _, t := range localVarTempParam {
+			localVarQueryParams.Add("time", t)
+		}
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["timeZone"].(string); localVarOk {
 		localVarQueryParams.Add("timeZone", parameterToString(localVarTempParam, ""))
@@ -1049,7 +1053,9 @@ func (a *StreamApiService) StreamGetSummary(webId string, localVarOptionals map[
 		localVarQueryParams.Add("summaryDuration", parameterToString(localVarTempParam, ""))
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["summaryType"].([]string); localVarOk {
-		localVarQueryParams.Add("summaryType", parameterToString(localVarTempParam, "multi"))
+		for _, t := range localVarTempParam {
+			localVarQueryParams.Add("summaryType", t)
+		}
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["timeType"].(string); localVarOk {
 		localVarQueryParams.Add("timeType", parameterToString(localVarTempParam, ""))

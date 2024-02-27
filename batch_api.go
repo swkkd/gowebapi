@@ -201,7 +201,9 @@ func (a *BatchApiService) StreamGetSummary(webId string, localVarOptionals map[s
 		localVarQueryParams.Add("summaryDuration", parameterToString(localVarTempParam, ""))
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["summaryType"].([]string); localVarOk {
-		localVarQueryParams.Add("summaryType", parameterToString(localVarTempParam, "multi"))
+		for _, t := range localVarTempParam {
+			localVarQueryParams.Add("summaryType", t)
+		}
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["timeType"].(string); localVarOk {
 		localVarQueryParams.Add("timeType", parameterToString(localVarTempParam, ""))
@@ -521,7 +523,9 @@ func (a *BatchApiService) StreamGetRecordedAtTimes(webId string, localVarOptiona
 		localVarQueryParams.Add("sortOrder", parameterToString(localVarTempParam, ""))
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["time"].([]string); localVarOk {
-		localVarQueryParams.Add("time", parameterToString(localVarTempParam, "multi"))
+		for _, t := range localVarTempParam {
+			localVarQueryParams.Add("time", t)
+		}
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["timeZone"].(string); localVarOk {
 		localVarQueryParams.Add("timeZone", parameterToString(localVarTempParam, ""))
@@ -763,6 +767,112 @@ func (a *BatchApiService) StreamUpdateValues(webId string, values []TimedValue, 
 		localVarFileBytes,
 	)
 	//TODO: check if this is the correct way to handle the body
+
+	//add URL from request to batch
+	batch = BatchRequest{
+		Method:   r.Method,
+		Resource: r.URL.String(),
+		Content:  string(localVarPostBody.([]byte)),
+	}
+
+	return batch, err
+}
+
+/*
+	CalculationApiService Returns the result of evaluating the expression at the specified timestamps.
+
+@param optional (nil or map[string]interface{}) with one or more of:
+
+	@param "expression" (string) A string containing the expression to be evaluated. The syntax for the expression generally follows the Performance Equation syntax as described in the PI Server documentation, with the exception that expressions which target AF objects use attribute names in place of tag names in the equation.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "time" ([]string) A list of timestamps at which to calculate the expression.
+	@param "webId" (string) The ID of the target object of the expression. A target object can be a Data Server, a database, an element, an event frame or an attribute. References to attributes or points are based on the target. If this parameter is not provided, the target object is set to null.
+
+@return TimedValues
+*/
+func (a *BatchApiService) CalculationGetAtTimes(localVarOptionals map[string]interface{}) (BatchRequest, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		batch              BatchRequest
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/calculation/times"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["expression"], "string", "expression"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["selectedFields"], "string", "selectedFields"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["sortOrder"], "string", "sortOrder"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["webId"], "string", "webId"); err != nil {
+		return BatchRequest{}, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["expression"].(string); localVarOk {
+		localVarQueryParams.Add("expression", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["selectedFields"].(string); localVarOk {
+		localVarQueryParams.Add("selectedFields", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["sortOrder"].(string); localVarOk {
+		localVarQueryParams.Add("sortOrder", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["time"].([]string); localVarOk {
+		for _, t := range localVarTempParam {
+			localVarQueryParams.Add("time", t)
+		}
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["webId"].(string); localVarOk {
+		localVarQueryParams.Add("webId", parameterToString(localVarTempParam, ""))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		"text/json",
+		"text/html",
+		"application/x-ms-application",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(
+		a.client.ctx,
+		localVarPath,
+		localVarHttpMethod,
+		localVarPostBody,
+		localVarHeaderParams,
+		localVarQueryParams,
+		localVarFormParams,
+		localVarFileName,
+		localVarFileBytes,
+	)
+	if err != nil {
+		return BatchRequest{}, err
+	}
 
 	//add URL from request to batch
 	batch = BatchRequest{
