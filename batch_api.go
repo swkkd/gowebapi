@@ -19,7 +19,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"log"
 	"net/http"
 	"net/url"
 	"strings"
@@ -859,7 +858,6 @@ func (a *BatchApiService) CalculationGetAtTimes(localVarOptionals map[string]int
 		Resource: r.URL.String(),
 	}
 
-	log.Println(batch)
 	return batch, err
 }
 
@@ -986,6 +984,5 @@ func (a *BatchApiService) CalculationGetSummary(localVarOptionals map[string]int
 		Resource: r.URL.String(),
 	}
 
-	log.Println(batch)
 	return batch, err
 }
