@@ -986,3 +986,229 @@ func (a *BatchApiService) CalculationGetSummary(localVarOptionals map[string]int
 
 	return batch, err
 }
+
+/*
+	StreamApiService Retrieves interpolated values over the specified time range at the specified sampling interval.
+
+Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
+
+@param webId The ID of the stream.
+@param optional (nil or map[string]interface{}) with one or more of:
+
+	@param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
+	@param "endTime" (string) An optional end time. The default is &#39;*&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s end time, or &#39;*&#39; if that is not set. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.
+	@param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. If the attribute does not support filtering, the filter will be ignored. The default is no filtering.
+	@param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
+	@param "interval" (string) The sampling interval, in AFTimeSpan format.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "startTime" (string) An optional start time. The default is &#39;*-1d&#39; for element attributes and points. For event frame attributes, the default is the event frame&#39;s start time, or &#39;*-1d&#39; if that is not set.
+	@param "syncTime" (string) An optional start time anchor, in AFTime format. When specified, interpolated data retrieval will use the sync time as the origin for calculating the interval times.
+	@param "syncTimeBoundaryType" (string) An optional string specifying the boundary type to use when applying a syncTime. The allowed values are &#39;Inside&#39; and &#39;Outside&#39;. The default is &#39;Inside&#39;.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+
+@return TimedValues
+*/
+func (a *BatchApiService) StreamGetInterpolated(webId string, localVarOptionals map[string]interface{}) (BatchRequest, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		batch              BatchRequest
+	)
+
+	// create path and map variables
+	linkPath := fmt.Sprintf("/streams/%s/interpolated", webId)
+	localVarPath := a.client.cfg.BasePath + linkPath
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["desiredUnits"], "string", "desiredUnits"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["endTime"], "string", "endTime"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["filterExpression"], "string", "filterExpression"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["includeFilteredValues"], "bool", "includeFilteredValues"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["interval"], "string", "interval"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["selectedFields"], "string", "selectedFields"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["startTime"], "string", "startTime"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["syncTime"], "string", "syncTime"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["syncTimeBoundaryType"], "string", "syncTimeBoundaryType"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["timeZone"], "string", "timeZone"); err != nil {
+		return BatchRequest{}, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["desiredUnits"].(string); localVarOk {
+		localVarQueryParams.Add("desiredUnits", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["endTime"].(string); localVarOk {
+		localVarQueryParams.Add("endTime", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filterExpression"].(string); localVarOk {
+		localVarQueryParams.Add("filterExpression", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["includeFilteredValues"].(bool); localVarOk {
+		localVarQueryParams.Add("includeFilteredValues", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["interval"].(string); localVarOk {
+		localVarQueryParams.Add("interval", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["selectedFields"].(string); localVarOk {
+		localVarQueryParams.Add("selectedFields", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["startTime"].(string); localVarOk {
+		localVarQueryParams.Add("startTime", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["syncTime"].(string); localVarOk {
+		localVarQueryParams.Add("syncTime", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["syncTimeBoundaryType"].(string); localVarOk {
+		localVarQueryParams.Add("syncTimeBoundaryType", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["timeZone"].(string); localVarOk {
+		localVarQueryParams.Add("timeZone", parameterToString(localVarTempParam, ""))
+	}
+
+	r, err := a.client.prepareRequest(
+		a.client.ctx,
+		localVarPath,
+		localVarHttpMethod,
+		localVarPostBody,
+		localVarHeaderParams,
+		localVarQueryParams,
+		localVarFormParams,
+		localVarFileName,
+		localVarFileBytes,
+	)
+	if err != nil {
+		return BatchRequest{}, err
+	}
+
+	//add URL from request to batch
+	batch = BatchRequest{
+		Method:   r.Method,
+		Resource: r.URL.String(),
+	}
+
+	return batch, err
+}
+
+/*
+	StreamApiService Retrieves interpolated values over the specified time range at the specified sampling interval.
+
+Any time series value in the response that contains an &#39;Errors&#39; property indicates PI Web API encountered a handled error during the transfer of the response stream.
+
+@param webId The ID of the stream.
+@param optional (nil or map[string]interface{}) with one or more of:
+
+	@param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
+	@param "filterExpression" (string) An optional string containing a filter expression. Expression variables are relative to the data point. Use &#39;.&#39; to reference the containing attribute. If the attribute does not support filtering, the filter will be ignored. The default is no filtering.
+	@param "includeFilteredValues" (bool) Specify &#39;true&#39; to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a &#39;Filtered&#39; enumeration value with bad status. Repeated consecutive failures are omitted.
+	@param "selectedFields" (string) List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.
+	@param "sortOrder" (string) The order that the returned collection is sorted. The default is &#39;Ascending&#39;.
+	@param "time" ([]string) The timestamp at which to retrieve an interpolated value. Multiple timestamps may be specified with multiple instances of the parameter.
+	@param "timeZone" (string) The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.
+
+@return TimedValues
+*/
+func (a *BatchApiService) StreamGetInterpolatedAtTimes(webId string, localVarOptionals map[string]interface{}) (BatchRequest, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		batch              BatchRequest
+	)
+
+	// create path and map variables
+	linkPath := fmt.Sprintf("/streams/%s/interpolatedattimes", webId)
+	localVarPath := a.client.cfg.BasePath + linkPath
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["desiredUnits"], "string", "desiredUnits"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["filterExpression"], "string", "filterExpression"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["includeFilteredValues"], "bool", "includeFilteredValues"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["selectedFields"], "string", "selectedFields"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["sortOrder"], "string", "sortOrder"); err != nil {
+		return BatchRequest{}, err
+	}
+	if err := typeCheckParameter(localVarOptionals["timeZone"], "string", "timeZone"); err != nil {
+		return BatchRequest{}, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["desiredUnits"].(string); localVarOk {
+		localVarQueryParams.Add("desiredUnits", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filterExpression"].(string); localVarOk {
+		localVarQueryParams.Add("filterExpression", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["includeFilteredValues"].(bool); localVarOk {
+		localVarQueryParams.Add("includeFilteredValues", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["selectedFields"].(string); localVarOk {
+		localVarQueryParams.Add("selectedFields", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["sortOrder"].(string); localVarOk {
+		localVarQueryParams.Add("sortOrder", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["time"].([]string); localVarOk {
+		for _, t := range localVarTempParam {
+			localVarQueryParams.Add("time", t)
+		}
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["timeZone"].(string); localVarOk {
+		localVarQueryParams.Add("timeZone", parameterToString(localVarTempParam, ""))
+	}
+
+	r, err := a.client.prepareRequest(
+		a.client.ctx,
+		localVarPath,
+		localVarHttpMethod,
+		localVarPostBody,
+		localVarHeaderParams,
+		localVarQueryParams,
+		localVarFormParams,
+		localVarFileName,
+		localVarFileBytes,
+	)
+	if err != nil {
+		return BatchRequest{}, err
+	}
+
+	//add URL from request to batch
+	batch = BatchRequest{
+		Method:   r.Method,
+		Resource: r.URL.String(),
+	}
+
+	return batch, err
+}
