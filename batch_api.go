@@ -370,6 +370,7 @@ If only recorded values with annotations are desired, the filterExpression param
 @param time The timestamp at which the value is desired.
 @param optional (nil or map[string]interface{}) with one or more of:
 
+	@param "time" (string) The timestamp at which the value is desired.
 	@param "associations" (string) Associated values to return in the response, separated by semicolons (;). This call supports Annotations to return events with annotation values. If this parameter is not specified, annotation values are not returned.
 	@param "desiredUnits" (string) The name or abbreviation of the desired units of measure for the returned value, as found in the UOM database associated with the attribute. If not specified for an attribute, the attribute&#39;s default unit of measure is used. If the underlying stream is a point, this value may not be specified, as points are not associated with a unit of measure.
 	@param "retrievalMode" (string) An optional value that determines the value to return when a value doesn&#39;t exist at the exact time specified. The default is &#39;Auto&#39;.
@@ -378,7 +379,7 @@ If only recorded values with annotations are desired, the filterExpression param
 
 @return BatchRequest
 */
-func (a *BatchApiService) StreamGetRecordedAtTime(webId string, time string, localVarOptionals map[string]interface{}) (BatchRequest, error) {
+func (a *BatchApiService) StreamGetRecordedAtTime(webId string, localVarOptionals map[string]interface{}) (BatchRequest, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -412,7 +413,9 @@ func (a *BatchApiService) StreamGetRecordedAtTime(webId string, time string, loc
 		return BatchRequest{}, err
 	}
 
-	localVarQueryParams.Add("time", parameterToString(time, ""))
+	if localVarTempParam, localVarOk := localVarOptionals["time"].(string); localVarOk {
+		localVarQueryParams.Add("time", parameterToString(localVarTempParam, ""))
+	}
 	if localVarTempParam, localVarOk := localVarOptionals["associations"].(string); localVarOk {
 		localVarQueryParams.Add("associations", parameterToString(localVarTempParam, ""))
 	}
